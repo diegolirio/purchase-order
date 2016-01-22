@@ -36,12 +36,10 @@
         <beans:property name="password" value="root" />  
     </beans:bean>
 
-	<beans:bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<beans:property name="dataSource" ref="dataSourceDB" />
 		<beans:property name="jpaVendorAdapter">
-			<beans:bean
-				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		<beans:bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</beans:property>
 	</beans:bean>
 	
@@ -50,9 +48,9 @@
 	  <beans:property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</beans:bean>  	
 	    
-	<!-- ********** Configuration Spring Data ************************************************** -->
+ 	<!-- ********** Configuration Spring Data ************************************************** -->
     <beans:bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
-    <jpa:repositories base-package="br.com.opentask.repositories"
+    <jpa:repositories base-package="com.diegolirio.purchaseorder.repositories"
                       entity-manager-factory-ref="entityManagerFactory"
                       transaction-manager-ref="transactionManager"/>
 </beans:beans>

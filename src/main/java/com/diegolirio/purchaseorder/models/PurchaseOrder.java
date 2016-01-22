@@ -23,20 +23,20 @@ public class PurchaseOrder {
 	public Date emissionDate;
 	
 	@ManyToOne
-	public Address clientAddressSender;
+	public Address customerAddressSender;
 	
 	
 	public String phoneSender;
 	
 	@ManyToOne
-	public Address clientAddressRecipient;
+	public Address customerAddressRecipient;
 	
 	public String phoneRecipient;
 	public String faxRecipient;
 	public String condicaoPagamento; // --->>>> ????
 	
 	@ManyToOne
-	public Client shippingCompany;
+	public Customer shippingCompany;
 	public String phoneShippingCompany;
 	public char typeFreight; // ???? FOB
 	public String remark;
@@ -56,11 +56,11 @@ public class PurchaseOrder {
 	public void setEmissionDate(Date emissionDate) {
 		this.emissionDate = emissionDate;
 	}
-	public Address getClientAddressSender() {
-		return clientAddressSender;
+	public Address getCustomerAddressSender() {
+		return customerAddressSender;
 	}
-	public void setClientAddressSender(Address clientAddressSender) {
-		this.clientAddressSender = clientAddressSender;
+	public void setCustomerAddressSender(Address customerAddressSender) {
+		this.customerAddressSender = customerAddressSender;
 	}
 	public String getPhoneSender() {
 		return phoneSender;
@@ -68,11 +68,11 @@ public class PurchaseOrder {
 	public void setPhoneSender(String phoneSender) {
 		this.phoneSender = phoneSender;
 	}
-	public Address getClientAddressRecipient() {
-		return clientAddressRecipient;
+	public Address getCustomerAddressRecipient() {
+		return customerAddressRecipient;
 	}
-	public void setClientAddressRecipient(Address clientAddressRecipient) {
-		this.clientAddressRecipient = clientAddressRecipient;
+	public void setCustomerAddressRecipient(Address customerAddressRecipient) {
+		this.customerAddressRecipient = customerAddressRecipient;
 	}
 	public String getPhoneRecipient() {
 		return phoneRecipient;
@@ -86,10 +86,10 @@ public class PurchaseOrder {
 	public void setFaxRecipient(String faxRecipient) {
 		this.faxRecipient = faxRecipient;
 	}
-	public Client getShippingCompany() {
+	public Customer getShippingCompany() {
 		return shippingCompany;
 	}
-	public void setShippingCompany(Client shippingCompany) {
+	public void setShippingCompany(Customer shippingCompany) {
 		this.shippingCompany = shippingCompany;
 	}
 	public String getPhoneShippingCompany() {
@@ -126,9 +126,9 @@ public class PurchaseOrder {
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", emissionDate=" + emissionDate
-				+ ", clientAddressSender=" + clientAddressSender
-				+ ", phoneSender=" + phoneSender + ", clientAddressRecipient="
-				+ clientAddressRecipient + ", phoneRecipient=" + phoneRecipient
+				+ ", customerAddressSender=" + customerAddressSender
+				+ ", phoneSender=" + phoneSender + ", customerAddressRecipient="
+				+ customerAddressRecipient + ", phoneRecipient=" + phoneRecipient
 				+ ", faxRecipient=" + faxRecipient + ", shippingCompany="
 				+ shippingCompany + ", phoneShippingCompany="
 				+ phoneShippingCompany + ", typeFreight=" + typeFreight
