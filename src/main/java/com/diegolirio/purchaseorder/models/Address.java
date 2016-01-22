@@ -16,8 +16,10 @@ public class Address {
 	public String publicPlace; // logradouro
 	public int number;
 	public String neighborhood; // Bairro
-	public String city; 
-	public String state;
+	public String city;
+	
+	@ManyToOne
+	public State state;
 	
 	@ManyToOne
 	public People people;
@@ -70,11 +72,11 @@ public class Address {
 		this.city = city;
 	}
 
-	public String getState() {
+	public State getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(State state) {
 		this.state = state;
 	}
 
