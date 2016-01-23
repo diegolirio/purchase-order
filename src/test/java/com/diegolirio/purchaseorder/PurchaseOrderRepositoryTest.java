@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +18,7 @@ import com.diegolirio.purchaseorder.models.Address;
 import com.diegolirio.purchaseorder.models.Customer;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 import com.diegolirio.purchaseorder.models.State;
+import com.diegolirio.purchaseorder.repositories.AddressRepository;
 import com.diegolirio.purchaseorder.repositories.CustomerRepositorie;
 import com.diegolirio.purchaseorder.repositories.PurchaseOrderRepository;
 import com.diegolirio.purchaseorder.repositories.StateRepository;
@@ -38,10 +38,13 @@ public class PurchaseOrderRepositoryTest {
 
 	@Autowired
 	private StateRepository stateRepository;
+
+	@Autowired
+	private AddressRepository addressRepository;
 	
 	@Before
 	public void before() {
-
+		purchaseOrder = buildTest();
 	}
 	
 	public static PurchaseOrder buildTest() {
@@ -78,8 +81,10 @@ public class PurchaseOrderRepositoryTest {
 														   .withPublicPlace("Rua Lidice")
 														   .withState(state)
 														   .build();		
-
+		addressRepository.save(dellavolpeAddressRecipient);
+		// salva transportadora
 		Customer transportadora = CustomerRepositorieTest.buildTest();
+		customerRepositorie.save(transportadora);
 		
 		purchaseOrder.setCustomerAddressRecipient(dellavolpeAddressRecipient);
 		purchaseOrder.setCustomerAddressSender(dellavolpeAddressRecipient);
