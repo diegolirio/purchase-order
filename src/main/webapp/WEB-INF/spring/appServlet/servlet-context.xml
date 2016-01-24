@@ -21,8 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.diegolirio.purchaseorder.controllers" />
-	<context:component-scan base-package="com.diegolirio.purchaseorder.repositories" />
+	<context:component-scan base-package="com.diegolirio.purchaseorder.test.repository.controllers" />
+	<context:component-scan base-package="com.diegolirio.purchaseorder.test.repository.repositories" />
 	
  	<!-- ********** Configuration Datasource Connection *********************************** --> 
 	<beans:bean id="dataSourceDB" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

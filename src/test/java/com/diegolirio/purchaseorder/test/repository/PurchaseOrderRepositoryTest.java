@@ -1,6 +1,4 @@
-package com.diegolirio.purchaseorder;
-
-import java.util.Calendar;
+package com.diegolirio.purchaseorder.test.repository;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.diegolirio.purchaseorder.builder.AdderssBuilder;
-import com.diegolirio.purchaseorder.builder.PurchaseOrderBuilder;
 import com.diegolirio.purchaseorder.builder.StateBuilder;
 import com.diegolirio.purchaseorder.models.Address;
 import com.diegolirio.purchaseorder.models.Customer;
@@ -22,6 +19,7 @@ import com.diegolirio.purchaseorder.repositories.AddressRepository;
 import com.diegolirio.purchaseorder.repositories.CustomerRepositorie;
 import com.diegolirio.purchaseorder.repositories.PurchaseOrderRepository;
 import com.diegolirio.purchaseorder.repositories.StateRepository;
+import com.diegolirio.purchaseorder.test.builder.PurchaseOrderBuilderTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/applicationContext-test.xml")
@@ -44,20 +42,7 @@ public class PurchaseOrderRepositoryTest {
 	
 	@Before
 	public void before() {
-		purchaseOrder = buildTest();
-	}
-	
-	public static PurchaseOrder buildTest() {
-		PurchaseOrderBuilder purchaseOrderBuilder = new PurchaseOrderBuilder();		
-		PurchaseOrder purchaseOrder = purchaseOrderBuilder.withEmissionDate(Calendar.getInstance().getTime())
-										  .withFaxRecipient("1129678536")
-										  .withPhoneRecipient("11296785")
-										  .withPhoneSender("1129678511")
-										  .withPhoneShippingCompany("1146758597")
-										  .withRemark("Teste Observacao")
-										  .withTypeFreight('R')
-										  .build();
-		return purchaseOrder;
+		purchaseOrder = PurchaseOrderBuilderTest.build();
 	}
 	
 	@Test
