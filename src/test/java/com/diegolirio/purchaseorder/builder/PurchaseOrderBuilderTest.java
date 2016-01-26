@@ -1,4 +1,4 @@
-package com.diegolirio.purchaseorder.test.builder;
+package com.diegolirio.purchaseorder.builder;
 
 import java.util.Calendar;
 

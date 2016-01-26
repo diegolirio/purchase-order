@@ -1,4 +1,4 @@
-package com.diegolirio.purchaseorder.test.repository;
+package com.diegolirio.purchaseorder.repository;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.diegolirio.purchaseorder.builder.AdderssBuilder;
+import com.diegolirio.purchaseorder.builder.PurchaseOrderBuilderTest;
 import com.diegolirio.purchaseorder.builder.StateBuilder;
 import com.diegolirio.purchaseorder.models.Address;
 import com.diegolirio.purchaseorder.models.Customer;
@@ -19,7 +20,6 @@ import com.diegolirio.purchaseorder.repositories.AddressRepository;
 import com.diegolirio.purchaseorder.repositories.CustomerRepositorie;
 import com.diegolirio.purchaseorder.repositories.PurchaseOrderRepository;
 import com.diegolirio.purchaseorder.repositories.StateRepository;
-import com.diegolirio.purchaseorder.test.builder.PurchaseOrderBuilderTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/applicationContext-test.xml")
