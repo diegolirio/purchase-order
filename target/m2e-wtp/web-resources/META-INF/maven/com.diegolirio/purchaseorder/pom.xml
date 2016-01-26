@@ -161,6 +161,13 @@
 			<version>1.8.2.RELEASE</version>
 		</dependency>			
 		
+		<!-- Retorno de Action como Json -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.10</version>
+		</dependency>			
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>org.hamcrest</groupId>

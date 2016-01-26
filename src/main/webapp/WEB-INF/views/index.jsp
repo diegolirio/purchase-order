@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
         <meta charset="UTF-8">
         <title>Director | Simple Tables</title>
@@ -9,27 +9,27 @@
         <!-- bootstrap 3.0.2 -->
         <link href="${pageContext.request.contextPath}/resources/static/director-free/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="${pageContext.request.contextPath}/resources/static/director-free/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
-        <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="${pageContext.request.contextPath}/resources/static/director-free/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- google font -->
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
-        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link href="${pageContext.request.contextPath}/resources/static/director-free/css/style.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
+        <![endif]--> 
     </head>
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="index.html" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                Director
+                CafGlass
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -56,7 +56,7 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar3.png" class="img-circle" alt="User Image"/>
+                                                    <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar3.png" class="img-circle" alt="User Image"/>
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -68,7 +68,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                                    <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar2.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Director Design Team
@@ -80,7 +80,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar.png" class="img-circle" alt="user image"/>
+                                                    <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Developers
@@ -92,7 +92,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                                    <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar2.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -104,7 +104,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar.png" class="img-circle" alt="user image"/>
+                                                    <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Reviewers
@@ -113,7 +113,7 @@
                                                 <p>Why not buy a new awesome theme?</p>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> 
                                 </li>
                                 <li class="footer"><a href="#">See All Messages</a></li>
                             </ul>
@@ -214,23 +214,23 @@
 
                                 <li class="divider"></li>
 
-                                    <li>
-                                        <a href="#">
-                                        <i class="fa fa-user fa-fw pull-right"></i>
-                                            Profile
-                                        </a>
-                                        <a data-toggle="modal" href="#modal-user-settings">
-                                        <i class="fa fa-cog fa-fw pull-right"></i>
-                                            Settings
-                                        </a>
-                                        </li>
+                                <li>
+                                    <a href="#">
+                                    <i class="fa fa-user fa-fw pull-right"></i>
+                                        Profile
+                                    </a>
+                                    <a data-toggle="modal" href="#modal-user-settings">
+                                    <i class="fa fa-cog fa-fw pull-right"></i>
+                                        Settings
+                                    </a>
+                                </li>
 
-                                        <li class="divider"></li>
+                                <li class="divider"></li>
 
-                                        <li>
-                                            <a href="#"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
-                                        </li>
-                                    </ul>
+                                <li>
+                                    <a href="#"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+                                </li>
+                            </ul>
 
                         </li>
                     </ul>
@@ -245,7 +245,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                            <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar3.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Hello, Jane</p>
@@ -264,8 +264,8 @@
                     </form>
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="index.html">
-                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            <a href="#/pedidos">
+                                <i class="fa fa-dashboard"></i> <span>Pedidos</span>
                             </a>
                         </li>
                         <li>
@@ -293,336 +293,39 @@
 
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
-
-                <!-- Main content -->
-                <section class="content">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="panel">
-                                <header class="panel-heading">
-                                    Bordered Table
-
-                                </header>
-                                <div class="panel-body">
-                                    <table class="table table-bordered">
-                                        <tr>
-                                            <th style="width: 10px">#</th>
-                                            <th>Task</th>
-                                            <th>Progress</th>
-                                            <th style="width: 40px">Label</th>
-                                        </tr>
-                                        <tr>
-                                            <td>1.</td>
-                                            <td>Update software</td>
-                                            <td>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-red">55%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2.</td>
-                                            <td>Clean database</td>
-                                            <td>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-yellow">70%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3.</td>
-                                            <td>Cron job running</td>
-                                            <td>
-                                                <div class="progress xs progress-striped active">
-                                                    <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-light-blue">30%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4.</td>
-                                            <td>Fix and squish bugs</td>
-                                            <td>
-                                                <div class="progress xs progress-striped active">
-                                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-green">90%</span></td>
-                                        </tr>
-                                    </table>
-                                    <div class="table-foot">
-                                        <ul class="pagination pagination-sm no-margin pull-right">
-                                        <li><a href="#">&laquo;</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">&raquo;</a></li>
-                                    </ul>
-                                    </div>
-                                </div><!-- /.panel-body -->
-
-                            </div><!-- /.panel -->
-
-                            <div class="panel">
-                                <header class="panel-heading">
-                                    Condensed Full Width Table
-
-                                </header>
-                                <div class="panel-body no-padding">
-                                    <table class="table table-condensed">
-                                        <tr>
-                                            <th style="width: 10px">#</th>
-                                            <th>Task</th>
-                                            <th>Progress</th>
-                                            <th style="width: 40px">Label</th>
-                                        </tr>
-                                        <tr>
-                                            <td>1.</td>
-                                            <td>Update software</td>
-                                            <td>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-red">55%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2.</td>
-                                            <td>Clean database</td>
-                                            <td>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-yellow">70%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3.</td>
-                                            <td>Cron job running</td>
-                                            <td>
-                                                <div class="progress xs progress-striped active">
-                                                    <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-light-blue">30%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4.</td>
-                                            <td>Fix and squish bugs</td>
-                                            <td>
-                                                <div class="progress xs progress-striped active">
-                                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-green">90%</span></td>
-                                        </tr>
-                                    </table>
-                                </div><!-- /.panel-body -->
-                            </div><!-- /.panel -->
-                        </div><!-- /.col -->
-                        <div class="col-md-6">
-                            <div class="panel">
-                                <header class="panel-heading">
-                                    Simple Full Width Table
-
-                                </header>
-                                <div class="panel-body">
-                                    <div class="box-tools">
-                                        <ul class="pagination pagination-sm m-b-10 m-t-10 pull-right">
-                                            <li><a href="#">&laquo;</a></li>
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">&raquo;</a></li>
-                                        </ul>
-                                    </div>
-                                    <table class="table">
-                                        <tr>
-                                            <th style="width: 10px">#</th>
-                                            <th>Task</th>
-                                            <th>Progress</th>
-                                            <th style="width: 40px">Label</th>
-                                        </tr>
-                                        <tr>
-                                            <td>1.</td>
-                                            <td>Update software</td>
-                                            <td>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-red">55%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2.</td>
-                                            <td>Clean database</td>
-                                            <td>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-yellow">70%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3.</td>
-                                            <td>Cron job running</td>
-                                            <td>
-                                                <div class="progress xs progress-striped active">
-                                                    <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-light-blue">30%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4.</td>
-                                            <td>Fix and squish bugs</td>
-                                            <td>
-                                                <div class="progress xs progress-striped active">
-                                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-green">90%</span></td>
-                                        </tr>
-                                    </table>
-                                </div><!-- /.panel-body -->
-                            </div><!-- /.panel -->
-
-                            <div class="panel">
-                                <header class="panel-heading">
-                                    Striped Full Width Table
-
-                                </header>
-                                <div class="panel-body">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <th style="width: 10px">#</th>
-                                            <th>Task</th>
-                                            <th>Progress</th>
-                                            <th style="width: 40px">Label</th>
-                                        </tr>
-                                        <tr>
-                                            <td>1.</td>
-                                            <td>Update software</td>
-                                            <td>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-red">55%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2.</td>
-                                            <td>Clean database</td>
-                                            <td>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-yellow">70%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3.</td>
-                                            <td>Cron job running</td>
-                                            <td>
-                                                <div class="progress xs progress-striped active">
-                                                    <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-light-blue">30%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4.</td>
-                                            <td>Fix and squish bugs</td>
-                                            <td>
-                                                <div class="progress xs progress-striped active">
-                                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge bg-green">90%</span></td>
-                                        </tr>
-                                    </table>
-                                </div><!-- /.panel-body -->
-                            </div><!-- /.panel -->
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="panel">
-                                <header class="panel-heading">
-                                    Responsive Hover Table
-
-                                </header>
-                                <!-- <div class="box-header"> -->
-                                    <!-- <h3 class="box-title">Responsive Hover Table</h3> -->
-
-                                <!-- </div> -->
-                                <div class="panel-body table-responsive">
-                                    <div class="box-tools m-b-15">
-                                        <div class="input-group">
-                                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <table class="table table-hover">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>User</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                            <th>Reason</th>
-                                        </tr>
-                                        <tr>
-                                            <td>183</td>
-                                            <td>John Doe</td>
-                                            <td>11-7-2014</td>
-                                            <td><span class="label label-success">Approved</span></td>
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>219</td>
-                                            <td>Jane Doe</td>
-                                            <td>11-7-2014</td>
-                                            <td><span class="label label-warning">Pending</span></td>
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>657</td>
-                                            <td>Bob Doe</td>
-                                            <td>11-7-2014</td>
-                                            <td><span class="label label-primary">Approved</span></td>
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>175</td>
-                                            <td>Mike Doe</td>
-                                            <td>11-7-2014</td>
-                                            <td><span class="label label-danger">Denied</span></td>
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-                                    </table>
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
-                        </div>
-                    </div>
-                </section><!-- /.content -->
+				
+				<!-- Content -->
+				<div ng-view></div>
+				
                 <div class="footer-main">
-                    Copyright &copy Director, 2014
+                    Copyright CafGlass, 2016
                 </div>
+                
             </aside><!-- /.right-side -->
+            
         </div><!-- ./wrapper -->
 
 
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/static/director-free/js/jquery.min.js" type="text/javascript"></script>
+        
+	
+		<!-- ########################## AngularJS ########################################################################### -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.js"></script>
+		<!--------- rotas e config da app angular ------------------->
+		<script src="${pageContext.request.contextPath}/resources/static/core/app-1.0.0.js"></script>  
+		<!--------- Services ----------------> 
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.0.js"></script>
+		<!--------- Controllers ------------->
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.0.js"></script>
+		<!-- ########################## End AngularJS ####################################################################### -->
+        
 
         <!-- Bootstrap -->
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/static/director-free/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- Director App -->
-        <script src="js/Director/app.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/static/director-free/js/Director/app.js" type="text/javascript"></script>
     </body>
 </html>

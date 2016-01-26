@@ -16,6 +16,7 @@ public class PurchaseOrderBuilderTest {
 										  .withPhoneShippingCompany("1146758597")
 										  .withRemark("Teste Observacao")
 										  .withTypeFreight('R')
+										  .withCondicoesPagamento("CARTAO")
 										  .build();
 		return purchaseOrder;
 	}

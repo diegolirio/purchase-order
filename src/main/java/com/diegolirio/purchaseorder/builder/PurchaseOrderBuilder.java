@@ -22,7 +22,7 @@ public class PurchaseOrderBuilder {
 	private String remark;
 	private Customer shippingCompany;
 	private char typeFreight;
-	//private String condicaoPagamento;
+	private String condicaoPagamento;
 
 	public PurchaseOrderBuilder withEmissionDate(Date emissionDate) {
 		this.emissionDate = emissionDate;
@@ -85,10 +85,14 @@ public class PurchaseOrderBuilder {
 	}
 	
 
+	public PurchaseOrderBuilder withCondicoesPagamento(String condicaoPagamento) {
+		this.condicaoPagamento = condicaoPagamento;
+		return this;
+	}	
+
 	public PurchaseOrder build() {
 		PurchaseOrder purchaseOrder = new PurchaseOrder();
 		purchaseOrder.setEmissionDate(emissionDate);
-		//purchaseOrder.setCondicaoPagamento(condicaoPagamento);
 		purchaseOrder.setCustomerAddressRecipient(customerAddressRecipient);
 		purchaseOrder.setCustomerAddressSender(customerAddressSender);
 		purchaseOrder.setFaxRecipient(faxRecipient);
@@ -100,7 +104,9 @@ public class PurchaseOrderBuilder {
 		purchaseOrder.setRemark(remark);
 		purchaseOrder.setShippingCompany(shippingCompany);
 		purchaseOrder.setTypeFreight(typeFreight);
+		purchaseOrder.setCondicaoPagamento(condicaoPagamento);
 		return purchaseOrder;
 	}
+
 
 }
