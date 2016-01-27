@@ -1,5 +1,8 @@
 package com.diegolirio.purchaseorder.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,8 +18,8 @@ import com.diegolirio.purchaseorder.services.PurchaseOrderService;
 @RequestMapping("purchaseorder")
 public class PurchaseOrderController {
 
-	@Autowired
-	private PurchaseOrderService purchaseOrderService;
+//	@Autowired
+//	private PurchaseOrderService purchaseOrderService;
 
 	/*
 	 * Page
@@ -42,7 +45,8 @@ public class PurchaseOrderController {
 	@RequestMapping(value="/get/all", method=RequestMethod.GET, consumes="application/json; charset=UTF-8")
 	public ResponseEntity<String> getAll() {
 		try {
-			Iterable<PurchaseOrder> purchaseOrders = this.purchaseOrderService.getAll();
+			//Iterable<PurchaseOrder> purchaseOrders = this.purchaseOrderService.getAll();
+			List<PurchaseOrder> purchaseOrders = new ArrayList<PurchaseOrder>();
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrders), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();

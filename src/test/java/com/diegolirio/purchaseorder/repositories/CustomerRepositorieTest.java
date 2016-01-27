@@ -1,4 +1,4 @@
-package com.diegolirio.purchaseorder.repository;
+package com.diegolirio.purchaseorder.repositories;
 
 import org.junit.Assert;
 import org.junit.Before;

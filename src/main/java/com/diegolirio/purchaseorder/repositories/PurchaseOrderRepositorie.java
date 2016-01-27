@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 
-@Repository
-public interface PurchaseOrderRepository extends CrudRepository<PurchaseOrder, Long> {
+@Repository("purchaseOrderRepositorie")
+public interface PurchaseOrderRepositorie extends CrudRepository<PurchaseOrder, Long> {
 
 }
