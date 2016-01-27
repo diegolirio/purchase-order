@@ -56,9 +56,9 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar3.png" class="img-circle" alt="User Image"/>
-                                                </div>
-                                                <h4>
+                                                    <img src="${pageContext.request.contextPath}/resources/static/director-free/img/sem_avatar.png" class="img-circle" alt="User Image"/>
+                                                </div> 
+                                                <h4> 
                                                     Support Team
                                                     <small><i class="fa fa-clock-o"></i> 5 mins</small>
                                                 </h4>
@@ -245,23 +245,22 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar3.png" class="img-circle" alt="User Image" />
+                            <img src="${pageContext.request.contextPath}/resources/static/director-free/img/sem_avatar.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Hello, Jane</p>
-
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
                     </div>
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+<!--                     <form action="#" method="get" class="sidebar-form"> -->
+<!--                         <div class="input-group"> -->
+<!--                             <input type="text" name="q" class="form-control" placeholder="Search..."/> -->
+<!--                             <span class="input-group-btn"> -->
+<!--                                 <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button> -->
+<!--                             </span> -->
+<!--                         </div> -->
+<!--                     </form> -->
                     <ul class="sidebar-menu">
                         <li>
                             <a href="#/pedidos">
@@ -269,22 +268,22 @@
                             </a>
                         </li>
                         <li>
-                            <a href="general.html">
-                                <i class="fa fa-gavel"></i> <span>General</span>
+                            <a href="#/clientes">
+                                <i class="fa fa-gavel"></i> <span>Clientes</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="basic_form.html">
-                                <i class="fa fa-globe"></i> <span>Basic Elements</span>
+                            <a href="#/produtos">
+                                <i class="fa fa-globe"></i> <span>Produtos</span>
                             </a>
                         </li>
 
-                        <li class="active">
-                            <a href="simple.html">
-                                <i class="fa fa-glass"></i> <span>Simple tables</span>
-                            </a>
-                        </li>
+<!--                         <li class="active"> -->
+<!--                             <a href="simple.html"> -->
+<!--                                 <i class="fa fa-glass"></i> <span>Simple tables</span> -->
+<!--                             </a> -->
+<!--                         </li> -->
 
                     </ul>
                 </section>
@@ -320,6 +319,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.0.js"></script>
 		<!--------- Controllers ------------->
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderFormController-1.0.0.js"></script>
 		<!-- ########################## End AngularJS ####################################################################### -->
         
 

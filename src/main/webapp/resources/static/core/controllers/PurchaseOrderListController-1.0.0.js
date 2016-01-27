@@ -1,13 +1,13 @@
 /**
- * 
+ * Classe PurchaseOrderListController responsible by views/purchaseorder/list.jsp
  */
 app.controller('PurchaseOrderListController', ['PurchaseOrderService', function(PurchaseOrderService) {
 
 	var self = this;
 	
-	self.purchaseOrders = [];
-	self.purchaseOrders.push({"id": 19999});
-	
+	/**
+	 * Load 
+	 */
 	var init = function() {
 		PurchaseOrderService.getAll().then(function(resp) {
 			self.purchaseOrders = resp.data;
@@ -16,6 +16,6 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', function(
 		});
 	};
 	
-	
+	init();
 	
 }]);

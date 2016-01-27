@@ -9,6 +9,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED) 
 public abstract class People {
@@ -20,9 +22,11 @@ public abstract class People {
 	
 	private String name;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="people")
 	private List<Address> addresses;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="people")
 	private List<Telephone> phones;
 

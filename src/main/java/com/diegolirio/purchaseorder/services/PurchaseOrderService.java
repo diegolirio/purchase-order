@@ -9,15 +9,15 @@ import com.diegolirio.purchaseorder.repositories.PurchaseOrderRepositorie;
 @Service
 public class PurchaseOrderService {
 	
-	@Autowired 
+	@Autowired
 	private PurchaseOrderRepositorie purchaseOrderRepositorie;
-
-	public PurchaseOrder save(PurchaseOrder purchaseOrder) {
-		return null; //this.purchaseOrderRepository.save(purchaseOrder);
-	}
-
+	
 	public Iterable<PurchaseOrder> getAll() {
-		return null; //this.purchaseOrderRepository.findAll();
+		return this.purchaseOrderRepositorie.findAll();
+	}
+	
+	public PurchaseOrder save(PurchaseOrder purchaseOrder) {
+		return this.purchaseOrderRepositorie.save(purchaseOrder);
 	}
 	
 }

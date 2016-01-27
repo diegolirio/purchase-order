@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class PurchaseOrder {
 	
@@ -41,6 +43,7 @@ public class PurchaseOrder {
 	public char typeFreight; // ???? FOB
 	public String remark;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="purchaseOrder")
 	public List<OrdersProducts> ordersProducts;
 	

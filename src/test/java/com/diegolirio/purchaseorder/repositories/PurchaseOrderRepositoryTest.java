@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.diegolirio.purchaseorder.builder.AdderssBuilder;
 import com.diegolirio.purchaseorder.builder.PurchaseOrderBuilderTest;
@@ -15,20 +16,16 @@ import com.diegolirio.purchaseorder.models.Address;
 import com.diegolirio.purchaseorder.models.Customer;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 import com.diegolirio.purchaseorder.models.State;
-import com.diegolirio.purchaseorder.repositories.AddressRepository;
-import com.diegolirio.purchaseorder.repositories.CustomerRepositorie;
-import com.diegolirio.purchaseorder.repositories.PurchaseOrderRepository;
-import com.diegolirio.purchaseorder.repositories.StateRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/applicationContext-test.xml")
-//@Transactional
+@Transactional
 public class PurchaseOrderRepositoryTest {
 
 	private PurchaseOrder purchaseOrder;
 
 	@Autowired
-	private PurchaseOrderRepository purchaseOrderRepository;
+	private PurchaseOrderRepositorie purchaseOrderRepositorie;
 	
 	@Autowired
 	private CustomerRepositorie customerRepositorie;
@@ -74,7 +71,7 @@ public class PurchaseOrderRepositoryTest {
 		purchaseOrder.setCustomerAddressSender(dellavolpeAddressRecipient);
 		purchaseOrder.setShippingCompany(transportadora);
 		
-		purchaseOrderRepository.save(purchaseOrder);
+		purchaseOrderRepositorie.save(purchaseOrder);
 		Assert.assertTrue(purchaseOrder.getId() > 0); 
 	}
 	
