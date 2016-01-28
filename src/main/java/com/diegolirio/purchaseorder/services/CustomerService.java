@@ -23,6 +23,10 @@ public class CustomerService {
 		return this.customerRepositorie.save(customer);
 	}
 
+	public Iterable<Customer> getAll() {
+		return this.customerRepositorie.findAll();
+	}
+
 	
 	
 }

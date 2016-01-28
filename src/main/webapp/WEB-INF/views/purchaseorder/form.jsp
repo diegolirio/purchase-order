@@ -34,7 +34,7 @@
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-danger">Telefone</label>
 			                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneSender" 
-			                                          		  ng-options="phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesSender" 
+			                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesSender" 
 			                                          		  required="required"></select>
 			                                      </div>		
 			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="pull-right btn btn-primary">Avançar</a>  	                                 
@@ -65,13 +65,13 @@
 				                                      <div class="col-md-2 form-group">
 				                                          <label class="text-success">Telefone</label>
 				                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneRecipient" 
-				                                          		  ng-options="phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
+				                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
 				                                          		  required="required"></select>
 				                                      </div>	
 				                                      <div class="col-md-2 form-group">
 				                                          <label class="text-success">Fax</label>
 				                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.faxRecipient" 
-				                                          		  ng-options="phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
+				                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
 				                                          		  required="required"></select>
 				                                      </div>		         
 			                                      </div>
@@ -99,7 +99,7 @@
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-info">Telefone</label>
 			                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneShippingCompany" 
-			                                          		  ng-options="phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesShippingCompany" 
+			                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesShippingCompany" 
 			                                          		  required="required"></select>
 			                                      </div>	
 			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="btn btn-default">Voltar</a>                             		                                 

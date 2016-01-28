@@ -8,6 +8,7 @@
                                 </header>
                                 <div class="panel-body">
                                 	<a href="#/pedido" class="btn btn-success pull-right">Novo</a>
+                                	<br/><br/> 
                                     <table class="table table-bordered">
                                         <tr class="text-danger">
                                             <th rowspan="2" class="text-center" style="width: 10px">Numero</th>

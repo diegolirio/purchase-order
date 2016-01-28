@@ -12,6 +12,10 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpPro
 		.when('/',           { templateUrl: SERVER_APP + '/home'})
 		.when('/pedidos',    { templateUrl: SERVER_APP + '/purchaseorder/page/list'})
 		.when('/pedido',     { templateUrl: SERVER_APP + '/purchaseorder/page/form'})
+		// Customer
+		.when('/clientes',     { templateUrl: SERVER_APP + '/customer/page/list'})
+		// Product
+		.when('/produtos',     { templateUrl: SERVER_APP + '/product/page/list'})
 		;
 	
 	/* ******************** Interceptor ******************** */

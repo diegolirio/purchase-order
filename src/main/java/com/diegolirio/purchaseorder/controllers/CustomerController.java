@@ -18,11 +18,45 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
+	/*
+	 * pages
+	 */
+	
+	@RequestMapping(value="/page/list")
+	public String pageList() {
+		return "customer/list";
+	}
+	
+	/*
+	 * RestFull
+	 */
+	
+	/**
+	 * pega cliente por cpfCnpj
+	 * @param cpfCnpj
+	 * @return
+	 */
 	@RequestMapping(value="/get/by/cpfcnpj/{cpfCnpj}")
 	public ResponseEntity<String> getByCpfCnpj(@PathVariable("cpfCnpj") String cpfCnpj) {
 		try {
 			Customer customer = this.customerService.getByCpfCnpj(cpfCnpj);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(customer ), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	/**
+	 * pega todos clientes
+	 * @param cpfCnpj
+	 * @return
+	 */
+	@RequestMapping(value="/get/all")
+	public ResponseEntity<String> getall() {
+		try {
+			Iterable<Customer> all = this.customerService.getAll();
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(all ), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

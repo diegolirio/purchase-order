@@ -14,9 +14,18 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		return $http.get(serverURL('/get/all'));
 	};
 	
+	/**
+	 * salvar P.O
+	 */
+	var _save = function(purchaseOrder) {
+		return $http.post(serverURL('/save'), purchaseOrder);
+	}
+	
 	return {
 		
-		getAll : _getAll
+		getAll : _getAll,
+		
+		save : _save
 		
 	};
 	

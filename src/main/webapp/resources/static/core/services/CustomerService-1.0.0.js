@@ -14,9 +14,18 @@ app.factory('CustomerService', ['$http', function($http) {
 		return $http.get(serverURL('/get/by/cpfcnpj/'+cpfCnpj));
 	};
 	
+	/**
+	 * pega por cpfCnpj
+	 */
+	var _getAll = function() {
+		return $http.get(serverURL('/get/all'));
+	};
+	
 	return {
 		
-		getByCpfCnpj : _getByCpfCnpj
+		getByCpfCnpj : _getByCpfCnpj,
+		
+		getAll : _getAll
 		
 	};
 	

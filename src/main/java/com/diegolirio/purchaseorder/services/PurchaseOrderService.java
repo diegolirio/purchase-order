@@ -19,5 +19,9 @@ public class PurchaseOrderService {
 	public PurchaseOrder save(PurchaseOrder purchaseOrder) {
 		return this.purchaseOrderRepositorie.save(purchaseOrder);
 	}
+
+	public PurchaseOrder get(Long id) {
+		return this.purchaseOrderRepositorie.findOne(id);
+	}
 	
 }

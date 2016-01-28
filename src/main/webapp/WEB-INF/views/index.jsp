@@ -29,12 +29,12 @@
         <header class="header">
             <a href="${pageContext.request.contextPath }" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                CafGlass
+                Pedido
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                <a href= class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -44,7 +44,7 @@
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
                         <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href= class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope"></i>
                                 <span class="label label-success">4</span>
                             </a>
@@ -54,7 +54,7 @@
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
                                         <li><!-- start message -->
-                                            <a href="#">
+                                            <a href=>
                                                 <div class="pull-left">
                                                     <img src="${pageContext.request.contextPath}/resources/static/director-free/img/sem_avatar.png" class="img-circle" alt="User Image"/>
                                                 </div> 
@@ -66,7 +66,7 @@
                                             </a>
                                         </li><!-- end message -->
                                         <li>
-                                            <a href="#">
+                                            <a href=>
                                                 <div class="pull-left">
                                                     <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar2.png" class="img-circle" alt="user image"/>
                                                 </div>
@@ -78,7 +78,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href=>
                                                 <div class="pull-left">
                                                     <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar.png" class="img-circle" alt="user image"/>
                                                 </div>
@@ -90,7 +90,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href=>
                                                 <div class="pull-left">
                                                     <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar2.png" class="img-circle" alt="user image"/>
                                                 </div>
@@ -102,7 +102,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href=>
                                                 <div class="pull-left">
                                                     <img src="${pageContext.request.contextPath}/resources/static/director-free/img/avatar.png" class="img-circle" alt="user image"/>
                                                 </div>
@@ -115,11 +115,11 @@
                                         </li>
                                     </ul> 
                                 </li>
-                                <li class="footer"><a href="#">See All Messages</a></li>
+                                <li class="footer"><a href=>See All Messages</a></li>
                             </ul>
                         </li>
                         <li class="dropdown tasks-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href= class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-tasks"></i>
                                 <span class="label label-danger">9</span>
                             </a>
@@ -130,7 +130,7 @@
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
                                         <li><!-- Task item -->
-                                            <a href="#">
+                                            <a href=>
                                                 <h3>
                                                     Design some buttons
                                                     <small class="pull-right">20%</small>
@@ -143,7 +143,7 @@
                                             </a>
                                         </li><!-- end task item -->
                                         <li><!-- Task item -->
-                                            <a href="#">
+                                            <a href=>
                                                 <h3>
                                                     Create a nice theme
                                                     <small class="pull-right">40%</small>
@@ -156,7 +156,7 @@
                                             </a>
                                         </li><!-- end task item -->
                                         <li><!-- Task item -->
-                                            <a href="#">
+                                            <a href=>
                                                 <h3>
                                                     Some task I need to do
                                                     <small class="pull-right">60%</small>
@@ -169,7 +169,7 @@
                                             </a>
                                         </li><!-- end task item -->
                                         <li><!-- Task item -->
-                                            <a href="#">
+                                            <a href=>
                                                 <h3>
                                                     Make beautiful transitions
                                                     <small class="pull-right">80%</small>
@@ -184,7 +184,7 @@
                                     </ul>
                                 </li>
                                 <li class="footer">
-                                    <a href="#">View all tasks</a>
+                                    <a href=>View all tasks</a>
                                 </li>
 
                             </ul>
@@ -192,30 +192,30 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
 
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user"></i>
-                                <span>Jane Doe <i class="caret"></i></span>
+                                <span>Diego Lirio <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                                 <li class="dropdown-header text-center">Account</li>
 
                                 <li>
-                                    <a href="#">
+                                    <a href=>
                                     <i class="fa fa-clock-o fa-fw pull-right"></i>
                                         <span class="badge badge-success pull-right">10</span> Updates</a>
-                                    <a href="#">
+                                    <a href=>
                                     <i class="fa fa-envelope-o fa-fw pull-right"></i>
                                         <span class="badge badge-danger pull-right">5</span> Messages</a>
-                                    <a href="#"><i class="fa fa-magnet fa-fw pull-right"></i>
+                                    <a href=><i class="fa fa-magnet fa-fw pull-right"></i>
                                         <span class="badge badge-info pull-right">3</span> Subscriptions</a>
-                                    <a href="#"><i class="fa fa-question fa-fw pull-right"></i> <span class=
+                                    <a href=><i class="fa fa-question fa-fw pull-right"></i> <span class=
                                         "badge pull-right">11</span> FAQ</a>
                                 </li>
 
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href="#">
+                                    <a href=>
                                     <i class="fa fa-user fa-fw pull-right"></i>
                                         Profile
                                     </a>
@@ -228,7 +228,7 @@
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href="#"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+                                    <a href=><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
                                 </li>
                             </ul>
 
@@ -248,12 +248,12 @@
                             <img src="${pageContext.request.contextPath}/resources/static/director-free/img/sem_avatar.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Hello, Jane</p>
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                            <p>Olá, Diego</p>
+<!--                             <a href=><i class="fa fa-circle text-success"></i> Online</a> -->
                         </div>
                     </div>
                     <!-- search form -->
-<!--                     <form action="#" method="get" class="sidebar-form"> -->
+<!--                     <form action= method="get" class="sidebar-form"> -->
 <!--                         <div class="input-group"> -->
 <!--                             <input type="text" name="q" class="form-control" placeholder="Search..."/> -->
 <!--                             <span class="input-group-btn"> -->
@@ -296,9 +296,9 @@
 				<!-- Content -->
 				<div ng-view></div>
 				
-                <div class="footer-main">
-                    Copyright CafGlass, 2016
-                </div>
+<!--                 <div class="footer-main"> -->
+<!--                     Copyright CafGlass, 2016 -->
+<!--                 </div> -->
                 
             </aside><!-- /.right-side -->
             
@@ -320,9 +320,12 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/CustomerService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/AddressService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/TelephoneService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/ProductService-1.0.0.js"></script>
 		<!--------- Controllers ------------->
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderFormController-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerListController-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductListController-1.0.0.js"></script>
 		<!-- ########################## End AngularJS ####################################################################### -->
         
 
