@@ -4,7 +4,7 @@ import com.diegolirio.purchaseorder.models.Address;
 import com.diegolirio.purchaseorder.models.People;
 import com.diegolirio.purchaseorder.models.State;
 
-public class AdderssBuilder {
+public class AddressBuilder {
 
 	private String cep;
 	private String city;
@@ -15,42 +15,42 @@ public class AdderssBuilder {
 	private String publicPlace;
 	private State state;
 
-	public AdderssBuilder withCep(String cep) {
+	public AddressBuilder withCep(String cep) {
 		this.cep = cep;
 		return this;
 	}
 	
-	public AdderssBuilder withCity(String city) {
+	public AddressBuilder withCity(String city) {
 		this.city = city;
 		return this;
 	}
 	
-	public AdderssBuilder withId(Long id) {
+	public AddressBuilder withId(Long id) {
 		this.id = id;
 		return this;
 	}
 	
-	public AdderssBuilder withNeighborhood(String neighborhood) {
+	public AddressBuilder withNeighborhood(String neighborhood) {
 		this.neighborhood = neighborhood;
 		return this;
 	}
 	
-	public AdderssBuilder withNumber(int number) {
+	public AddressBuilder withNumber(int number) {
 		this.number = number;
 		return this;
 	}
 	
-	public AdderssBuilder withPeople(People people) {
+	public AddressBuilder withPeople(People people) {
 		this.people = people;
 		return this;
 	}
 	
-	public AdderssBuilder withPublicPlace(String publicPlace) {
+	public AddressBuilder withPublicPlace(String publicPlace) {
 		this.publicPlace = publicPlace;
 		return this;
 	}
 	
-	public AdderssBuilder withState(State state) {
+	public AddressBuilder withState(State state) {
 		this.state = state;
 		return this;
 	}

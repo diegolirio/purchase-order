@@ -2,6 +2,7 @@ package com.diegolirio.purchaseorder.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,10 +15,11 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED) 
 public abstract class People {
-
+	
 	@Id @GeneratedValue
 	private Long id;
 	
+	@Column(unique=true)
 	private String cpfCnpj;
 	
 	private String name;
@@ -30,6 +32,12 @@ public abstract class People {
 	@OneToMany(mappedBy="people")
 	private List<Telephone> phones;
 
+	public People() { }
+
+	public People(Long id) {
+		this.id = id;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -88,8 +96,7 @@ public abstract class People {
 
 	@Override
 	public String toString() {
-		return "People [id=" + id + ", cpfCnpj=" + cpfCnpj + ", name=" + name
-				+ ", addresses=" + addresses + ", phones=" + phones + "]";
+		return "People [id=" + id + ", cpfCnpj=" + cpfCnpj + ", name=" + name + "]";
 	}
 	
 	

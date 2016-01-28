@@ -317,6 +317,8 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/app-1.0.0.js"></script>  
 		<!--------- Services ----------------> 
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/CustomerService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/AddressService-1.0.0.js"></script>
 		<!--------- Controllers ------------->
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderFormController-1.0.0.js"></script>

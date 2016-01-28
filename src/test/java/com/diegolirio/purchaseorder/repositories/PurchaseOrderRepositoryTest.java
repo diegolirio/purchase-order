@@ -9,7 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.diegolirio.purchaseorder.builder.AdderssBuilder;
+import com.diegolirio.purchaseorder.builder.AddressBuilderTest;
+import com.diegolirio.purchaseorder.builder.CustomerBuilderTest;
 import com.diegolirio.purchaseorder.builder.PurchaseOrderBuilderTest;
 import com.diegolirio.purchaseorder.builder.StateBuilder;
 import com.diegolirio.purchaseorder.models.Address;
@@ -34,7 +35,7 @@ public class PurchaseOrderRepositoryTest {
 	private StateRepository stateRepository;
 
 	@Autowired
-	private AddressRepository addressRepository;
+	private AddressRepositorie addressRepository;
 	
 	@Before
 	public void before() {
@@ -44,27 +45,19 @@ public class PurchaseOrderRepositoryTest {
 	@Test
 	public void testSalvarOrdemCompra() {
 		// Salva Customer
-		Customer dellavolpe = CustomerRepositorieTest.buildTest();
-		customerRepositorie.save(dellavolpe);
-		// Salva Estado
+		Customer dellavolpe = CustomerBuilderTest.buildTest();
 		StateBuilder stateBuilder = new StateBuilder();
 		State state = stateBuilder.withAbbreviation("SP")
 				  				  .withName("São Paulo")
 				  				  .build();
 		stateRepository.save(state);		
 		// Salva Endereco Customer
-		AdderssBuilder adderssBuilder = new AdderssBuilder();
-		Address dellavolpeAddressRecipient = adderssBuilder.withCep("07503270")
-														   .withCity("São Paulo")
-														   .withNeighborhood("Parque Novo Mundo")
-														   .withNumber(22)
-														   .withPeople(dellavolpe)
-														   .withPublicPlace("Rua Lidice")
-														   .withState(state)
-														   .build();		
+		Address dellavolpeAddressRecipient = AddressBuilderTest.buildTest();
+		dellavolpeAddressRecipient.setPeople(dellavolpe);
+		dellavolpeAddressRecipient.setState(state);
 		addressRepository.save(dellavolpeAddressRecipient);
 		// salva transportadora
-		Customer transportadora = CustomerRepositorieTest.buildTest();
+		Customer transportadora = CustomerBuilderTest.buildTest();
 		customerRepositorie.save(transportadora);
 		
 		purchaseOrder.setCustomerAddressRecipient(dellavolpeAddressRecipient);

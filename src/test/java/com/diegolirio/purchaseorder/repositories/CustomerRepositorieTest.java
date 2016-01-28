@@ -1,5 +1,7 @@
 package com.diegolirio.purchaseorder.repositories;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,9 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.diegolirio.purchaseorder.builder.CustomerBuilder;
+import com.diegolirio.purchaseorder.builder.CustomerBuilderTest;
 import com.diegolirio.purchaseorder.models.Customer;
-import com.diegolirio.purchaseorder.repositories.CustomerRepositorie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/applicationContext-test.xml")
@@ -22,22 +23,9 @@ public class CustomerRepositorieTest {
 	private CustomerRepositorie customerRepositorie;
 	private Customer customer;
 	
-	public static final String CUSTOMER_CPFCNPJ = "61139432000172";
-	public static final String CUSTOMER_NAME = "Transportes Della Volpe S/A";
-	public static final String CUSTOMER_SIGNUPSTATE = "31551515151";
-	
 	@Before
 	public void before() {
-		customer = buildTest();
-	}
-	
-	public static Customer buildTest() {
-		CustomerBuilder customerBuilder = new CustomerBuilder(); 
-		Customer customer = customerBuilder.withCpfCnpj(CUSTOMER_CPFCNPJ)
-								  		   .withName(CUSTOMER_NAME)
-								  		   .withSignUpState(CUSTOMER_SIGNUPSTATE)
-								  		   .build();
-		return customer;
+		customer = CustomerBuilderTest.buildTest();
 	}
 	
 	@Test
@@ -48,7 +36,7 @@ public class CustomerRepositorieTest {
 	
 	@Test
 	public void testUpdateCustomer() {
-		customerRepositorie.save(customer);
+		customer = customerRepositorie.save(customer);
 		Assert.assertTrue(customer.getId() > 0);
 		Long id = customer.getId();
 		customer.setCpfCnpj("12345678910110");
@@ -60,5 +48,15 @@ public class CustomerRepositorieTest {
 		Assert.assertTrue(fieldsUpdated);
 	}	
 	
+	@Test
+	public void testFindByCpfCnpj() {
+		customer.setCpfCnpj(CustomerBuilderTest.CUSTOMER_CPFCNPJ);
+		customer = customerRepositorie.save(customer);
+		Assert.assertTrue(customer.getId() > 0);
+		List<Customer> customersFind = customerRepositorie.findByCpfCnpj(CustomerBuilderTest.CUSTOMER_CPFCNPJ);
+		Assert.assertNotNull(customersFind);
+		System.out.println(customersFind.get(0));
+		Assert.assertEquals("CpfCnpj esperedo da consulta deve ser " + CustomerBuilderTest.CUSTOMER_CPFCNPJ, customersFind.get(0).getCpfCnpj(), CustomerBuilderTest.CUSTOMER_CPFCNPJ);
+	}
 	
 }

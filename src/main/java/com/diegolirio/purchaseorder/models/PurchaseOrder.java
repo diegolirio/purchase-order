@@ -27,7 +27,6 @@ public class PurchaseOrder {
 	@ManyToOne
 	public Address customerAddressSender;
 	
-	
 	public String phoneSender;
 	
 	@ManyToOne

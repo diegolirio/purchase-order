@@ -3,8 +3,6 @@
  */
 app.factory('PurchaseOrderService', ['$http', function($http) {
 	
-	var self = this;
-	
 	var serverURL = function(url) {
 		return SERVER_APP + '/purchaseorder' + url;
 	};

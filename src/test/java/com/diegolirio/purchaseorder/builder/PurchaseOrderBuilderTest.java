@@ -9,15 +9,16 @@ public class PurchaseOrderBuilderTest {
 
 	public static PurchaseOrder build() {
 		PurchaseOrderBuilder purchaseOrderBuilder = new PurchaseOrderBuilder();		
-		PurchaseOrder purchaseOrder = purchaseOrderBuilder.withEmissionDate(Calendar.getInstance().getTime())
-										  .withFaxRecipient("1129678536")
-										  .withPhoneRecipient("11296785")
-										  .withPhoneSender("1129678511")
-										  .withPhoneShippingCompany("1146758597")
-										  .withRemark("Teste Observacao")
-										  .withTypeFreight('R')
-										  .withCondicoesPagamento("CARTAO")
-										  .build();
+		PurchaseOrder purchaseOrder = 
+			  purchaseOrderBuilder.withEmissionDate(Calendar.getInstance().getTime())
+								  .withFaxRecipient("1129678536")
+								  .withPhoneRecipient("11296785")
+								  .withPhoneSender("1129678511")
+								  .withPhoneShippingCompany("1146758597")
+								  .withRemark("Teste Observacao")
+								  .withTypeFreight('R')
+								  .withCondicoesPagamento("CARTAO")
+								  .build();
 		return purchaseOrder;
 	}
 	

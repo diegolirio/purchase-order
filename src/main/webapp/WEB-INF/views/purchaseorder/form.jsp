@@ -16,17 +16,26 @@
 				                                  <span class="text-danger">Remetente</span>
 				                              </header>
 				                              <div class="panel-body">
-			                                      <div class="col-md-3 form-group">
+			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-danger">CNPJ</label>
-			                                          <input type="text" class="form-control" >
+			                                          <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.cpfCnpj" 
+			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.purchaseOrder.cpfCnpj)">
 			                                      </div>
-			                                      <div class="col-md-7 form-group">
+			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-danger">Razão Social</label>
-			                                          <input type="text" class="form-control" readonly="readonly">
+			                                          <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.nameSender">
 			                                      </div>
+			                                      <div class="col-md-4 form-group">
+			                                          <label class="text-danger">Endereço</label>
+			                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.customerAddressSender" 
+			                                          		  ng-options="a.publicPlace+', '+a.number+' - '+a.neighborhood+' - '+a.city+' - '+a.state.abbreviation for a in poFormCtrl.addressesSender" 
+			                                          		  required="required"></select>
+			                                      </div>		
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-danger">Telefone</label>
-			                                          <input type="text" class="form-control">
+			                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneSender" 
+			                                          		  ng-options="phone.number for phone in poFormCtrl.phonesSender" 
+			                                          		  required="required"></select>
 			                                      </div>		
 			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="pull-right btn btn-primary">Avançar</a>  	                                 
 				                              </div>

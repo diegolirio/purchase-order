@@ -88,6 +88,14 @@ public class Address {
 		this.people = people;
 	}
 
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", cep=" + cep + ", publicPlace="
+				+ publicPlace + ", number=" + number + ", neighborhood="
+				+ neighborhood + ", city=" + city + ", state=" + state
+				+ ", people=" + people + "]";
+	}
+
 	
 	
 	
