@@ -2,7 +2,7 @@
 <html ng-app="app">
     <head>
         <meta charset="UTF-8">
-        <title>Director | Simple Tables</title>
+        <title>Pedido</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <meta name="description" content="Developed By M Abdur Rokib Promy">
         <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
@@ -27,7 +27,7 @@
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="index.html" class="logo">
+            <a href="${pageContext.request.contextPath }" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 CafGlass
             </a>
@@ -319,6 +319,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/CustomerService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/AddressService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/TelephoneService-1.0.0.js"></script>
 		<!--------- Controllers ------------->
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderFormController-1.0.0.js"></script>

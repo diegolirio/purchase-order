@@ -13,13 +13,13 @@
 	                                   
 										<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.REMETENTE">
 				                              <header class="panel-heading">
-				                                  <span class="text-danger">Remetente</span>
+				                                  <span class="text-primary">Remetente</span>
 				                              </header>
 				                              <div class="panel-body">
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-danger">CNPJ</label>
-			                                          <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.cpfCnpj" 
-			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.purchaseOrder.cpfCnpj)">
+			                                          <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.cpfCnpjSender" 
+			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.purchaseOrder.cpfCnpjSender)">
 			                                      </div>
 			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-danger">Razão Social</label>
@@ -34,7 +34,7 @@
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-danger">Telefone</label>
 			                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneSender" 
-			                                          		  ng-options="phone.number for phone in poFormCtrl.phonesSender" 
+			                                          		  ng-options="phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesSender" 
 			                                          		  required="required"></select>
 			                                      </div>		
 			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="pull-right btn btn-primary">Avançar</a>  	                                 
@@ -43,27 +43,42 @@
 				                          
 										 <section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.DESTINATARIO">
 				                              <header class="panel-heading">
-				                                  <span class="text-success">Destinatário</span>
+				                                  <span class="text-primary">Destinatário</span>
 				                              </header>
 				                              <div class="panel-body">
-			                                      <div class="col-md-3 form-group">
-			                                          <label class="text-success">CNPJ</label>
-			                                          <input type="text" class="form-control">
+				                              	  <div class="row">
+				                                      <div class="col-md-2 form-group">
+				                                          <label class="text-success">CNPJ</label>
+				                                          <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.cpfCnpjRecipient" 
+				                                                 ng-blur="poFormCtrl.getCustomerRecipientByCpfCnpj(poFormCtrl.purchaseOrder.cpfCnpjRecipient)">
+				                                      </div>
+				                                      <div class="col-md-3 form-group">
+				                                          <label class="text-success">Razão Social</label>
+				                                          <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.nameRecipient">
+				                                      </div>
+				                                      <div class="col-md-3 form-group">
+				                                          <label class="text-success">Endereço</label>
+				                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.customerAddressRecipient" 
+				                                          		  ng-options="a.publicPlace+', '+a.number+' - '+a.neighborhood+' - '+a.city+' - '+a.state.abbreviation for a in poFormCtrl.addressesRecipient" 
+				                                          		  required="required"></select>
+				                                      </div>			                                      
+				                                      <div class="col-md-2 form-group">
+				                                          <label class="text-success">Telefone</label>
+				                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneRecipient" 
+				                                          		  ng-options="phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
+				                                          		  required="required"></select>
+				                                      </div>	
+				                                      <div class="col-md-2 form-group">
+				                                          <label class="text-success">Fax</label>
+				                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.faxRecipient" 
+				                                          		  ng-options="phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
+				                                          		  required="required"></select>
+				                                      </div>		         
 			                                      </div>
-			                                      <div class="col-md-5 form-group">
-			                                          <label class="text-success">Razão Social</label>
-			                                          <input type="text" class="form-control" readonly="readonly">
-			                                      </div>
-			                                      <div class="col-md-2 form-group">
-			                                          <label class="text-success">Telefone</label>
-			                                          <input type="text" class="form-control">
-			                                      </div>	
-			                                      <div class="col-md-2 form-group">
-			                                          <label class="text-success">Fax</label>
-			                                          <input type="text" class="form-control">
-			                                      </div>		         
-			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.REMETENTE" class="btn btn-default">Voltar</a>                             		                                 
-			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.TRANSPORTADORA" class="pull-right btn btn-primary">Avançar</a>                             		                                 
+			                                      <div class="row">
+				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.REMETENTE" class="btn btn-default">Voltar</a>                             		                                 
+				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.TRANSPORTADORA" class="pull-right btn btn-primary">Avançar</a>                             		                                 
+				                              	  </div>
 				                              </div>
 				                           </section>
 				                           
@@ -74,15 +89,18 @@
 				                              <div class="panel-body">
 			                                      <div class="col-md-3 form-group">
 			                                          <label class="text-info">CNPJ</label>
-			                                          <input type="text" class="form-control">
+			                                          <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj" 
+				                                             ng-blur="poFormCtrl.getShippingCompanyByCpfCnpj(poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj)">
 			                                      </div>
 			                                      <div class="col-md-7 form-group">
 			                                          <label class="text-info">Razão Social</label>
-			                                          <input type="text" class="form-control" readonly="readonly">
+			                                          <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.shippingCompany.name">
 			                                      </div>
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-info">Telefone</label>
-			                                          <input type="text" class="form-control">
+			                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneShippingCompany" 
+			                                          		  ng-options="phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesShippingCompany" 
+			                                          		  required="required"></select>
 			                                      </div>	
 			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="btn btn-default">Voltar</a>                             		                                 
 			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PEDIDO" class="pull-right btn btn-primary">Avançar</a> 			                                      		                                 
@@ -94,29 +112,38 @@
 			                            	      Pedido
 			                              	  </header>
 			                              	  <div class="panel-body">
-				                                    <div class="col-md-1 form-group">
-				                                        <label>Numero</label>
-				                                        <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.id">
-				                                    </div>
-				                                    <div class="col-md-2 form-group">
-				                                        <label>Data</label>
-				                                        <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
-				                                    </div>
-				                                    <div class="col-md-2 form-group">
-				                                        <label>Frete</label>
-				                                        <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
-				                                    </div>
-				                                    <div class="col-md-2 form-group">
-				                                        <label>Condições de Pagamento</label>
-				                                        <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
-				                                    </div>
-				                                    <div class="col-md-5 form-group">
-				                                        <label>Observação</label>
-				                                        <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
-				                                    </div>
-			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.TRANSPORTADORA" class="btn btn-default">Voltar</a>                             		                                 
-			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PRODUTOS" class="pull-right btn btn-primary">Avançar</a> 				                                    
+			                              	  		<div class="row">
+					                                    <div class="col-md-1 form-group">
+					                                        <label>Numero</label>
+					                                        <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.id">
+					                                    </div>
+					                                    <div class="col-md-2 form-group">
+					                                        <label>Data</label>
+					                                        <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
+					                                    </div>
+					                                    <div class="col-md-2 form-group">
+					                                        <label>Frete (Pagador)</label>
+															<select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.typeFreight">
+															      <option value=""></option>
+															      <option value="R">Remetente</option>
+															      <option value="D">Destinatário</option>
+															</select>			                                          		  	
+					                                    </div>
+					                                    <div class="col-md-1 form-group">
+					                                        <label title="Condições de pagamento">Condições Pagto</label>
+					                                        <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.condicaoPagamento">
+					                                    </div>
+					                                    <div class="col-md-6 form-group">
+					                                        <label>Observação</label>
+					                                        <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.remark">
+					                                    </div>
+					                              </div>
+					                              <div class="row">
+				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.TRANSPORTADORA" class="btn btn-default">Voltar</a>                             		                                 
+				                                      <a href ng-click="poFormCtrl.savePurchaseOrder(poFormCtrl.purchaseOrder)" class="pull-right btn btn-primary">Avançar</a> 				                                    
+				                              	  </div>
 				                              </div>
+				                              
 				                        </section>				                           
 				                           
                                   </form>

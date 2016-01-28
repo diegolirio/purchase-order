@@ -55,7 +55,6 @@ public class CustomerRepositorieTest {
 		Assert.assertTrue(customer.getId() > 0);
 		List<Customer> customersFind = customerRepositorie.findByCpfCnpj(CustomerBuilderTest.CUSTOMER_CPFCNPJ);
 		Assert.assertNotNull(customersFind);
-		System.out.println(customersFind.get(0));
 		Assert.assertEquals("CpfCnpj esperedo da consulta deve ser " + CustomerBuilderTest.CUSTOMER_CPFCNPJ, customersFind.get(0).getCpfCnpj(), CustomerBuilderTest.CUSTOMER_CPFCNPJ);
 	}
 	

@@ -19,6 +19,10 @@ public class CustomerService {
 		return customers == null || customers.size() == 0 ? null : customers.get(0);
 	}
 
+	public Customer save(Customer customer) {
+		return this.customerRepositorie.save(customer);
+	}
+
 	
 	
 }
