@@ -27,6 +27,10 @@ public class CustomerService {
 		return this.customerRepositorie.findAll();
 	}
 
+	public Customer get(long id) {
+		return this.customerRepositorie.findOne(id);
+	}
+
 	
 	
 }

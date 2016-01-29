@@ -22,7 +22,7 @@
                                             <td>{{ c.cpfCnpj }}</td>
                                             <td>{{ c.name }}</td>
                                             <td>{{ c.signUpState }}</td>
-                                            <td><span class="badge bg-red">editar</span></td>
+                                            <td><a href="#/cliente/{{c.id}}"><span class="badge bg-red">editar</span></a></td>
                                         </tr>
                                     </table>
                                 </div><!-- /.panel-body -->

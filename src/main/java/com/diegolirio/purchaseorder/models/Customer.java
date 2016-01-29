@@ -8,11 +8,11 @@ public class Customer extends People {
 	private String signUpState;
 	
 	public Customer() {
-		super();
+		
 	}
 	
-	public Customer(Long id) {
-		super(id);
+	public Customer(long id) {
+		super.setId(id);
 	}
 	
 	public String getSignUpState() {
@@ -21,17 +21,15 @@ public class Customer extends People {
 	public void setSignUpState(String signUpState) {
 		this.signUpState = signUpState;
 	}
+
 	@Override
 	public String toString() {
-		return "Customer [signUpState=" + signUpState + ", getId()=" + getId()
-				+ ", getCpfCnpj()=" + getCpfCnpj() + ", getName()=" + getName()
-				+ ", getAddresses()=" + getAddresses() + ", getPhones()="
-				+ getPhones() + ", toString()="
-				+ super.toString() + "]";
+		return "Customer [signUpState=" + signUpState + ", toString()=" + super.toString() + "]";
 	}
 
-	
-	
-	
+
+
+
+
 	
 }

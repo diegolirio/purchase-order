@@ -13,8 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.diegolirio.purchaseorder.builder.AddressBuilderTest;
 import com.diegolirio.purchaseorder.builder.CustomerBuilderTest;
+import com.diegolirio.purchaseorder.builder.StateBuilderTest;
 import com.diegolirio.purchaseorder.models.Address;
 import com.diegolirio.purchaseorder.models.Customer;
+import com.diegolirio.purchaseorder.models.State;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/applicationContext-test.xml")
@@ -29,6 +31,9 @@ public class AddressRepositorieTest {
 	@Autowired
 	private CustomerRepositorie customerRepositorie;
 
+	@Autowired
+	private StateRepositorie stateRepositoie;
+
 	@Before
 	public void before() {
 		address = AddressBuilderTest.buildTest();			
@@ -38,12 +43,17 @@ public class AddressRepositorieTest {
 	public void testInsert() {
 		Customer customer = customerRepositorie.save(CustomerBuilderTest.buildTest());
 		address.setPeople(customer);
+		State state = stateRepositoie.save(StateBuilderTest.build());
+		stateRepositoie.save(state);
+		address.setState(state );
 		address = addressRepository.save(address);
 		Assert.assertTrue(address.getId() > 0);
 	}
 	
 	@Test
 	public void testFindByPeople() {
+		Customer customer = CustomerBuilderTest.buildTest();
+		customer = customerRepositorie.save(customer);
 		List<Customer> customers = customerRepositorie.findByCpfCnpj(CustomerBuilderTest.CUSTOMER_CPFCNPJ);
 		List<Address> addresses = addressRepository.findByPeople(customers.get(0));
 		Assert.assertNotNull(addresses);
