@@ -19,6 +19,10 @@ public class TelephoneService {
 		return this.telephoneRepositorie.findByPeople(people);
 	}
 
+	public Telephone save(Telephone telephone) {
+		return this.telephoneRepositorie.save(telephone);
+	}
+
 	
 	
 }

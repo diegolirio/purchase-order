@@ -19,4 +19,8 @@ public class AddressService {
 		return this.addressRepositorie.findByPeople(people);
 	}
 
+	public Address save(Address address) {
+		return this.addressRepositorie.save(address);
+	}
+
 }

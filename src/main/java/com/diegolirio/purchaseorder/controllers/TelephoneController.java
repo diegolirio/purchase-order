@@ -38,4 +38,21 @@ public class TelephoneController {
 		}
 	}
 	
+	
+	/**
+	 * Salvar
+	 * @param telephone
+	 * @return
+	 */
+	@RequestMapping(value="/saveParams", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
+	public ResponseEntity<String> saveParams(Telephone telephone) {
+		try {
+			telephone = this.telephoneService.save(telephone);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(telephone), HttpStatus.CREATED);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}	
+	
 }

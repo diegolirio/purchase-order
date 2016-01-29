@@ -119,26 +119,7 @@ app.controller('PurchaseOrderFormController', ['PurchaseOrderService', 'Customer
 	 */
 	self.savePurchaseOrder = function(po) {
 		
-		var po2 = {}; //{"emissionDate":"2016-01-28","customerAddressSender":{"id":1,"cep":"07503270","publicPlace":"Rua Lidice","number":22,"neighborhood":"Parque Novo Mundo","city":"São Paulo","state":{"id":1,"abbreviation":"SP","name":"São Paulo"},"people":{"id":1,"cpfCnpj":"61139432000172","name":"Transportes Della Volpe S/A","signUpState":"31551515151"}},"phoneSender":"1129678511","customerAddressRecipient":{"id":1,"cep":"07503270","publicPlace":"Rua Lidice","number":22,"neighborhood":"Parque Novo Mundo","city":"São Paulo","state":{"id":1,"abbreviation":"SP","name":"São Paulo"},"people":{"id":1,"cpfCnpj":"61139432000172","name":"Transportes Della Volpe S/A","signUpState":"31551515151"}},"phoneRecipient":"11296785","faxRecipient":"1129678536","condicaoPagamento":"CARTAO","shippingCompany":{"id":1,"cpfCnpj":"61139432000172","name":"Transportes Della Volpe S/A","signUpState":"31551515151"},"phoneShippingCompany":"1146758597","typeFreight":"R","remark":"Teste Observacao"};
-		po2.customerAddressSender = {};
-		po2.customerAddressSender.id = po.customerAddressSender.id; 
-		po2.phoneSender = po.phoneSender; 
-		po2.customerAddressRecipient = {};
-		po2.customerAddressRecipient.id = po.customerAddressRecipient.id;
-		po2.phoneRecipient = po.phoneRecipient; 
-		po2.faxRecipient = po.faxRecipient;
-		po2.shippingCompany = {};
-		po2.shippingCompany.id = po.shippingCompany.id;
-		po2.phoneShippingCompany = {};
-		po2.phoneShippingCompany.id = po.phoneShippingCompany.id;
-		po2.typeFreight = po.typeFreight;
-		po2.condicaoPagamento = po.condicaoPagamento;
-		po2.remark = po.remark;
-
-		console.log(JSON.stringify(po2));
-		console.log(po2);
-		
-		PurchaseOrderService.save(po2).then(function(resp) {
+		PurchaseOrderService.saveParams(po).then(function(resp) {
 			self.purchaseOrder = resp.data;
 			self.formVisible = self.PRODUTOS;
 		}, function(error) {

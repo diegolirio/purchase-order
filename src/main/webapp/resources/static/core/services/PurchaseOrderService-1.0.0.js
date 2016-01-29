@@ -21,11 +21,21 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		return $http.post(serverURL('/save'), purchaseOrder);
 	}
 	
+	/**
+	 * salvar P.O Params
+	 */
+	var _saveParams = function(purchaseOrder) {
+		var params = "?id="+purchaseOrder.id;
+		return $http.post(serverURL('/save')+params);
+	}
+	
 	return {
 		
 		getAll : _getAll,
 		
-		save : _save
+		save : _save,
+		
+		saveParams : _saveParams
 		
 	};
 	

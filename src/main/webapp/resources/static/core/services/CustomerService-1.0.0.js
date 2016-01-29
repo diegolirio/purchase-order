@@ -39,7 +39,8 @@ app.factory('CustomerService', ['$http', function($http) {
 	 * Salvar Cliente (Params)
 	 */
 	var _saveParams = function(customer) {
-		return $http.post(serverURL('/save')+"?id="+customer.id+"&name="+customer.name+"&cpfCnpj="+customer.cpfCnpj+"&signUpState="+customer.signUpState);
+		return $http.post(serverURL('/save')+"?id="+customer.id+"&name="+customer.name+"&cpfCnpj="+customer.cpfCnpj+
+											   "&signUpState="+customer.signUpState);
 	};
 	 
 	return {

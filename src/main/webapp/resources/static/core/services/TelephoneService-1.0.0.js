@@ -11,9 +11,19 @@ app.factory('TelephoneService', ['$http', function($http) {
 		return $http.get(serverURL('/get/list/by/people/'+people.id));
 	};
 	
+	/**
+	 * Salvar Por Params :(
+	 */
+	var _saveParams = function(phone) {
+		var params = "?id="+phone.id+"&number="+phone.number+"&contactType="+phone.contactType+"&people.id="+phone.people.id;
+		return $http.post(serverURL('/saveParams')+params);
+	};
+	
 	return {
+		 
+		getListByPeople : _getListByPeople,
 		
-		getListByPeople : _getListByPeople
+		saveParams : _saveParams
 		
 	};
 	
