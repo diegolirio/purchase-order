@@ -3,7 +3,7 @@
                     <div class="row">
                         
                             <div class="panel">
-                                <header class="panel-heading badge bg-light-blue">
+                                <header class="panel-heading badge bg-red">
                                     Cliente
                                 </header>
                                 <div class="panel-body">

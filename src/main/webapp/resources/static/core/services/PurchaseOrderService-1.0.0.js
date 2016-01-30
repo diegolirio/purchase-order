@@ -25,8 +25,23 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 	 * salvar P.O Params
 	 */
 	var _saveParams = function(purchaseOrder) {
-		var params = "?id="+purchaseOrder.id;
-		return $http.post(serverURL('/save')+params);
+		if(purchaseOrder.id == undefined) purchaseOrder.id = 0;
+		if(purchaseOrder.emissionDate == undefined) {
+			var date = new Date();
+			purchaseOrder.emissionDate = date.getFullYear()+'-'+date.getMounth()+'-'+date.getDate();
+		}
+		var params = "?id="+purchaseOrder.id+"&emissionDate="+purchaseOrder.emissionDate+
+					 "&customerAddressSender.id="+purchaseOrder.customerAddressSender.id+
+					 "&phoneSender="+purchaseOrder.phoneSender+
+					 "&customerAddressRecipient.id"+purchaseOrder.customerAddressRecipient.id+
+					 "&phoneRecipient="+purchaseOrder.phoneRecipient+
+					 "&faxRecipient="+purchaseOrder.faxRecipient+
+					 "&condicaoPagamento="+purchaseOrder.condicaoPagamento+
+					 "&shippingCompany.id="+purchaseOrder.shippingCompany.id+
+					 "&phoneShippingCompany="+purchaseOrder.phoneShippingCompany+
+					 "&typeFreight="+purchaseOrder.typeFreight+
+					 "&remark="+purchaseOrder.remark;
+		return $http.post(serverURL('/saveParams')+params);
 	}
 	
 	return {

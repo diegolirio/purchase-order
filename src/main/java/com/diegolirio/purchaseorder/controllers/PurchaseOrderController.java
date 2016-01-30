@@ -92,5 +92,21 @@ public class PurchaseOrderController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
+	/**
+	 * Salvar P.O. Params
+	 * @param purchaseOrder
+	 * @return
+	 */
+	@RequestMapping(value="/saveParams", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> saveParams(PurchaseOrder purchaseOrder) {
+		try {
+			purchaseOrder = this.purchaseOrderService.save(purchaseOrder);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrder), HttpStatus.CREATED);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 }
