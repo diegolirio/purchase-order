@@ -28,9 +28,9 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		if(purchaseOrder.id == undefined) purchaseOrder.id = 0;
 		if(purchaseOrder.emissionDate == undefined) {
 			var date = new Date();
-			purchaseOrder.emissionDate = date.getFullYear()+'-'+date.getMounth()+'-'+date.getDate();
+			purchaseOrder.emissionDate = date.getFullYear()+'-'+date.getMonth()+1+'-'+date.getDate();
 		}
-		var params = "?id="+purchaseOrder.id+"&emissionDate="+purchaseOrder.emissionDate+
+		var params = "?id="+purchaseOrder.id+//"&emissionDate="+purchaseOrder.emissionDate+
 					 "&customerAddressSender.id="+purchaseOrder.customerAddressSender.id+
 					 "&phoneSender="+purchaseOrder.phoneSender+
 					 "&customerAddressRecipient.id"+purchaseOrder.customerAddressRecipient.id+

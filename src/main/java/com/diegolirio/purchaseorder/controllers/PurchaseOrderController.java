@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.diegolirio.purchaseorder.models.Address;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
+import com.diegolirio.purchaseorder.services.AddressService;
 import com.diegolirio.purchaseorder.services.PurchaseOrderService;
 
 @Controller
@@ -19,6 +21,8 @@ public class PurchaseOrderController {
 
 	@Autowired
 	private PurchaseOrderService purchaseOrderService;
+	@Autowired
+	private AddressService addressService;
 
 	/*
 	 * Page
@@ -85,6 +89,9 @@ public class PurchaseOrderController {
 	@RequestMapping(value="/save", method=RequestMethod.POST, consumes="application/json;charset=UTF-8", produces="application/json;charset=UTF-8")
 	public ResponseEntity<String> save(@RequestBody PurchaseOrder purchaseOrder) {
 		try {
+			System.out.println(purchaseOrder);
+			Address customerAddressRecipient = this.addressService.get(purchaseOrder.getCustomerAddressRecipient().getId());
+			purchaseOrder.setCustomerAddressRecipient(customerAddressRecipient);
 			purchaseOrder = this.purchaseOrderService.save(purchaseOrder);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrder), HttpStatus.CREATED);
 		}catch(Exception e) {

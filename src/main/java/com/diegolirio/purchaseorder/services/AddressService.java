@@ -23,4 +23,8 @@ public class AddressService {
 		return this.addressRepositorie.save(address);
 	}
 
+	public Address get(Long id) {
+		return this.addressRepositorie.findOne(id);
+	}
+
 }
