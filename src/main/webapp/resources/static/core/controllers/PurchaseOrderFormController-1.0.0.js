@@ -128,6 +128,14 @@ app.controller('PurchaseOrderFormController', ['PurchaseOrderService', 'Customer
 		
 	};
 	
+	/**
+	 * Show Modal Product
+	 */
+	self.showFormModalProduct = function() {
+		$('#idProductModal').modal('show');
+	};
+	
+	
 	init();
 	
 }]);

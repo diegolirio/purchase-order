@@ -168,7 +168,7 @@
 			                                      </div>
 			                                      <br/>
 			                                      <button type="submit" class="btn btn-lg btn-success">Adicionar</button>  
-			                                      <a href class="btn btn-lg btn-info pull-right">Novo Produto</a>  
+			                                      <a href ng-click="poFormCtrl.showFormModalProduct()" class="btn btn-lg btn-info pull-right">Novo Produto</a>  
 			                                      
 												<table class="table table-bordered">
 			                                        <tr>
@@ -230,4 +230,41 @@
                             </div><!-- /.panel -->                        
                         
                     </div><!-- /.row -->
+                    
+                    
+					<!-- #### Modal Product #### -->
+					<div class="modal fade" id="idProductModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+					  <div class="modal-dialog modal-lg" role="document">
+					    <div class="modal-content"> 
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="gridSystemModalLabel">Cadastro de Produto</h4>
+					      </div>
+					      <div class="modal-body">
+						        <form>
+						        	<div class="row">
+							          <div class="form-group col-md-2">
+							            <label class="control-label">ID:</label>
+							            <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.product.id" >
+							          </div> 
+							          <div class="form-group col-md-4">
+							            <label class="control-label">Código:</label>
+							            <input type="text" class="form-control" ng-model="poFormCtrl.product.code" >
+							          </div>					 		          
+							          <div class="form-group col-md-4">
+							            <label class="control-label">Descrição:</label>
+							            <input type="text" class="form-control" ng-model="poFormCtrl.product.description" >
+							          </div>
+							        </div>
+						        </form>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					        <button type="button" class="btn btn-primary" ng-click="poFormCtrl.saveProduct(poFormCtrl.product)">Salvar</button>
+					      </div>
+					    </div><!-- /.modal-content -->
+					  </div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->                    
+                    
+                    
                 </section><!-- /.content -->
