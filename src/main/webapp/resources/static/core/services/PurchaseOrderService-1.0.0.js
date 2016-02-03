@@ -26,14 +26,14 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 	 */
 	var _saveParams = function(purchaseOrder) {
 		if(purchaseOrder.id == undefined) purchaseOrder.id = 0;
-		if(purchaseOrder.emissionDate == undefined) {
-			var date = new Date();
-			purchaseOrder.emissionDate = date.getFullYear()+'-'+date.getMonth()+1+'-'+date.getDate();
-		}
-		var params = "?id="+purchaseOrder.id+//"&emissionDate="+purchaseOrder.emissionDate+
+		//if(purchaseOrder.emissionDate == undefined) {
+		//	var date = new Date();
+		//	purchaseOrder.emissionDate = date.getFullYear()+'-'+date.getMonth()+1+'-0'+date.getDate();
+		//}
+		var params = "?id="+purchaseOrder.id+
 					 "&customerAddressSender.id="+purchaseOrder.customerAddressSender.id+
 					 "&phoneSender="+purchaseOrder.phoneSender+
-					 "&customerAddressRecipient.id"+purchaseOrder.customerAddressRecipient.id+
+					 "&customerAddressRecipient.id="+purchaseOrder.customerAddressRecipient.id+
 					 "&phoneRecipient="+purchaseOrder.phoneRecipient+
 					 "&faxRecipient="+purchaseOrder.faxRecipient+
 					 "&condicaoPagamento="+purchaseOrder.condicaoPagamento+
@@ -41,6 +41,7 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 					 "&phoneShippingCompany="+purchaseOrder.phoneShippingCompany+
 					 "&typeFreight="+purchaseOrder.typeFreight+
 					 "&remark="+purchaseOrder.remark;
+					 //"&emissionDate="+purchaseOrder.emissionDate;
 		return $http.post(serverURL('/saveParams')+params);
 	}
 	

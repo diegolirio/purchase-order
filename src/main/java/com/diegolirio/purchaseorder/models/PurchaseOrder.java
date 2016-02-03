@@ -3,6 +3,7 @@ package com.diegolirio.purchaseorder.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class PurchaseOrder {
@@ -21,9 +23,11 @@ public class PurchaseOrder {
 	@Id @GeneratedValue
 	public Long id;
 	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(javax.persistence.TemporalType.DATE) 
+	@Column(columnDefinition="DATE DEFAULT SYSDATE")
 	public Date emissionDate;
-	
+	 
 	@ManyToOne
 	public Address customerAddressSender;
 	

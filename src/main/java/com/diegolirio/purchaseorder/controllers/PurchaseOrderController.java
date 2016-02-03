@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.diegolirio.purchaseorder.models.Address;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 import com.diegolirio.purchaseorder.services.AddressService;
 import com.diegolirio.purchaseorder.services.PurchaseOrderService;
@@ -89,9 +88,6 @@ public class PurchaseOrderController {
 	@RequestMapping(value="/save", method=RequestMethod.POST, consumes="application/json;charset=UTF-8", produces="application/json;charset=UTF-8")
 	public ResponseEntity<String> save(@RequestBody PurchaseOrder purchaseOrder) {
 		try {
-			System.out.println(purchaseOrder);
-			Address customerAddressRecipient = this.addressService.get(purchaseOrder.getCustomerAddressRecipient().getId());
-			purchaseOrder.setCustomerAddressRecipient(customerAddressRecipient);
 			purchaseOrder = this.purchaseOrderService.save(purchaseOrder);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrder), HttpStatus.CREATED);
 		}catch(Exception e) {
@@ -108,7 +104,11 @@ public class PurchaseOrderController {
 	@RequestMapping(value="/saveParams", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
 	public ResponseEntity<String> saveParams(PurchaseOrder purchaseOrder) {
 		try {
+			System.out.println("First: como veio da view" + purchaseOrder);
+			//purchaseOrder.setCustomerAddressRecipient(this.addressService.get(purchaseOrder.getCustomerAddressRecipient().getId()));			
+			//System.out.println("Ao pegar enderecos: " + purchaseOrder);
 			purchaseOrder = this.purchaseOrderService.save(purchaseOrder);
+			System.out.println("Apos salvar: " + purchaseOrder);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrder), HttpStatus.CREATED);
 		}catch(Exception e) {
 			e.printStackTrace();

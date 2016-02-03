@@ -167,7 +167,8 @@
 			                                          <input type="text" class="form-control">
 			                                      </div>
 			                                      <br/>
-			                                      <button type="submit" class="btn btn-success">Adicionar</button>  
+			                                      <button type="submit" class="btn btn-lg btn-success">Adicionar</button>  
+			                                      <a href class="btn btn-lg btn-info pull-right">Novo Produto</a>  
 			                                      
 												<table class="table table-bordered">
 			                                        <tr>
