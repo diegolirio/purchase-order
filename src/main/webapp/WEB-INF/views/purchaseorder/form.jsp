@@ -18,8 +18,8 @@
 				                              <div class="panel-body">
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-danger">CNPJ</label>
-			                                          <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.cpfCnpjSender" 
-			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.purchaseOrder.cpfCnpjSender)">
+			                                          <input type="text" class="form-control" ng-model="poFormCtrl.cpfCnpjSender" 
+			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.cpfCnpjSender)">
 			                                      </div>
 			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-danger">Razão Social</label>
@@ -49,8 +49,8 @@
 				                              	  <div class="row">
 				                                      <div class="col-md-2 form-group">
 				                                          <label class="text-success">CNPJ</label>
-				                                          <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.cpfCnpjRecipient" 
-				                                                 ng-blur="poFormCtrl.getCustomerRecipientByCpfCnpj(poFormCtrl.purchaseOrder.cpfCnpjRecipient)">
+				                                          <input type="text" class="form-control" ng-model="poFormCtrl.cpfCnpjRecipient" 
+				                                                 ng-blur="poFormCtrl.getCustomerRecipientByCpfCnpj(poFormCtrl.cpfCnpjRecipient)">
 				                                      </div>
 				                                      <div class="col-md-3 form-group">
 				                                          <label class="text-success">Razão Social</label>
@@ -251,10 +251,14 @@
 							            <label class="control-label">Código:</label>
 							            <input type="text" class="form-control" ng-model="poFormCtrl.product.code" >
 							          </div>					 		          
-							          <div class="form-group col-md-4">
+							          <div class="form-group col-md-12">
 							            <label class="control-label">Descrição:</label>
 							            <input type="text" class="form-control" ng-model="poFormCtrl.product.description" >
 							          </div>
+							          <div class="form-group col-md-4">
+							            <label class="control-label">Valor:</label>
+							            <input type="text" class="form-control" ng-model="poFormCtrl.product.valueUnit" >
+							          </div>							          
 							        </div>
 						        </form>
 					      </div>

@@ -24,7 +24,7 @@
                                             <th>Razão</th>
                                         </tr>
                                         <tr ng-repeat="po in poListCtrl.purchaseOrders">
-                                            <td>{{ po.id }}</td>
+                                            <td><a href="#/pedido/{{po.id}}">{{ po.id }}</a></td>
                                             <td>{{ po.emissionDate }}</td>
                                             <td>{{ po.customerAddressRecipient.people.name }}</td>
                                             <td>{{ po.customerAddressRecipient.people.cpfCnpj }}</td>

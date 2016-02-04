@@ -8,6 +8,13 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 	};
 	
 	/**
+	 * busca pelo ID
+	 */
+	var _get = function(id) {
+		return $http.get(serverURL('/get/'+id));
+	};
+	
+	/**
 	 * pega todos os pedidos
 	 */
 	var _getAll = function() {
@@ -46,6 +53,8 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 	}
 	
 	return {
+	
+		get : _get,
 		
 		getAll : _getAll,
 		
