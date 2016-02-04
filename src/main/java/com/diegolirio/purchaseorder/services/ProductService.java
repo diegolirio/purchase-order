@@ -16,6 +16,10 @@ public class ProductService {
 		return this.productRepositorie.findAll();
 	}
 
+	public Product save(Product product) {
+		return this.productRepositorie.save(product);
+	}
+
 	
 	
 }

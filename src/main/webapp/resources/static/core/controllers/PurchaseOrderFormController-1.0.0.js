@@ -1,8 +1,12 @@
 /**
  * 
  */
-app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderService', 'CustomerService', 'AddressService', 'TelephoneService',
-                                               function($routeParams, PurchaseOrderService, CustomerService, AddressService, TelephoneService) {
+app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderService', 'CustomerService', 
+                                               'AddressService', 'TelephoneService', 'ProductService',
+                                               'OrdersProductsService',
+                                               function($routeParams, PurchaseOrderService, CustomerService, 
+                                            		    AddressService, TelephoneService, ProductService,
+                                            		    OrdersProductsService) {
 	
 	var self = this;
 	
@@ -232,8 +236,29 @@ app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderSer
 		$('#idProductModal').modal('show');
 	};
 	
+	/**
+	 * Salvar Produto
+	 */
 	self.saveProduct = function(product) {
-		alert(JSON.stringify(product));
+		ProductService.saveParams(product).then(function(resp) {
+			self.orderProduct = {};
+			self.orderProduct.product = resp.data;
+			$('#idProductModal').modal('hide');
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
+	};
+	
+	/**
+	 * Adiciona produto na P.O
+	 */
+	self.addOrderProduct = function(orderProduct) {
+		OrdersProductsService.saveParams(orderProduct).then(function(resp) {
+			self.orderProduct = {};
+			self.ordersProducts.push(resp.data);
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});		
 	};
 	
 	

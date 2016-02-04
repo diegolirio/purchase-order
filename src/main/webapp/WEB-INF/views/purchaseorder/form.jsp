@@ -156,66 +156,32 @@
 				                              <div class="panel-body">
 			                                      <div class="col-md-1 form-group">
 			                                          <label >Cod.</label>
-			                                          <input type="text" class="form-control">
+			                                          <input type="text" class="form-control" ng-model="poFormCtrl.orderProduct.product.code">
 			                                      </div>
 			                                      <div class="col-md-7 form-group">
 			                                          <label >Descrição</label>
-			                                          <input type="text" class="form-control">
+			                                          <input type="text" class="form-control" ng-model="poFormCtrl.orderProduct.product.description">
 			                                      </div>
 			                                      <div class="col-md-2 form-group">
 			                                          <label >Quantidade</label>
-			                                          <input type="text" class="form-control">
+			                                          <input type="text" class="form-control" ng-model="poFormCtrl.orderProduct.amount">
 			                                      </div>
 			                                      <br/>
-			                                      <button type="submit" class="btn btn-lg btn-success">Adicionar</button>  
+			                                      <button ng-click="poFormCtrl.addOrderProduct(poFormCtrl.orderProduct)" class="btn btn-lg btn-success">Adicionar</button>  
 			                                      <a href ng-click="poFormCtrl.showFormModalProduct()" class="btn btn-lg btn-info pull-right">Novo Produto</a>  
 			                                      
 												<table class="table table-bordered">
 			                                        <tr>
 			                                            <th style="width: 10px">Cod.</th>
-			                                            <th>Task</th>
-			                                            <th>Progress</th>
-			                                            <th style="width: 40px">Label</th>
+			                                            <th>Descrição</th>
+			                                            <th>Valor</th>
+			                                            <th style="width: 40px">Qtde</th>
 			                                        </tr>
-			                                        <tr>
-			                                            <td>1.</td>
-			                                            <td>Update software</td>
-			                                            <td>
-			                                                <div class="progress xs">
-			                                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-			                                                </div>
-			                                            </td>
-			                                            <td><span class="badge bg-red">55%</span></td>
-			                                        </tr>
-			                                        <tr>
-			                                            <td>2.</td>
-			                                            <td>Clean database</td>
-			                                            <td>
-			                                                <div class="progress xs">
-			                                                    <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-			                                                </div>
-			                                            </td>
-			                                            <td><span class="badge bg-yellow">70%</span></td>
-			                                        </tr>
-			                                        <tr>
-			                                            <td>3.</td>
-			                                            <td>Cron job running</td>
-			                                            <td>
-			                                                <div class="progress xs progress-striped active">
-			                                                    <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-			                                                </div>
-			                                            </td>
-			                                            <td><span class="badge bg-light-blue">30%</span></td>
-			                                        </tr>
-			                                        <tr>
-			                                            <td>4.</td>
-			                                            <td>Fix and squish bugs</td>
-			                                            <td>
-			                                                <div class="progress xs progress-striped active">
-			                                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-			                                                </div>
-			                                            </td>
-			                                            <td><span class="badge bg-green">90%</span></td>
+			                                        <tr ng-repeat="item in poFormCtrl.ordersProducts">
+			                                            <td>{{ item.product.code }}</td>
+			                                            <td>{{ item.product.description }}</td>
+			                                            <td>{{ item.product.valueUnit }}</td>
+			                                            <td>{{ item.product.amount }}</td>
 			                                        </tr>
 			                                    </table>
 			                                      
