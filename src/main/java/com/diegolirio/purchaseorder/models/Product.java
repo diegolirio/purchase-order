@@ -2,6 +2,7 @@ package com.diegolirio.purchaseorder.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ public class Product {
 	@Id @GeneratedValue
 	private Long id;
 	
+	@Column(unique=true)
 	private String code;
 	private String description;
 	private double valueUnit;

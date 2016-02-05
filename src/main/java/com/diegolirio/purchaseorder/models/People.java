@@ -24,6 +24,8 @@ public class People {
 	
 	private String name;
 	
+	private String email;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="people")
 	private List<Address> addresses;
@@ -55,6 +57,34 @@ public class People {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+	public List<Telephone> getPhones() {
+		return phones;
+	}
+
+	public void setPhones(List<Telephone> phones) {
+		this.phones = phones;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	@Override

@@ -17,4 +17,12 @@ public class HomeController {
 		return "home";
 	}
 	
+
+	@RequestMapping(value = "/criar_base", method = RequestMethod.GET)
+	public String criarBase() {
+		return "redirect:/";
+	}
+	
+	
+	
 }

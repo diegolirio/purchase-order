@@ -5,11 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,8 +27,7 @@ public class PurchaseOrder {
 	public Long id;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(javax.persistence.TemporalType.DATE) 
-	@Column(columnDefinition="DATE DEFAULT SYSDATE")
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date emissionDate;
 	 
 	@ManyToOne
@@ -49,6 +51,10 @@ public class PurchaseOrder {
 	@JsonIgnore
 	@OneToMany(mappedBy="purchaseOrder")
 	public List<OrdersProducts> ordersProducts;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "status", columnDefinition= "varchar(20) default 'pending'")
+	private StatusType status = StatusType.pending;
 	
 	public PurchaseOrder() {}
 	
@@ -135,6 +141,15 @@ public class PurchaseOrder {
 	public void setOrdersProducts(List<OrdersProducts> ordersProducts) {
 		this.ordersProducts = ordersProducts;
 	}
+	
+	public StatusType getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusType status) {
+		this.status = status;
+	}	
+	
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", emissionDate=" + emissionDate
@@ -146,7 +161,5 @@ public class PurchaseOrder {
 				+ phoneShippingCompany + ", typeFreight=" + typeFreight
 				+ ", remark=" + remark + "]";
 	}
-	
-	
 
 }

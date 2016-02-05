@@ -50,6 +50,8 @@ public class CustomerRepositorieTest {
 	
 	@Test
 	public void testFindByCpfCnpj() {
+		customerRepositorie.save(customer);
+		Assert.assertTrue(customer.getId() > 0);		
 		customer.setCpfCnpj(CustomerBuilderTest.CUSTOMER_CPFCNPJ);
 		customer = customerRepositorie.save(customer);
 		Assert.assertTrue(customer.getId() > 0);

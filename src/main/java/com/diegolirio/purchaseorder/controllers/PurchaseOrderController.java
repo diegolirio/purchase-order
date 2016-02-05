@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
+import com.diegolirio.purchaseorder.models.StatusType;
 import com.diegolirio.purchaseorder.services.AddressService;
 import com.diegolirio.purchaseorder.services.PurchaseOrderService;
 
@@ -104,16 +105,29 @@ public class PurchaseOrderController {
 	@RequestMapping(value="/saveParams", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
 	public ResponseEntity<String> saveParams(PurchaseOrder purchaseOrder) {
 		try {
-			System.out.println("First: como veio da view" + purchaseOrder);
-			//purchaseOrder.setCustomerAddressRecipient(this.addressService.get(purchaseOrder.getCustomerAddressRecipient().getId()));			
-			//System.out.println("Ao pegar enderecos: " + purchaseOrder);
+			purchaseOrder.setStatus(StatusType.pending);
 			purchaseOrder = this.purchaseOrderService.save(purchaseOrder);
-			System.out.println("Apos salvar: " + purchaseOrder);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrder), HttpStatus.CREATED);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	/**
+	 * Completed P.O.
+	 * @param purchaseOrder
+	 * @return
+	 */
+	@RequestMapping(value="/completed/{id}", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> completed(@PathVariable("id") long id) {
+		try {
+			PurchaseOrder purchaseOrder = this.purchaseOrderService.completed(id);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrder), HttpStatus.CREATED);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}	
 	
 }

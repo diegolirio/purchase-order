@@ -8,4 +8,6 @@ import com.diegolirio.purchaseorder.models.Product;
 @Repository
 public interface ProductRepositorie extends CrudRepository<Product, Long> {
 
+	public Product findByCode(String code);
+
 }

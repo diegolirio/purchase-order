@@ -23,9 +23,13 @@
 						                                          <label class="text-danger">CNPJ</label>
 						                                          <input type="text" class="form-control" ng-model="cFormCtrl.customer.cpfCnpj">
 						                                      </div>
-						                                      <div class="col-md-4 form-group">
+						                                      <div class="col-md-3 form-group">
 						                                          <label class="text-danger">Razão Social</label>
 						                                          <input type="text" class="form-control"  ng-model="cFormCtrl.customer.name">
+						                                      </div>
+						                                      <div class="col-md-3 form-group">
+						                                          <label class="text-danger">Email</label>
+						                                          <input type="text" class="form-control"  ng-model="cFormCtrl.customer.email">
 						                                      </div>
 						                                      <div class="col-md-2 form-group">
 						                                          <label class="text-danger">Inscrição Estadual</label>
@@ -125,7 +129,7 @@
 							        </div>
 							        <div class="row">
 							          <div class="form-group col-md-10">
-							            <label class="control-label">Logradouro:</label>
+							            <label class="control-label">Logradouro: <small class="text-muted">Ex: Rua Av. Paulista</small></label>
 							            <input type="text" class="form-control" ng-model="cFormCtrl.address.publicPlace" >
 							          </div>
 							          <div class="form-group col-md-2">

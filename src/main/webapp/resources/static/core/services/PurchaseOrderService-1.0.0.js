@@ -52,6 +52,13 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		return $http.post(serverURL('/saveParams')+params);
 	}
 	
+	/**
+	 * completed PO
+	 */
+	var _completedPurchaseOrder = function(po) {
+		return $http.post(serverURL('/completed/'+po.id));
+	};
+	
 	return {
 	
 		get : _get,
@@ -60,7 +67,9 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		
 		save : _save,
 		
-		saveParams : _saveParams
+		saveParams : _saveParams,
+		
+		completedPurchaseOrder : _completedPurchaseOrder
 		
 	};
 	

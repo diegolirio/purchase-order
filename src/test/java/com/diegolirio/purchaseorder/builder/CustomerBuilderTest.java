@@ -4,7 +4,7 @@ import com.diegolirio.purchaseorder.models.Customer;
 
 public class CustomerBuilderTest {
 
-	public static final String CUSTOMER_CPFCNPJ = "61139432000172";
+	public static final String CUSTOMER_CPFCNPJ = "61139432000179";
 	public static final String CUSTOMER_NAME = "Transportes Della Volpe S/A";
 	public static final String CUSTOMER_SIGNUPSTATE = "31551515151";
 	

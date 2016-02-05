@@ -13,11 +13,11 @@
 	                                   
 										<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.REMETENTE">
 				                              <header class="panel-heading">
-				                                  <span class="text-primary">Remetente</span>
+				                                  <h4 class="text-primary">Remetente</h4>
 				                              </header>
 				                              <div class="panel-body">
 			                                      <div class="col-md-2 form-group">
-			                                          <label class="text-danger">CNPJ</label>
+			                                          <label class="text-danger">CNPJ <a href class="text-right"><span class="glyphicon glyphicon-search"></span></a></label>
 			                                          <input type="text" class="form-control" ng-model="poFormCtrl.cpfCnpjSender" 
 			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.cpfCnpjSender)">
 			                                      </div>
@@ -43,7 +43,7 @@
 				                          
 										 <section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.DESTINATARIO">
 				                              <header class="panel-heading">
-				                                  <span class="text-primary">Destinatário</span>
+				                                  <h4 class="text-primary">Destinatário</h4>
 				                              </header>
 				                              <div class="panel-body">
 				                              	  <div class="row">
@@ -84,7 +84,7 @@
 				                           
 										<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.TRANSPORTADORA">
 				                              <header class="panel-heading">
-				                                  <span class="text-info">Transportadora</span>
+				                                  <h4 class="text-info">Transportadora</h4>
 				                              </header>
 				                              <div class="panel-body">
 			                                      <div class="col-md-3 form-group">
@@ -109,7 +109,7 @@
 				                           
 	                          			<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.PEDIDO">
 			                        	      <header class="panel-heading">
-			                            	      Pedido
+			                            	      <h4>Pedido</h4>
 			                              	  </header>
 			                              	  <div class="panel-body">
 			                              	  		<div class="row">
@@ -151,12 +151,12 @@
                                   
 										<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.PRODUTOS">
 				                              <header class="panel-heading">
-				                                  <span >Produtos</span>
+				                                  <h4 >Produtos</h4>
 				                              </header>
 				                              <div class="panel-body">
 			                                      <div class="col-md-1 form-group">
 			                                          <label >Cod. <span ng-show="poFormCtrl.productOK == true" class="glyphicon glyphicon-ok text-success"></span> </label>
-			                                          <input type="text" class="form-control" ng-model="poFormCtrl.orderProduct.product.code">
+			                                          <input type="text" class="form-control" ng-model="poFormCtrl.orderProduct.product.code" ng-blur="poFormCtrl.findProductByCode(poFormCtrl.orderProduct.product.code)">
 			                                      </div>
 			                                      <div class="col-md-7 form-group">
 			                                          <label >Descrição</label>
@@ -182,14 +182,14 @@
 			                                        <tr ng-repeat="item in poFormCtrl.ordersProducts">
 			                                            <td class="text-center">{{ item.product.code }}</td>
 			                                            <td>{{ item.product.description }}</td>
-			                                            <td class="text-right">{{ item.product.valueUnit | currency }}</td>
+			                                            <td class="text-right">{{ item.valueUnit | currency }}</td>
 			                                            <td class="text-center">{{ item.amount }}</td>
-			                                            <td class="text-right">{{ item.product.valueUnit * item.amount | currency }}</td>
+			                                            <td class="text-right">{{ item.valueUnit * item.amount | currency }}</td>
 			                                            <td><a href ng-click="poFormCtrl.deleteOrderProduct(item)" ><span class="glyphicon glyphicon-trash text-danger"></span></a></td>
 			                                        </tr>
 			                                        <tfoot>
 			                                        	<tr>
-				                                            <td colspan="5" class="text-right"> Total do Pedido: {{ poFormCtrl.totalPO | currency }} </td>
+				                                            <td colspan="5" class="text-right"> <b><span class="text-success">Total do Pedido:</span> {{ poFormCtrl.totalPO | currency }}</b> </td>
 				                                            <td></td>
 				                                        </tr>			                                        
 			                                        </tfoot>
@@ -201,6 +201,56 @@
 				                              </div>
 				                         </section>		                                  
                                   
+	                          			<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.EFETIVAR">
+			                        	      <header class="panel-heading">
+			                            	      <h1 class="text-danger">Deseja Efetivar Pedido ?</h1>
+			                              	  </header>
+			                              	  <div class="panel-body">
+			                              	  		<div class="row">
+					                                    <div class="col-md-1 form-group">
+					                                        <label>Numero</label>
+					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.id">
+					                                    </div>
+					                                    <div class="col-md-2 form-group">
+					                                        <label>Data</label>
+					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.emissionDate">
+					                                    </div>
+					                                    <div class="col-md-2 form-group">
+					                                        <label>Frete (Pagador)</label>
+					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.typeFreight">
+					                                    </div>
+					                                    <div class="col-md-1 form-group">
+					                                        <label title="Condições de pagamento">Condições Pagto</label>
+					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.condicaoPagamento">
+					                                    </div>
+					                                    <div class="col-md-12 form-group">
+					                                        <label>Observação</label>
+					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.remark">
+					                                    </div>
+					                              </div>
+					                              <div class="row">
+				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PRODUTOS" class="btn btn-default">Voltar</a>                             		                                 
+				                                      <a href ng-click="poFormCtrl.completedPO(poFormCtrl.purchaseOrder)" class="pull-right btn btn-success">Efetivar</a> 				                                    
+				                              	  </div>
+				                              </div>
+				                              
+				                        </section>	                                  
+	
+	                          			<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.MESSAGE"> 
+		                        	      <header class="panel-heading">
+		                            	      <h1 class="text-primary">Pedido Concluído com sucesso!!!</h1>
+		                              	  </header>
+		                              	  	  <div class="row">
+		                              	  	  		<h5>
+		                              	  	  			Email enviado para: 
+		                              	  	  			<br/>{{ poFormCtrl.purchaseOrder.customerAddressSender.people.email }}
+		                              	  	  			<br/>{{ poFormCtrl.purchaseOrder.customerAddressRecipient.people.email }}
+		                              	  	  		</h5>
+		                              	  	  </div>
+				                              <div class="row">
+			                                      <a href="#/pedidos" class="btn btn-default">Voltar</a>                             		                                 
+			                              	  </div>
+			                        	</section>	
 	
                                 </div><!-- /.panel-body -->
                             </div><!-- /.panel -->                        

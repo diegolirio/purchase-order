@@ -1,10 +1,10 @@
 /**
  * 
  */
-app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderService', 'CustomerService', 
+app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'PurchaseOrderService', 'CustomerService', 
                                                'AddressService', 'TelephoneService', 'ProductService',
                                                'OrdersProductsService',
-                                               function($routeParams, PurchaseOrderService, CustomerService, 
+                                               function($routeParams, $location, PurchaseOrderService, CustomerService, 
                                             		    AddressService, TelephoneService, ProductService,
                                             		    OrdersProductsService) {
 	
@@ -15,6 +15,8 @@ app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderSer
 	self.TRANSPORTADORA = 'TR';
 	self.PEDIDO = 'PO';
 	self.PRODUTOS = 'PR'; 
+	self.MESSAGE = 'MS'; 
+
 	self.productOK = false;
 	self.totalPO = 0;
 	
@@ -128,6 +130,9 @@ app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderSer
 		CustomerService.getByCpfCnpj(cpfCnpj).then(function(resp) {
 			self.customerSender = resp.data;
 			self.nameSender = self.customerSender.name; // TODO: analisar pq dois name
+			if(self.customerSender == "null" && cpfCnpj != undefined) { 
+				alert('Cliente com CPF/CNPJ '+cpfCnpj+' não cadastrado'); 
+			}
 			return resp;
 		}).then(function(respCustomer) { 
 			// Busca enderecos do Cliente (encadeado)
@@ -268,7 +273,7 @@ app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderSer
 			$('#idProductModal').modal('hide');
 			self.productOK = true;
 		}, function(error) {
-			alert(JSON.stringify(error));
+			alert(error.data);
 		});
 	};
 	
@@ -306,6 +311,34 @@ app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderSer
 			alert('Produto excluido do Pedido');
 		}, function(error) {
 			alert(JSON.stringify(error));
+		});
+	};
+	
+	/**
+	 * busca produto por codigo
+	 */
+	self.findProductByCode = function(code) {
+		ProductService.getByCode(code).then(function(resp) {
+			self.orderProduct = {};
+			self.orderProduct.product = resp.data;
+			if(self.orderProduct.product.id > 0) self.productOK = true;
+			else self.productOK = false;
+		}, function(error) {
+			self.productOK = false;
+			alert(JSON.stringify(error));
+		});
+	};
+	
+	/**
+	 * Efetivar Pedido
+	 */
+	self.completedPO = function(po) {
+		PurchaseOrderService.completedPurchaseOrder(po).then(function(resp) {
+			//alert('Efetivado com sucesso!');
+			//$location.path('/pedido');
+			self.formVisible = self.MESSAGE; 
+		}, function(error) {
+			alert('Erro ao Efetivar.\n'+error.data);
 		});
 	};
 	
