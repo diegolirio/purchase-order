@@ -78,12 +78,11 @@
 	<beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 	  <beans:property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</beans:bean>  	
-	
 	    
  	<!-- ********** Configuration Spring Data ************************************************** -->
     <beans:bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <jpa:repositories base-package="com.diegolirio.purchaseorder.repositories"
                       entity-manager-factory-ref="entityManagerFactory"
                       transaction-manager-ref="transactionManager"/> 	
-	
+
 </beans:beans>
