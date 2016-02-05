@@ -313,6 +313,8 @@
 		<!-- ########################## AngularJS ########################################################################### -->
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.js"></script>
+		<!-- Conf do Local -->
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/core/angular-locale_pt-br.js"></script>
 		<!--------- rotas e config da app angular ------------------->
 		<script src="${pageContext.request.contextPath}/resources/static/core/app-1.0.0.js"></script>  
 		<!--------- Services ----------------> 

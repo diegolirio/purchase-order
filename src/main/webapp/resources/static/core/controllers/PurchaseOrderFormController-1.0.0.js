@@ -15,7 +15,10 @@ app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderSer
 	self.TRANSPORTADORA = 'TR';
 	self.PEDIDO = 'PO';
 	self.PRODUTOS = 'PR'; 
-
+	self.productOK = false;
+	self.totalPO = 0;
+	
+	
 	/**
 	 * Contructor Class
 	 */
@@ -223,10 +226,29 @@ app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderSer
 		PurchaseOrderService.saveParams(po).then(function(resp) {
 			self.purchaseOrder = resp.data;
 			self.formVisible = self.PRODUTOS;
+			return resp;
+		}).then(function(respPO) {
+			// ao salvar PO carrega os items(produtos)
+			OrdersProductsService.getListByPurchaseOrder(respPO.data).then(function(resp) {
+				self.ordersProducts = resp.data;
+				self.loadTotalPO(self.ordersProducts);
+			}, function(error) {
+				alert(JSON.stringify(error));
+			});
 		}, function(error) {
 			alert(JSON.stringify(error));
 		});
 		
+	};
+	
+	/**
+	 * Carrega o total do Pedido
+	 */
+	self.loadTotalPO = function(ordersProducts) {
+		self.totalPO = 0;
+		for(var i = 0; i <= self.ordersProducts.length-1; i++) {
+			self.totalPO = self.totalPO + (self.ordersProducts[i].product.valueUnit * self.ordersProducts[i].amount);
+		}
 	};
 	
 	/**
@@ -244,6 +266,7 @@ app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderSer
 			self.orderProduct = {};
 			self.orderProduct.product = resp.data;
 			$('#idProductModal').modal('hide');
+			self.productOK = true;
 		}, function(error) {
 			alert(JSON.stringify(error));
 		});
@@ -253,14 +276,38 @@ app.controller('PurchaseOrderFormController', ['$routeParams', 'PurchaseOrderSer
 	 * Adiciona produto na P.O
 	 */
 	self.addOrderProduct = function(orderProduct) {
+		if (self.productOK == false) {
+			alert('Digite o produto');
+			return;
+		}
+		if (orderProduct.amount <= 0 || orderProduct.amount == undefined) { 
+			alert('Digite a quantidade. Deve ser Maior que ZERO!');
+			return;
+		}
+		orderProduct.purchaseOrder = self.purchaseOrder;
 		OrdersProductsService.saveParams(orderProduct).then(function(resp) {
 			self.orderProduct = {};
 			self.ordersProducts.push(resp.data);
+			self.productOK = false;
+			self.loadTotalPO(self.ordersProducts); 
 		}, function(error) {
 			alert(JSON.stringify(error));
 		});		
 	};
-	
+
+	/**
+	 * Delete item da p.o
+	 */
+	self.deleteOrderProduct = function(op) {
+		OrdersProductsService.deleteOrderProduct(op).then(function(resp) {
+			var index = self.ordersProducts.indexOf(op);
+			self.ordersProducts.splice(index, 1);
+			self.loadTotalPO(self.ordersProducts); 
+			alert('Produto excluido do Pedido');
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
+	};
 	
 	init();
 	

@@ -155,7 +155,7 @@
 				                              </header>
 				                              <div class="panel-body">
 			                                      <div class="col-md-1 form-group">
-			                                          <label >Cod.</label>
+			                                          <label >Cod. <span ng-show="poFormCtrl.productOK == true" class="glyphicon glyphicon-ok text-success"></span> </label>
 			                                          <input type="text" class="form-control" ng-model="poFormCtrl.orderProduct.product.code">
 			                                      </div>
 			                                      <div class="col-md-7 form-group">
@@ -172,17 +172,27 @@
 			                                      
 												<table class="table table-bordered">
 			                                        <tr>
-			                                            <th style="width: 10px">Cod.</th>
-			                                            <th>Descrição</th>
-			                                            <th>Valor</th>
-			                                            <th style="width: 40px">Qtde</th>
+			                                            <th class="text-center" style="width: 50px">Cod.</th>
+			                                            <th class="text-center">Descrição</th>
+			                                            <th class="text-center" style="width: 100px">Valor Unit.</th>
+			                                            <th class="text-center" style="width: 60px">Qtde</th>
+			                                            <th class="text-center" style="width: 200px">Valor Total</th>
+			                                            <th class="text-center" style="width: 40px"></th>
 			                                        </tr>
 			                                        <tr ng-repeat="item in poFormCtrl.ordersProducts">
-			                                            <td>{{ item.product.code }}</td>
+			                                            <td class="text-center">{{ item.product.code }}</td>
 			                                            <td>{{ item.product.description }}</td>
-			                                            <td>{{ item.product.valueUnit }}</td>
-			                                            <td>{{ item.product.amount }}</td>
+			                                            <td class="text-right">{{ item.product.valueUnit | currency }}</td>
+			                                            <td class="text-center">{{ item.amount }}</td>
+			                                            <td class="text-right">{{ item.product.valueUnit * item.amount | currency }}</td>
+			                                            <td><a href ng-click="poFormCtrl.deleteOrderProduct(item)" ><span class="glyphicon glyphicon-trash text-danger"></span></a></td>
 			                                        </tr>
+			                                        <tfoot>
+			                                        	<tr>
+				                                            <td colspan="5" class="text-right"> Total do Pedido: {{ poFormCtrl.totalPO | currency }} </td>
+				                                            <td></td>
+				                                        </tr>			                                        
+			                                        </tfoot>
 			                                    </table>
 			                                      
 			                                    <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PEDIDO" class="btn btn-default">Voltar</a> 

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Product {
 
@@ -21,6 +23,7 @@ public class Product {
 	@ManyToOne
 	private ProductUnit productUnit;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="product")
 	private List<OrdersProducts> ordersProducts;
 

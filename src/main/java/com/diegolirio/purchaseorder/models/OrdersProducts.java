@@ -20,6 +20,11 @@ public class OrdersProducts {
 	private double valueUnit;
 	private double amount; // qtde
 	
+	public OrdersProducts(){}
+	
+	public OrdersProducts(long id) {
+		this.id = id;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -49,6 +54,12 @@ public class OrdersProducts {
 	}
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+	@Override
+	public String toString() {
+		return "OrdersProducts [id=" + id + ", product=" + product
+				+ ", purchaseOrder=" + purchaseOrder + ", valueUnit="
+				+ valueUnit + ", amount=" + amount + "]";
 	}
 	
 	

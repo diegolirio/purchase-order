@@ -50,6 +50,12 @@ public class PurchaseOrder {
 	@OneToMany(mappedBy="purchaseOrder")
 	public List<OrdersProducts> ordersProducts;
 	
+	public PurchaseOrder() {}
+	
+	public PurchaseOrder(Long id) {
+		this.id = id;
+	}
+	
 	public Long getId() {
 		return id;
 	}
