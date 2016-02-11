@@ -54,5 +54,9 @@ public class PurchaseOrderService {
 	public boolean sendEmail(PurchaseOrder po) {
 		return this.mail.sendMail(po.getCustomerAddressRecipient().getPeople().getEmail(), po.getCustomerAddressSender().getPeople().getEmail());
 	}
+
+	public PurchaseOrder searchAdvanced(String status, String dateStart, String dateEnd) {
+		return this.purchaseOrderRepositorie.findByStatusAndEmissionDateBetween(status, Calendar.getInstance().getTime(), Calendar.getInstance().getTime());
+	}
 	
 }

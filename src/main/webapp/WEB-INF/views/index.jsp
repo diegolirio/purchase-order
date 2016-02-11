@@ -317,6 +317,8 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/core/angular-locale_pt-br.js"></script>
 		<!--------- rotas e config da app angular ------------------->
 		<script src="${pageContext.request.contextPath}/resources/static/core/app-1.0.0.js"></script>  
+		<!--------- Common ----------------> 
+		<script src="${pageContext.request.contextPath}/resources/static/core/common/DateCommon-1.0.0.js"></script>
 		<!--------- Services ----------------> 
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/CustomerService-1.0.0.js"></script>
@@ -333,6 +335,13 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductListController-1.0.0.js"></script>
 		<!-- ########################## End AngularJS ####################################################################### -->
         
+
+<!-- 		<script> -->
+<!--  			$(function() { -->
+<!--  				$( ".datepicker" ).datepicker({dateFormat: 'dd/mm/yy'}); -->
+<!--  				$.ajaxSetup({ cache: false }); -->
+<!--  			}); -->
+<!-- 		</script> -->
 
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/resources/static/director-free/js/bootstrap.min.js" type="text/javascript"></script>

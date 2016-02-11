@@ -130,4 +130,20 @@ public class PurchaseOrderController {
 		}
 	}	
 	
+	/**
+	 * Search Advanced
+	 * @param status
+	 * @return list
+	 */
+	@RequestMapping(value="/search/advanced/{status}/{dateStart}/{dateEnd}", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> searchAdvanced(@PathVariable("status") String status, @PathVariable("dateStart") String dateStart, @PathVariable("dateEnd") String dateEnd) {
+		try {
+			PurchaseOrder purchaseOrder = this.purchaseOrderService.searchAdvanced(status, dateStart, dateEnd);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrder), HttpStatus.CREATED);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}	
+	
 }

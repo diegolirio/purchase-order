@@ -59,6 +59,10 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		return $http.post(serverURL('/completed/'+po.id));
 	};
 	
+	var _searchAdvanced = function(status, dateStart, dateEnd) {
+		return $http.get(serverURL('/search/advanced/'+status+"/"+dateStart+"/"+dateEnd));
+	};
+	
 	return {
 	
 		get : _get,

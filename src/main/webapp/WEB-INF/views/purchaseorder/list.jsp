@@ -7,13 +7,13 @@
                                     Pedidos
                                 </header>
                                 <div class="panel-body"> 
-									<select ng-model="poFormCtrl.search.status" 
-											ng-options="s.status as s.display for s in poFormCtrl.statusList">
+									<select ng-model="poListCtrl.search.status"
+											ng-options="s.status as s.display for s in poListCtrl.statusList">
 									</select>	                                 
-									<input type="text" maxlength="10" size="12" class="datepicker today" > &aacute; 
-									<input type="text" maxlength="10" size="12" class="datepicker today" >
+									<input ng-model="poListCtrl.search.dateStart" maxlength="10" size="12" class="datepicker" > &aacute; 
+									<input ng-model="poListCtrl.search.dateEnd" maxlength="10" size="12" class="datepicker" >
 									<a href="#" class="btn btn-default" id="id_search"><span class="glyphicon glyphicon-search"></span></a>
-									<a href="#" class="btn btn-default" id="id_filter"><span class="glyphicon glyphicon-filter"></span></a>
+									<!-- <a href="#" class="btn btn-default" id="id_filter"><span class="glyphicon glyphicon-filter"></span></a> -->
                                 	<a href="#/pedido" class="btn btn-success pull-right">Novo</a>
                                 	<br/><br/> 
                                     <table class="table table-bordered">
