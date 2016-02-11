@@ -17,6 +17,12 @@ public class MailTest {
 	private Mail mail;
 
 	@Test
+	public void testSendMailSimple() {
+		boolean sendMail = mail.sendMail("diegolirio.dl@gmail.com", "TESTE", "MENSAGEM");
+		Assert.assertTrue(sendMail);
+	}
+	
+	@Test
 	public void testSendMail() {
 		String emailTo = "diegolirio.dl@gmail.com";
 		String [] emailsCC = {"fabianogoes@gmail.com"};

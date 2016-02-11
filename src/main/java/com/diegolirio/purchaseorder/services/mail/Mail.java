@@ -8,19 +8,32 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Mail {
 
+	private static final String EMAIL_FROM = "diegolirio.dl@gmail.com";
+	
 	@Autowired
     private JavaMailSender mailSender;
+    
+	public boolean sendMail(String to, String subject, String msg) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom(EMAIL_FROM);
+		message.setTo(to);
+		message.setSubject(subject);
+		message.setText(msg);
+		mailSender.send(message);
+		return true;
+	}
 	
 	public boolean sendMail(String emailTo, String... emailsCC) {
 		try {
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
-			InternetAddress emailFrom = new InternetAddress("diegolirio.dl@gmail.com");
+			InternetAddress emailFrom = new InternetAddress(EMAIL_FROM);
 			
 			mimeMessage.setFrom( emailFrom );
 			mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(emailTo));
