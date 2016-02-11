@@ -28,6 +28,7 @@ public class PurchaseOrder {
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false, updatable=false)
 	public Date emissionDate;
 	 
 	@ManyToOne

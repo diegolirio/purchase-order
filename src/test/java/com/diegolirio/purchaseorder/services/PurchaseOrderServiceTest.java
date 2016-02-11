@@ -10,17 +10,23 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.diegolirio.purchaseorder.builder.PurchaseOrderBuilderTest;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
-import com.diegolirio.purchaseorder.services.PurchaseOrderService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/applicationContext-test.xml")
 @Transactional
 public class PurchaseOrderServiceTest {
 
+	private PurchaseOrder purchaseOrder;
+
 	@Autowired
 	private PurchaseOrderService purchaseOrderService;
+
+	@Autowired
+	private AddressService addressService;
 	
-	private PurchaseOrder purchaseOrder;
+
+	@Autowired
+	private CustomerService customerService;
 	
 	@Test
 	public void testSave() {
@@ -28,5 +34,21 @@ public class PurchaseOrderServiceTest {
 		purchaseOrderService.save(purchaseOrder);
 		Assert.assertTrue(purchaseOrder.getId() > 0);
 	}
+	
+	@Test
+	public void testSendMailPO() {
+//		purchaseOrder = PurchaseOrderBuilderTest.build();
+//		Customer customer = CustomerBuilderTest.buildTest();
+//		customerService.save(customer);
+//		Address address = AddressBuilderTest.buildTest();
+//		address.setPeople(customer);
+//		addressService.save(address);
+//		purchaseOrder.setCustomerAddressRecipient(address);
+//		purchaseOrder.setCustomerAddressSender(address);
+//		purchaseOrderService.save(purchaseOrder);
+//		Assert.assertTrue(purchaseOrder.getId() > 0);
+		boolean sendEmail = purchaseOrderService.sendEmail(purchaseOrder);
+		Assert.assertTrue(sendEmail);
+	}	
 	
 }

@@ -6,18 +6,26 @@
                                 <header class="panel-heading badge bg-green">
                                     Pedidos
                                 </header>
-                                <div class="panel-body">
+                                <div class="panel-body"> 
+									<select ng-model="poFormCtrl.search.status" 
+											ng-options="s.status as s.display for s in poFormCtrl.statusList">
+									</select>	                                 
+									<input type="text" maxlength="10" size="12" class="datepicker today" > &aacute; 
+									<input type="text" maxlength="10" size="12" class="datepicker today" >
+									<a href="#" class="btn btn-default" id="id_search"><span class="glyphicon glyphicon-search"></span></a>
+									<a href="#" class="btn btn-default" id="id_filter"><span class="glyphicon glyphicon-filter"></span></a>
                                 	<a href="#/pedido" class="btn btn-success pull-right">Novo</a>
                                 	<br/><br/> 
                                     <table class="table table-bordered">
                                         <tr class="text-danger">
                                             <th rowspan="2" class="text-center" style="width: 10px">Numero</th>
                                             <th rowspan="2" class="text-center">Data</th>
+                                            <th rowspan="2" class="text-center">Status</th>
                                             <th colspan="2" class="text-center">Remetente</th>
                                             <th colspan="2" class="text-center">Destinatário</th>
                                             <th rowspan="2" class="text-center">Transportadora</th>
-                                        </tr>
-                                        <tr class="text-muted">
+                                        </tr> 
+                                        <tr class="text-muted"> 
                                             <th class="text-center">Razão</th>
                                             <th class="text-center">CNPJ</th>
                                             <th class="text-center">Razão</th>
@@ -26,6 +34,7 @@
                                         <tr ng-repeat="po in poListCtrl.purchaseOrders">
                                             <td class="text-center"><a href="#/pedido/{{po.id}}">{{ po.id }}</a></td>
                                             <td class="text-center">{{ po.emissionDate }}</td>
+                                            <td class="text-center">{{ po.status }}</td>
                                             <td>{{ po.customerAddressRecipient.people.name }}</td>
                                             <td class="text-center">{{ po.customerAddressRecipient.people.cpfCnpj }}</td>
                                             <td>{{ po.customerAddressSender.people.name }}</td>

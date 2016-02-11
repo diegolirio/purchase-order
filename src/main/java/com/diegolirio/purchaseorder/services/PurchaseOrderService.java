@@ -1,5 +1,7 @@
 package com.diegolirio.purchaseorder.services;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +14,15 @@ public class PurchaseOrderService {
 	
 	@Autowired
 	private PurchaseOrderRepositorie purchaseOrderRepositorie;
+	@Autowired
+	private com.diegolirio.purchaseorder.services.mail.Mail mail;
 	
 	public Iterable<PurchaseOrder> getAll() {
 		return this.purchaseOrderRepositorie.findAll();
 	}
 	
 	public PurchaseOrder save(PurchaseOrder purchaseOrder) {
+		if(purchaseOrder.getId() <= 0) purchaseOrder.setEmissionDate(Calendar.getInstance().getTime());
 		return this.purchaseOrderRepositorie.save(purchaseOrder);
 	}
 
@@ -36,18 +41,18 @@ public class PurchaseOrderService {
 		this.purchaseOrderRepositorie.save(po);
 		boolean sent = this.sendEmail(po);
 		if(sent == false) {
-			throw new RuntimeException("Email não enviado para o Cliente");
+			//throw new RuntimeException("Email não enviado para o Cliente");
 		}
 		return po;
 	}
 	
 	/**
 	 * Send Mail for Customer
-	 * @param po
+	 * @param 
 	 * @return
 	 */
 	public boolean sendEmail(PurchaseOrder po) {
-		return true;
+		return this.mail.sendMail(po.getCustomerAddressRecipient().getPeople().getEmail(), po.getCustomerAddressSender().getPeople().getEmail());
 	}
 	
 }

@@ -321,8 +321,14 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 		ProductService.getByCode(code).then(function(resp) {
 			self.orderProduct = {};
 			self.orderProduct.product = resp.data;
-			if(self.orderProduct.product.id > 0) self.productOK = true;
-			else self.productOK = false;
+			if(self.orderProduct.product.id > 0) {
+				self.productOK = true;
+			} else {
+				self.productOK = false;
+				$('#idProductModal').modal('show');
+				self.product = {};
+				self.product.code = code;
+			}
 		}, function(error) {
 			self.productOK = false;
 			alert(JSON.stringify(error));
