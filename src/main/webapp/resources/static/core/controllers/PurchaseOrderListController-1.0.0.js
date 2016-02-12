@@ -6,8 +6,6 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 
 	var self = this;
 	
-
-	
 	/**
 	 * Load 
 	 */
@@ -21,6 +19,9 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 		self.searchAdv(self.search.status,self.search.dateStart, self.search.dateEnd);
 	};
  
+	/**
+	 * consulta avancada
+	 */
 	self.searchAdv = function(status, dateStart, dateEnd) {
 //		PurchaseOrderService.getAll().then(function(resp) {
 //		self.purchaseOrders = resp.data;
@@ -35,6 +36,17 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 		});		
 	};
 
+	/**
+	 * Exclui PO
+	 */
+	self.deletePO = function(po) {
+		PurchaseOrderService.deletePO(po).then(function(resp) {
+			self.searchAdv(self.search.status,self.search.dateStart, self.search.dateEnd);
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
+	};
+	
 	init();
 	
 }]);

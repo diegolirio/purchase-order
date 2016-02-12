@@ -21,6 +21,9 @@ public class PurchaseOrderService {
 	private PurchaseOrderRepositorie purchaseOrderRepositorie;
 	@Autowired
 	private com.diegolirio.purchaseorder.services.mail.Mail mail;
+
+	@Autowired
+	private OrdersProductsService ordersProductsService;
 	
 	public Iterable<PurchaseOrder> getAll() {
 		return this.purchaseOrderRepositorie.findAll();
@@ -60,6 +63,13 @@ public class PurchaseOrderService {
 		return this.mail.sendMail(po.getCustomerAddressRecipient().getPeople().getEmail(), po.getCustomerAddressSender().getPeople().getEmail());
 	}
 
+	/**
+	 * Consulta avancada
+	 * @param status
+	 * @param dateStart
+	 * @param dateEnd
+	 * @return
+	 */
 	public List<PurchaseOrder> searchAdvanced(StatusType status, String dateStart, String dateEnd) {
 		//Calendar instance = Calendar.getInstance();
 		//instance.add(Calendar.DATE, -30);
@@ -74,6 +84,28 @@ public class PurchaseOrderService {
             throw new RuntimeException(e);
         }
 		return this.purchaseOrderRepositorie.findByStatusAndEmissionDateBetween(status, start, end);
+	}
+
+	/**
+	 * Delete por id, caso o pedido esteja com o status pendente 
+	 * @param id
+	 */
+	public void delete(long id) {
+		PurchaseOrder po = this.purchaseOrderRepositorie.findOne(id);
+		this.delete(po);
+	}
+
+	/**
+	 * Delete objeto, caso o pedido esteja com o status pendente 
+	 * @param purchaseOrder
+	 */
+	public void delete(PurchaseOrder purchaseOrder) {
+		if(purchaseOrder.getStatus() == StatusType.pending ) {
+			this.ordersProductsService.deleteByPurchaseOrder(purchaseOrder);
+			this.purchaseOrderRepositorie.delete(purchaseOrder);
+		} else {
+			throw new RuntimeException("Pedido encontra-se com Status "+purchaseOrder.getStatus() + " nao podera ser excluido!!!");
+		}		
 	}
 	
 }

@@ -59,11 +59,21 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		return $http.post(serverURL('/completed/'+po.id));
 	};
 	
+	/**
+	 * consulta avancada
+	 */
 	var _searchAdvanced = function(status, dateStart, dateEnd) {
 		dateStart = dateStart.replace('/','-').replace('/','-');
 		dateEnd = dateEnd.replace('/','-').replace('/','-'); 
 		console.log(serverURL('/search/advanced/'+status+"/"+dateStart+"/"+dateEnd));
 		return $http.get(serverURL('/search/advanced/'+status+"/"+dateStart+"/"+dateEnd));
+	};
+	
+	/**
+	 * delete PO
+	 */
+	var _deletePO = function(po) {
+		return $http.post(serverURL('/delete/'+po.id));
 	};
 	
 	return {
@@ -78,7 +88,9 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		
 		completedPurchaseOrder : _completedPurchaseOrder,
 		
-		searchAdvanced : _searchAdvanced
+		searchAdvanced : _searchAdvanced,
+		
+		deletePO : _deletePO
 		
 	};
 	

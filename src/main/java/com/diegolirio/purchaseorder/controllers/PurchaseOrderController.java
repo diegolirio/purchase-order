@@ -158,4 +158,21 @@ public class PurchaseOrderController {
 		}
 	}	
 	
+
+	/**
+	 * Delete P.O.
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> delete(@PathVariable("id") long id) {
+		try {
+			this.purchaseOrderService.delete(id);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 }

@@ -25,6 +25,7 @@
                                             <th colspan="2" class="text-center">Remetente</th>
                                             <th colspan="2" class="text-center">Destinatário</th>
                                             <th rowspan="2" class="text-center">Transportadora</th>
+                                            <th rowspan="2" class="text-center"></th>
                                         </tr> 
                                         <tr class="text-muted"> 
                                             <th class="text-center">Razão</th>
@@ -41,6 +42,10 @@
                                             <td>{{ po.customerAddressRecipient.people.name }}</td>
                                             <td class="text-center">{{ po.customerAddressRecipient.people.cpfCnpj }}</td>
                                             <td>{{ po.shippingCompany.name }}</td>
+                                            <td> 
+                                            	<a href ng-click="poListCtrl.deletePO(po)" ng-show="po.status == 'pending'" title="Excluir Pedido"><span class="glyphicon glyphicon-trash text-danger"></span></a>
+                                            	<a href="#/pedido/edit/{{po.id}}" ng-show="po.status == 'completed'" title="Visualizar/Editar Pedido"><span class="glyphicon glyphicon-share-alt text-info"></span></a> 
+                                            </td>
                                         </tr>
                                     </table>
                                 </div><!-- /.panel-body -->

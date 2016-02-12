@@ -210,7 +210,7 @@
                                   
 	                          			<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.EFETIVAR">
 			                        	      <header class="panel-heading">
-			                            	      <h1 class="text-danger">Deseja Efetivar Pedido ?</h1>
+			                            	      <h3 class="text-danger">Deseja Efetivar Pedido ?</h3>
 			                              	  </header>
 			                              	  <div class="panel-body">
 			                              	  		<div class="panel panel-info">
