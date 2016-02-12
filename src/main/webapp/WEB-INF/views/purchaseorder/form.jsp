@@ -213,32 +213,116 @@
 			                            	      <h1 class="text-danger">Deseja Efetivar Pedido ?</h1>
 			                              	  </header>
 			                              	  <div class="panel-body">
-			                              	  		<div class="row">
-					                                    <div class="col-md-1 form-group">
-					                                        <label>Numero</label>
-					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.id">
-					                                    </div>
-					                                    <div class="col-md-2 form-group">
-					                                        <label>Data</label>
-					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.emissionDate">
-					                                    </div>
-					                                    <div class="col-md-2 form-group">
-					                                        <label>Frete (Pagador)</label>
-					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.typeFreight">
-					                                    </div>
-					                                    <div class="col-md-1 form-group">
-					                                        <label title="Condições de pagamento">Condições Pagto</label>
-					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.condicaoPagamento">
-					                                    </div>
-					                                    <div class="col-md-12 form-group">
-					                                        <label>Observação</label>
-					                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.remark">
-					                                    </div>
-					                              </div>
-					                              <div class="row">
+			                              	  		<div class="panel panel-info">
+													  <div class="panel-heading">Pedido</div>
+													  <div class="panel-body">
+			                                    			<div class="col-md-1 form-group">
+						                                        <label>Numero</label>
+						                                        <input type="text" class="form-control" disabled="disabled" value="{{poFormCtrl.purchaseOrder.id}}">
+						                                    </div>
+						                                    <div class="col-md-2 form-group">
+						                                        <label>Data</label>
+						                                        <input type="text" class="form-control" disabled="disabled" value="{{poFormCtrl.purchaseOrder.emissionDate}}">
+						                                    </div>
+						                                    <div class="col-md-2 form-group">
+						                                        <label>Frete (Pagador)</label>
+						                                        <input type="text" class="form-control" disabled="disabled" value="{{poFormCtrl.purchaseOrder.typeFreight == 'R' ? 'Remetente' : 'Destinatário'}}">
+						                                    </div>
+						                                    <div class="col-md-2 form-group">
+						                                        <label title="Condições de pagamento">Condições Pagto</label>
+						                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.condicaoPagamento">
+						                                    </div>
+						                                    <div class="col-md-12 form-group">
+						                                        <label>Observação</label>
+						                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.remark">
+						                                    </div>
+													  </div>
+													</div>
+			                              	  		
+                              	  					<div class="panel panel-info">
+													  <div class="panel-heading">Remetente</div>
+													  <div class="panel-body">
+					                                      <div class="col-md-2 form-group">
+					                                          <label class="text-danger">CNPJ</label>
+					                                          <input type="text" class="form-control" value="{{poFormCtrl.cpfCnpjSender}}" disabled="disabled">
+					                                      </div>
+					                                      <div class="col-md-4 form-group">
+					                                          <label class="text-danger">Razão Social</label>
+					                                          <input type="text" class="form-control" readonly="readonly" value="{{poFormCtrl.nameSender}}">
+					                                      </div>
+					                                      <div class="col-md-4 form-group">
+					                                          <label class="text-danger">Endereço</label>
+					                                          <input type="text" class="form-control" readonly="readonly" 
+					                                              value="{{poFormCtrl.purchaseOrder.customerAddressSender.publicPlace+', '+poFormCtrl.purchaseOrder.customerAddressSender.number+' - '+poFormCtrl.purchaseOrder.customerAddressSender.neighborhood+' - '+poFormCtrl.purchaseOrder.customerAddressSender.city+' - '+poFormCtrl.purchaseOrder.customerAddressSender.state.abbreviation}}">
+					                                      </div>		
+					                                      <div class="col-md-2 form-group">
+					                                          <label class="text-danger">Telefone</label>
+					                                          <input type="text" class="form-control" readonly="readonly" 
+					                                              value="{{poFormCtrl.purchaseOrder.phoneSender}}">
+					                                      </div>	
+													  </div>
+													</div>			     
+													                         	  		
+                              	  					<div class="panel panel-info">
+													  <div class="panel-heading">Destinatário</div>
+													  <div class="panel-body">
+					                                      <div class="col-md-2 form-group">
+					                                          <label class="text-danger">CNPJ</label>
+					                                          <input type="text" class="form-control" value="{{poFormCtrl.cpfCnpjRecipient}}" disabled="disabled">
+					                                      </div>
+					                                      <div class="col-md-3 form-group">
+					                                          <label class="text-danger">Razão Social</label>
+					                                          <input type="text" class="form-control" readonly="readonly" value="{{poFormCtrl.nameRecipient}}">
+					                                      </div>
+					                                      <div class="col-md-3 form-group">
+					                                          <label class="text-danger">Endereço</label>
+					                                          <input type="text" class="form-control" readonly="readonly" 
+					                                              value="{{poFormCtrl.purchaseOrder.customerAddressRecipient.publicPlace+', '+poFormCtrl.purchaseOrder.customerAddressRecipient.number+' - '+poFormCtrl.purchaseOrder.customerAddressRecipient.neighborhood+' - '+poFormCtrl.purchaseOrder.customerAddressRecipient.city+' - '+poFormCtrl.purchaseOrder.customerAddressRecipient.state.abbreviation}}">
+					                                      </div>		
+					                                      <div class="col-md-2 form-group">
+					                                          <label class="text-danger">Telefone</label>
+					                                          <input type="text" class="form-control" readonly="readonly" 
+					                                              value="{{poFormCtrl.purchaseOrder.phoneRecipient}}">
+					                                      </div>	 
+					                                      <div class="col-md-2 form-group">
+					                                          <label class="text-danger">Fax</label>
+					                                          <input type="text" class="form-control" readonly="readonly" 
+					                                              value="{{poFormCtrl.purchaseOrder.faxRecipient}}">
+					                                      </div>	
+													  </div>
+													</div>			                              	  		
+													                         	  		
+                              	  					<div class="panel panel-info">
+													  <div class="panel-heading">Produtos</div>
+													  <div class="panel-body">
+														   <table class="table table-bordered">
+						                                        <tr>
+						                                            <th class="text-center" style="width: 50px">Cod.</th>
+						                                            <th class="text-center">Descrição</th>
+						                                            <th class="text-center" style="width: 100px">Valor Unit.</th>
+						                                            <th class="text-center" style="width: 60px">Qtde</th>
+						                                            <th class="text-center" style="width: 200px">Valor Total</th>
+						                                        </tr>
+						                                        <tr ng-repeat="item in poFormCtrl.ordersProducts">
+						                                            <td class="text-center">{{ item.product.code }}</td>
+						                                            <td>{{ item.product.description }}</td>
+						                                            <td class="text-right">{{ item.valueUnit | currency }}</td>
+						                                            <td class="text-center">{{ item.amount }}</td>
+						                                            <td class="text-right">{{ item.valueUnit * item.amount | currency }}</td>
+						                                        </tr>
+						                                        <tfoot>
+						                                        	<tr>
+							                                            <td colspan="5" class="text-right"> <b><span class="text-success">Total do Pedido:</span> {{ poFormCtrl.totalPO | currency }}</b> </td>
+							                                        </tr>			                                        
+						                                        </tfoot>
+						                                    </table>
+													  </div>
+													</div>	
+												    <div class="row">
 				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PRODUTOS" class="btn btn-default">Voltar</a>                             		                                 
 				                                      <a href ng-click="poFormCtrl.completedPO(poFormCtrl.purchaseOrder)" class="pull-right btn btn-success">Efetivar</a> 				                                    
-				                              	  </div>
+				                              	    </div>
+			                              	  		
 				                              </div>
 				                              
 				                        </section>	                                  
