@@ -33,7 +33,7 @@
                                             <th class="text-center">CNPJ</th>
                                         </tr>
                                         <tr ng-repeat="po in poListCtrl.purchaseOrders">
-                                            <td class="text-center"><a href="{{ po.status == 'completed' ? '#/pedido/view/'+po.id : '#/pedido/'+po.id }}">{{ po.id }}</a></td>
+                                            <td class="text-center"><a href="{{ po.status == 'completed' ? '#/pedido/edit/'+po.id : '#/pedido/'+po.id }}">{{ po.id }}</a></td>
                                             <td class="text-center">{{ po.emissionDate }}</td> 
                                             <td class="text-center"><span class="label {{ po.status == 'pending' ? 'label-warning' : 'label-default' }}">{{ po.status == 'pending' ? 'Pendente' : 'Concluída' }}</span></td>
                                             <td>{{ po.customerAddressSender.people.name }}</td>

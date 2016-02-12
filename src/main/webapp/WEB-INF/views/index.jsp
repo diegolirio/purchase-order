@@ -331,6 +331,7 @@
 		<!--------- Controllers ------------->
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderFormController-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderEditController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerListController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerFormController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductListController-1.0.0.js"></script>

@@ -48,6 +48,15 @@ public class PurchaseOrderController {
 		return "purchaseorder/form";
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value="/page/edit")
+	public String pageView() {
+		return "purchaseorder/edit";
+	}
+	
 	/*
 	 * RestFull
 	 */
