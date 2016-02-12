@@ -9,7 +9,7 @@ var SERVER_APP = '/pedido';
 app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
 	
 	$routeProvider
-		.when('/',           { templateUrl: SERVER_APP + '/home'})
+		.when('/',           { templateUrl: SERVER_APP + '/purchaseorder/page/list'})//{ templateUrl: SERVER_APP + '/home'})
 		.when('/pedidos',    { templateUrl: SERVER_APP + '/purchaseorder/page/list'})
 		.when('/pedido',     { templateUrl: SERVER_APP + '/purchaseorder/page/form'})
 		.when('/pedido/:id', { templateUrl: SERVER_APP + '/purchaseorder/page/form'})

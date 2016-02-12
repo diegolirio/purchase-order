@@ -16,8 +16,8 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 		self.statusList = [{status: "pending", "display": "Pendente"}, {status: "completed", "display": "Concluido"}];
 		self.search = {};
 		self.search.status = self.statusList[0].status;
-		self.search.dateStart = DateCommon.getTodayAdd(-7);
-		self.search.dateEnd = DateCommon.getToday(); 
+		self.search.dateStart = DateCommon.getTodayAddUsEn(-7); 
+		self.search.dateEnd = DateCommon.getTodayAddUsEn(1);  
 		self.searchAdv(self.search.status,self.search.dateStart, self.search.dateEnd);
 	};
  

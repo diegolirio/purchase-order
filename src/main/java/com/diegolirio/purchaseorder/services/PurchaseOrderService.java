@@ -1,6 +1,10 @@
 package com.diegolirio.purchaseorder.services;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +27,7 @@ public class PurchaseOrderService {
 	}
 	
 	public PurchaseOrder save(PurchaseOrder purchaseOrder) {
-		if(purchaseOrder.getId() <= 0) purchaseOrder.setEmissionDate(Calendar.getInstance().getTime());
+		if(purchaseOrder.getId() == null || purchaseOrder.getId() <= 0) purchaseOrder.setEmissionDate(Calendar.getInstance().getTime());
 		return this.purchaseOrderRepositorie.save(purchaseOrder);
 	}
 
@@ -57,9 +61,19 @@ public class PurchaseOrderService {
 	}
 
 	public List<PurchaseOrder> searchAdvanced(StatusType status, String dateStart, String dateEnd) {
-		Calendar instance = Calendar.getInstance();
-		instance.add(Calendar.DATE, -30);
-		return this.purchaseOrderRepositorie.findByStatusAndEmissionDateBetween(status, instance.getTime(), Calendar.getInstance().getTime());
+		//Calendar instance = Calendar.getInstance();
+		//instance.add(Calendar.DATE, -30);
+		 Date start = null;
+		 Date end = null;
+        try {
+            //DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        	DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            start = (java.util.Date)formatter.parse(dateStart);
+            end = (java.util.Date)formatter.parse(dateEnd);
+        } catch (ParseException e) {            
+            throw new RuntimeException(e);
+        }
+		return this.purchaseOrderRepositorie.findByStatusAndEmissionDateBetween(status, start, end);
 	}
 	
 }
