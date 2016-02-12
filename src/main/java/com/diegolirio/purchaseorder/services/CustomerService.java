@@ -31,6 +31,10 @@ public class CustomerService {
 		return this.customerRepositorie.findOne(id);
 	}
 
+	public List<Customer> findByCpfCnpjContainingOrNameContainingIgnoreCase(String cpfCnpj, String name) {
+		return this.customerRepositorie.findByCpfCnpjContainingOrNameContainingIgnoreCase(cpfCnpj, name);
+	}
+
 	
 	
 }

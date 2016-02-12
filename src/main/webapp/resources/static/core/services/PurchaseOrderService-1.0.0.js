@@ -60,6 +60,8 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 	};
 	
 	var _searchAdvanced = function(status, dateStart, dateEnd) {
+		dateStart = dateStart.replace('/','-').replace('/','-');
+		dateEnd = dateEnd.replace('/','-').replace('/','-'); 
 		return $http.get(serverURL('/search/advanced/'+status+"/"+dateStart+"/"+dateEnd));
 	};
 	
@@ -73,7 +75,9 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		
 		saveParams : _saveParams,
 		
-		completedPurchaseOrder : _completedPurchaseOrder
+		completedPurchaseOrder : _completedPurchaseOrder,
+		
+		searchAdvanced : _searchAdvanced
 		
 	};
 	

@@ -1,5 +1,7 @@
 package com.diegolirio.purchaseorder.controllers;
 
+import java.util.List;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -136,10 +138,10 @@ public class PurchaseOrderController {
 	 * @return list
 	 */
 	@RequestMapping(value="/search/advanced/{status}/{dateStart}/{dateEnd}", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
-	public ResponseEntity<String> searchAdvanced(@PathVariable("status") String status, @PathVariable("dateStart") String dateStart, @PathVariable("dateEnd") String dateEnd) {
+	public ResponseEntity<String> searchAdvanced(@PathVariable("status") StatusType status, @PathVariable("dateStart") String dateStart, @PathVariable("dateEnd") String dateEnd) {
 		try {
-			PurchaseOrder purchaseOrder = this.purchaseOrderService.searchAdvanced(status, dateStart, dateEnd);
-			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrder), HttpStatus.CREATED);
+			List<PurchaseOrder> list = this.purchaseOrderService.searchAdvanced(status, dateStart, dateEnd);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list), HttpStatus.CREATED);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

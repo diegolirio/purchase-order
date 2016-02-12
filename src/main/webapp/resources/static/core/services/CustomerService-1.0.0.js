@@ -42,6 +42,13 @@ app.factory('CustomerService', ['$http', function($http) {
 		return $http.post(serverURL('/save')+"?id="+customer.id+"&name="+customer.name+"&cpfCnpj="+customer.cpfCnpj+
 											   "&signUpState="+customer.signUpState+"&email="+customer.email);
 	};
+	
+	/**
+	 * busca cliente por cpfCnpj ou por nome
+	 */
+	var _findByCpfCnpjOrName = function(cpfCnpj, name) {
+		return $http.get(serverURL('/find/by/cpfCnpj/'+cpfCnpj+'/or/name/'+name));
+	};
 	 
 	return {
 		
@@ -53,7 +60,9 @@ app.factory('CustomerService', ['$http', function($http) {
 		
 		save : _save,
 
-		saveParams : _saveParams
+		saveParams : _saveParams,
+		
+		findByCpfCnpjOrName : _findByCpfCnpjOrName
 		
 	};
 	

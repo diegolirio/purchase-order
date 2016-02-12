@@ -12,4 +12,8 @@ public interface CustomerRepositorie extends CrudRepository<Customer, Long> {
 
 	public List<Customer> findByCpfCnpj(String cpfcnpj);
 
+	public List<Customer> findByCpfCnpjContainingOrNameContainingIgnoreCase(String cpfCnpj, String name);
+
+	public List<Customer> findByNameContainingIgnoreCase(String name);
+
 }

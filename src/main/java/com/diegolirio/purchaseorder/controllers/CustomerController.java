@@ -1,5 +1,7 @@
 package com.diegolirio.purchaseorder.controllers;
 
+import java.util.List;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -79,6 +81,24 @@ public class CustomerController {
 		try {
 			Iterable<Customer> all = this.customerService.getAll();
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(all ), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	/**
+	 * find by cpfCnpj or name
+	 * @param cpfCnpj
+	 * @param name
+	 * @return list of customer
+	 */
+	@RequestMapping(value="/find/by/cpfCnpj/{cpfCnpj}/or/name/{name}", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
+	public ResponseEntity<String> findByCpfCnpjOrName(@PathVariable("cpfCnpj") String cpfCnpj, @PathVariable("name") String name) {
+		try {
+			System.out.println(cpfCnpj + " - " + name);
+			List<Customer> list = this.customerService.findByCpfCnpjContainingOrNameContainingIgnoreCase(cpfCnpj, name);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

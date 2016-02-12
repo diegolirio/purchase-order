@@ -1,6 +1,7 @@
 package com.diegolirio.purchaseorder.services;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,8 +56,10 @@ public class PurchaseOrderService {
 		return this.mail.sendMail(po.getCustomerAddressRecipient().getPeople().getEmail(), po.getCustomerAddressSender().getPeople().getEmail());
 	}
 
-	public PurchaseOrder searchAdvanced(String status, String dateStart, String dateEnd) {
-		return this.purchaseOrderRepositorie.findByStatusAndEmissionDateBetween(status, Calendar.getInstance().getTime(), Calendar.getInstance().getTime());
+	public List<PurchaseOrder> searchAdvanced(StatusType status, String dateStart, String dateEnd) {
+		Calendar instance = Calendar.getInstance();
+		instance.add(Calendar.DATE, -30);
+		return this.purchaseOrderRepositorie.findByStatusAndEmissionDateBetween(status, instance.getTime(), Calendar.getInstance().getTime());
 	}
 	
 }

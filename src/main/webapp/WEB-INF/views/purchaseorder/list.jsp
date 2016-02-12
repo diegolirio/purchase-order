@@ -12,7 +12,8 @@
 									</select>	                                 
 									<input ng-model="poListCtrl.search.dateStart" maxlength="10" size="12" class="datepicker" > &aacute; 
 									<input ng-model="poListCtrl.search.dateEnd" maxlength="10" size="12" class="datepicker" >
-									<a href="#" class="btn btn-default" id="id_search"><span class="glyphicon glyphicon-search"></span></a>
+									<a href ng-click="poListCtrl.searchAdv(poListCtrl.search.status, poListCtrl.search.dateStart, poListCtrl.search.dateEnd)" 
+									   class="btn btn-default" id="id_search"><span class="glyphicon glyphicon-search"></span></a>
 									<!-- <a href="#" class="btn btn-default" id="id_filter"><span class="glyphicon glyphicon-filter"></span></a> -->
                                 	<a href="#/pedido" class="btn btn-success pull-right">Novo</a>
                                 	<br/><br/> 
@@ -32,9 +33,9 @@
                                             <th class="text-center">CNPJ</th>
                                         </tr>
                                         <tr ng-repeat="po in poListCtrl.purchaseOrders">
-                                            <td class="text-center"><a href="#/pedido/{{po.id}}">{{ po.id }}</a></td>
-                                            <td class="text-center">{{ po.emissionDate }}</td>
-                                            <td class="text-center">{{ po.status }}</td>
+                                            <td class="text-center"><a href="{{ po.status == 'completed' ? '#/pedido/view/'+po.id : '#/pedido/'+po.id }}">{{ po.id }}</a></td>
+                                            <td class="text-center">{{ po.emissionDate }}</td> 
+                                            <td class="text-center"><span class="label {{ po.status == 'pending' ? 'label-warning' : 'label-default' }}">{{ po.status == 'pending' ? 'Pendente' : 'Concluída' }}</span></td>
                                             <td>{{ po.customerAddressRecipient.people.name }}</td>
                                             <td class="text-center">{{ po.customerAddressRecipient.people.cpfCnpj }}</td>
                                             <td>{{ po.customerAddressSender.people.name }}</td>
