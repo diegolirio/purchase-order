@@ -11,7 +11,9 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 	 */
 	var init = function() {
 
-		self.statusList = [{status: "pending", "display": "Pendente"}, {status: "completed", "display": "Concluido"}];
+		self.statusList = [{status: "pending", "display": "Pendente"}, 
+		                   {status: "completed", "display": "Concluido"},
+		                   {status: "canceled", "display": "Cancelado"}];
 		self.search = {};
 		self.search.status = self.statusList[0].status;
 		self.search.dateStart = DateCommon.getTodayAddUsEn(-7); 

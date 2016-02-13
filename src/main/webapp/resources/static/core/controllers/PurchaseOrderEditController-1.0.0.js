@@ -17,6 +17,17 @@ app.controller('PurchaseOrderEditController', ['PurchaseOrderService', '$routePa
 		});
 	};
 
+	/**
+	 * set status canceled
+	 */
+	self.setStatusCanceled = function(purchaseOrder, reason) {
+		PurchaseOrderService.cancel(purchaseOrder, reason).then(function(resp) {
+			self.purchaseOrder = resp.data;
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
+	};
+	
 	init();
 	
 }]);

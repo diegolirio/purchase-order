@@ -174,5 +174,22 @@ public class PurchaseOrderController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
+
+	/**
+	 * Cancel P.O.
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/cancel/{id}", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> cancel(@PathVariable("id") long id, String reason) {
+		try {
+			this.purchaseOrderService.cancel(id, reason);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 }

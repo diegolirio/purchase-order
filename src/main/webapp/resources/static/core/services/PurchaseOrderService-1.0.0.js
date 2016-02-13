@@ -76,6 +76,13 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		return $http.post(serverURL('/delete/'+po.id));
 	};
 	
+	/**
+	 * Cancelar PO
+	 */
+	var _cancel = function(po, reason) {
+		return $http.post(serverURL('/cancel/'+po.id)+"?reason="+reason);
+	};
+	
 	return {
 	
 		get : _get,
@@ -90,7 +97,9 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		
 		searchAdvanced : _searchAdvanced,
 		
-		deletePO : _deletePO
+		deletePO : _deletePO,
+		
+		cancel : _cancel
 		
 	};
 	

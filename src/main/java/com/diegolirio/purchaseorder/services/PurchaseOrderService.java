@@ -38,6 +38,29 @@ public class PurchaseOrderService {
 		return this.purchaseOrderRepositorie.findOne(id);
 	}
 
+	public PurchaseOrder setStatus(PurchaseOrder purchaseOrder, StatusType status) {
+		// pendente para concluido
+		if(status == StatusType.completed) {
+			if(purchaseOrder.getStatus() == StatusType.pending) {
+				purchaseOrder.setStatus(StatusType.completed);
+				this.purchaseOrderRepositorie.save(purchaseOrder);
+				return purchaseOrder;
+			} else {
+				throw new RuntimeException("Impossivel concluir Pedido, Somente os pedido com Status pendente podem ser concluidos");
+			}
+		}
+		else if(status == StatusType.canceled) {
+			if(purchaseOrder.getStatus() == StatusType.completed) {
+				purchaseOrder.setStatus(StatusType.canceled); 
+				this.purchaseOrderRepositorie.save(purchaseOrder);
+				return purchaseOrder;
+			} else {
+				throw new RuntimeException("Impossivel cancelar Pedido, Somente os pedido com Status concluidos podem ser alterados para cancelado");
+			}
+		} 
+		throw new RuntimeException("Impossivel Alterar Status do Pedido  para " + status);
+	}
+	
 	/**
 	 * Efetiva -> Muda status, Envia email
 	 * @param id
@@ -45,8 +68,9 @@ public class PurchaseOrderService {
 	 */
 	public PurchaseOrder completed(long id) {
 		PurchaseOrder po = this.purchaseOrderRepositorie.findOne(id);
-		po.setStatus(StatusType.completed);
-		this.purchaseOrderRepositorie.save(po);
+		//po.setStatus(StatusType.completed);
+		//this.purchaseOrderRepositorie.save(po);
+		po = this.setStatus(po, StatusType.completed);
 		boolean sent = this.sendEmail(po);
 		if(sent == false) {
 			//throw new RuntimeException("Email não enviado para o Cliente");
@@ -106,6 +130,18 @@ public class PurchaseOrderService {
 		} else {
 			throw new RuntimeException("Pedido encontra-se com Status "+purchaseOrder.getStatus() + " nao podera ser excluido!!!");
 		}		
+	}
+
+	/**
+	 * Cancelar PO
+	 * @param id
+	 * @param reason
+	 * @return
+	 */
+	public PurchaseOrder cancel(long id, String reason) {
+		PurchaseOrder po = this.purchaseOrderRepositorie.findOne(id);
+		po = this.setStatus(po, StatusType.canceled);
+		return po;
 	}
 	
 }

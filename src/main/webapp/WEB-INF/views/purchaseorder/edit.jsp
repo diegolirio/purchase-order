@@ -23,6 +23,9 @@
 		                                        <label title="Condições de pagamento" class="text-primary">Condições Pagto</label>
 		                                        <input type="text" class="form-control" disabled="disabled" ng-model="poEditCtrl.purchaseOrder.condicaoPagamento">
 		                                    </div>
+		                                    <div class="col-md-5 form-group">
+		                                        <h1 class="label label-{{poEditCtrl.purchaseOrder.status == 'completed' ? 'info' : poEditCtrl.purchaseOrder.status == 'canceled' ? 'danger' : 'success' }} pull-right">{{poEditCtrl.purchaseOrder.status}}</h1>
+		                                    </div>
 		                                    <div class="col-md-12 form-group">
 		                                        <label class="text-primary">Observação</label>
 		                                        <input type="text" class="form-control" disabled="disabled" ng-model="poEditCtrl.purchaseOrder.remark">
@@ -95,7 +98,10 @@
 			                                            <td colspan="5" class="text-right"> <b><span class="text-success">Total do Pedido:</span> {{ poEditCtrl.totalPO | currency }}</b> </td>
 			                                        </tr>			                                        
 		                                        </tfoot>
-		                                    </table>
+		                                  </table>
+		                                  
+		                                  <button ng-disabled="poEditCtrl.purchaseOrder.status != 'completed'" class="btn btn-danger" ng-click="poEditCtrl.setStatusCanceled(poEditCtrl.purchaseOrder, 'Teste de Cancelamento')">Cancelar</button>
+		                                    
                                 </div><!-- /.panel-body -->
                             </div><!-- /.panel -->                        
                         

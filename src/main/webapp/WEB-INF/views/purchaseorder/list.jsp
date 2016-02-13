@@ -34,9 +34,16 @@
                                             <th class="text-center">CNPJ</th>
                                         </tr>
                                         <tr ng-repeat="po in poListCtrl.purchaseOrders">
-                                            <td class="text-center"><a href="{{ po.status == 'completed' ? '#/pedido/edit/'+po.id : '#/pedido/'+po.id }}">{{ po.id }}</a></td>
+                                            <td class="text-center">
+                                            	<a ng-show="po.status == 'completed' || po.status == 'canceled'" href="#/pedido/edit/{{po.id}}">{{ po.id }}</a>
+                                            	<a ng-show="po.status == 'pending'" href="#/pedido/{{po.id}}">{{ po.id }}</a>
+                                            </td>
                                             <td class="text-center">{{ po.emissionDate }}</td> 
-                                            <td class="text-center"><span class="label {{ po.status == 'pending' ? 'label-warning' : 'label-default' }}">{{ po.status == 'pending' ? 'Pendente' : 'Concluída' }}</span></td>
+                                            <td class="text-center">
+                                            	<span ng-show="po.status == 'pending'" class="label label-warning">Pendente</span>
+                                            	<span ng-show="po.status == 'completed'" class="label label-default">Concluído</span>
+                                            	<span ng-show="po.status == 'canceled'" class="label label-danger">Cancelado</span>
+                                            </td>
                                             <td>{{ po.customerAddressSender.people.name }}</td>
                                             <td class="text-center">{{ po.customerAddressSender.people.cpfCnpj }}</td>
                                             <td>{{ po.customerAddressRecipient.people.name }}</td>
@@ -44,7 +51,7 @@
                                             <td>{{ po.shippingCompany.name }}</td>
                                             <td> 
                                             	<a href ng-click="poListCtrl.deletePO(po)" ng-show="po.status == 'pending'" title="Excluir Pedido"><span class="glyphicon glyphicon-trash text-danger"></span></a>
-                                            	<a href="#/pedido/edit/{{po.id}}" ng-show="po.status == 'completed'" title="Visualizar/Editar Pedido"><span class="glyphicon glyphicon-share-alt text-info"></span></a> 
+                                            	<a href="#/pedido/edit/{{po.id}}" ng-show="po.status == 'completed' || po.status == 'canceled'" title="Visualizar/Editar Pedido"><span class="glyphicon glyphicon-share-alt text-info"></span></a> 
                                             </td>
                                         </tr>
                                     </table>
