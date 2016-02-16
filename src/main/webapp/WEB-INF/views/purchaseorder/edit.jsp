@@ -100,7 +100,7 @@
 		                                        </tfoot>
 		                                  </table>
 		                                  
-		                                  <button ng-disabled="poEditCtrl.purchaseOrder.status != 'completed'" class="btn btn-danger" ng-click="poEditCtrl.setStatusCanceled(poEditCtrl.purchaseOrder, 'Teste de Cancelamento')">Cancelar</button>
+		                                  <button ng-disabled="poEditCtrl.purchaseOrder.status != 'completed'" class="btn btn-danger" ng-click="poEditCtrl.setStatusCanceled(poEditCtrl.purchaseOrder, 'Teste de Cancelamento')">Cancelar Pedido</button>
 		                                    
                                 </div><!-- /.panel-body -->
                             </div><!-- /.panel -->                        

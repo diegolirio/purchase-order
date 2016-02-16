@@ -32,7 +32,6 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 //	});
 		PurchaseOrderService.searchAdvanced(status, dateStart, dateEnd).then(function(resp) {
 			self.purchaseOrders = resp.data;
-			console.log(self.purchaseOrders);
 		}, function(error) {
 			alert(JSON.stringify(error));
 		});		
@@ -44,6 +43,26 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 	self.deletePO = function(po) {
 		PurchaseOrderService.deletePO(po).then(function(resp) {
 			self.searchAdv(self.search.status,self.search.dateStart, self.search.dateEnd);
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
+	};
+	
+	/**
+	 * 
+	 */
+	self.showModalFilter = function() {
+		$('#idModalFilter').modal('show');
+	};
+	
+	/**
+	 * Busca PO(s)
+	 */
+	self.findPOs = function(numero) {
+		PurchaseOrderService.get(numero).then(function(resp) {
+			self.purchaseOrders = [];
+			self.purchaseOrders.push(resp.data);
+			$('#idModalFilter').modal('hide');
 		}, function(error) {
 			alert(JSON.stringify(error));
 		});
