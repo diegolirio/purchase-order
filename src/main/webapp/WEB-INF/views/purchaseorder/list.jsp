@@ -41,7 +41,7 @@
                                             	<a ng-show="po.status == 'completed' || po.status == 'canceled'" href="#/pedido/edit/{{po.id}}">{{ po.id }}</a>
                                             	<a ng-show="po.status == 'pending'" href="#/pedido/{{po.id}}">{{ po.id }}</a>
                                             </td>
-                                            <td class="text-center">{{ po.emissionDate }}</td> 
+                                            <td class="text-center">{{ po.emissionDate | date:'dd/MM/yyyy' }}</td> 
                                             <td class="text-center">
                                             	<span ng-show="po.status == 'pending'" class="label label-warning">Pendente</span>
                                             	<span ng-show="po.status == 'completed'" class="label label-default">Concluído</span>
