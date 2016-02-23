@@ -3,9 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<field name="purchaseOrder.id" class="java.lang.Long"/>
-	<field name="purchaseOrder.customerAddressSender.people.name" class="java.lang.String"/>
-	<field name="purchaseOrder.customerAddressSender.people.cpfCnpj" class="java.lang.String"/>
+	<field name="order.id" class="java.lang.Long"/>
+	<field name="order.customerAddressSender.people.name" class="java.lang.String"/>
+	<field name="order.customerAddressSender.people.cpfCnpj" class="java.lang.String"/>
 	<field name="product.code" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -14,27 +14,46 @@
 		<band height="4" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="118" splitType="Stretch">
+		<band height="211" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="446" y="0" width="109" height="73" uuid="5af25479-1e88-4752-a303-189205e85082"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="310" y="0" width="130" height="73" uuid="9006611b-7f3c-4e51-8ecd-88fa60b9874a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="302" height="73" uuid="ef032216-d258-4687-a3ef-fea8a0b2d401"/>
+			</rectangle>
 			<textField>
-				<reportElement x="26" y="0" width="276" height="16" uuid="e938ec13-69f8-4254-b06f-b8b681b2ffc3"/>
+				<reportElement x="15" y="1" width="276" height="16" uuid="e938ec13-69f8-4254-b06f-b8b681b2ffc3"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{purchaseOrder.customerAddressSender.people.name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{order.customerAddressSender.people.name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="317" y="16" width="128" height="20" uuid="4df1879c-62e2-4d56-806b-7d4cc5c01548"/>
+				<reportElement x="310" y="10" width="128" height="20" uuid="4df1879c-62e2-4d56-806b-7d4cc5c01548"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{purchaseOrder.customerAddressSender.people.cpfCnpj}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{order.customerAddressSender.people.cpfCnpj}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="506" y="0" width="49" height="20" uuid="148c938e-e1b5-429c-a4bf-e70adc5e5eb9"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{purchaseOrder.id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{order.id}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="451" y="0" width="56" height="20" uuid="66db2008-81e9-4db9-b214-6e0209b3ed1c"/>
+				<reportElement x="451" y="0" width="55" height="20" uuid="66db2008-81e9-4db9-b214-6e0209b3ed1c"/>
 				<text><![CDATA[Nº Pedido:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="310" y="35" width="128" height="1" uuid="8ed1ac7e-9801-48c4-9395-0aec0d63ae52"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="73" width="100" height="20" uuid="40365702-2c6e-4405-a739-7eee9113c2c7"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESTINATÁRIO]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
