@@ -1,19 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="po" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="043009fb-73e7-4744-966a-f88ef33a8a40">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="purchaseOrder.id" class="java.lang.Long"/>
+	<field name="purchaseOrder.customerAddressSender.people.name" class="java.lang.String"/>
+	<field name="purchaseOrder.customerAddressSender.people.cpfCnpj" class="java.lang.String"/>
+	<field name="product.code" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="4" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="118" splitType="Stretch">
+			<textField>
+				<reportElement x="26" y="0" width="276" height="16" uuid="e938ec13-69f8-4254-b06f-b8b681b2ffc3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{purchaseOrder.customerAddressSender.people.name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="317" y="16" width="128" height="20" uuid="4df1879c-62e2-4d56-806b-7d4cc5c01548"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{purchaseOrder.customerAddressSender.people.cpfCnpj}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="506" y="0" width="49" height="20" uuid="148c938e-e1b5-429c-a4bf-e70adc5e5eb9"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{purchaseOrder.id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="451" y="0" width="56" height="20" uuid="66db2008-81e9-4db9-b214-6e0209b3ed1c"/>
+				<text><![CDATA[Nº Pedido:]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="100" height="20" uuid="bac62300-4436-49f6-8d25-6bd7bdf98532"/>
+				<text><![CDATA[product.code]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="599d13ce-5c78-4c28-8c1c-1ac861dafdd7"/>
+				<textFieldExpression><![CDATA[$F{product.code}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
