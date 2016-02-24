@@ -55,7 +55,7 @@
                                             <td> 
                                             	<a href ng-click="poListCtrl.deletePO(po)" ng-show="po.status == 'pending'" title="Excluir Pedido"><span class="glyphicon glyphicon-trash text-danger"></span></a>
                                             	<a href="#/pedido/edit/{{po.id}}" ng-show="po.status == 'completed' || po.status == 'canceled'" title="Visualizar/Editar Pedido"><span class="glyphicon glyphicon-share-alt text-info"></span></a> 
-                                            	<a href ng-show="po.status == 'completed'" title="Imprimir"><span class="glyphicon glyphicon-file"></span></a> 
+                                            	<a href="${pageContext.request.contextPath}/purchaseorder/{{po.id}}/print/pdf" ng-show="po.status == 'completed'" title="Imprimir" target="_blank"><span class="glyphicon glyphicon-file"></span></a> 
                                             </td>
                                         </tr>
                                     </table>
@@ -82,8 +82,8 @@
 <!-- 						            <label class="control-label">Remetente:</label> -->
 <!-- 						            <input type="text" class="form-control" ng-model="poFormCtrl.searchCustomer.name" > -->
 <!-- 						          </div> -->
-						          <br/>
-  						          <button class="btn btn-default btn-lg "><span class="glyphicon glyphicon-search"></span></button>
+						          <br/> 
+  						          <button class="btn btn-default "><span class="glyphicon glyphicon-search"></span></button>
 						        </form>
 					      </div>
 					      <div class="modal-footer">

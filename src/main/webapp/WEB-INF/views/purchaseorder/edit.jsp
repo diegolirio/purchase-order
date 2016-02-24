@@ -101,7 +101,10 @@
 		                                  </table>
 		                                  
 		                                  <button ng-disabled="poEditCtrl.purchaseOrder.status != 'completed'" class="btn btn-danger" ng-click="poEditCtrl.setStatusCanceled(poEditCtrl.purchaseOrder, 'Teste de Cancelamento')">Cancelar Pedido</button>
-		                                    
+	                    				  <div class="pull-right">
+	                                      	<a ng-disabled="poEditCtrl.purchaseOrder.status != 'completed'" href="${pageContext.request.contextPath}/purchaseorder/{{poEditCtrl.purchaseOrder.id}}/print/pdf" target="_blank" class="btn btn-default">Imprimir Relatório</a>
+	                                      </div>  
+	                                  
                                 </div><!-- /.panel-body -->
                             </div><!-- /.panel -->                        
                         

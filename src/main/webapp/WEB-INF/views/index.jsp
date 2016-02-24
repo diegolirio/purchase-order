@@ -324,7 +324,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/common/StringCommon-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/common/DateCommon-1.0.0.js"></script>
 		<!--------- Services ----------------> 
-		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/CustomerService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/AddressService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/TelephoneService-1.0.0.js"></script>
@@ -332,7 +332,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/StateService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/OrdersProductsService-1.0.0.js"></script>
 		<!--------- Controllers ------------->
-		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderFormController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderEditController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerListController-1.0.0.js"></script>

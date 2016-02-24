@@ -1,6 +1,5 @@
 package com.diegolirio.purchaseorder.controllers;
 
-<<<<<<< HEAD
 import java.io.IOException;
 import java.util.List;
 
@@ -9,10 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.jasperreports.engine.JRException;
 
-=======
-import java.util.List;
-
->>>>>>> SendMail
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,12 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.diegolirio.purchaseorder.models.OrdersProducts;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 import com.diegolirio.purchaseorder.models.StatusType;
-<<<<<<< HEAD
 import com.diegolirio.purchaseorder.reports.services.ReportService;
 import com.diegolirio.purchaseorder.services.AddressService;
 import com.diegolirio.purchaseorder.services.OrdersProductsService;
-=======
->>>>>>> SendMail
 import com.diegolirio.purchaseorder.services.PurchaseOrderService;
 
 @Controller
@@ -42,15 +34,11 @@ public class PurchaseOrderController {
 	@Autowired
 	private PurchaseOrderService purchaseOrderService;
 	@Autowired
-<<<<<<< HEAD
 	private AddressService addressService;
 	@Autowired
 	private OrdersProductsService ordersProductsService;
 	@Autowired @Qualifier("purchaseOrderReportService")
 	private ReportService  reportService;	
-=======
-	//private AddressService addressService;
->>>>>>> SendMail
 
 	/*
 	 * Page
@@ -74,7 +62,6 @@ public class PurchaseOrderController {
 		return "purchaseorder/form";
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping(value="/{id}/print/pdf")
 	public void print(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response) throws IOException, JRException {
 		PurchaseOrder purchaseOrder = this.purchaseOrderService.get(id);
@@ -83,7 +70,8 @@ public class PurchaseOrderController {
 		byte[] bytes = this.reportService.generateReport(purchaseOrder);
 		response.setContentType("application/pdf");
 		response.getOutputStream().write(bytes); 
-=======
+	}
+
 	/**
 	 * 
 	 * @return
@@ -91,7 +79,6 @@ public class PurchaseOrderController {
 	@RequestMapping(value="/page/edit")
 	public String pageView() {
 		return "purchaseorder/edit";
->>>>>>> SendMail
 	}
 	
 	/*

@@ -197,7 +197,6 @@
 			<artifactId>jmock</artifactId>
 			<version>2.6.0</version>
 		</dependency>
-<<<<<<< HEAD
 
 		<!-- Dependencias dos relatorios -->
 		<dependency>
@@ -252,7 +251,7 @@
 		</dependency>
 		<!-- fim dependencias dos relatorios -->
 
-=======
+
 		<!-- Email -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -264,7 +263,6 @@
 			<artifactId>spring-support</artifactId>
 			<version>2.0.8</version>
 		</dependency>
->>>>>>> SendMail
 
 
 	</dependencies>

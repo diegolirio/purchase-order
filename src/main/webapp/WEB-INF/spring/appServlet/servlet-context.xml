@@ -29,7 +29,6 @@
 	<context:component-scan base-package="com.diegolirio.purchaseorder.controllers" />
 	<context:component-scan base-package="com.diegolirio.purchaseorder.services" />
 	<context:component-scan base-package="com.diegolirio.purchaseorder.repositories" />
-<<<<<<< HEAD
 	<context:component-scan base-package="com.diegolirio.purchaseorder.reports" />
 	
  	<!-- ********** Configuration Datasource Connection *********************************** --> 
@@ -39,20 +38,7 @@
 <!--         <beans:property name="username" value="root" />  -->
 <!--         <beans:property name="password" value="root" />   -->
 <!--     </beans:bean> -->
-    
-=======
 
-	<!-- ********** Configuration Datasource Connection *********************************** -->
-	<!-- <beans:bean id="dataSourceDB" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-	<!-- <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" 
-		/> -->
-	<!-- <beans:property name="url" value="jdbc:mysql://localhost:3306/purchase?autoReconnect=true" 
-		/> -->
-	<!-- <beans:property name="username" value="root" /> -->
-	<!-- <beans:property name="password" value="root" /> -->
-	<!-- </beans:bean> -->
-
->>>>>>> SendMail
 	<beans:bean class="java.lang.String" id="dbHost">
 		<beans:constructor-arg
 			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'localhost' : systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] }" />

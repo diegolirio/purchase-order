@@ -36,7 +36,7 @@
 						                                          <input type="text" class="form-control" ng-model="cFormCtrl.customer.signUpState">
 						                                      </div>
 						                                      <br/>
-						                                      <button type="submit" class="btn btn-lg btn-success">Salvar</button>
+						                                      <button type="submit" class="btn  btn-success">Salvar</button>
 														  </div>
 													</form>
 		                              		   </div>

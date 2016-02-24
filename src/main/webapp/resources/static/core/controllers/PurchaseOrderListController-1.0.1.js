@@ -17,11 +17,12 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 		self.search = {};
 		self.search.status = self.statusList[0].status;
 		//self.search.dateStart = DateCommon.getTodayAddUsEn(-7);
-		self.search.dateStart = new Date().toISOString().split("T")[0];
-		var data = new Date();
-		data.setDate(data.getDate()+1);
-	    self.search.dateEnd = data.toISOString().split("T")[0];//DateCommon.getTodayAddUsEn(1);
-		self.searchAdv(self.search.status,self.search.dateStart, self.search.dateEnd);
+		var dateStart = new Date();
+		self.search.dateStart = dateStart.toISOString().split("T")[0];
+		var dateEnd = new Date();
+		dateEnd.setDate(dateEnd.getDate()+1);
+	    self.search.dateEnd = dateEnd.toISOString().split("T")[0];//DateCommon.getTodayAddUsEn(1);
+		self.searchAdv(self.search.status, self.search.dateStart, self.search.dateEnd);
 	};
  
 	/**
