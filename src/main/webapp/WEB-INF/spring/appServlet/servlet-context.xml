@@ -26,6 +26,7 @@
 	<context:component-scan base-package="com.diegolirio.purchaseorder.controllers" />
 	<context:component-scan base-package="com.diegolirio.purchaseorder.services" />
 	<context:component-scan base-package="com.diegolirio.purchaseorder.repositories" />
+	<context:component-scan base-package="com.diegolirio.purchaseorder.reports" />
 	
  	<!-- ********** Configuration Datasource Connection *********************************** --> 
 <!-- 	<beans:bean id="dataSourceDB" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
