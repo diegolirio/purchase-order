@@ -1,4 +1,4 @@
-package com.diegolirio.purchaseorder.services.reports;
+package com.diegolirio.purchaseorder.reports.services;
 
 import net.sf.jasperreports.engine.JRException;
 

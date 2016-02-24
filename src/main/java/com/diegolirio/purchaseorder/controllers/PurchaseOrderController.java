@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.diegolirio.purchaseorder.models.OrdersProducts;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 import com.diegolirio.purchaseorder.models.StatusType;
+import com.diegolirio.purchaseorder.reports.services.ReportService;
 import com.diegolirio.purchaseorder.services.AddressService;
 import com.diegolirio.purchaseorder.services.OrdersProductsService;
 import com.diegolirio.purchaseorder.services.PurchaseOrderService;
-import com.diegolirio.purchaseorder.services.reports.ReportService;
 
 @Controller
 @RequestMapping("purchaseorder")
