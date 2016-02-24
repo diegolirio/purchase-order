@@ -27,4 +27,15 @@ public class OrdersProductsService {
 		this.ordersProductsRepository.delete(id);
 	}
 
+	/**
+	 * Delete produtos(items) do pedido
+	 * @param purchaseOrder
+	 */
+	public void deleteByPurchaseOrder(PurchaseOrder purchaseOrder) {
+		List<OrdersProducts> list = this.ordersProductsRepository.findByPurchaseOrder(purchaseOrder);
+		for (OrdersProducts item : list) {
+			this.ordersProductsRepository.delete(item);
+		}
+	}
+
 }

@@ -7,6 +7,7 @@ public class CustomerBuilder {
 	private String cpfCnpj;
 	private String name;
 	private String signUpState;
+	private String email;
 
 	public CustomerBuilder withCpfCnpj(String cpfCnpj) {
 		this.cpfCnpj = cpfCnpj;
@@ -22,12 +23,18 @@ public class CustomerBuilder {
 		this.signUpState = signUpState;
 		return this;
 	}
+	
+	public CustomerBuilder withEmail(String email) {
+		this.email = email;
+		return this;
+	}
 
 	public Customer build() {
 		Customer customer = new Customer();
 		customer.setCpfCnpj(cpfCnpj);
 		customer.setName(name);
-		customer.setSignUpState(signUpState); 
+		customer.setSignUpState(signUpState);
+		customer.setEmail(email);
 		return customer ;
 	}
 

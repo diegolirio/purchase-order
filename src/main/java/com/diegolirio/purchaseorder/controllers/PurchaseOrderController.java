@@ -1,5 +1,6 @@
 package com.diegolirio.purchaseorder.controllers;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.List;
 
@@ -8,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.jasperreports.engine.JRException;
 
+=======
+import java.util.List;
+
+>>>>>>> SendMail
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,9 +27,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.diegolirio.purchaseorder.models.OrdersProducts;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 import com.diegolirio.purchaseorder.models.StatusType;
+<<<<<<< HEAD
 import com.diegolirio.purchaseorder.reports.services.ReportService;
 import com.diegolirio.purchaseorder.services.AddressService;
 import com.diegolirio.purchaseorder.services.OrdersProductsService;
+=======
+>>>>>>> SendMail
 import com.diegolirio.purchaseorder.services.PurchaseOrderService;
 
 @Controller
@@ -34,11 +42,15 @@ public class PurchaseOrderController {
 	@Autowired
 	private PurchaseOrderService purchaseOrderService;
 	@Autowired
+<<<<<<< HEAD
 	private AddressService addressService;
 	@Autowired
 	private OrdersProductsService ordersProductsService;
 	@Autowired @Qualifier("purchaseOrderReportService")
 	private ReportService  reportService;	
+=======
+	//private AddressService addressService;
+>>>>>>> SendMail
 
 	/*
 	 * Page
@@ -62,6 +74,7 @@ public class PurchaseOrderController {
 		return "purchaseorder/form";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value="/{id}/print/pdf")
 	public void print(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response) throws IOException, JRException {
 		PurchaseOrder purchaseOrder = this.purchaseOrderService.get(id);
@@ -70,6 +83,15 @@ public class PurchaseOrderController {
 		byte[] bytes = this.reportService.generateReport(purchaseOrder);
 		response.setContentType("application/pdf");
 		response.getOutputStream().write(bytes); 
+=======
+	/**
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value="/page/edit")
+	public String pageView() {
+		return "purchaseorder/edit";
+>>>>>>> SendMail
 	}
 	
 	/*
@@ -155,5 +177,56 @@ public class PurchaseOrderController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}	
+	
+	/**
+	 * Search Advanced
+	 * @param status
+	 * @return list
+	 */
+	@RequestMapping(value="/search/advanced/{status}/{dateStart}/{dateEnd}", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> searchAdvanced(@PathVariable("status") StatusType status, @PathVariable("dateStart") String dateStart, @PathVariable("dateEnd") String dateEnd) {
+		try {
+			System.out.println(dateStart + " a " + dateEnd);
+			List<PurchaseOrder> list = this.purchaseOrderService.searchAdvanced(status, dateStart, dateEnd);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list), HttpStatus.CREATED);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}	
+	
+
+	/**
+	 * Delete P.O.
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> delete(@PathVariable("id") long id) {
+		try {
+			this.purchaseOrderService.delete(id);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+
+	/**
+	 * Cancel P.O.
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/cancel/{id}", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> cancel(@PathVariable("id") long id, String reason) {
+		try {
+			this.purchaseOrderService.cancel(id, reason);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 }

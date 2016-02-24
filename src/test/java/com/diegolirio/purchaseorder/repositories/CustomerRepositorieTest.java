@@ -60,4 +60,43 @@ public class CustomerRepositorieTest {
 		Assert.assertEquals("CpfCnpj esperedo da consulta deve ser " + CustomerBuilderTest.CUSTOMER_CPFCNPJ, customersFind.get(0).getCpfCnpj(), CustomerBuilderTest.CUSTOMER_CPFCNPJ);
 	}
 	
+	@Test
+	public void testFindByCpfCnpjOrNameContainingIgnoreCase_withNameOK() {
+		customer.setName(CustomerBuilderTest.CUSTOMER_NAME);
+		customer = customerRepositorie.save(customer);
+		Assert.assertTrue(customer.getId() > 0);
+		String name = CustomerBuilderTest.CUSTOMER_NAME.substring(2, 7);
+		System.out.println(name);
+		List<Customer> customersFind = customerRepositorie.findByCpfCnpjContainingOrNameContainingIgnoreCase("096X122", name);
+		System.out.println(customersFind.size());
+		Assert.assertNotNull(customersFind);
+		Assert.assertTrue(customersFind.size() > 0);
+	}
+
+	@Test
+	public void testFindByCpfCnpjOrNameContainingIgnoreCase_withCpfCnpjOK() {
+		customer.setCpfCnpj(CustomerBuilderTest.CUSTOMER_CPFCNPJ);
+		customer = customerRepositorie.save(customer);
+		Assert.assertTrue(customer.getId() > 0);
+		String cnpj = CustomerBuilderTest.CUSTOMER_CPFCNPJ.substring(2, 4);
+		System.out.println(cnpj);
+		List<Customer> customersFind = customerRepositorie.findByCpfCnpjContainingOrNameContainingIgnoreCase(cnpj, "XxXXxxxX");
+		System.out.println(customersFind.size());
+		Assert.assertNotNull(customersFind);
+		Assert.assertTrue(customersFind.size() > 0);
+	}
+	
+	@Test
+	public void testFindByNameContainingIgnoreCase() {
+		customer.setName(CustomerBuilderTest.CUSTOMER_NAME);
+		customer = customerRepositorie.save(customer);
+		Assert.assertTrue(customer.getId() > 0);
+		String name = CustomerBuilderTest.CUSTOMER_NAME.substring(2, 5).toLowerCase();
+		System.out.println(name);
+		List<Customer> customersFind = customerRepositorie.findByNameContainingIgnoreCase(name);
+		System.out.println(customersFind.size());
+		Assert.assertNotNull(customersFind);
+		Assert.assertTrue(customersFind.size() > 0);
+	}
+	
 }

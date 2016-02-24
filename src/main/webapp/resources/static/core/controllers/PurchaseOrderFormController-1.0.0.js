@@ -3,10 +3,10 @@
  */
 app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'PurchaseOrderService', 'CustomerService', 
                                                'AddressService', 'TelephoneService', 'ProductService',
-                                               'OrdersProductsService',
+                                               'OrdersProductsService', 'StringCommon',
                                                function($routeParams, $location, PurchaseOrderService, CustomerService, 
                                             		    AddressService, TelephoneService, ProductService,
-                                            		    OrdersProductsService) {
+                                            		    OrdersProductsService, StringCommon) {
 	
 	var self = this;
 	
@@ -126,6 +126,7 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 	 * busca cliente remetente por cpfCnpj
 	 */
 	self.getCustomerSenderByCpfCnpj = function(cpfCnpj) {
+		if(cpfCnpj == '') return;
 		// Busca Cliente por cpfCnpj
 		CustomerService.getByCpfCnpj(cpfCnpj).then(function(resp) {
 			self.customerSender = resp.data;
@@ -162,6 +163,53 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 		});
 	};
 
+	self.typeSearchCustomer = '';
+	/**
+	 * Show Modal Customer Sender
+	 */
+	self.showModalSearchCustomer = function(rementeOuDestinatarioOuTransportadora) {
+		self.typeSearchCustomer = rementeOuDestinatarioOuTransportadora;
+		$('#idSearchCustomerModal').modal('show');
+	};
+	
+	/**
+	 * pesquisa cliente
+	 */
+	self.findCustomerByCpfCnpjOrName = function(cpfCnpj, name) {
+		if (StringCommon.isEmpty(cpfCnpj) && StringCommon.isEmpty(name)) {
+			alert('Campos em branco');
+			return;
+		}
+		if (StringCommon.isEmpty(cpfCnpj)) cpfCnpj = "NULLO";
+		if (StringCommon.isEmpty(name)) name = "NULLO";
+		CustomerService.findByCpfCnpjOrName(cpfCnpj, name).then(function(resp) {
+			self.customers = resp.data;
+			if(self.customers.length == 0) return;  
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
+	};
+	
+	/**
+	 * Seleciona Customer
+	 */
+	self.selectedCustomer = function(customer) {
+		if(self.typeSearchCustomer == 'R') { // Remetente
+			self.cpfCnpjSender = customer.cpfCnpj;
+			self.getCustomerSenderByCpfCnpj(self.cpfCnpjSender);
+		} else if(self.typeSearchCustomer == 'D') { // Destinatario
+			self.cpfCnpjRecipient = customer.cpfCnpj;
+			self.getCustomerRecipientByCpfCnpj(self.cpfCnpjRecipient);
+		} else if(self.typeSearchCustomer == 'T') { // Transportadora
+			self.purchaseOrder.shippingCompany = {};
+			self.purchaseOrder.shippingCompany.cpfCnpj = customer.cpfCnpj;
+			self.getShippingCompanyByCpfCnpj(self.purchaseOrder.shippingCompany.cpfCnpj);
+		}
+		$('#idSearchCustomerModal').modal('hide');
+		self.customers = [];
+	};
+ 	
+	
 	/**
 	 * busca cliente destinatario por cpfCnpj
 	 */
@@ -321,8 +369,14 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 		ProductService.getByCode(code).then(function(resp) {
 			self.orderProduct = {};
 			self.orderProduct.product = resp.data;
-			if(self.orderProduct.product.id > 0) self.productOK = true;
-			else self.productOK = false;
+			if(self.orderProduct.product.id > 0) {
+				self.productOK = true;
+			} else {
+				self.productOK = false;
+				$('#idProductModal').modal('show');
+				self.product = {};
+				self.product.code = code;
+			}
 		}, function(error) {
 			self.productOK = false;
 			alert(JSON.stringify(error));
