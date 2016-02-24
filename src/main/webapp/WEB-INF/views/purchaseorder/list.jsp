@@ -11,7 +11,7 @@
 											ng-options="s.status as s.display for s in poListCtrl.statusList">
 									</select>	                                 
 									<input type="date" ng-model="poListCtrl.search.dateStart" maxlength="10" size="12" class="datepicker" > &aacute; 
-									<input type="date" ng-model="poListCtrl.search.dateEnd" maxlength="10" size="12" class="datepicker" >
+									<input type="date" ng-model="poListCtrl.search.dateEnd" maxlength="10" size="12" class="datepicker">
 									<a href ng-click="poListCtrl.searchAdv(poListCtrl.search.status, poListCtrl.search.dateStart, poListCtrl.search.dateEnd)" class="btn btn-default">
 										<span class="glyphicon glyphicon-search"></span>
 									</a>

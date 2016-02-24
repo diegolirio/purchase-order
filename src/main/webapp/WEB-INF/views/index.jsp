@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 <html ng-app="app">
     <head>
@@ -248,7 +250,7 @@
                             <img src="${pageContext.request.contextPath}/resources/static/director-free/img/sem_avatar.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Ol·, Diego</p>
+                            <p>Ol√°, Diego</p>
 <!--                             <a href=><i class="fa fa-circle text-success"></i> Online</a> -->
                         </div>
                     </div>
@@ -304,6 +306,7 @@
             
         </div><!-- ./wrapper -->
 
+<c:import url="modal-costumer.jsp"></c:import>
 
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>

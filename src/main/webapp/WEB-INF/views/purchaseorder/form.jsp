@@ -411,11 +411,10 @@
                                 </table>						        
 					      </div>
 					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" onClick="javascript:$('#idAddCustomerModal').modal('show');"><i class="glyphicon glyphicon-plus"></i>  Novo</button>
 					        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 					      </div>
 					    </div><!-- /.modal-content -->
 					  </div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->                    
-                    
-                    
                 </section><!-- /.content -->
