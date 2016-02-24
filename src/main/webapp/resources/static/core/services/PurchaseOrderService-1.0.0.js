@@ -64,7 +64,7 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 	 */
 	var _searchAdvanced = function(status, dateStart, dateEnd) {
 		dateStart = dateStart.replace('/','-').replace('/','-');
-		dateEnd = dateEnd.replace('/','-').replace('/','-'); 
+		dateEnd = dateEnd.replace('/','-').replace('/','-');
 		console.log(serverURL('/search/advanced/'+status+"/"+dateStart+"/"+dateEnd));
 		return $http.get(serverURL('/search/advanced/'+status+"/"+dateStart+"/"+dateEnd));
 	};

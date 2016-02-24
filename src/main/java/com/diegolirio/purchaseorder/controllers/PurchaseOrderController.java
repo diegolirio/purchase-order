@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 import com.diegolirio.purchaseorder.models.StatusType;
-import com.diegolirio.purchaseorder.services.AddressService;
 import com.diegolirio.purchaseorder.services.PurchaseOrderService;
 
 @Controller
@@ -24,7 +23,7 @@ public class PurchaseOrderController {
 	@Autowired
 	private PurchaseOrderService purchaseOrderService;
 	@Autowired
-	private AddressService addressService;
+	//private AddressService addressService;
 
 	/*
 	 * Page
