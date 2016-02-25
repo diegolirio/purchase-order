@@ -12,4 +12,4 @@ adminwDev9z8
 6R41VCdjQihA
 
 # link temp
-http://pedido-diegolirio.rhcloud.com/pedido/#/ 
+http://pedido-diegolirio.rhcloud.com/pedido/#/  
