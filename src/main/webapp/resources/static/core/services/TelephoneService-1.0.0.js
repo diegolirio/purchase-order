@@ -19,11 +19,20 @@ app.factory('TelephoneService', ['$http', function($http) {
 		return $http.post(serverURL('/saveParams')+params);
 	};
 	
+	/**
+	 * delete or desactive
+	 */
+	var _deleteTelephone = function(telephone) {
+		return $http.post(serverURL('/delete/'+telephone.id));
+	};
+	
 	return {
 		 
 		getListByPeople : _getListByPeople,
 		
-		saveParams : _saveParams
+		saveParams : _saveParams,
+		
+		deleteTelephone : _deleteTelephone
 		
 	};
 	

@@ -55,7 +55,7 @@
                                             <td> 
                                             	<a href ng-click="poListCtrl.deletePO(po)" ng-show="po.status == 'pending'" title="Excluir Pedido"><span class="glyphicon glyphicon-trash text-danger"></span></a>
                                             	<a href="#/pedido/edit/{{po.id}}" ng-show="po.status == 'completed' || po.status == 'canceled'" title="Visualizar/Editar Pedido"><span class="glyphicon glyphicon-share-alt text-info"></span></a> 
-                                            	<a href="${pageContext.request.contextPath}/purchaseorder/{{po.id}}/print/pdf" ng-show="po.status == 'completed'" title="Imprimir" target="_blank"><span class="glyphicon glyphicon-file"></span></a> 
+                                            	<a href="${pageContext.request.contextPath}/purchaseorder/{{po.id}}/print/pdf" ng-show="po.status == 'completed'" title="Imprimir" target="_blank"><span class="glyphicon glyphicon-print text-muted"></span></a> 
                                             </td>
                                         </tr>
                                     </table>

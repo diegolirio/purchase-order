@@ -17,6 +17,8 @@ public class Telephone {
 	
 	@ManyToOne
 	private People people;
+
+	private boolean active;
 	
 	public Long getId() {
 		return id;
@@ -49,7 +51,22 @@ public class Telephone {
 	public void setPeople(People people) {
 		this.people = people;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}	
 	
-	
+	public static Telephone getNewInstance(Telephone telephone) {
+		Telephone t = new Telephone();
+		t.setContactType(telephone.getContactType());
+		t.setNumber(telephone.getNumber());
+		t.setPeople(telephone.getPeople());
+		return t;
+	}
+
 	
 }

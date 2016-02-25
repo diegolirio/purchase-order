@@ -8,6 +8,11 @@
                                 </header>
                                 <div class="panel-body">
                                 
+                                
+                                		<div class="alert alert-success" role="alert" ng-show="cFormCtrl.message != null" ng-click="cFormCtrl.message = null">
+											{{ cFormCtrl.message }}
+										</div>
+                                
 										<section class="panel">
 				                              <header class="panel-heading">
 				                                  <span class="text-success">Cliente</span>
@@ -92,12 +97,14 @@
 				                                            <th class="text-center">Numero</th>
 				                                            <th class="text-center">Tipo</th>
 				                                            <th class="text-center" style="width: 10px">editar</th>
+				                                            <th class="text-center" style="width: 10px"></th>
 				                                        </tr>
 				                                        <tr ng-repeat="p in cFormCtrl.phones">
 <!-- 				                                            <td>{{ p.id }}</td> -->
 				                                            <td>{{ p.number }}</td>  
 				                                            <td>{{ p.contactType }}</td> 
 				                                            <td><a href ng-click="cFormCtrl.showPhoneModal(p)"><span class="badge bg-red">editar</span></a></td>
+				                                            <td><a href ng-click="cFormCtrl.deleteTelephone(p)"><span class="glyphicon glyphicon-trash text-danger"></span></a></td>
 				                                        </tr>
 				                                    </table>				                                      
 				                              </div>
@@ -179,18 +186,20 @@
 					      <div class="modal-body">
 						        <form>
 						        	<div class="row">
-							          <div class="form-group col-md-2">
-							            <label class="control-label">ID:</label>
-							            <input type="text" class="form-control" readonly="readonly" ng-model="cFormCtrl.phone.id" >
-							          </div> 
+<!-- 							          <div class="form-group col-md-2"> -->
+<!-- 							            <label class="control-label">ID:</label> -->
+<!-- 							            <input type="text" class="form-control" readonly="readonly" ng-model="cFormCtrl.phone.id" > -->
+<!-- 							          </div>  -->
 							          <div class="form-group col-md-4">
 							            <label class="control-label">Numero:</label>
 							            <input type="text" class="form-control" ng-model="cFormCtrl.phone.number" >
 							          </div>					 		          
 							          <div class="form-group col-md-4">
 							            <label class="control-label">Tipo:</label>
-							            <input type="text" class="form-control" ng-model="cFormCtrl.phone.contactType" >
-							          </div>
+										<select ng-model="cFormCtrl.phone.contactType" class="form-control"
+												ng-options="ct.type as ct.type for ct in cFormCtrl.contactTypes">
+										</select>	                                 
+							          </div>							          
 							        </div>
 						        </form>
 					      </div>

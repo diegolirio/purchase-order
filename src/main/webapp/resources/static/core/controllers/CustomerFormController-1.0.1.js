@@ -5,7 +5,16 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
                                           function($routeParams, CustomerService, AddressService, StateService, TelephoneService) {
 	
 	var self = this;
-	 
+
+	self.message = "Gravado com sucesso";
+	
+	self.contactTypes = [{"type": "COMERCIAL"},
+	                     {"type": "CELULAR"}, 
+	                     {"type": "FAX"},
+	                     {"type": "TELEFAXFAX"},
+	                     {"type": "RESIDENCIAL"},
+	                     {"type": "OUTRO"},]
+	
 	var init = function() {
 		if($routeParams.id > 0) {
 			// Busca cliente por id
@@ -105,7 +114,15 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 			self.phone = {};
 			self.phone.id = 0;
 		} else {
+			
 			self.phone = phone;
+	
+			for(var i = 0; i <= self.contactTypes.length-1; i++) { 
+				if(self.contactTypes[i].type == self.phone.contactType) {
+					self.phone.contactType = self.contactTypes[i].type;
+				}
+			}
+			
 		}
 		$('#idPhoneModal').modal('show');
 	};	
@@ -138,11 +155,26 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 	 */
 	self.deleteAddress = function(address) {
 		var _confirm = confirm("Deseja Excluir endereço ?");
-		if(_confirm == true)
+		if(_confirm == false)
 			return; 
 		AddressService.deleteAddress(address).then(function(resp) {
 			var index = self.addresses.indexOf(address);
-			address.splice(index, 1);
+			self.addresses.splice(index, 1);
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
+	};
+	
+	/**
+	 * delete telephone or desactive
+	 */
+	self.deleteTelephone = function(telephone) {
+		var _confirm = confirm("Deseja Excluir telefone ?");
+		if(_confirm == false)
+			return; 
+		TelephoneService.deleteTelephone(telephone).then(function(resp) {
+			var index = self.phones.indexOf(telephone);
+			self.phones.splice(index, 1);
 		}, function(error) {
 			alert(JSON.stringify(error));
 		});

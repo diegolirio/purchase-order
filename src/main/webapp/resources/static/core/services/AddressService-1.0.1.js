@@ -35,7 +35,7 @@ app.factory('AddressService', ['$http', function($http) {
 	 * delete or desactive
 	 */
 	var _deleteAddress = function(address) {
-		$http.post(serverURL('/delete/'+address.id));
+		return $http.post(serverURL('/delete/'+address.id));
 	};
 	
 	return {
@@ -44,7 +44,9 @@ app.factory('AddressService', ['$http', function($http) {
 		
 		save : _save,
 		
-		saveParams : _saveParams
+		saveParams : _saveParams,
+		
+		deleteAddress : _deleteAddress
 		
 	};
 	
