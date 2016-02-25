@@ -66,6 +66,20 @@ public class AddressController {
 		}
 	}
 	
-	
+	/**
+	 * delete or desactive
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.POST, produces="application/json")
+	public ResponseEntity<String> delete(@PathVariable("id") long id) {
+		try {
+			this.addressService.delete(id);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 }

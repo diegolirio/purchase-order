@@ -133,6 +133,21 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 		});
 	};		
 	
+	/**
+	 * delete address or desactive
+	 */
+	self.deleteAddress = function(address) {
+		var _confirm = confirm("Deseja Excluir endereço ?");
+		if(_confirm == true)
+			return; 
+		AddressService.deleteAddress(address).then(function(resp) {
+			var index = self.addresses.indexOf(address);
+			address.splice(index, 1);
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
+	};
+	
 	init();
 	
 }]);

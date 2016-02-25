@@ -11,6 +11,6 @@ import com.diegolirio.purchaseorder.models.People;
 @Repository
 public interface AddressRepositorie extends CrudRepository<Address, Long> {
 
-	public List<Address> findByPeople(People people);
+	public List<Address> findByPeopleAndActive(People people, boolean active);
 
 }

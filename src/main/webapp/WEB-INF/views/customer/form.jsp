@@ -15,10 +15,10 @@
 				                              <div class="panel-body">
 													<form role="form" ng-submit="cFormCtrl.save(cFormCtrl.customer)">
 					                                      <div class="row">
-						                                      <div class="col-md-1 form-group">
-						                                          <label class="text-danger">ID</label>
-						                                          <input type="text" class="form-control" readonly="readonly" ng-model="cFormCtrl.customer.id">
-						                                      </div>
+<!-- 						                                      <div class="col-md-1 form-group"> -->
+<!-- 						                                          <label class="text-danger">ID</label> -->
+<!-- 						                                          <input type="text" class="form-control" readonly="readonly" ng-model="cFormCtrl.customer.id"> -->
+<!-- 						                                      </div> -->
 						                                      <div class="col-md-2 form-group">
 						                                          <label class="text-danger">CNPJ</label>
 						                                          <input type="text" class="form-control" ng-model="cFormCtrl.customer.cpfCnpj">
@@ -54,22 +54,24 @@
 				                              	  <div class="row">
 				                                    <table class="table table-bordered">
 				                                        <tr class="text-danger">
-				                                            <th class="text-center" style="width: 10px">#</th>
+<!-- 				                                            <th class="text-center" style="width: 10px">#</th> -->
 				                                            <th class="text-center">Logradouro</th>
 				                                            <th class="text-center">Numero</th>
 				                                            <th class="text-center">Bairro</th>
 				                                            <th class="text-center">Cidade</th>
 				                                            <th class="text-center">Estado</th>
 				                                            <th class="text-center" style="width: 10px">editar</th>
+				                                            <th class="text-center" style="width: 10px"></th>
 				                                        </tr>
 				                                        <tr ng-repeat="a in cFormCtrl.addresses">
-				                                            <td>{{ a.id }}</td>
+<!-- 				                                            <td>{{ a.id }}</td> -->
 				                                            <td>{{ a.publicPlace }}</td> 
 				                                            <td>{{ a.number }}</td> 
 				                                            <td>{{ a.neighborhood }}</td>
 				                                            <td>{{ a.city }}</td>
 				                                            <td>{{ a.state.abbreviation }}</td>
 				                                            <td><a href ng-click="cFormCtrl.showAddressModal(a)"><span class="badge bg-red">editar</span></a></td>
+				                                            <td><a href ng-click="cFormCtrl.deleteAddress(a)"><span class="glyphicon glyphicon-trash text-danger"></span></a></td>
 				                                        </tr>
 				                                    </table>			                                      		                                      		                                 
 			                              	  
@@ -86,13 +88,13 @@
 			                                      <br/><br/> 	
 				                                    <table class="table table-bordered">
 				                                        <tr class="text-danger">
-				                                            <th class="text-center" style="width: 10px">#</th>
+<!-- 				                                            <th class="text-center" style="width: 10px">#</th> -->
 				                                            <th class="text-center">Numero</th>
 				                                            <th class="text-center">Tipo</th>
 				                                            <th class="text-center" style="width: 10px">editar</th>
 				                                        </tr>
 				                                        <tr ng-repeat="p in cFormCtrl.phones">
-				                                            <td>{{ p.id }}</td>
+<!-- 				                                            <td>{{ p.id }}</td> -->
 				                                            <td>{{ p.number }}</td>  
 				                                            <td>{{ p.contactType }}</td> 
 				                                            <td><a href ng-click="cFormCtrl.showPhoneModal(p)"><span class="badge bg-red">editar</span></a></td>

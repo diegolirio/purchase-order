@@ -31,6 +31,13 @@ app.factory('AddressService', ['$http', function($http) {
 		return $http.post(serverURL('/saveParams')+params);
 	};
 	
+	/**
+	 * delete or desactive
+	 */
+	var _deleteAddress = function(address) {
+		$http.post(serverURL('/delete/'+address.id));
+	};
+	
 	return {
 		
 		getListByPeople : _getListByPeople,

@@ -326,7 +326,7 @@
 		<!--------- Services ----------------> 
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/CustomerService-1.0.0.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/static/core/services/AddressService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/AddressService-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/TelephoneService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/ProductService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/StateService-1.0.0.js"></script>
@@ -336,7 +336,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderFormController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderEditController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerListController-1.0.0.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerFormController-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerFormController-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductListController-1.0.0.js"></script>
 		<!-- ########################## End AngularJS ####################################################################### -->
         

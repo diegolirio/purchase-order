@@ -9,20 +9,22 @@ import javax.persistence.ManyToOne;
 public class Address {
 	
 	@Id @GeneratedValue
-	public Long id;
+	private Long id;
 	
-	public String cep;
+	private String cep;
 	
-	public String publicPlace; // logradouro
-	public int number;
-	public String neighborhood; // Bairro
-	public String city;
-	
-	@ManyToOne
-	public State state;
+	private String publicPlace; // logradouro
+	private int number;
+	private String neighborhood; // Bairro
+	private String city;
 	
 	@ManyToOne
-	public People people;
+	private State state;
+	
+	@ManyToOne
+	private People people;
+	
+	private boolean active = true;
 
 	public Long getId() {
 		return id;
@@ -88,6 +90,27 @@ public class Address {
 		this.people = people;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+
+	public static Address getNewInstance(Address address) {
+		Address a = new Address();
+		a.setCep(address.getCep());
+		a.setCity(address.getCity());
+		a.setNeighborhood(address.getNeighborhood());
+		a.setNumber(address.getNumber());
+		a.setPeople(address.getPeople());
+		a.setPublicPlace(address.getPublicPlace());
+		a.setState(address.getState());
+		return a;
+	}
+	
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", cep=" + cep + ", publicPlace="
@@ -95,9 +118,5 @@ public class Address {
 				+ neighborhood + ", city=" + city + ", state=" + state
 				+ ", people=" + people + "]";
 	}
-
-	
-	
-	
 
 }
