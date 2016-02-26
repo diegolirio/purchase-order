@@ -18,7 +18,7 @@ public class Telephone {
 	@ManyToOne
 	private People people;
 
-	private boolean active;
+	private boolean active = true;
 	
 	public Long getId() {
 		return id;

@@ -71,7 +71,7 @@
 		                        <input ng-model="ulCtrl.user.login" class="form-control" placeholder="Login"/>
 		                    </div>
 		                    <div class="form-group">
-		                        <input ng-model="ulCtrl.user.password" class="form-control" placeholder="Senha"/>
+		                        <input ng-model="ulCtrl.user.password" type="password" class="form-control" placeholder="Senha"/>
 		                    </div>          
 <!-- 		                    <div class="form-group"> -->
 <!-- 		                        <input type="checkbox" name="remember_me"/> Lembrar me -->

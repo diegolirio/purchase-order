@@ -8,7 +8,7 @@ app.factory('UserLoginService', ['$http', function($http) {
 	};
 	
 	var _login = function(user) {
-		return $http.post(SERVER_APP+'/user/login', user);
+		return $http.post(SERVER_APP+'/user/login/temp?login='+user.login+'&password='+user.password);  
 	};
 	
 	/*
