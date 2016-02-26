@@ -14,7 +14,7 @@
 						                <div class="input-group col-md-4">
 						                    <input ng-model="cListCtrl.fieldSearch" type="search" class="form-control input-lg" placeholder="pesquisar..." />
 						                    <span class="input-group-btn">
-						                        <button class="btn btn-default btn-lg" type="button">
+						                        <button class="btn btn-default btn-lg" >
 						                            <i class="glyphicon glyphicon-search"></i>
 						                        </button>
 						                    </span>

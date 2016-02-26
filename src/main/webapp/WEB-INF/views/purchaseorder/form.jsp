@@ -162,15 +162,15 @@
 				                              <div class="panel-body">
 				                              	  <form role="form" name="formProduct" ng-submit="poFormCtrl.addOrderProduct(poFormCtrl.orderProduct)" >
 				                                      <div class="col-md-1 form-group">
-				                                          <label >Cod. <span ng-show="poFormCtrl.productOK == true" class="glyphicon glyphicon-ok text-success"></span> </label>
+				                                          <label class="text-success">Cod. <span ng-show="poFormCtrl.productOK == true" class="glyphicon glyphicon-ok text-success"></span> </label>
 				                                          <input required="required" class="form-control" ng-model="poFormCtrl.orderProduct.product.code" ng-blur="poFormCtrl.findProductByCode(poFormCtrl.orderProduct.product.code)">
 				                                      </div>
-				                                      <div class="col-md-7 form-group">
-				                                          <label >Descrição</label>
+				                                      <div class="form-group col-md-7">
+				                                          <label class="text-success">Descrição &nbsp;&nbsp;<a href ng-click="poFormCtrl.showModalSearchProduct(poFormCtrl.orderProduct.product.description)" class="text-right"><span class="glyphicon glyphicon-search"></span></a> </label>
 				                                          <input required="required" class="form-control" ng-model="poFormCtrl.orderProduct.product.description">
 				                                      </div>
 				                                      <div class="col-md-2 form-group">
-				                                          <label >Quantidade</label>
+				                                          <label class="text-success">Quantidade</label>
 				                                          <input required="required" type="text" class="form-control" ng-model="poFormCtrl.orderProduct.amount">
 				                                      </div>
 				                                      <br/>
@@ -382,6 +382,50 @@
 					  </div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->                    
                     
+					<!-- #### Modal Search Product #### -->
+					<div class="modal fade" id="idSearchProductModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+					  <div class="modal-dialog modal-lg" role="document">
+					    <div class="modal-content"> 
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title">Pesquisa de Produtos</h4>
+					      </div>
+					      <div class="modal-body">
+
+							        <form ng-submit="poFormCtrl.findProductByCodeOrDescription(poFormCtrl.productSearch)">
+						                <div class="input-group col-md-12">
+						                    <input ng-model="poFormCtrl.productSearch" type="search" class="form-control input-lg" placeholder="pesquisar..." />
+						                    <span class="input-group-btn">
+						                        <button class="btn btn-default btn-lg">
+						                            <i class="glyphicon glyphicon-search"></i>
+						                        </button>
+						                    </span>
+						                </div> 
+							        </form>  
+							        <br/>
+								    <table class="table table-bordered">
+                                       <tr>
+                                           <th class="text-center" style="width: 50px">Código</th>
+                                           <th class="text-center">Descrição</th>
+                                           <th class="text-center">Valor</th>
+                                           <th class="text-center" style="width:40px"></th>
+                                       </tr>
+                                       <tr ng-repeat="p in poFormCtrl.products">
+                                           <td class="text-center">{{ p.code }}</td>
+                                           <td>{{ p.description }}</td>
+                                           <td class="text-right">{{ p.valueUnit | currency }}</td>
+                                           <td><a href ng-click="poFormCtrl.selectedProduct(p)" ><span class="glyphicon glyphicon-ok text-success"></span></a></td>
+                                       </tr>
+    	                            </table>
+
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					      </div>
+					    </div><!-- /.modal-content -->
+					  </div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->                    
+                    
 					<!-- #### Modal Product #### -->
 					<div class="modal fade" id="idSearchCustomerModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
 					  <div class="modal-dialog modal-lg" role="document">
@@ -423,4 +467,5 @@
 					    </div><!-- /.modal-content -->
 					  </div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->                    
+                
                 </section><!-- /.content -->

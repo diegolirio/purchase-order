@@ -330,7 +330,7 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 	 */
 	self.addOrderProduct = function(orderProduct) {
 		if (self.productOK == false) {
-			alert('Digite o produto');
+			alert('Digite um produto válido');
 			return;
 		}
 		if (orderProduct.amount <= 0 || orderProduct.amount == undefined) { 
@@ -366,21 +366,52 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 	 * busca produto por codigo
 	 */
 	self.findProductByCode = function(code) {
+		if(code == undefined || code == "" || code == null) return;
 		ProductService.getByCode(code).then(function(resp) {
-			self.orderProduct = {};
-			self.orderProduct.product = resp.data;
 			if(self.orderProduct.product.id > 0) {
+				self.orderProduct = {};
+				self.orderProduct.product = resp.data;
 				self.productOK = true;
 			} else {
 				self.productOK = false;
+				alert('Não existe produto com este codigo'); 
 				$('#idProductModal').modal('show');
-				self.product = {};
+				self.product = {}; 
 				self.product.code = code;
 			}
 		}, function(error) {
 			self.productOK = false;
 			alert(JSON.stringify(error));
 		});
+	};
+	
+	/**
+	 * Show Modal search product
+	 */
+	self.showModalSearchProduct = function() {
+		$('#idSearchProductModal').modal('show');
+	};
+	
+	/**
+	 * Search product by code or description
+	 */
+	self.findProductByCodeOrDescription = function(codeOrDescription) {
+		ProductService.getByCodeOrDescription(codeOrDescription, codeOrDescription).then(function(resp) {
+			self.products = resp.data;
+		}, function(error) {
+			alert(error.data);
+		});
+	};
+	
+	/**
+	 * Seleciona produto para adiciona-lo e fecha o modal
+	 */
+	self.selectedProduct = function(product) {
+		self.orderProduct = {};
+		self.orderProduct.product = product;
+		$('#idSearchProductModal').modal('hide');
+		self.productOK = true;
+		self.products = [];		
 	};
 	
 	/**

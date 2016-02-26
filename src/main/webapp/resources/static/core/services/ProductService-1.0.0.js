@@ -22,6 +22,13 @@ app.factory('ProductService', ['$http', function($http) {
 	};	
 	
 	/**
+	 * busca por code ou descricao
+	 */
+	var _getByCodeOrDescription = function(code, description) {
+		return $http.get(serverURL('/get/by/code/'+code+'/or/description/'+description));
+	};
+	
+	/**
 	 * salvar produto
 	 */
 	var _save = function(product) {
@@ -42,6 +49,8 @@ app.factory('ProductService', ['$http', function($http) {
 		getAll : _getAll,
 		
 		getByCode : _getByCode,
+	
+		getByCodeOrDescription : _getByCodeOrDescription,
 		
 		save : _save,
 		

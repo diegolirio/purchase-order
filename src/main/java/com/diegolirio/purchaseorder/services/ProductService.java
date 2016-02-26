@@ -1,5 +1,7 @@
 package com.diegolirio.purchaseorder.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,10 @@ public class ProductService {
 
 	public Product getByCode(String code) {
 		return this.productRepositorie.findByCode(code);
+	}
+
+	public List<Product> getByCodeOrDescription(String code, String description) {
+		return this.productRepositorie.findByCodeContainingOrDescriptionContainingIgnoreCase(code, description);
 	}
 
 	

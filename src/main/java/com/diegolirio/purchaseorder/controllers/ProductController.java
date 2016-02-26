@@ -1,5 +1,7 @@
 package com.diegolirio.purchaseorder.controllers;
 
+import java.util.List;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,6 +61,23 @@ public class ProductController {
 		try {
 			Product product = this.productService.getByCode(code);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(product), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	/**
+	 * pesquisa produto por codigo or descricao
+	 * @param code
+	 * @param description
+	 * @return
+	 */
+	@RequestMapping(value="/get/by/code/{code}/or/description/{description}", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
+	public ResponseEntity<String> getByCodeOrDescription(@PathVariable("code") String code, @PathVariable("description") String description) {
+		try {
+			List<Product> products = this.productService.getByCodeOrDescription(code, description);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(products), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
