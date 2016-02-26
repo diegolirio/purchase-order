@@ -57,6 +57,9 @@ public class PurchaseOrder {
 	@Column(name = "status", columnDefinition= "varchar(20) default 'pending'")
 	private StatusType status = StatusType.pending;
 	
+	@ManyToOne //@Column(nullable=false)
+	private User userCreated;
+	
 	public PurchaseOrder() {}
 	
 	public PurchaseOrder(Long id) {
@@ -151,6 +154,14 @@ public class PurchaseOrder {
 		this.status = status;
 	}	
 	
+	public User getUserCreated() {
+		return userCreated;
+	}
+
+	public void setUserCreated(User userCreated) {
+		this.userCreated = userCreated;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", emissionDate=" + emissionDate
