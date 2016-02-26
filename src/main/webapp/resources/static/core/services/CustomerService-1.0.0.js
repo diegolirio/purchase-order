@@ -50,6 +50,13 @@ app.factory('CustomerService', ['$http', function($http) {
 		return $http.get(serverURL('/find/by/cpfCnpj/'+cpfCnpj+'/or/name/'+name));
 	};
 	 
+	/**
+	 * Busca avancada
+	 */
+	var _findAdvanced = function(fieldSearch) {
+		return $http.get(serverURL('/findAdvanced/'+fieldSearch));
+	};
+	
 	return {
 		
 		get : _get,
@@ -62,7 +69,9 @@ app.factory('CustomerService', ['$http', function($http) {
 
 		saveParams : _saveParams,
 		
-		findByCpfCnpjOrName : _findByCpfCnpjOrName
+		findByCpfCnpjOrName : _findByCpfCnpjOrName,
+		
+		findAdvanced : _findAdvanced
 		
 	};
 	

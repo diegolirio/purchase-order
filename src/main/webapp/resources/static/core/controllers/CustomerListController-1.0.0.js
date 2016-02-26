@@ -11,6 +11,18 @@ app.controller('CustomerListController', ['CustomerService', function(CustomerSe
 		});
 	};
 	
+	/**
+	 * Busca avanacada dos clientes
+	 */
+	self.findCustomerAdvanced = function(fieldSearch) {
+		CustomerService.findAdvanced(fieldSearch).then(function(resp) {
+			self.customers = resp.data;
+			console.log(self.customers);
+		}, function(error) {
+			alert(error.data);
+		});
+	};
+	
 	init();
 	
 }]);

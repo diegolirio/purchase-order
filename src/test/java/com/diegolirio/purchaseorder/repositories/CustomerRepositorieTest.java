@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.diegolirio.purchaseorder.builder.CustomerBuilder;
 import com.diegolirio.purchaseorder.builder.CustomerBuilderTest;
 import com.diegolirio.purchaseorder.models.Customer;
 
@@ -97,6 +98,38 @@ public class CustomerRepositorieTest {
 		System.out.println(customersFind.size());
 		Assert.assertNotNull(customersFind);
 		Assert.assertTrue(customersFind.size() > 0);
+	}
+	
+	@Test
+	public void testFindAdvanced() {
+		Customer customer1 = new CustomerBuilder()
+									.withCpfCnpj("9999")
+									.withEmail("9@9.com")
+									.withName("9099")
+									.withSignUpState("1919000")
+									.build();
+		customer = customerRepositorie.save(customer1);
+		// busca no cnpj ok
+		String fieldSerch = "999";
+		List<Customer> list = this.customerRepositorie.findByCpfCnpjContainingOrNameContainingOrEmailContainingOrSignUpStateContainingIgnoreCase(fieldSerch, fieldSerch, fieldSerch, fieldSerch);
+		Assert.assertNotNull(list);
+		Assert.assertTrue(list.size() > 0);
+		// busca no email
+		fieldSerch = "@9";
+		list = this.customerRepositorie.findByCpfCnpjContainingOrNameContainingOrEmailContainingOrSignUpStateContainingIgnoreCase(fieldSerch, fieldSerch, fieldSerch, fieldSerch);
+		Assert.assertNotNull(list);
+		Assert.assertTrue(list.size() > 0);
+		// busca no name
+		fieldSerch = "09";
+		list = this.customerRepositorie.findByCpfCnpjContainingOrNameContainingOrEmailContainingOrSignUpStateContainingIgnoreCase(fieldSerch, fieldSerch, fieldSerch, fieldSerch);
+		Assert.assertNotNull(list);
+		Assert.assertTrue(list.size() > 0);
+		// busca no singUp
+		fieldSerch = "919";
+		list = this.customerRepositorie.findByCpfCnpjContainingOrNameContainingOrEmailContainingOrSignUpStateContainingIgnoreCase(fieldSerch, fieldSerch, fieldSerch, fieldSerch);
+		Assert.assertNotNull(list);
+		Assert.assertTrue(list.size() > 0);
+		
 	}
 	
 }

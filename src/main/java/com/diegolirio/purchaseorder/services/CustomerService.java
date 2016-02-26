@@ -35,6 +35,13 @@ public class CustomerService {
 		return this.customerRepositorie.findByCpfCnpjContainingOrNameContainingIgnoreCase(cpfCnpj, name);
 	}
 
+	public List<Customer> findAdvanced(String fieldSearch) {
+		return 
+		   this
+			.customerRepositorie
+			.findByCpfCnpjContainingOrNameContainingOrEmailContainingOrSignUpStateContainingIgnoreCase(fieldSearch, fieldSearch, fieldSearch, fieldSearch);
+	}
+
 	
 	
 }

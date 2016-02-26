@@ -96,8 +96,23 @@ public class CustomerController {
 	@RequestMapping(value="/find/by/cpfCnpj/{cpfCnpj}/or/name/{name}", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
 	public ResponseEntity<String> findByCpfCnpjOrName(@PathVariable("cpfCnpj") String cpfCnpj, @PathVariable("name") String name) {
 		try {
-			System.out.println(cpfCnpj + " - " + name);
 			List<Customer> list = this.customerService.findByCpfCnpjContainingOrNameContainingIgnoreCase(cpfCnpj, name);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	/**
+	 * find advanced
+	 * @param fieldSearch
+	 * @return list of customer
+	 */
+	@RequestMapping(value="/findAdvanced/{fieldSearch}", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
+	public ResponseEntity<String> findAdvanced(@PathVariable("fieldSearch") String fieldSearch) {
+		try {
+			List<Customer> list = this.customerService.findAdvanced(fieldSearch); 
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
