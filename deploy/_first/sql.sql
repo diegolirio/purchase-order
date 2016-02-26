@@ -4,3 +4,6 @@ insert into State(abbreviation, name)values('RJ', 'Rio de Janeiro');
 insert into State(abbreviation, name)values('ES', 'Espirito Santo');
 insert into State(abbreviation, name)values('BA', 'Bahia');
 
+
+insert into User(active, createdDate, email, name, login, password) 
+values(true, now(), 'admin@admin.com', 'Admin', 'admin', 'admin@2016');

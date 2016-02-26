@@ -6,8 +6,9 @@ var app = angular.module('app', ['ngRoute']);
 
 var SERVER_APP = '/pedido';
 
-app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
-	
+app.config(['$routeProvider', '$httpProvider', 
+            function($routeProvider, $httpProvider) {
+	  
 	$routeProvider
 		.when('/',           { templateUrl: SERVER_APP + '/purchaseorder/page/list'})//{ templateUrl: SERVER_APP + '/home'})
 		.when('/pedidos',    { templateUrl: SERVER_APP + '/purchaseorder/page/list'})
@@ -27,6 +28,7 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpPro
     /* ******************** Loading Gif ******************** */ 
     var spinnerFunction = function (data) {
             $('#spinner').show();
+    		//$rootScope.spinnerVisibled = true;
             return data; 
     };      
     $httpProvider.defaults.transformRequest.push(spinnerFunction); 		
@@ -36,16 +38,19 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpPro
 
  
 
-app.factory('HttpInterceptor',['$q', function($q) { 
+app.factory('HttpInterceptor',['$q', 
+                              function($q) { 
 	/********************************************************************************************
      * Tratamento do retorno do response(ajax)...
 	 ********************************************************************************************/	  	
 	return function (promise) { 
 		return promise.then(function (resp) {
-			$('#spinner').hide();  
+			$('#spinner').hide();
+			//$rootScope.spinnerVisibled = true;
 			return resp;
 		}, function (errorResp) {
 			$('#spinner').hide();
+			//$rootScope.spinnerVisibled = true;
 			return $q.reject(errorResp);
 		});
 	};

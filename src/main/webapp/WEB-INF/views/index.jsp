@@ -24,9 +24,20 @@
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]--> 
+        <![endif]-->
+        
+        <!-- spinner loading -->
+        <link href="${pageContext.request.contextPath}/resources/static/css/spinner.css" rel="stylesheet" type="text/css" />
+         
     </head>
-    <body class="skin-black">
+    <body class="skin-black">  
+    
+    
+		<div id="spinner" class="spinner" style="display:none;"> 
+	         <img id="img-spinner" src="${pageContext.request.contextPath}/resources/static/img/295.gif" alt="Aguarde..."/> <br/>
+	    </div>  	
+    
+    
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="${pageContext.request.contextPath }" class="logo">
@@ -249,6 +260,7 @@
                         <div class="pull-left image">
                             <img src="${pageContext.request.contextPath}/resources/static/director-free/img/sem_avatar.png" class="img-circle" alt="User Image" />
                         </div>
+                        
                         <div class="pull-left info">
                             <p>Olá, Diego</p>
 <!--                             <a href=><i class="fa fa-circle text-success"></i> Online</a> -->
