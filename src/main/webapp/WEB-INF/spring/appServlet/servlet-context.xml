@@ -11,6 +11,10 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
+	<interceptors>
+		<beans:bean class="com.diegolirio.purchaseorder.interceptor.AuthorizerInterceptor" />
+	</interceptors>
+
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 

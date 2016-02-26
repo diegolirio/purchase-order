@@ -260,6 +260,7 @@
                         <div class="pull-left image">
                             <img src="${pageContext.request.contextPath}/resources/static/director-free/img/sem_avatar.png" class="img-circle" alt="User Image" />
                         </div>
+                        
                         <div class="pull-left info">
                             <p>Olá, Diego</p>
 <!--                             <a href=><i class="fa fa-circle text-success"></i> Online</a> -->
