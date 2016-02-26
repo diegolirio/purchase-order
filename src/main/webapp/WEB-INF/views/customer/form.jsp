@@ -10,6 +10,7 @@
                                 
                                 
                                 		<div class="alert alert-success" role="alert" ng-show="cFormCtrl.message != null" ng-click="cFormCtrl.message = null">
+                                			<button type="button" class="close" ng-click="cFormCtrl.message = null"><span aria-hidden="true">&times;</span></button>
 											{{ cFormCtrl.message }}
 										</div>
                                 

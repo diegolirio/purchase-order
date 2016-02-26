@@ -6,7 +6,8 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 	
 	var self = this;
 
-	self.message = "Gravado com sucesso";
+	self.message = null;
+	self.messageError = null;
 	
 	self.contactTypes = [{"type": "COMERCIAL"},
 	                     {"type": "CELULAR"}, 
@@ -56,11 +57,12 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 	 * Salvar Cliente
 	 */ 
 	self.save = function(customer) {
-		console.log(customer);
 		CustomerService.saveParams(customer).then(function(resp) {
 			self.customer = resp.data;
+			self.message = "Gravado com sucesso!";
 		}, function(error) {
-			alert(JSON.stringify(error));
+			self.messageError = JSON.stringify(error);
+			alert(error.data);
 		});
 	};
 	
@@ -93,16 +95,19 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 		// Salvar endereco
 		AddressService.saveParams(address).then(function(resp) {
 			$('#idAddressModal').modal('hide');
+			self.message = "Endereço gravado com sucesso!";
 			return resp;
 		}).then(function(respAddress) {
 			// Apos salvar endereco recarrega a lista dos mesmos
 			AddressService.getListByPeople(respAddress.data.people).then(function(resp) {
 				self.addresses = resp.data;
 			}, function(error) {
-				alert(JSON.stringify(error));
+				self.messageError = JSON.stringify(error);
+				alert(error.data);
 			});
 		}, function(error) {
-			alert(JSON.stringify(error));
+			self.messageError = JSON.stringify(error);
+			alert(error.data);
 		});
 	};	
 	
@@ -137,16 +142,19 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 		// Salvar endereco
 		TelephoneService.saveParams(phone).then(function(resp) {
 			$('#idPhoneModal').modal('hide');
+			self.message = "Telefone gravado com sucesso";
 			return resp;
 		}).then(function(respPhone) {
 			// Apos salvar endereco recarrega a lista dos mesmos
 			TelephoneService.getListByPeople(respPhone.data.people).then(function(resp) {
 				self.phones = resp.data;
 			}, function(error) {
-				alert(JSON.stringify(error));
+				self.messageError = JSON.stringify(error);
+				alert(error.data);
 			});
 		}, function(error) {
-			alert(JSON.stringify(error));
+			self.messageError = JSON.stringify(error);
+			alert(error.data);
 		});
 	};		
 	
@@ -160,8 +168,10 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 		AddressService.deleteAddress(address).then(function(resp) {
 			var index = self.addresses.indexOf(address);
 			self.addresses.splice(index, 1);
+			self.message = "Endereço excluido com sucesso";
 		}, function(error) {
-			alert(JSON.stringify(error));
+			self.messageError = JSON.stringify(error);
+			alert(error.data);
 		});
 	};
 	
@@ -175,8 +185,10 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 		TelephoneService.deleteTelephone(telephone).then(function(resp) {
 			var index = self.phones.indexOf(telephone);
 			self.phones.splice(index, 1);
+			self.message = "Telefone excluido com sucesso!";
 		}, function(error) {
-			alert(JSON.stringify(error));
+			self.messageError = JSON.stringify(error);
+			alert(error.data);
 		});
 	};
 	
