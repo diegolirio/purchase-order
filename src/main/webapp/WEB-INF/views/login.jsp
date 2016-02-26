@@ -100,7 +100,7 @@
 		<!--------- rotas e config da app angular ------------------->
 		<script src="${pageContext.request.contextPath}/resources/static/core/app-1.0.0.js"></script>  
 		<!--------- Services ----------------> 
-		<script src="${pageContext.request.contextPath}/resources/static/core/services/UserService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/UserLoginService-1.0.0.js"></script>
 		<!--------- Controllers ------------->
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/UserLoginController-1.0.0.js"></script>
 		<!-- ########################## End AngularJS ####################################################################### -->

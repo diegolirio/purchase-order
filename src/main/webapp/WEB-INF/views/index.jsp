@@ -30,7 +30,7 @@
         <link href="${pageContext.request.contextPath}/resources/static/css/spinner.css" rel="stylesheet" type="text/css" />
          
     </head>
-    <body class="skin-black">  
+    <body class="skin-black" ng-controller="UserSessionController as userSessionCtrl">  
     
     
 		<div id="spinner" class="spinner" style="display:none;"> 
@@ -207,7 +207,7 @@
 
                             <a href class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user"></i>
-                                <span>Diego Lirio <i class="caret"></i></span>
+                                <span>{{ userSessionCtrl.userLogged.name }} <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                                 <li class="dropdown-header text-center">Account</li>
@@ -241,7 +241,7 @@
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href=><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+                                    <a href ng-click="userSessionCtrl.logout()"><i class="fa fa-ban fa-fw pull-right"></i> Sair</a>
                                 </li>
                             </ul>
 
@@ -262,7 +262,7 @@
                         </div>
                         
                         <div class="pull-left info">
-                            <p>Olá, Diego</p>
+                            <p>Olá, {{userSessionCtrl.userLogged.name}}</p>
 <!--                             <a href=><i class="fa fa-circle text-success"></i> Online</a> -->
                         </div>
                     </div>
@@ -336,6 +336,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/common/StringCommon-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/common/DateCommon-1.0.0.js"></script>
 		<!--------- Services ----------------> 
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/UserLoginService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/CustomerService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/AddressService-1.0.1.js"></script>
@@ -343,7 +344,8 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/ProductService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/StateService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/OrdersProductsService-1.0.0.js"></script>
-		<!--------- Controllers ------------->
+		<!--------- Controllers -------------> 
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/UserSessionController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderFormController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderEditController-1.0.0.js"></script>
