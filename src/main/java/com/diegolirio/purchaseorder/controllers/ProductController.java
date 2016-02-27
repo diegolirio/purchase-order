@@ -31,6 +31,11 @@ public class ProductController {
 		return "product/list";
 	}
 	
+	@RequestMapping(value="/page/form")
+	public String pageFOrm() {
+		return "product/form";
+	}
+	
 	/*
 	 * restFull
 	 */

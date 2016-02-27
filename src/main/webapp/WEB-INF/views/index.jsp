@@ -352,8 +352,9 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerListController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerFormController-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductListController-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductFormController-1.0.0.js"></script> 
 		<!-- ########################## End AngularJS ####################################################################### -->
-        
+         
 
 <!-- 		<script> -->
 <!--  			$(function() { -->
