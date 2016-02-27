@@ -342,6 +342,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/AddressService-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/TelephoneService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/ProductService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/ProductTypeService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/StateService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/OrdersProductsService-1.0.0.js"></script>
 		<!--------- Controllers -------------> 

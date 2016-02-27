@@ -10,7 +10,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class ProductUnit {
+public class ProductType {
 
 	@Id @GeneratedValue
 	private Long id;

@@ -23,7 +23,7 @@ public class Product {
 	private double valueUnit;
 	
 	@ManyToOne
-	private ProductUnit productUnit;
+	private ProductType productType;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="product")
@@ -61,12 +61,12 @@ public class Product {
 		this.valueUnit = valueUnit;
 	}
 
-	public ProductUnit getProductUnit() {
-		return productUnit;
+	public ProductType getProductType() {
+		return productType;
 	}
 
-	public void setProductUnit(ProductUnit productUnit) {
-		this.productUnit = productUnit;
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
 	}
 
 	public List<OrdersProducts> getOrdersProducts() {

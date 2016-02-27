@@ -40,8 +40,12 @@
 													          </div>							          
 													          <div class="form-group col-md-3">
 													            <label class="control-label">Tipo:</label>
-													            <input type="text" class="form-control" ng-model="poFormCtrl.product.valueUnit" >
+  					                                            <select class="form-control m-b-10" ng-model="poFormCtrl.product.productType" 
+							                                          		  ng-options="t.description for t in poFormCtrl.productTypes" 
+							                                          		  required="required"></select>
 													          </div>							          
+					                                      
+							                                      
 					                                      
 						                                      <br/>
 														  </div>

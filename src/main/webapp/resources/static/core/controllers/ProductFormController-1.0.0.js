@@ -1,8 +1,8 @@
 /**
  * 
  */
-app.controller('ProductFormController', ['$routeParams', 'ProductService', 
-                                          function($routeParams, ProductService) {
+app.controller('ProductFormController', ['$routeParams', 'ProductService', 'ProductTypeService', 
+                                          function($routeParams, ProductService, ProductTypeService) {
 	
 	var self = this;
 
@@ -11,26 +11,18 @@ app.controller('ProductFormController', ['$routeParams', 'ProductService',
 	
 	var init = function() {
 		if($routeParams.id > 0) {
-			ProductService.get($routeParams.id).then(function(resp) {
-				self.product = resp.data;
-				return resp;
-			}, function(error) {
-				alert(JSON.stringify(error));
-			});
+			 
 		}
+		
+		ProductTypeService.getAll().then(function(resp) {
+			self.productTypes = resp.data;
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
+		
 	};
 	
-	/**
-	 * Salvar Cliente
-	 */ 
-	self.save = function(product) {
-		ProductService.saveParams(product).then(function(resp) {
-			self.product = resp.data;
-			self.message = "Gravado com sucesso!";
-		}, function(error) {
-			self.messageError = JSON.stringify(error);
-			alert(error.data);
-		});
-	};
+	 
+	init();
 	
 }]);
