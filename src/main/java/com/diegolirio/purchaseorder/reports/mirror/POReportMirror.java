@@ -24,12 +24,19 @@ public class POReportMirror {
 		po.setCnpjSender(sender.getCpfCnpj());
 		po.setIeSender(sender.getSignUpState());
 		po.setAddressSender(purchaseOrder.getCustomerAddressSender().getPublicPlace());
+		po.setAddressNumberSender(purchaseOrder.getCustomerAddressSender().getNumber());
+		po.setNeighborhoodSender(purchaseOrder.getCustomerAddressSender().getNeighborhood());
+		po.setCitySender(purchaseOrder.getCustomerAddressSender().getCity());
+		po.setStateSender(purchaseOrder.getCustomerAddressSender().getState().getAbbreviation());
+		po.setCepSender(purchaseOrder.getCustomerAddressSender().getCep());
+
 		po.setPhoneSender(purchaseOrder.getPhoneSender());
 		// recipient
 		po.setNameRecipient(recipient.getName());
 		po.setCnpjRecipient(recipient.getCpfCnpj());
 		po.setIeRecipient(recipient.getSignUpState());
 		po.setAddressRecipient(purchaseOrder.getCustomerAddressRecipient().getPublicPlace());
+		po.setAddressNumberRecipient(purchaseOrder.getCustomerAddressRecipient().getNumber());
 		po.setNeighborhoodRecipient(purchaseOrder.getCustomerAddressRecipient().getNeighborhood());
 		po.setCityRecipient(purchaseOrder.getCustomerAddressRecipient().getCity());
 		po.setStateRecipient(purchaseOrder.getCustomerAddressRecipient().getState().getAbbreviation());

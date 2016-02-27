@@ -31,7 +31,6 @@ public class PurchaseOrderReportService implements ReportService {
 		PurchaseOrder purchaseOrder = (PurchaseOrder) object;
 		String path = this.getClass().getClassLoader().getResource("").getPath();
 		String pathToReportPackage = path + "com/diegolirio/purchaseorder/reports/";
-		System.out.println(pathToReportPackage);
 		JasperReport report = JasperCompileManager.compileReport(pathToReportPackage + "po.jrxml");
 		List<POReportMirror> list = this.toReportMirror(purchaseOrder.getOrdersProducts());
 		JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(list));
@@ -47,7 +46,6 @@ public class PurchaseOrderReportService implements ReportService {
 		for (OrdersProducts op : ordersProducts) {
 			POReportMirror mirror = new POReportMirror(op, sender, recipient);
 			list.add(mirror);
-			System.out.println(mirror);
 		}
 		return list;
 	}

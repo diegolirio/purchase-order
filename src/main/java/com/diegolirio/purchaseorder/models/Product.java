@@ -75,6 +75,13 @@ public class Product {
 
 	public void setOrdersProducts(List<OrdersProducts> ordersProducts) {
 		this.ordersProducts = ordersProducts;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", code=" + code + ", description="
+				+ description + ", valueUnit=" + valueUnit + ", productType="
+				+ productType + "]";
 	} 
 	
 	

@@ -32,6 +32,17 @@ public class ProductService {
 		return this.productRepositorie.findByCodeContainingOrDescriptionContainingIgnoreCase(code, description);
 	}
 
+	public Product get(long id) {
+		return this.productRepositorie.findOne(id);
+	}
+
+	public List<Product> findAdvanced(String fieldSearch) {
+		return 
+		   this
+			.productRepositorie
+			.findByCodeContainingOrDescriptionContainingIgnoreCase(fieldSearch, fieldSearch);
+	}
+
 	
 	
 }

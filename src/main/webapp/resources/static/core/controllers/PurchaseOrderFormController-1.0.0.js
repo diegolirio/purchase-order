@@ -2,10 +2,10 @@
  * 
  */
 app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'PurchaseOrderService', 'CustomerService', 
-                                               'AddressService', 'TelephoneService', 'ProductService',
+                                               'AddressService', 'TelephoneService', 'ProductService', 'ProductTypeService',
                                                'OrdersProductsService', 'StringCommon',
                                                function($routeParams, $location, PurchaseOrderService, CustomerService, 
-                                            		    AddressService, TelephoneService, ProductService,
+                                            		    AddressService, TelephoneService, ProductService, ProductTypeService,
                                             		    OrdersProductsService, StringCommon) {
 	
 	var self = this;
@@ -308,6 +308,11 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 	 * Show Modal Product
 	 */
 	self.showFormModalProduct = function() {
+		ProductTypeService.getAll().then(function(resp) {
+			self.productTypes = resp.data;
+		}, function(error) {
+			alert(JSON.stringify(error));
+		});
 		$('#idProductModal').modal('show');
 	};
 	

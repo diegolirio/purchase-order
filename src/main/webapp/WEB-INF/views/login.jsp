@@ -66,19 +66,19 @@
 					<h3 class="text-center">Login</h3>
 						
 		            <form ng-submit="ulCtrl.login(ulCtrl.user)">
-		                <div class="body bg-gray">
+		                <div class="body ">
 		                    <div class="form-group">
-		                        <input ng-model="ulCtrl.user.login" class="form-control" placeholder="Login"/>
+		                        <input ng-model="ulCtrl.user.login" class="form-control input-lg" placeholder="Login"/>
 		                    </div>
 		                    <div class="form-group">
-		                        <input ng-model="ulCtrl.user.password" type="password" class="form-control" placeholder="Senha"/>
+		                        <input ng-model="ulCtrl.user.password" type="password" class="form-control input-lg" placeholder="Senha"/>
 		                    </div>          
 <!-- 		                    <div class="form-group"> -->
 <!-- 		                        <input type="checkbox" name="remember_me"/> Lembrar me -->
 <!-- 		                    </div> -->
 		                </div>
 		                <div class="footer">                                                               
-		                    <button type="submit" class="btn btn-success btn-block">Entrar</button>  
+		                    <button type="submit" class="btn btn-success btn-lg btn-block">Entrar</button>  
 		                    <p><a href="#">Esqueci a senha</a></p>
 		                </div>
 		            </form>				

@@ -10,8 +10,13 @@ public class PO {
 	private String cnpjSender;
 	private String ieSender;
 	private String nameSender;
-	private String addressSender;
 	private String phoneSender;
+	private String addressSender;
+	private String neighborhoodSender;
+	private String citySender;
+	private String stateSender;
+	private String cepSender;
+	
 	// recipient
 	private String nameRecipient;
 	private String cnpjRecipient;
@@ -30,7 +35,8 @@ public class PO {
 	private String representative;
 	private String paymentConditions;
 	private String remark;
-	
+	private int addressNumberSender;
+	private int addressNumberRecipient;
 	
 	public long getNumber() {
 		return number;
@@ -68,11 +74,43 @@ public class PO {
 	public void setAddressSender(String addressSender) {
 		this.addressSender = addressSender;
 	}
+	public int getAddressNumberSender() {
+		return addressNumberSender;
+	}
+	public void setAddressNumberSender(int addressNumberSender) {
+		this.addressNumberSender = addressNumberSender;
+	}
 	public String getPhoneSender() {
 		return phoneSender;
 	}
 	public void setPhoneSender(String phoneSender) {
 		this.phoneSender = phoneSender;
+	}
+	public String getCitySender() {
+		return citySender;
+	}
+	public void setCitySender(String citySender) {
+		this.citySender = citySender;
+		
+	}	
+	public String getNeighborhoodSender() {
+		return neighborhoodSender;
+	}
+	public void setNeighborhoodSender(String neighborhoodSender) {
+		this.neighborhoodSender = neighborhoodSender;	
+	}	
+	public String getStateSender() {
+		return stateSender;
+	}
+	public void setStateSender(String stateSender) {
+		this.stateSender = stateSender;
+	}
+
+	public String getCepSender() {
+		return cepSender;
+	}
+	public void setCepSender(String cepSender) {
+		this.cepSender = cepSender;
 	}
 	public String getNameRecipient() {
 		return nameRecipient;
@@ -91,6 +129,12 @@ public class PO {
 	}
 	public void setAddressRecipient(String addressRecipient) {
 		this.addressRecipient = addressRecipient;
+	}
+	public int getAddressNumberRecipient() {
+		return addressNumberRecipient;
+	}
+	public void setAddressNumberRecipient(int addressNumberRecipient) {
+		this.addressNumberRecipient = addressNumberRecipient;
 	}
 	public String getNeighborhoodRecipient() {
 		return neighborhoodRecipient;
@@ -182,5 +226,5 @@ public class PO {
 				+ ", representative=" + representative + ", paymentConditions="
 				+ paymentConditions + ", remark=" + remark + "]";
 	}
-	
+
 }

@@ -28,20 +28,20 @@
 <!-- 													          </div>  -->
 													          <div class="form-group col-md-1">
 													            <label class="control-label">Código:</label>
-													            <input type="text" class="form-control" ng-model="poFormCtrl.product.code" >
+													            <input type="text" class="form-control" ng-model="pFormCtrl.product.code" >
 													          </div>					 		          
 													          <div class="form-group col-md-5">
 													            <label class="control-label">Descrição:</label>
-													            <input type="text" class="form-control" ng-model="poFormCtrl.product.description" >
+													            <input type="text" class="form-control" ng-model="pFormCtrl.product.description" >
 													          </div>
 													          <div class="form-group col-md-3">
 													            <label class="control-label">Valor:</label>
-													            <input type="text" class="form-control" ng-model="poFormCtrl.product.valueUnit" >
+													            <input type="text" class="form-control" ng-model="pFormCtrl.product.valueUnit" >
 													          </div>							          
 													          <div class="form-group col-md-3">
 													            <label class="control-label">Tipo:</label>
-  					                                            <select class="form-control m-b-10" ng-model="poFormCtrl.product.productType" 
-							                                          		  ng-options="t.description for t in poFormCtrl.productTypes" 
+  					                                            <select class="form-control m-b-10" ng-model="pFormCtrl.product.productType" 
+							                                          		  ng-options="t.description for t in pFormCtrl.productTypes" 
 							                                          		  required="required"></select>
 													          </div>							          
 					                                      

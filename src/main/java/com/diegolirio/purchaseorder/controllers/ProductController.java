@@ -41,8 +41,24 @@ public class ProductController {
 	 */
 	
 	/**
-	 * pega todos clientes
-	 * @param cpfCnpj
+	 * pega por id
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/get/{id}", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
+	public ResponseEntity<String> get(@PathVariable("id") long id) {
+		try {
+			Product p = this.productService.get(id);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(p), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	
+	/**
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value="/get/all", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
@@ -90,6 +106,22 @@ public class ProductController {
 	}
 	
 	/**
+	 * find advanced
+	 * @param fieldSearch
+	 * @return list of product
+	 */
+	@RequestMapping(value="/find/advanced/{fieldSearch}", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
+	public ResponseEntity<String> findAdvanced(@PathVariable("fieldSearch") String fieldSearch) {
+		try {
+			List<Product> list = this.productService.findAdvanced(fieldSearch); 
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}	
+	
+	/**
 	 * 
 	 * @param product
 	 * @return
@@ -113,6 +145,7 @@ public class ProductController {
 	@RequestMapping(value="/saveParams", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
 	public ResponseEntity<String> saveParams(Product product) {
 		try {
+			System.out.println(product);
 			product = this.productService.save(product);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(product), HttpStatus.CREATED);
 		} catch(Exception e) {

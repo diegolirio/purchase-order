@@ -8,10 +8,24 @@ app.factory('ProductService', ['$http', function($http) {
 	};
 	
 	/**
+	 * 
+	 */
+	var _get = function(id) {
+		return $http.get(serverURL('/get/'+id));
+	};
+	
+	/**
 	 * pega todos
 	 */
 	var _getAll = function() {
 		return $http.get(serverURL('/get/all'));
+	};
+	
+	/**
+	 * busca 
+	 */
+	var _findAdvanced = function(fieldSearch) {
+		return $http.get(serverURL('/find/advanced/'+fieldSearch));
 	};
 	
 	/**
@@ -40,17 +54,21 @@ app.factory('ProductService', ['$http', function($http) {
 	 */
 	var _saveParams = function(product) {
 		var id = product.id > 0 ? product.id : 0;
-		var params = "?id="+id+"&code="+product.code+"&description="+product.description+"&valueUnit="+product.valueUnit;
+		var params = "?id="+id+"&code="+product.code+"&description="+product.description+"&valueUnit="+product.valueUnit+"&productType.id="+product.productType.id;
 		return $http.post(serverURL('/saveParams')+params);
 	};
 	
 	return {
+	
+		get : _get, 
 		
 		getAll : _getAll,
 		
 		getByCode : _getByCode,
 	
 		getByCodeOrDescription : _getByCodeOrDescription,
+	
+		findAdvanced : _findAdvanced,
 		
 		save : _save,
 		
