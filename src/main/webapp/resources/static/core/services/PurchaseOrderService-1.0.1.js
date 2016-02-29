@@ -37,6 +37,7 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		//	var date = new Date();
 		//	purchaseOrder.emissionDate = date.getFullYear()+'-'+date.getMonth()+1+'-0'+date.getDate();
 		//}
+		console.log(purchaseOrder); 
 		var params = "?id="+purchaseOrder.id+
 					 "&customerAddressSender.id="+purchaseOrder.customerAddressSender.id+
 					 "&phoneSender="+purchaseOrder.phoneSender+
@@ -47,7 +48,8 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 					 "&shippingCompany.id="+purchaseOrder.shippingCompany.id+
 					 "&phoneShippingCompany="+purchaseOrder.phoneShippingCompany+
 					 "&typeFreight="+purchaseOrder.typeFreight+
-					 "&remark="+purchaseOrder.remark;
+					 "&remark="+purchaseOrder.remark+
+					 "&userCreated.id="+purchaseOrder.userCreated.id; 
 					 //"&emissionDate="+purchaseOrder.emissionDate;
 		return $http.post(serverURL('/saveParams')+params);
 	}

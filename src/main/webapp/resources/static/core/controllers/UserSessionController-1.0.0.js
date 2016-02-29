@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.controller('UserSessionController', ['UserLoginService', function(UserLoginService) {
+app.controller('UserSessionController', ['$scope', 'UserLoginService', function($scope, UserLoginService) {
 	
 	var self = this;
 	
@@ -9,6 +9,7 @@ app.controller('UserSessionController', ['UserLoginService', function(UserLoginS
 
 		UserLoginService.getSession().then(function(resp) {
 			self.userLogged = resp.data;
+			$scope.userLogged = resp.data;
 			// nao for maior q zero
 			if(!self.userLogged.id > 0) 
 				window.location.href = SERVER_APP;

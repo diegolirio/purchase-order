@@ -1,10 +1,10 @@
 /**
  * 
  */
-app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'PurchaseOrderService', 'CustomerService', 
+app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$location', 'PurchaseOrderService', 'CustomerService', 
                                                'AddressService', 'TelephoneService', 'ProductService', 'ProductTypeService',
                                                'OrdersProductsService', 'StringCommon',
-                                               function($routeParams, $location, PurchaseOrderService, CustomerService, 
+                                               function($scope, $routeParams, $location, PurchaseOrderService, CustomerService, 
                                             		    AddressService, TelephoneService, ProductService, ProductTypeService,
                                             		    OrdersProductsService, StringCommon) {
 	
@@ -29,7 +29,7 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 		if($routeParams.id > 0) {
 			self.loadPO($routeParams.id);
 		}
-	};
+	}; 
 	
 	/**
 	 * Carrega P.O no form pelo ID
@@ -275,7 +275,7 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 	 * Salvar P.O
 	 */
 	self.savePurchaseOrder = function(po) {
-		
+		po.userCreated = $scope.userLogged;
 		PurchaseOrderService.saveParams(po).then(function(resp) {
 			self.purchaseOrder = resp.data;
 			self.formVisible = self.PRODUTOS;
