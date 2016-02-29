@@ -1,7 +1,8 @@
 /**
  * 
  */
-app.controller('CustomerListController', ['CustomerService', function(CustomerService) {
+app.controller('CustomerListController', ['$route', 'CustomerService', 
+                                          function($route, CustomerService) {
 	
 	var self = this;
 	
@@ -20,6 +21,17 @@ app.controller('CustomerListController', ['CustomerService', function(CustomerSe
 			console.log(self.customers);
 		}, function(error) {
 			alert(error.data);
+		});
+	};
+	
+	self.deleteCustomer = function(customer) {
+		var _confirm = confirm("Deseja realmente excluir " + customer.name + " ?") ;
+		if (_confirm == false)
+			return;
+		CustomerService.deleteCustomer(customer).then(function(resp) {
+			$route.reload();
+		}, function(error) {
+			alert(JSON.stringify(error));
 		});
 	};
 	

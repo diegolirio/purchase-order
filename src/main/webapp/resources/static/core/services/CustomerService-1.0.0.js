@@ -44,6 +44,13 @@ app.factory('CustomerService', ['$http', function($http) {
 	};
 	
 	/**
+	 * exclui cliente
+	 */
+	var _deleteCustomer = function(customer) {
+		return $http.post(serverURL('/delete/'+customer.id));
+	};
+	
+	/**
 	 * busca cliente por cpfCnpj ou por nome
 	 */
 	var _findByCpfCnpjOrName = function(cpfCnpj, name) {
@@ -68,6 +75,8 @@ app.factory('CustomerService', ['$http', function($http) {
 		save : _save,
 
 		saveParams : _saveParams,
+		
+		deleteCustomer : _deleteCustomer,
 		
 		findByCpfCnpjOrName : _findByCpfCnpjOrName,
 		

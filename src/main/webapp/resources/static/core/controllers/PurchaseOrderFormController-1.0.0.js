@@ -320,11 +320,17 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 	 * Salvar Produto
 	 */
 	self.saveProduct = function(product) {
+		product.id = 0;
+		if(product.productType == undefined) {
+			product.productType = {};
+			product.productType.id = null;
+		}
 		ProductService.saveParams(product).then(function(resp) {
 			self.orderProduct = {};
 			self.orderProduct.product = resp.data;
 			$('#idProductModal').modal('hide');
 			self.productOK = true;
+			self.product = {};
 		}, function(error) {
 			alert(error.data);
 		});
@@ -373,9 +379,10 @@ app.controller('PurchaseOrderFormController', ['$routeParams', '$location', 'Pur
 	self.findProductByCode = function(code) {
 		if(code == undefined || code == "" || code == null) return;
 		ProductService.getByCode(code).then(function(resp) {
-			if(self.orderProduct.product.id > 0) {
+			var product = resp.data;
+			if(product.id > 0) {
 				self.orderProduct = {};
-				self.orderProduct.product = resp.data;
+				self.orderProduct.product = resp.data; 
 				self.productOK = true;
 			} else {
 				self.productOK = false;

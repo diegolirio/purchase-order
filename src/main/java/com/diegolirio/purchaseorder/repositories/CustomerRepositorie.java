@@ -12,12 +12,17 @@ public interface CustomerRepositorie extends CrudRepository<Customer, Long> {
 
 	public List<Customer> findByCpfCnpj(String cpfcnpj);
 
-	public List<Customer> findByCpfCnpjContainingOrNameContainingIgnoreCase(
-			String cpfCnpj, String name);
+	//
+	public List<Customer> findByNameContaining(String name);
 
-	public List<Customer> findByNameContainingIgnoreCase(String name);
 
-	public List<Customer> findByCpfCnpjContainingOrNameContainingOrEmailContainingOrSignUpStateContainingIgnoreCase(
-			String cpfCnpj, String name, String email, String signUpState);
+	public Iterable<Customer> findByActive(boolean active);
+
+	//
+	public List<Customer> findByCpfCnpjContainingOrNameContaining(String cpfCnpj, String name);
+
+	//
+	public List<Customer> findByCpfCnpjContainingOrNameContainingOrEmailContainingOrSignUpStateContaining(
+					String cpfCnpj, String name, String email, String signUpState);
 
 }

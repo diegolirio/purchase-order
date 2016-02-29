@@ -2,7 +2,6 @@ package com.diegolirio.purchaseorder.models;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,7 +16,6 @@ public class Product {
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(unique=true)
 	private String code;
 	private String description;
 	private double valueUnit;
@@ -29,6 +27,8 @@ public class Product {
 	@OneToMany(mappedBy="product")
 	private List<OrdersProducts> ordersProducts;
 
+	private boolean active = true;
+	
 	public Long getId() {
 		return id;
 	}
@@ -76,13 +76,30 @@ public class Product {
 	public void setOrdersProducts(List<OrdersProducts> ordersProducts) {
 		this.ordersProducts = ordersProducts;
 	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
+	public static Product getNewInstance(Product product) {
+		Product p = new Product();
+		p.setActive(true);
+		p.setCode(product.getCode());
+		p.setDescription(product.getDescription());
+		p.setProductType(product.getProductType());
+		p.setValueUnit(product.getValueUnit());
+		return p;
+	} 
+	
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", code=" + code + ", description="
 				+ description + ", valueUnit=" + valueUnit + ", productType="
 				+ productType + "]";
-	} 
+	}
+
 	
 	
 }

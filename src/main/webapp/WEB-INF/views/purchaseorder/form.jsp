@@ -165,7 +165,7 @@
 				                                          <label class="text-success">Cod. <span ng-show="poFormCtrl.productOK == true" class="glyphicon glyphicon-ok text-success"></span> </label>
 				                                          <input required="required" class="form-control" ng-model="poFormCtrl.orderProduct.product.code" ng-blur="poFormCtrl.findProductByCode(poFormCtrl.orderProduct.product.code)">
 				                                      </div>
-				                                      <div class="form-group col-md-7">
+				                                      <div class="form-group col-md-6">
 				                                          <label class="text-success">Descrição &nbsp;&nbsp;<a href ng-click="poFormCtrl.showModalSearchProduct(poFormCtrl.orderProduct.product.description)" class="text-right"><span class="glyphicon glyphicon-search"></span></a> </label>
 				                                          <input required="required" class="form-control" ng-model="poFormCtrl.orderProduct.product.description">
 				                                      </div>
@@ -173,9 +173,11 @@
 				                                          <label class="text-success">Quantidade</label>
 				                                          <input required="required" type="text" class="form-control" ng-model="poFormCtrl.orderProduct.amount">
 				                                      </div>
-				                                      <br/>
-				                                      <button class="btn  btn-success" ng-disabled="formProduct.$invalid">Adicionar</button>  
-				                                      <a href ng-click="poFormCtrl.showFormModalProduct()" class="btn  btn-info pull-right">Novo Produto</a>  
+				                                      <div class="col-md-3 form-group">
+					                                      <br/>
+					                                      <button class="btn  btn-success" ng-disabled="formProduct.$invalid">Adicionar</button>  
+					                                      <a href ng-click="poFormCtrl.showFormModalProduct()" class="btn  btn-info pull-right">Novo Produto</a>
+					                                  </div>  
 												   </form>			                                      
 												   <table class="table table-bordered">
 				                                        <tr>
@@ -313,7 +315,7 @@
 												    <div class="row"> 
 				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PRODUTOS" class="btn btn-default">Voltar</a>
 				                                      <div class="pull-right">
-				                                      		<a href="${pageContext.request.contextPath}/purchaseorder/{{poFormCtrl.purchaseOrder.id}}/print/pdf" target="_blank" class="btn btn-default">Pré-Visualizar Pedido</a>
+				                                      		<a href="${pageContext.request.contextPath}/purchaseorder/{{poFormCtrl.purchaseOrder.id}}/print/pdf" target="_blank" class="btn btn-default">Pré-visualização do Pedido</a>
 				                                      		<a href ng-click="poFormCtrl.completedPO(poFormCtrl.purchaseOrder)" class="btn btn-success">Efetivar</a> 				                                    
 				                                      </div>                             		                                 
 				                              	    </div>

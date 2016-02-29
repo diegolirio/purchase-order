@@ -79,7 +79,7 @@ public class CustomerController {
 	@RequestMapping(value="/get/all", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
 	public ResponseEntity<String> getall() {
 		try {
-			Iterable<Customer> all = this.customerService.getAll();
+			Iterable<Customer> all = this.customerService.getAllActive();
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(all ), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -128,7 +128,6 @@ public class CustomerController {
 	@RequestMapping(value="/save", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
 	public ResponseEntity<String> save(Customer customer) { 
 		try {
-			System.out.println(customer);
 			customer = this.customerService.save(customer);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(customer), HttpStatus.CREATED);
 		} catch(Exception e) {
@@ -136,5 +135,18 @@ public class CustomerController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
+	public ResponseEntity<String> delete(@PathVariable("id") long id) { 
+		try {
+			this.customerService.delete(id);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	
 	
 }

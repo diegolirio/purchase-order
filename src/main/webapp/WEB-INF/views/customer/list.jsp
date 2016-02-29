@@ -29,6 +29,7 @@
 	                                            <th class="text-center">Razão Social</th>
 	                                            <th class="text-center">Insc. Estadual</th>
 	                                            <th class="text-center" style="width: 10px">editar</th>
+	                                            <th class="text-center" style="width: 10px"></th>
 	                                        </tr>
 	                                        <tr ng-repeat="c in cListCtrl.customers">
 	<!--                                             <td>{{ c.id }}</td> -->
@@ -36,6 +37,11 @@
 	                                            <td>{{ c.name }}</td>
 	                                            <td>{{ c.signUpState }}</td>
 	                                            <td><a href="#/cliente/{{c.id}}"><span class="badge bg-red">editar</span></a></td>
+	                                            <td>
+	                                            	<a href ng-click="cListCtrl.deleteCustomer(c)" title="Excluir">
+	                                            		<span class="glyphicon glyphicon-trash text-danger"></span>
+	                                            	</a>
+	                                            </td>
 	                                        </tr>
 	                                    </table>
 	                                </div>

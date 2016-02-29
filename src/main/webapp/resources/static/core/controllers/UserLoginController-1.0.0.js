@@ -22,13 +22,28 @@ app.controller('UserLoginController', ['UserLoginService', function(UserLoginSer
 		});
 	};
 	
+	/* function: _GET
+	 * Funcao para pegar o valor do parametro da URL
+	 */
+	self.GetParam = function(name) {
+		var url = window.location.search.replace("?", "");
+		var itens = url.split("&");
+		for(n in itens) {
+			if( itens[n].match(name) ) {
+				return decodeURIComponent(itens[n].replace(name+"=", ""));
+			}
+		}
+		return null;
+	}
+	
 	/**
-	 * 
+	 * realiza login 
 	 */
 	self.login = function(user) {
 		UserLoginService.login(user).then(function(resp) {
 			self.userLogged = resp.data;
-			window.location.href = SERVER_APP;
+			var paramNext = self.GetParam('next');
+			window.location.href = paramNext == null ? SERVER_APP : paramNext;
 		}, function(error) {
 			alert(error.data);
 		});

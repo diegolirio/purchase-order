@@ -2,7 +2,6 @@ package com.diegolirio.purchaseorder.models;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,12 +18,13 @@ public class People {
 	@Id @GeneratedValue
 	private long id;
 	
-	@Column(unique=true)
 	private String cpfCnpj;
 	
 	private String name;
 	
 	private String email;
+
+	private boolean active = true;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="people")
@@ -85,6 +85,14 @@ public class People {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.diegolirio.purchaseorder.models.Customer;
 import com.diegolirio.purchaseorder.models.People;
 import com.diegolirio.purchaseorder.models.Telephone;
 
@@ -12,5 +13,7 @@ import com.diegolirio.purchaseorder.models.Telephone;
 public interface TelephoneRepositorie extends CrudRepository<Telephone, Long> {
 
 	public List<Telephone> findByPeople(People people);
+
+	public List<Telephone> findByPeopleAndActive(Customer customer, boolean active);
 
 }

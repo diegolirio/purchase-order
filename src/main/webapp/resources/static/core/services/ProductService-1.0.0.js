@@ -53,8 +53,7 @@ app.factory('ProductService', ['$http', function($http) {
 	 * salvar produto (Params)
 	 */
 	var _saveParams = function(product) {
-		var id = product.id > 0 ? product.id : 0;
-		var params = "?id="+id+"&code="+product.code+"&description="+product.description+"&valueUnit="+product.valueUnit+"&productType.id="+product.productType.id;
+		var params = "?id="+product.id+"&code="+product.code+"&description="+product.description+"&valueUnit="+product.valueUnit+"&productType.id="+product.productType.id;
 		return $http.post(serverURL('/saveParams')+params);
 	};
 	

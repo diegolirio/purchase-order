@@ -264,7 +264,7 @@
 			</textField>
 			<textField>
 				<reportElement x="11" y="105" width="299" height="15" uuid="a8e7074a-4d7a-41a7-8360-c7cc029f96f5"/>
-				<textFieldExpression><![CDATA[$F{po.nameRecipient}+", "+$F{po.addressNumberRecipient}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{po.nameRecipient}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="327" y="105" width="116" height="15" uuid="dc4f67d2-6c5b-48e0-aa9b-7a5c0806fa5c"/>
@@ -276,7 +276,7 @@
 			</textField>
 			<textField>
 				<reportElement x="11" y="134" width="299" height="15" uuid="423080e2-43e8-482e-aad0-f373c1024dc1"/>
-				<textFieldExpression><![CDATA[$F{po.addressRecipient}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{po.addressRecipient}+", "+$F{po.addressNumberRecipient}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="328" y="134" width="115" height="15" uuid="4a8cc919-c429-4363-8f6f-a0afd6e37986"/>
