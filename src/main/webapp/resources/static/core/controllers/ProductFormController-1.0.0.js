@@ -1,8 +1,8 @@
 /**
  * 
  */
-app.controller('ProductFormController', ['$routeParams', 'ProductService', 'ProductTypeService', 
-                                          function($routeParams, ProductService, ProductTypeService) {
+app.controller('ProductFormController', ['$routeParams', '$route', 'ProductService', 'ProductTypeService', 
+                                          function($routeParams, $route, ProductService, ProductTypeService) {
 	
 	var self = this;
 
@@ -48,6 +48,8 @@ app.controller('ProductFormController', ['$routeParams', 'ProductService', 'Prod
 	 * Salvar Prodct
 	 */ 
 	self.save = function(product) {
+		if(product.id == undefined)
+			product.id = 0;
 		ProductService.saveParams(product).then(function(resp) {
 			console.log(resp);
 			self.product = resp.data;
@@ -56,6 +58,20 @@ app.controller('ProductFormController', ['$routeParams', 'ProductService', 'Prod
 			self.messageError = JSON.stringify(error);
 			alert(error.data);
 		});
+	};
+	
+	/**
+	 * Delete Product
+	 */
+	self.deleteProduct = function(product) {
+		var _confirm = confirm('Deseja realmente excluir produto ?');
+		if(_confirm == false) 
+			return;
+		ProductService.deleteProduct(product).then(function(resp) {
+			$route.reload();
+		}, function(error) {
+			alert(JSON.stringify(error)); 
+		}); 
 	};
 	
 	init();

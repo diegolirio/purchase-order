@@ -57,6 +57,13 @@ app.factory('ProductService', ['$http', function($http) {
 		return $http.post(serverURL('/saveParams')+params);
 	};
 	
+	/**
+	 * Exclui/desativa produto
+	 */
+	var _deleteProduct = function(product) {
+		return $http.post(serverURL('/delete/'+product.id));
+	};
+	
 	return {
 	
 		get : _get, 
@@ -71,7 +78,9 @@ app.factory('ProductService', ['$http', function($http) {
 		
 		save : _save,
 		
-		saveParams : _saveParams
+		saveParams : _saveParams,
+		
+		deleteProduct : _deleteProduct
 		
 	};
 	

@@ -1,7 +1,5 @@
 package com.diegolirio.purchaseorder.repositories;
 
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,9 +53,9 @@ public class CustomerRepositorieTest {
 		customer.setCpfCnpj(CustomerBuilderTest.CUSTOMER_CPFCNPJ);
 		customer = customerRepositorie.save(customer);
 		Assert.assertTrue(customer.getId() > 0);
-		List<Customer> customersFind = customerRepositorie.findByCpfCnpj(CustomerBuilderTest.CUSTOMER_CPFCNPJ);
-		Assert.assertNotNull(customersFind);
-		Assert.assertEquals("CpfCnpj esperedo da consulta deve ser " + CustomerBuilderTest.CUSTOMER_CPFCNPJ, customersFind.get(0).getCpfCnpj(), CustomerBuilderTest.CUSTOMER_CPFCNPJ);
+		Customer customerFind = customerRepositorie.findByCpfCnpjAndActive(CustomerBuilderTest.CUSTOMER_CPFCNPJ, true);
+		Assert.assertNotNull(customerFind);
+		Assert.assertEquals("CpfCnpj esperedo da consulta deve ser " + CustomerBuilderTest.CUSTOMER_CPFCNPJ, customerFind.getCpfCnpj(), CustomerBuilderTest.CUSTOMER_CPFCNPJ);
 	}
 	
 //	@Test

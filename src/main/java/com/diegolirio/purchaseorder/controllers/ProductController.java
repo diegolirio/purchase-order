@@ -145,9 +145,24 @@ public class ProductController {
 	@RequestMapping(value="/saveParams", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
 	public ResponseEntity<String> saveParams(Product product) {
 		try {
-			System.out.println(product);
 			product = this.productService.save(product);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(product), HttpStatus.CREATED);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	/**
+	 * delete/desactive
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
+	public ResponseEntity<String> delete(@PathVariable("id") long id) {
+		try {
+			this.productService.delete(id);
+			return new ResponseEntity<String>(HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

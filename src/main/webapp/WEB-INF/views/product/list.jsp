@@ -30,6 +30,7 @@
                                             <th class="text-center" style="width: 200px">Valor</th>
                                             <th class="text-center" style="width: 100px">Tipo</th>
                                             <th class="text-center" style="width: 10px">editar</th>
+                                            <th class="text-center" style="width: 10px"></th>
                                         </tr> 
                                         <tr ng-repeat="p in pListCtrl.products">
 <!--                                             <td><small class="text-muted">{{ p.id }}</small></td> -->
@@ -38,6 +39,11 @@
                                             <td class="text-right">{{ p.valueUnit | currency }}</td>
                                             <td>{{ p.productType.description }}</td>
                                             <td><a href="#/produto/{{p.id}}"><span class="badge bg-red">editar</span></a></td>
+                                            <td>
+                                            	<a href ng-click="pListCtrl.deleteProduct(p)" title="Excluir">
+                                            		<span class="glyphicon glyphicon-trash text-danger"></span>
+                                            	</a>
+                                            </td>
                                         </tr>
                                     </table>
                                 </div><!-- /.panel-body -->

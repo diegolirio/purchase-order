@@ -34,8 +34,7 @@ public class CustomerService {
 	}
 
 	public Customer getByCpfCnpj(String cpfcnpj) {
-		List<Customer> customers = this.customerRepositorie.findByCpfCnpj(cpfcnpj);
-		return customers == null || customers.size() == 0 ? null : customers.get(0);
+		return this.customerRepositorie.findByCpfCnpjAndActive(cpfcnpj, true);
 	}
 
 	/**
@@ -78,14 +77,11 @@ public class CustomerService {
 	}
 
 	public List<Customer> findByCpfCnpjContainingOrNameContainingIgnoreCase(String cpfCnpj, String name) {
-		return this.customerRepositorie.findByCpfCnpjContainingOrNameContaining(cpfCnpj, name);
+		return this.customerRepositorie.findByCpfCnpjOrName(cpfCnpj, name);
 	}
 
 	public List<Customer> findAdvanced(String fieldSearch) {
-		return 
-		   this
-			.customerRepositorie
-			.findByCpfCnpjContainingOrNameContainingOrEmailContainingOrSignUpStateContaining(fieldSearch, fieldSearch, fieldSearch, fieldSearch);
+		return this.customerRepositorie.findAdvanced(fieldSearch, fieldSearch, fieldSearch, fieldSearch);
 	}
 
 	/**

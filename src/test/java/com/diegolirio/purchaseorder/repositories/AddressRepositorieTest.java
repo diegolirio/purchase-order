@@ -54,8 +54,8 @@ public class AddressRepositorieTest {
 	public void testFindByPeople() {
 		Customer customer = CustomerBuilderTest.buildTest();
 		customer = customerRepositorie.save(customer);
-		List<Customer> customers = customerRepositorie.findByCpfCnpj(CustomerBuilderTest.CUSTOMER_CPFCNPJ);
-		List<Address> addresses = addressRepository.findByPeopleAndActive(customers.get(0), true);
+		Customer customer2 = customerRepositorie.findByCpfCnpjAndActive(CustomerBuilderTest.CUSTOMER_CPFCNPJ, true);
+		List<Address> addresses = addressRepository.findByPeopleAndActive(customer2, true);
 		Assert.assertNotNull(addresses);
 		//for (Address address : addresses) {
 		//	System.out.println(address);
