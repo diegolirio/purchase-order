@@ -14,4 +14,6 @@ public interface ProductRepositorie extends CrudRepository<Product, Long> {
 
 	public List<Product> findByCodeContainingOrDescriptionContainingIgnoreCase(String code, String description);
 
+	public List<Product> findByActive(boolean active);
+
 }

@@ -164,14 +164,18 @@ public class PurchaseOrder {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", emissionDate=" + emissionDate
+		return "PurchaseOrder [id=" + id + ", emissionDate=" + emissionDate
 				+ ", customerAddressSender=" + customerAddressSender
-				+ ", phoneSender=" + phoneSender + ", customerAddressRecipient="
-				+ customerAddressRecipient + ", phoneRecipient=" + phoneRecipient
-				+ ", faxRecipient=" + faxRecipient + ", shippingCompany="
-				+ shippingCompany + ", phoneShippingCompany="
-				+ phoneShippingCompany + ", typeFreight=" + typeFreight
-				+ ", remark=" + remark + "]";
+				+ ", phoneSender=" + phoneSender
+				+ ", customerAddressRecipient=" + customerAddressRecipient
+				+ ", phoneRecipient=" + phoneRecipient + ", faxRecipient="
+				+ faxRecipient + ", condicaoPagamento=" + condicaoPagamento
+				+ ", shippingCompany=" + shippingCompany
+				+ ", phoneShippingCompany=" + phoneShippingCompany
+				+ ", typeFreight=" + typeFreight + ", remark=" + remark
+				+ ", status=" + status + ", userCreated=" + userCreated + "]";
 	}
+
+	
 
 }

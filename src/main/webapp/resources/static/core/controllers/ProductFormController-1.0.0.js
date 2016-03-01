@@ -60,20 +60,6 @@ app.controller('ProductFormController', ['$routeParams', '$route', 'ProductServi
 		});
 	};
 	
-	/**
-	 * Delete Product
-	 */
-	self.deleteProduct = function(product) {
-		var _confirm = confirm('Deseja realmente excluir produto ?');
-		if(_confirm == false) 
-			return;
-		ProductService.deleteProduct(product).then(function(resp) {
-			$route.reload();
-		}, function(error) {
-			alert(JSON.stringify(error)); 
-		}); 
-	};
-	
 	init();
 	
 }]);

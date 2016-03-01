@@ -65,7 +65,29 @@ public class CustomerService {
 			this.delete(customer);
 			return customerSaved;
 		}
+		if(validNewCustomer(customer) == false)
+			throw new RuntimeException("Cpf/Cnpj já existe no cadastro!");
 		return this.customerRepositorie.save(customer);
+	}
+
+	/**
+	 * Valida cpfCnpj, valido se não existe ativo no BD
+	 * @param customer
+	 * @return
+	 */
+	private boolean validCpfCnpj(Customer customer) {
+		Customer findByCpfCnpjAndActive = this.customerRepositorie.findByCpfCnpjAndActive(customer.getCpfCnpj(), true);
+		return findByCpfCnpjAndActive == null;
+	}
+	
+	/**
+	 * Valida novo cliente
+	 * @param customer
+	 * @return
+	 */
+	private boolean validNewCustomer(Customer customer) {
+		boolean validCpfCnpj = validCpfCnpj(customer);
+		return validCpfCnpj;
 	}
 
 	/**

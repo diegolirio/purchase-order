@@ -24,7 +24,6 @@
                                 	<br/> 
                                     <table class="table table-bordered">
                                         <tr class="text-danger">
-<!--                                             <th class="text-center" style="width: 10px">#</th> -->
                                             <th class="text-center" style="width: 60px">Código</th>
                                             <th class="text-center">Descrição</th>
                                             <th class="text-center" style="width: 200px">Valor</th>
@@ -33,7 +32,6 @@
                                             <th class="text-center" style="width: 10px"></th>
                                         </tr> 
                                         <tr ng-repeat="p in pListCtrl.products">
-<!--                                             <td><small class="text-muted">{{ p.id }}</small></td> -->
                                             <td>{{ p.code }}</td>
                                             <td>{{ p.description }}</td>
                                             <td class="text-right">{{ p.valueUnit | currency }}</td>
@@ -43,7 +41,7 @@
                                             	<a href ng-click="pListCtrl.deleteProduct(p)" title="Excluir">
                                             		<span class="glyphicon glyphicon-trash text-danger"></span>
                                             	</a>
-                                            </td>
+                                            </td>                                            
                                         </tr>
                                     </table>
                                 </div><!-- /.panel-body -->

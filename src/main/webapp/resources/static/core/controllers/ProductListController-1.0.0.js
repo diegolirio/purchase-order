@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.controller('ProductListController', ['ProductService', function(ProductService) {
+app.controller('ProductListController', ['$route', 'ProductService', function($route, ProductService) {
 	
 	var self = this;
 	
@@ -22,6 +22,20 @@ app.controller('ProductListController', ['ProductService', function(ProductServi
 			alert(JSON.stringify(error));
 		});
 	};
+	
+	/**
+	 * Delete Product
+	 */
+	self.deleteProduct = function(product) {
+		var _confirm = confirm('Deseja realmente excluir produto ?');
+		if(_confirm == false) 
+			return;
+		ProductService.deleteProduct(product).then(function(resp) {
+			$route.reload();
+		}, function(error) {
+			alert(JSON.stringify(error)); 
+		}); 
+	};	
 	
 	init();
 	

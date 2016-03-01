@@ -11,7 +11,7 @@ import com.diegolirio.purchaseorder.models.Customer;
 @Repository
 public interface CustomerRepositorie extends CrudRepository<Customer, Long> {
 
-	public List<Customer> findByNameContaining(String name);
+	public List<Customer> findByNameContainingIgnoreCase(String name);
 
 	public Iterable<Customer> findByActive(boolean active);
 

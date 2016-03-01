@@ -140,6 +140,7 @@ public class PurchaseOrderController {
 	@RequestMapping(value="/saveParams", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
 	public ResponseEntity<String> saveParams(PurchaseOrder purchaseOrder) {
 		try {
+			System.out.println(purchaseOrder);
 			purchaseOrder.setStatus(StatusType.pending);
 			purchaseOrder = this.purchaseOrderService.save(purchaseOrder);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(purchaseOrder), HttpStatus.CREATED);

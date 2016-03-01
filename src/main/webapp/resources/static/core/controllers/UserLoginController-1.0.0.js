@@ -7,10 +7,7 @@ app.controller('UserLoginController', ['UserLoginService', function(UserLoginSer
 	
 	var init = function() {
 
-		// TODO TEMP
 		self.user = {};
-		self.user.login = "admin";
-		self.user.password = "admin@2016";
 		 
 		UserLoginService.getSession().then(function(resp) {
 			self.userLogged = resp.data;
