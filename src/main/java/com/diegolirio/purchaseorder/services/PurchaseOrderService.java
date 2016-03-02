@@ -73,7 +73,7 @@ public class PurchaseOrderService {
 		po = this.setStatus(po, StatusType.completed);
 		boolean sent = this.sendEmail(po);
 		if(sent == false) {
-			//throw new RuntimeException("Email não enviado para o Cliente");
+			throw new RuntimeException("Email não enviado para o Cliente");
 		}
 		return po;
 	}
@@ -84,7 +84,10 @@ public class PurchaseOrderService {
 	 * @return
 	 */
 	public boolean sendEmail(PurchaseOrder po) {
-		return this.mail.sendMail(po.getCustomerAddressRecipient().getPeople().getEmail(), po.getCustomerAddressSender().getPeople().getEmail());
+		String from = po.getCustomerAddressRecipient().getPeople().getEmail();
+		String to = po.getCustomerAddressSender().getPeople().getEmail();
+		String [] cc = {};
+		return this.mail.sendMailSimple("Pedido numero " + po.getId(), "Segue o pedido em anexo!", from, to, cc);
 	}
 
 	/**
