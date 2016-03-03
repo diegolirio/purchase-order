@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Mail {
 
-	@Qualifier("openmailSender")
+	@Qualifier("tdvmailSender")
 	@Autowired
 	private JavaMailSender mailSender;
 

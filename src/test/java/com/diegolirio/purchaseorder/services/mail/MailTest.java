@@ -39,7 +39,8 @@ public class MailTest {
 	public void testSendMailHtml() throws MessagingException {
 		String subject = "Test email TDD HTML";
 		StringBuilder html = new StringBuilder();
-		html.append("<h1>Envio de Email HTML</h1>");
+//		html.append("<link href='http://extranet.dellavolpe.com.br:9090/resources/bootstrap/3x/css/bootstrap.css' rel='stylesheet' type='text/css' />");
+		html.append("<h1 class='text-success'>Envio de Email HTML</h1>");
 		html.append("<hr/>");
 		html.append("<img src='http://extranet.dellavolpe.com.br:9090/resources/img/logo-tdv.png'/>");
 		html.append("<br/><br/>");
@@ -56,7 +57,6 @@ public class MailTest {
 		StringBuilder html = new StringBuilder();
 		html.append("<h1 style='color:blue'>Envio de Email com anexo</h1>");
 		html.append("<hr/>");
-		html.append("<img src='http://extranet.dellavolpe.com.br:9090/resources/img/attachment.png'/>");
 		html.append("<br/><br/>");
 		html.append("Não responda este E-mail"); 
 		String emailTo = "diegolirio.dl@gmail.com";
