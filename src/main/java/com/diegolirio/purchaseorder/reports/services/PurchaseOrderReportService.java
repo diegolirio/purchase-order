@@ -50,6 +50,22 @@ public class PurchaseOrderReportService implements ReportService {
 		return list;
 	}
 
+	/**
+	 * gera pdf do pedido de disco
+	 * @param object
+	 * @return
+	 * @throws JRException
+	 */
+	public String generateReportPath(Object object) throws JRException {
+		PurchaseOrder purchaseOrder = (PurchaseOrder) object;
+		String path = this.getClass().getClassLoader().getResource("").getPath();
+		String pathToReportPackage = path + "com/diegolirio/purchaseorder/reports/";
+		JasperReport report = JasperCompileManager.compileReport(pathToReportPackage + "po.jrxml");
+		List<POReportMirror> list = this.toReportMirror(purchaseOrder.getOrdersProducts());
+		JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(list));
+		JasperExportManager.exportReportToPdfFile(print, pathToReportPackage+"pedido.pdf");
+		return pathToReportPackage+"pedido.pdf";
+	}
 	
 }
 

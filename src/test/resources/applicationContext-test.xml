@@ -99,7 +99,6 @@
 		</beans:property>
 	</beans:bean>
 
-					
 	<!-- Mail service -->
 	<beans:bean id="tdvmailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 	    <beans:property name="host" value="smtp.dellavolpe.com.br"/>
@@ -117,6 +116,5 @@
 	        </beans:props>
 	    </beans:property>
 	</beans:bean>					
-					
                       
 </beans:beans>
