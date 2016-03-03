@@ -7,20 +7,34 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
+import net.sf.jasperreports.engine.JRException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.diegolirio.purchaseorder.models.OrdersProducts;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 import com.diegolirio.purchaseorder.models.StatusType;
+import com.diegolirio.purchaseorder.reports.services.ReportService;
 import com.diegolirio.purchaseorder.repositories.PurchaseOrderRepositorie;
 
 @Service
 public class PurchaseOrderService {
 	
+	private static final String FROM_EMAIL = "diegolirio@openmailbox.org";
+	
 	@Autowired
 	private PurchaseOrderRepositorie purchaseOrderRepositorie;
+	
 	@Autowired
 	private com.diegolirio.purchaseorder.services.mail.Mail mail;
+	
+	@Autowired @Qualifier("purchaseOrderReportService")
+	private ReportService  reportService;	
 
 	@Autowired
 	private OrdersProductsService ordersProductsService;
@@ -68,12 +82,15 @@ public class PurchaseOrderService {
 	 */
 	public PurchaseOrder completed(long id) {
 		PurchaseOrder po = this.purchaseOrderRepositorie.findOne(id);
-		//po.setStatus(StatusType.completed);
-		//this.purchaseOrderRepositorie.save(po);
 		po = this.setStatus(po, StatusType.completed);
-		boolean sent = this.sendEmail(po);
-		if(sent == false) {
-			throw new RuntimeException("Email não enviado para o Cliente");
+		po.setOrdersProducts(this.ordersProductsService.getListByPurchaseOrder(po));
+		try {
+			boolean sent = this.sendEmailAttachmentPO(po);
+			if(sent == false) 
+				throw new RuntimeException("Erro: Email não enviado para o Cliente");
+		} catch (MessagingException | JRException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		return po;
 	}
@@ -83,13 +100,29 @@ public class PurchaseOrderService {
 	 * @param 
 	 * @return
 	 */
-	public boolean sendEmail(PurchaseOrder po) {
-		String from = po.getCustomerAddressRecipient().getPeople().getEmail();
+	public boolean sendEmailLinkPO(PurchaseOrder po) {
+		String from = FROM_EMAIL;
 		String to = po.getCustomerAddressSender().getPeople().getEmail();
-		String [] cc = {};
-		return this.mail.sendMailSimple("Pedido numero " + po.getId(), "Segue o pedido em anexo!", from, to, cc);
+		String [] cc = {po.getCustomerAddressRecipient().getPeople().getEmail()};
+		String linkPdf = "http://localhost:8080/pedido/purchaseorder/"+po.getId()+"/print/pdf";
+		return this.mail.sendMailSimple("Pedido numero " + po.getId(), "Segue o link do pedido "+linkPdf+"\n\nNão responda este Email" , from, to, cc);
 	}
 
+	/**
+	 * Envia email com anexo em PDF da PO
+	 * @param po
+	 * @return
+	 * @throws AddressException
+	 * @throws MessagingException
+	 * @throws JRException
+	 */
+	public boolean sendEmailAttachmentPO(PurchaseOrder po) throws AddressException, MessagingException, JRException {
+		String to = po.getCustomerAddressRecipient().getPeople().getEmail();
+		String[] cc = {po.getCustomerAddressRecipient().getPeople().getEmail()};
+		String pathFileAnexo = this.reportService.generateReportPath(po);
+		return this.mail.sendMailHtml("Pedido numero " + po.getId(), "<h3>Segue pedido em anexo</h3>Não responda este Email", FROM_EMAIL, to , cc , pathFileAnexo);
+	}
+	
 	/**
 	 * Consulta avancada
 	 * @param status
@@ -145,6 +178,20 @@ public class PurchaseOrderService {
 		PurchaseOrder po = this.purchaseOrderRepositorie.findOne(id);
 		po = this.setStatus(po, StatusType.canceled);
 		return po;
+	}
+
+	/**
+	 * Gera Relatorio passando devolvendo em um array de byte
+	 * @param id
+	 * @return
+	 * @throws JRException
+	 */
+	public byte[] generateReport(long id) throws JRException {
+		PurchaseOrder purchaseOrder = this.purchaseOrderRepositorie.findOne(id);
+		List<OrdersProducts> ordersProducts = this.ordersProductsService.getListByPurchaseOrder(purchaseOrder);
+		purchaseOrder.setOrdersProducts(ordersProducts);
+		byte[] bytes = this.reportService.generateReport(purchaseOrder);
+		return bytes;
 	}
 	
 }

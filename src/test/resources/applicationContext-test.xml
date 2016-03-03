@@ -113,6 +113,44 @@
 	            <beans:prop key="mail.smtp.starttls.enable">false</beans:prop>
 				<!-- Debug -->
 	            <beans:prop key="mail.debug">true</beans:prop>
+<!-- 	            <beans:prop key="mail.smtp.ssl.enable">true</beans:prop> -->
+	        </beans:props>
+	    </beans:property>
+	</beans:bean>					
+
+	<!-- GolgMail service -->
+	<beans:bean id="goldmailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <beans:property name="host" value="mail.goldmail.com.br"/>
+	    <beans:property name="port" value="25"/>
+	    <beans:property name="username" value="diegolirio@goldmail.com.br"/>
+	    <beans:property name="password" value="dyeg@1986"/>
+	    <beans:property name="javaMailProperties">
+	        <beans:props>
+	            <!-- Use SMTP-AUTH to authenticate to SMTP server -->
+	            <beans:prop key="mail.smtp.auth">true</beans:prop>
+	            <!-- Use TLS to encrypt communication with SMTP server -->
+	            <beans:prop key="mail.smtp.starttls.enable">false</beans:prop>
+				<!-- Debug -->
+	            <beans:prop key="mail.debug">true</beans:prop>
+	        </beans:props>
+	    </beans:property>
+	</beans:bean>					
+
+
+	<!-- GolgMail service -->
+	<beans:bean id="othermailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <beans:property name="host" value="smtp.speedtelecomunicacoes.com.br"/>
+	    <beans:property name="port" value="587"/>
+	    <beans:property name="username" value="daniel@speedtelecomunicacoes.com.br"/>
+	    <beans:property name="password" value="inicio01"/>
+	    <beans:property name="javaMailProperties">
+	        <beans:props>
+	            <!-- Use SMTP-AUTH to authenticate to SMTP server -->
+	            <beans:prop key="mail.smtp.auth">true</beans:prop>
+	            <!-- Use TLS to encrypt communication with SMTP server -->
+	            <beans:prop key="mail.smtp.starttls.enable">false</beans:prop>
+				<!-- Debug -->
+	            <beans:prop key="mail.debug">true</beans:prop>
 	        </beans:props>
 	    </beans:property>
 	</beans:bean>					

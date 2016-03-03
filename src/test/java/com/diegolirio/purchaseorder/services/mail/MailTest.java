@@ -29,8 +29,8 @@ public class MailTest {
 	
 	@Test
 	public void testSendMail() {
-		String emailTo = "diegolirio.dl@gmail.com";
-		String [] emailsCC = {}; //{"fgoes@dellavolpe.com.br", "ddamaceno@dellavolpe.com.br"};
+		String emailTo = "felipe_sbc_sp@hotmail.com";
+		String [] emailsCC = {};
 		boolean sendMail = mail.sendMailSimple("Test Email TDD", "Hello, my email send.\n\nNão responda este e-mail", EMAIL_FROM, emailTo, emailsCC);
 		Assert.assertTrue(sendMail);
 	}
@@ -46,7 +46,7 @@ public class MailTest {
 		html.append("<br/><br/>");
 		html.append("Não responda este E-mail"); 
 		String emailTo = "diegolirio.dl@gmail.com";
-		String [] emailsCC = {};//{"fgoes@dellavolpe.com.br", "ddamaceno@dellavolpe.com.br"};
+		String [] emailsCC = {};
 		boolean sendMailHtml = mail.sendMailHtml(subject, html.toString(), EMAIL_FROM, emailTo, emailsCC);
 		Assert.assertTrue(sendMailHtml);
 	}
@@ -60,7 +60,7 @@ public class MailTest {
 		html.append("<br/><br/>");
 		html.append("Não responda este E-mail"); 
 		String emailTo = "diegolirio.dl@gmail.com";
-		String [] emailsCC = {}; //{"fgoes@dellavolpe.com.br", "ddamaceno@dellavolpe.com.br"};
+		String [] emailsCC = {}; 
 		String pathFileAnexo = this.pathInitialTest+"com/diegolirio/purchaseorder/services/mail/attachment.png";
 		System.out.println(pathFileAnexo);
 		boolean sendMailHtml = mail.sendMailHtml(subject, html.toString(), EMAIL_FROM, emailTo, emailsCC, pathFileAnexo);

@@ -16,6 +16,10 @@ public class StateService {
 		return this.stateRepositorie.findAll();
 	}
 
+	public State save(State state) {
+		return this.stateRepositorie.save(state);
+	}
+
 	
 	
 }

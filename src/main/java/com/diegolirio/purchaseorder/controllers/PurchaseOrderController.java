@@ -10,7 +10,6 @@ import net.sf.jasperreports.engine.JRException;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,10 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.diegolirio.purchaseorder.models.OrdersProducts;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 import com.diegolirio.purchaseorder.models.StatusType;
-import com.diegolirio.purchaseorder.reports.services.ReportService;
 import com.diegolirio.purchaseorder.services.AddressService;
 import com.diegolirio.purchaseorder.services.OrdersProductsService;
 import com.diegolirio.purchaseorder.services.PurchaseOrderService;
@@ -37,8 +34,6 @@ public class PurchaseOrderController {
 	private AddressService addressService;
 	@Autowired
 	private OrdersProductsService ordersProductsService;
-	@Autowired @Qualifier("purchaseOrderReportService")
-	private ReportService  reportService;	
 
 	/*
 	 * Page
@@ -62,12 +57,17 @@ public class PurchaseOrderController {
 		return "purchaseorder/form";
 	}
 	
+	/**
+	 * Gera Relatorio passando devolvendo em um array de byte
+	 * @param id
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 * @throws JRException
+	 */
 	@RequestMapping(value="/{id}/print/pdf")
 	public void print(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response) throws IOException, JRException {
-		PurchaseOrder purchaseOrder = this.purchaseOrderService.get(id);
-		List<OrdersProducts> ordersProducts = this.ordersProductsService.getListByPurchaseOrder(purchaseOrder);
-		purchaseOrder.setOrdersProducts(ordersProducts);
-		byte[] bytes = this.reportService.generateReport(purchaseOrder);
+		byte bytes [] = this.purchaseOrderService.generateReport(id);
 		response.setContentType("application/pdf");
 		response.getOutputStream().write(bytes); 
 	}

@@ -22,7 +22,7 @@ public class AddressService {
 	}
 
 	public Address save(Address address) {
-		if(address.getId() > 0) {
+		if(address.getId() != null && address.getId() > 0) {
 			Address a = Address.getNewInstance(address);
 			this.delete(address);
 			return this.addressRepositorie.save(a);

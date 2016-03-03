@@ -212,8 +212,8 @@
                                   
 	                          			<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.EFETIVAR">
 			                        	      <header class="panel-heading">
-			                            	      <h3 class="text-danger">Deseja Efetivar Pedido ?</h3>
-			                              	  </header>
+			                            	      <h2 class="text-warning">Deseja Efetivar Pedido ?</h2>
+			                              	  </header>			                              	  
 			                              	  <div class="panel-body">
 			                              	  		<div class="panel panel-info">
 													  <div class="panel-heading">Pedido</div>
@@ -326,14 +326,14 @@
 	
 	                          			<section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.MESSAGE"> 
 		                        	      <header class="panel-heading">
-		                            	      <h1 class="text-primary">Pedido Concluído com sucesso!!!</h1>
+		                            	      <h2 class="text-primary">Pedido Concluído com sucesso!!!</h2>
 		                              	  </header>
 		                              	  	  <div class="row">
-		                              	  	  		<h5>
-		                              	  	  			Email enviado para: 
-		                              	  	  			<br/>{{ poFormCtrl.purchaseOrder.customerAddressSender.people.email }}
-		                              	  	  			<br/>{{ poFormCtrl.purchaseOrder.customerAddressRecipient.people.email }}
-		                              	  	  		</h5>
+		                              	  	  		<div class="col-md-offset-1">
+		                              	  	  			<h2 class="text-success">Email enviado para:</h2> 
+		                              	  	  			<h4>{{ poFormCtrl.purchaseOrder.customerAddressSender.people.email }}</h4>
+		                              	  	  			<h4>{{ poFormCtrl.purchaseOrder.customerAddressRecipient.people.email }}</h4>
+		                              	  	  		</div>
 		                              	  	  </div>
 				                              <div class="row">
 			                                      <a href="#/pedidos" class="btn btn-default">Voltar</a>                             		                                 
