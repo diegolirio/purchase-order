@@ -56,11 +56,12 @@
                       entity-manager-factory-ref="entityManagerFactory"
                       transaction-manager-ref="transactionManager"/>
                       
+
 	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<beans:property name="host" value="smtp.gmail.com" /> 
-		<beans:property name="port" value="587" />
-		<beans:property name="username" value="diegolirio.dl@gmail.com" />
-		<beans:property name="password" value="dyegpython86" />
+		<beans:property name="host" value="pop.dellavolpe.com.br" /> 
+		<beans:property name="port" value="25" />
+		<beans:property name="username" value="postmaster@dellavolpe.com.br" />
+		<beans:property name="password" value="uusmor64" />
 		<beans:property name="javaMailProperties">
 			<beans:props>
 				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
@@ -69,6 +70,6 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean>
-					
+	
                       
 </beans:beans>

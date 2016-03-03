@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Mail {
 
-	private static final String EMAIL_FROM = "diegolirio@openmailbox.org";
+	private static final String EMAIL_FROM = "ddamaceno@dellavolpe.com.br";
 	
 	@Autowired
     private JavaMailSender mailSender;

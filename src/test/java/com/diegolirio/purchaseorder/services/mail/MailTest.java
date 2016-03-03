@@ -24,10 +24,10 @@ public class MailTest {
 	
 	@Test
 	public void testSendMail() {
-		//String emailTo = "diegolirio.dl@gmail.com";
-		//String [] emailsCC = {"fabianogoes@gmail.com"};
-		//boolean sendMail = mail.sendMail(emailTo, emailsCC);
-		Assert.assertTrue(true);
+		String emailTo = "diegolirio.dl@gmail.com";
+		String [] emailsCC = {"diego_lirio@hotmail.com"};
+		boolean sendMail = mail.sendMail(emailTo, emailsCC);
+		Assert.assertTrue(sendMail);
 	}
 	
 }
