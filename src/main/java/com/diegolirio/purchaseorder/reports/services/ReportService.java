@@ -8,5 +8,7 @@ import org.springframework.stereotype.Service;
 public interface ReportService {
 
 	public byte[] generateReport(Object object) throws JRException ;
+
+	public String generateReportPath(Object object) throws JRException ;
 	
 }
