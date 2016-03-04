@@ -99,11 +99,11 @@ public class CustomerService {
 	}
 
 	public List<Customer> findByCpfCnpjContainingOrNameContainingIgnoreCase(String cpfCnpj, String name) {
-		return this.customerRepositorie.findByCpfCnpjOrName(cpfCnpj, name);
+		return this.customerRepositorie.findByCpfCnpjOrName(cpfCnpj, name, true);
 	}
 
 	public List<Customer> findAdvanced(String fieldSearch) {
-		return this.customerRepositorie.findAdvanced(fieldSearch, fieldSearch, fieldSearch, fieldSearch);
+		return this.customerRepositorie.findAdvanced(fieldSearch, fieldSearch, fieldSearch, fieldSearch, true);
 	}
 
 	/**

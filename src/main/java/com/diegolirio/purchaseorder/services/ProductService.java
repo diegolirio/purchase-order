@@ -28,7 +28,7 @@ public class ProductService {
 	public Product insert(Product product) {
 		if(product.getId() != null && product.getId() > 0)
 			throw new RuntimeException("Utilizado somente para criar um novo produto!");
-		Product findByCode = this.productRepositorie.findByCode(product.getCode());
+		Product findByCode = this.productRepositorie.findByCodeAndActive(product.getCode(), true);
 		if(findByCode != null) throw new RuntimeException("Já existe um produto com este Código");
 		return this.productRepositorie.save(product);		
 	}
@@ -73,11 +73,11 @@ public class ProductService {
 	
 	
 	public Product getByCode(String code) {
-		return this.productRepositorie.findByCode(code);
+		return this.productRepositorie.findByCodeAndActive(code, true);
 	}
 
-	public List<Product> getByCodeOrDescription(String code, String description) {
-		return this.productRepositorie.findByCodeContainingOrDescriptionContainingIgnoreCase(code, description);
+	public List<Product> getByCodeOrDescription(String code, String description) {	
+		return this.productRepositorie.findByCodeContainingOrDescriptionContainingAndActive(code, description, true);
 	}
 
 	public Product get(long id) {
@@ -88,7 +88,7 @@ public class ProductService {
 		return 
 		   this
 			.productRepositorie
-			.findByCodeContainingOrDescriptionContainingIgnoreCase(fieldSearch, fieldSearch);
+			.findByCodeContainingOrDescriptionContainingAndActive(fieldSearch, fieldSearch, true);
 	}
 
 	

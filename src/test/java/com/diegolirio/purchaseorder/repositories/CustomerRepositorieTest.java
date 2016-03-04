@@ -68,7 +68,7 @@ public class CustomerRepositorieTest {
 		Assert.assertTrue(customer.getId() > 0);
 		String name = CustomerBuilderTest.CUSTOMER_NAME.substring(2, 7);
 		System.out.println(name);
-		List<Customer> customersFind = customerRepositorie.findByCpfCnpjOrName("096X122", name);
+		List<Customer> customersFind = customerRepositorie.findByCpfCnpjOrName("096X122", name, true);
 		System.out.println(customersFind.size());
 		Assert.assertNotNull(customersFind);
 		Assert.assertTrue(customersFind.size() > 0);
@@ -81,7 +81,7 @@ public class CustomerRepositorieTest {
 		Assert.assertTrue(customer.getId() > 0);
 		String cnpj = CustomerBuilderTest.CUSTOMER_CPFCNPJ.substring(2, 4);
 		System.out.println(cnpj);
-		List<Customer> customersFind = customerRepositorie.findByCpfCnpjOrName(cnpj, "XxXXxxxX");
+		List<Customer> customersFind = customerRepositorie.findByCpfCnpjOrName(cnpj, "XxXXxxxX", true);
 		System.out.println(customersFind.size());
 		Assert.assertNotNull(customersFind);
 		Assert.assertTrue(customersFind.size() > 0);
@@ -94,7 +94,7 @@ public class CustomerRepositorieTest {
 		Assert.assertTrue(customer.getId() > 0);
 		String name = CustomerBuilderTest.CUSTOMER_NAME.substring(2, 5).toLowerCase();
 		System.out.println(name);
-		List<Customer> customersFind = customerRepositorie.findByNameContainingIgnoreCase(name);
+		List<Customer> customersFind = customerRepositorie.findByNameContainingAndActive(name, true);
 		System.out.println(customersFind.size());
 		Assert.assertNotNull(customersFind);
 		Assert.assertTrue(customersFind.size() > 0);
@@ -111,22 +111,22 @@ public class CustomerRepositorieTest {
 		customer = customerRepositorie.save(customer1);
 		// busca no cnpj ok
 		String fieldSerch = "999";
-		List<Customer> list = this.customerRepositorie.findAdvanced(fieldSerch, fieldSerch, fieldSerch, fieldSerch);
+		List<Customer> list = this.customerRepositorie.findAdvanced(fieldSerch, fieldSerch, fieldSerch, fieldSerch, true);
 		Assert.assertNotNull(list);
 		Assert.assertTrue(list.size() > 0);
 		// busca no email
 		fieldSerch = "@9";
-		list = this.customerRepositorie.findAdvanced(fieldSerch, fieldSerch, fieldSerch, fieldSerch);
+		list = this.customerRepositorie.findAdvanced(fieldSerch, fieldSerch, fieldSerch, fieldSerch, true);
 		Assert.assertNotNull(list);
 		Assert.assertTrue(list.size() > 0);
 		// busca no name
 		fieldSerch = "09";
-		list = this.customerRepositorie.findAdvanced(fieldSerch, fieldSerch, fieldSerch, fieldSerch);
+		list = this.customerRepositorie.findAdvanced(fieldSerch, fieldSerch, fieldSerch, fieldSerch, true);
 		Assert.assertNotNull(list);
 		Assert.assertTrue(list.size() > 0);
 		// busca no singUp
 		fieldSerch = "919";
-		list = this.customerRepositorie.findAdvanced(fieldSerch, fieldSerch, fieldSerch, fieldSerch);
+		list = this.customerRepositorie.findAdvanced(fieldSerch, fieldSerch, fieldSerch, fieldSerch, true);
 		Assert.assertNotNull(list);
 		Assert.assertTrue(list.size() > 0);
 		
