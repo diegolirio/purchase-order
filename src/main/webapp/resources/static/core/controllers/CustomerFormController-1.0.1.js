@@ -1,8 +1,8 @@
 /**
  * 
  */
-app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'AddressService', 'StateService', 'TelephoneService',
-                                          function($routeParams, CustomerService, AddressService, StateService, TelephoneService) {
+app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'AddressService', 'StateService', 'TelephoneService', 'MaskService',
+                                          function($routeParams, CustomerService, AddressService, StateService, TelephoneService, MaskService) {
 	
 	var self = this;
 
@@ -52,6 +52,15 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 		});
 		
 	};
+	 
+	/** 
+	 * 
+	 */
+	self.maskCnpj = function(v) {
+		self.customer.cpfCnpj = MaskService.cnpj(v); 
+	};	
+
+	
 	
 	/**
 	 * Salvar Cliente

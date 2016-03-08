@@ -3,10 +3,10 @@
  */
 app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$location', 'PurchaseOrderService', 'CustomerService', 
                                                'AddressService', 'TelephoneService', 'ProductService', 'ProductTypeService',
-                                               'OrdersProductsService', 'StringCommon',
+                                               'OrdersProductsService', 'StringCommon', 'MaskService',
                                                function($scope, $routeParams, $location, PurchaseOrderService, CustomerService, 
                                             		    AddressService, TelephoneService, ProductService, ProductTypeService,
-                                            		    OrdersProductsService, StringCommon) {
+                                            		    OrdersProductsService, StringCommon, MaskService) {
 	
 	var self = this;
 	
@@ -123,9 +123,17 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 	};
 	
 	/**
+	 * 
+	 */
+	self.maskCnpj = function(v) {
+		self.cpfCnpjSender = MaskService.cnpj(v);
+	};
+	
+	/**
 	 * busca cliente remetente por cpfCnpj
 	 */
 	self.getCustomerSenderByCpfCnpj = function(cpfCnpj) {
+		cpfCnpj = MaskService.num(cpfCnpj); 
 		if(cpfCnpj == '') return;
 		// Busca Cliente por cpfCnpj
 		CustomerService.getByCpfCnpj(cpfCnpj).then(function(resp) {

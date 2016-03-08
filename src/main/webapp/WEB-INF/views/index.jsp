@@ -346,6 +346,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/ProductTypeService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/StateService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/OrdersProductsService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/mask/mask-1.0.0.js"></script>
 		<!--------- Controllers -------------> 
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/UserSessionController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.1.js"></script>

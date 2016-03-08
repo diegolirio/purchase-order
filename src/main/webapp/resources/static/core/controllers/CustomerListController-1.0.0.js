@@ -1,8 +1,8 @@
 /**
  * 
  */
-app.controller('CustomerListController', ['$route', 'CustomerService', 
-                                          function($route, CustomerService) {
+app.controller('CustomerListController', ['$route', 'CustomerService', 'MaskService',
+                                          function($route, CustomerService, MaskService) {
 	
 	var self = this;
 	

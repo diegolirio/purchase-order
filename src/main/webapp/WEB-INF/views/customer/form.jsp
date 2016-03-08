@@ -19,7 +19,7 @@
 				                                  <span class="text-success">Cliente</span>
 				                              </header>
 				                              <div class="panel-body">
-													<form role="form" ng-submit="cFormCtrl.save(cFormCtrl.customer)">
+													<form role="form" ng-submit="cFormCtrl.save(cFormCtrl.customer)" name="formCustomer">
 					                                      <div class="row">
 <!-- 						                                      <div class="col-md-1 form-group"> -->
 <!-- 						                                          <label class="text-danger">ID</label> -->
@@ -27,22 +27,24 @@
 <!-- 						                                      </div> -->
 						                                      <div class="col-md-2 form-group">
 						                                          <label class="text-danger">CNPJ</label>
-						                                          <input type="text" class="form-control" ng-model="cFormCtrl.customer.cpfCnpj">
+						                                          <input type="text" class="form-control input-lg" ng-model="cFormCtrl.customer.cpfCnpj" ng-keyup="cFormCtrl.maskCnpj(cFormCtrl.customer.cpfCnpj)" maxlength="18" required="required">
 						                                      </div>
-						                                      <div class="col-md-3 form-group">
+						                                      <div class="col-md-4 form-group">
 						                                          <label class="text-danger">Razão Social</label>
-						                                          <input type="text" class="form-control"  ng-model="cFormCtrl.customer.name">
+						                                          <input type="text" class="form-control input-lg"  ng-model="cFormCtrl.customer.name" required="required">
 						                                      </div>
-						                                      <div class="col-md-3 form-group">
+						                                      <div class="col-md-4 form-group">
 						                                          <label class="text-danger">Email</label>
-						                                          <input type="text" class="form-control"  ng-model="cFormCtrl.customer.email">
+						                                          <input type="email" class="form-control input-lg"  ng-model="cFormCtrl.customer.email" required="required">
 						                                      </div>
 						                                      <div class="col-md-2 form-group">
 						                                          <label class="text-danger">Inscrição Estadual</label>
-						                                          <input type="text" class="form-control" ng-model="cFormCtrl.customer.signUpState">
+						                                          <input type="text" class="form-control input-lg" ng-model="cFormCtrl.customer.signUpState">
 						                                      </div>
 						                                      <br/>
-						                                      <button type="submit" class="btn  btn-success">Salvar</button>
+						                                      <div class="pull-right">
+						                                      		<button type="submit" class="btn  btn-success" ng-disabled="formCustomer.$invalid">Salvar</button>
+						                                      </div>
 														  </div>
 													</form>
 		                              		   </div>

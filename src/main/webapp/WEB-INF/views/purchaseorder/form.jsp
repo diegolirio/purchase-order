@@ -18,22 +18,22 @@
 				                              <div class="panel-body">
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-danger">CNPJ &nbsp;&nbsp; <a href ng-click="poFormCtrl.showModalSearchCustomer('R')" class="text-right"><span class="glyphicon glyphicon-search"></span></a></label>
-			                                          <input type="text" class="form-control " name="cpfCnpjSender" ng-model="poFormCtrl.cpfCnpjSender" required="required"
-			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.cpfCnpjSender)">
+			                                          <input type="text" class="form-control input-lg" name="cpfCnpjSender" ng-model="poFormCtrl.cpfCnpjSender" required="required" maxlength="18"
+			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.cpfCnpjSender)" ng-keyup="poFormCtrl.maskCnpj(poFormCtrl.cpfCnpjSender)">
 			                                      </div>
 			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-danger">Razão Social</label>
-			                                          <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.nameSender">
+			                                          <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.nameSender">
 			                                      </div>
 			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-danger">Endereço</label>
-			                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.customerAddressSender" 
+			                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.customerAddressSender" 
 			                                          		  ng-options="a.publicPlace+', '+a.number+' - '+a.neighborhood+' - '+a.city+' - '+a.state.abbreviation for a in poFormCtrl.addressesSender" 
 			                                          		  required="required"></select>
 			                                      </div>		
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-danger">Telefone</label>
-			                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneSender" 
+			                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.phoneSender" 
 			                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesSender" 
 			                                          		  required="required"></select>
 			                                      </div>		

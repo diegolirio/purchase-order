@@ -1,5 +1,6 @@
 package com.diegolirio.purchaseorder.models;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -48,6 +49,7 @@ public class People {
 	}
 
 	public void setCpfCnpj(String cpfCnpj) {
+	    cpfCnpj = cpfCnpj.replaceAll("[^0-9]", ""); 
 		this.cpfCnpj = cpfCnpj;
 	}
 
