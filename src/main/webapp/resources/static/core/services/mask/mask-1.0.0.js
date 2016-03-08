@@ -22,12 +22,24 @@ app.factory('MaskService', ['$http', function($http) {
 	    return v;
 	};
 	
+	var _currency = function(v) {
+		v=String(v);
+		v=v.replace(/\D/g,"");//Remove tudo o que não é numero
+		v=String(Number(v));
+		v=v.replace(/(\d)(\d{8})$/,"$1.$2");//coloca o ponto dos milhões
+	    v=v.replace(/(\d)(\d{5})$/,"$1.$2");//coloca o ponto dos milhares
+	    v=v.replace(/(\d)(\d{2})$/,"$1,$2");//coloca a virgula antes dos 2 últimos dígitos
+	    return v;
+	};	
+	
 
 	return {
 
 		cnpj : _cnpj,
 		
-		num : _num
+		num : _num,
+		
+		currency : _currency
 
 	};
 	

@@ -125,8 +125,29 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 	/**
 	 * 
 	 */
-	self.maskCnpj = function(v) {
+	self.maskCnpjSender = function(v) {
 		self.cpfCnpjSender = MaskService.cnpj(v);
+	};
+
+	/**
+	 * 
+	 */
+	self.maskCnpjRecipient = function(v) {
+		self.cpfCnpjRecipient = MaskService.cnpj(v);
+	};
+	
+	/**
+	 * 
+	 */
+	self.maskCurrency = function(value) {
+		self.product.valueUnit = MaskService.currency(value); 
+	};
+ 	
+	/**
+	 * 
+	 */
+	self.maskShippingCompanyCpfCnpj = function(value) {
+		self.purchaseOrder.shippingCompany.cpfCnpj = MaskService.cnpj(value);
 	};
 	
 	/**
@@ -222,6 +243,7 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 	 * busca cliente destinatario por cpfCnpj
 	 */
 	self.getCustomerRecipientByCpfCnpj = function(cpfCnpj) {
+		cpfCnpj = MaskService.num(cpfCnpj);
 		// Busca Cliente por cpfCnpj
 		CustomerService.getByCpfCnpj(cpfCnpj).then(function(resp) {
 			self.customerRecipient = resp.data;
@@ -260,7 +282,7 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 	 */
 	self.getShippingCompanyByCpfCnpj = function(cpfCnpj) {
 		// Busca Cliente por cpfCnpj
-		CustomerService.getByCpfCnpj(cpfCnpj).then(function(resp) {
+		CustomerService.getByCpfCnpj(MaskService.num(cpfCnpj)).then(function(resp) {
 			self.purchaseOrder.shippingCompany = resp.data;
 			return resp;
 		}).then(function(respCustomer) { 

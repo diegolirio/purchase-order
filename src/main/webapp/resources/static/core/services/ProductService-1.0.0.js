@@ -46,6 +46,7 @@ app.factory('ProductService', ['$http', function($http) {
 	 * salvar produto
 	 */
 	var _save = function(product) {
+		product.valueUnit = product.valueUnit.replace('.','').replace(',','.'); 
 		return $http.post(serverURL('/save'), product);
 	};
 	
@@ -53,6 +54,7 @@ app.factory('ProductService', ['$http', function($http) {
 	 * salvar produto (Params)
 	 */
 	var _saveParams = function(product) {
+		product.valueUnit = product.valueUnit.replace('.','').replace(',','.');
 		var params = "?id="+product.id+"&code="+product.code+"&description="+product.description+"&valueUnit="+product.valueUnit+"&productType.id="+product.productType.id;
 		return $http.post(serverURL('/saveParams')+params);
 	};

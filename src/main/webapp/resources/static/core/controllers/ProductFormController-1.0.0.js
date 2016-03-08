@@ -1,8 +1,8 @@
 /**
  * 
  */
-app.controller('ProductFormController', ['$routeParams', '$route', 'ProductService', 'ProductTypeService', 
-                                          function($routeParams, $route, ProductService, ProductTypeService) {
+app.controller('ProductFormController', ['$routeParams', '$route', 'ProductService', 'ProductTypeService', 'MaskService', 
+                                          function($routeParams, $route, ProductService, ProductTypeService, MaskService) {
 	
 	var self = this;
 
@@ -44,6 +44,13 @@ app.controller('ProductFormController', ['$routeParams', '$route', 'ProductServi
 		
 	};
 	
+	/**
+	 * Mask currency
+	 */
+	self.maskCurrency = function(value) {
+		self.product.valueUnit = MaskService.currency(value);
+ 	};
+ 	
 	/**
 	 * Salvar Prodct
 	 */ 

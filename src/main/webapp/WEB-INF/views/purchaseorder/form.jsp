@@ -19,7 +19,7 @@
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-danger">CNPJ &nbsp;&nbsp; <a href ng-click="poFormCtrl.showModalSearchCustomer('R')" class="text-right"><span class="glyphicon glyphicon-search"></span></a></label>
 			                                          <input type="text" class="form-control input-lg" name="cpfCnpjSender" ng-model="poFormCtrl.cpfCnpjSender" required="required" maxlength="18"
-			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.cpfCnpjSender)" ng-keyup="poFormCtrl.maskCnpj(poFormCtrl.cpfCnpjSender)">
+			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.cpfCnpjSender)" ng-keyup="poFormCtrl.maskCnpjSender(poFormCtrl.cpfCnpjSender)">
 			                                      </div>
 			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-danger">Razão Social</label>
@@ -51,28 +51,29 @@
 				                              	  <div class="row">
 				                                      <div class="col-md-2 form-group">
 				                                          <label class="text-success">CNPJ &nbsp;&nbsp; <a href ng-click="poFormCtrl.showModalSearchCustomer('D')" class="text-right"><span class="glyphicon glyphicon-search"></span></a></label>
-				                                          <input type="text" class="form-control" ng-model="poFormCtrl.cpfCnpjRecipient" required="required"
-				                                                 ng-blur="poFormCtrl.getCustomerRecipientByCpfCnpj(poFormCtrl.cpfCnpjRecipient)">
+				                                          <input type="text" class="form-control input-lg" ng-model="poFormCtrl.cpfCnpjRecipient" required="required"
+				                                                 ng-blur="poFormCtrl.getCustomerRecipientByCpfCnpj(poFormCtrl.cpfCnpjRecipient)" 
+				                                                 ng-keyup="poFormCtrl.maskCnpjRecipient(poFormCtrl.cpfCnpjRecipient)">
 				                                      </div>
 				                                      <div class="col-md-3 form-group">
 				                                          <label class="text-success">Razão Social</label>
-				                                          <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.nameRecipient">
+				                                          <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.nameRecipient">
 				                                      </div>
 				                                      <div class="col-md-3 form-group">
 				                                          <label class="text-success">Endereço</label>
-				                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.customerAddressRecipient" 
+				                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.customerAddressRecipient" 
 				                                          		  ng-options="a.publicPlace+', '+a.number+' - '+a.neighborhood+' - '+a.city+' - '+a.state.abbreviation for a in poFormCtrl.addressesRecipient" 
 				                                          		  required="required"></select>
 				                                      </div>			                                      
 				                                      <div class="col-md-2 form-group">
 				                                          <label class="text-success">Telefone</label>
-				                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneRecipient" 
+				                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.phoneRecipient" 
 				                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
 				                                          		  required="required"></select>
 				                                      </div>	
 				                                      <div class="col-md-2 form-group">
 				                                          <label class="text-success">Fax</label>
-				                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.faxRecipient" 
+				                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.faxRecipient" 
 				                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
 				                                          		  required="required"></select>
 				                                      </div>		         
@@ -93,16 +94,17 @@
 				                              <div class="panel-body">
 			                                      <div class="col-md-3 form-group">
 			                                          <label class="text-info">CNPJ &nbsp;&nbsp; <a href ng-click="poFormCtrl.showModalSearchCustomer('T')" class="text-right"><span class="glyphicon glyphicon-search"></span></a></label>
-			                                          <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj" required="required"
-				                                             ng-blur="poFormCtrl.getShippingCompanyByCpfCnpj(poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj)">
+			                                          <input type="text" class="form-control input-lg" ng-model="poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj" required="required"
+				                                             ng-blur="poFormCtrl.getShippingCompanyByCpfCnpj(poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj)"
+				                                             ng-keyup="poFormCtrl.maskShippingCompanyCpfCnpj(poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj)">
 			                                      </div>
 			                                      <div class="col-md-7 form-group">
 			                                          <label class="text-info">Razão Social</label>
-			                                          <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.shippingCompany.name">
+			                                          <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.shippingCompany.name">
 			                                      </div>
 			                                      <div class="col-md-2 form-group">
 			                                          <label class="text-info">Telefone</label>
-			                                          <select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.phoneShippingCompany" 
+			                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.phoneShippingCompany" 
 			                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesShippingCompany" 
 			                                          		  required="required"></select>
 			                                      </div>	
@@ -121,15 +123,15 @@
 			                              	  		<div class="row">
 					                                    <div class="col-md-1 form-group">
 					                                        <label class="text-primary">Numero</label>
-					                                        <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.id">
+					                                        <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.id">
 					                                    </div>
 					                                    <div class="col-md-2 form-group">
 					                                        <label class="text-primary">Data</label>
-					                                        <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
+					                                        <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
 					                                    </div>
 					                                    <div class="col-md-2 form-group">
 					                                        <label class="text-primary">Frete (Pagador)</label>
-															<select class="form-control m-b-10" ng-model="poFormCtrl.purchaseOrder.typeFreight" required="required">
+															<select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.typeFreight" required="required">
 															      <option value=""></option>
 															      <option value="R">Remetente</option>
 															      <option value="D">Destinatário</option>
@@ -137,11 +139,11 @@
 					                                    </div>
 					                                    <div class="col-md-1 form-group">
 					                                        <label title="Condições de pagamento" class="text-primary">Condições Pagto</label>
-					                                        <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.condicaoPagamento" required="required">
+					                                        <input type="text" class="form-control input-lg" ng-model="poFormCtrl.purchaseOrder.condicaoPagamento" required="required">
 					                                    </div>
 					                                    <div class="col-md-6 form-group">
 					                                        <label class="text-primary">Observação</label>
-					                                        <input type="text" class="form-control" ng-model="poFormCtrl.purchaseOrder.remark">
+					                                        <input type="text" class="form-control input-lg" ng-model="poFormCtrl.purchaseOrder.remark">
 					                                    </div>
 					                              </div>
 					                              <div class="row">
@@ -163,20 +165,20 @@
 				                              	  <form role="form" name="formProduct" ng-submit="poFormCtrl.addOrderProduct(poFormCtrl.orderProduct)" >
 				                                      <div class="col-md-1 form-group">
 				                                          <label class="text-success">Cod. <span ng-show="poFormCtrl.productOK == true" class="glyphicon glyphicon-ok text-success"></span> </label>
-				                                          <input required="required" class="form-control" ng-model="poFormCtrl.orderProduct.product.code" ng-blur="poFormCtrl.findProductByCode(poFormCtrl.orderProduct.product.code)">
+				                                          <input required="required" class="form-control input-lg" ng-model="poFormCtrl.orderProduct.product.code" ng-blur="poFormCtrl.findProductByCode(poFormCtrl.orderProduct.product.code)">
 				                                      </div>
 				                                      <div class="form-group col-md-6">
 				                                          <label class="text-success">Descrição &nbsp;&nbsp;<a href ng-click="poFormCtrl.showModalSearchProduct(poFormCtrl.orderProduct.product.description)" class="text-right"><span class="glyphicon glyphicon-search"></span></a> </label>
-				                                          <input required="required" class="form-control" ng-model="poFormCtrl.orderProduct.product.description">
+				                                          <input required="required" class="form-control input-lg" ng-model="poFormCtrl.orderProduct.product.description">
 				                                      </div>
 				                                      <div class="col-md-2 form-group">
 				                                          <label class="text-success">Quantidade</label>
-				                                          <input required="required" type="text" class="form-control" ng-model="poFormCtrl.orderProduct.amount">
+				                                          <input required="required" type="text" class="form-control input-lg" ng-model="poFormCtrl.orderProduct.amount">
 				                                      </div>
 				                                      <div class="col-md-3 form-group">
 					                                      <br/>
-					                                      <button class="btn  btn-success" ng-disabled="formProduct.$invalid">Adicionar</button>  
-					                                      <a href ng-click="poFormCtrl.showFormModalProduct()" class="btn  btn-info pull-right">Novo Produto</a>
+					                                      <button class="btn  btn-success btn-lg" ng-disabled="formProduct.$invalid">Adicionar</button>  
+					                                      <a href ng-click="poFormCtrl.showFormModalProduct()" class="btn  btn-info pull-right btn-lg">Novo Produto</a>
 					                                  </div>  
 												   </form>			                                      
 												   <table class="table table-bordered">
@@ -371,7 +373,7 @@
 							          </div>
 							          <div class="form-group col-md-4">
 							            <label class="control-label">Valor:</label>
-							            <input type="text" class="form-control" ng-model="poFormCtrl.product.valueUnit" >
+							            <input type="text" class="form-control" ng-model="poFormCtrl.product.valueUnit" ng-keyup="poFormCtrl.maskCurrency(poFormCtrl.product.valueUnit)">
 							          </div>	
     								  <div class="form-group col-md-4">
 							            <label class="control-label">Tipo:</label>
