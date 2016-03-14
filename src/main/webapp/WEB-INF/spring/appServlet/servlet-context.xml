@@ -53,11 +53,11 @@
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbUser">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : 'adminwDev9z8' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : 'adminRCX6VTv' }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbPass">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : '6R41VCdjQihA' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : '7pr-FamvIuvd' }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbName">
 		<beans:constructor-arg
@@ -131,7 +131,7 @@
 	            <!-- Use TLS to encrypt communication with SMTP server -->
 	            <beans:prop key="mail.smtp.starttls.enable">false</beans:prop>
 				<!-- Debug -->
-	            <beans:prop key="mail.debug">true</beans:prop>
+	            <beans:prop key="mail.debug">false</beans:prop>
 <!-- 	            <beans:prop key="mail.smtp.ssl.enable">true</beans:prop> -->
 	        </beans:props>
 	    </beans:property>
