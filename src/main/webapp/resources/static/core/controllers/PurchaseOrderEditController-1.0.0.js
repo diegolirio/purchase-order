@@ -21,10 +21,27 @@ app.controller('PurchaseOrderEditController', ['PurchaseOrderService', '$routePa
 	 * set status canceled
 	 */
 	self.setStatusCanceled = function(purchaseOrder, reason) {
-		PurchaseOrderService.cancel(purchaseOrder, reason).then(function(resp) {
-			self.purchaseOrder = resp.data;
+		var _confirm = confirm('Deseja realmente Cancelar Coleta? Uma vez cancelada não podera mais ser revertida!');
+		if(_confirm == true) {
+			PurchaseOrderService.cancel(purchaseOrder, reason).then(function(resp) {
+				self.purchaseOrder = resp.data;
+			}, function(error) {
+				alert(JSON.stringify(error));
+			});
+		}
+	};
+	
+	/**
+	 * 
+	 */
+	self.sendMail = function(po) {
+		var _confirm = confirm('Deseja realmente renviar email?');
+		if(_confirm != true)
+			return;
+		PurchaseOrderService.sendMail(po).then(function(resp) {
+			alert('Email enviado com sucesso');
 		}, function(error) {
-			alert(JSON.stringify(error));
+			alert(error.data);
 		});
 	};
 	

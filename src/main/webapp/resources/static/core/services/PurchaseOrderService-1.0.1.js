@@ -69,6 +69,15 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		dateEnd = dateEnd.replace('/','-').replace('/','-');
 		return $http.get(serverURL('/search/advanced/'+status+"/"+dateStart+"/"+dateEnd));
 	};
+
+	/**
+	 * Busca por data between
+	 */
+	var _findByEmissionDateBetween = function(dateStart, dateEnd) {
+		dateStart = dateStart.replace('/','-').replace('/','-');
+		dateEnd = dateEnd.replace('/','-').replace('/','-');
+		return $http.get(serverURL('/find/by/emissiondate/'+dateStart+'/'+dateEnd));
+	};
 	
 	/**
 	 * delete PO
@@ -82,6 +91,13 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 	 */
 	var _cancel = function(po, reason) {
 		return $http.post(serverURL('/cancel/'+po.id)+"?reason="+reason);
+	};
+	
+	/**
+	 * 
+	 */
+	var _sendMail = function(po) {
+		return $http.post(serverURL('/send/mail/'+po.id));
 	};
 	
 	return {
@@ -98,9 +114,13 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		
 		searchAdvanced : _searchAdvanced,
 		
+		findByEmissionDateBetween : _findByEmissionDateBetween,
+		
 		deletePO : _deletePO,
 		
-		cancel : _cancel
+		cancel : _cancel,
+		
+		sendMail : _sendMail
 		
 	};
 	

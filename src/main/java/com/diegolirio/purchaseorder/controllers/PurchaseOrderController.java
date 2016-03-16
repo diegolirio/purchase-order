@@ -176,7 +176,24 @@ public class PurchaseOrderController {
 		try {
 			System.out.println(dateStart + " a " + dateEnd);
 			List<PurchaseOrder> list = this.purchaseOrderService.searchAdvanced(status, dateStart, dateEnd);
-			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list), HttpStatus.CREATED);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list), HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}	
+
+	/**
+	 * 
+	 * @param dateStart
+	 * @param dateEnd
+	 * @return
+	 */
+	@RequestMapping(value="/find/by/emissiondate/{dateStart}/{dateEnd}", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> findByEmissionDateBetween(@PathVariable("dateStart") String dateStart, @PathVariable("dateEnd") String dateEnd) {
+		try {
+			List<PurchaseOrder> list = this.purchaseOrderService.findByEmissionDateBetween(dateStart, dateEnd);
+			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list), HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -210,6 +227,22 @@ public class PurchaseOrderController {
 	public ResponseEntity<String> cancel(@PathVariable("id") long id, String reason) {
 		try {
 			this.purchaseOrderService.cancel(id, reason);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/send/mail/{id}", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ResponseEntity<String> sendMail(@PathVariable("id") long id) {
+		try {
+			this.purchaseOrderService.sendEmailAttachmentPO(id);
 			return new ResponseEntity<String>(HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();

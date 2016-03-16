@@ -122,6 +122,21 @@ public class PurchaseOrderService {
 		String pathFileAnexo = this.reportService.generateReportPath(po);
 		return this.mail.sendMailHtml("Pedido numero " + po.getId(), "<h3>Segue pedido em anexo</h3>Não responda este Email", FROM_EMAIL, to , cc , pathFileAnexo);
 	}
+
+	/**
+	 * Send mail 
+	 * @param id
+	 * @return
+	 * @throws AddressException
+	 * @throws MessagingException
+	 * @throws JRException
+	 */
+	public boolean sendEmailAttachmentPO(long id) throws AddressException, MessagingException, JRException {
+		PurchaseOrder po = this.purchaseOrderRepositorie.findOne(id);
+		po.setOrdersProducts(this.ordersProductsService.getListByPurchaseOrder(po));
+		return this.sendEmailAttachmentPO(po);
+	}
+	
 	
 	/**
 	 * Consulta avancada
@@ -146,6 +161,25 @@ public class PurchaseOrderService {
 		return this.purchaseOrderRepositorie.findByStatusAndEmissionDateBetween(status, start, end);
 	}
 
+	/**
+	 * Consulta avancada
+	 * @param dateStart
+	 * @param dateEnd
+	 * @return
+	 */
+	public List<PurchaseOrder> findByEmissionDateBetween(String dateStart, String dateEnd) {
+		 Date start = null;
+		 Date end = null;
+        try {
+        	DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            start = (java.util.Date)formatter.parse(dateStart);
+            end = (java.util.Date)formatter.parse(dateEnd);
+        } catch (ParseException e) {            
+            throw new RuntimeException(e);
+        }
+		return this.purchaseOrderRepositorie.findByEmissionDateBetween(start, end);
+	}
+	
 	/**
 	 * Delete por id, caso o pedido esteja com o status pendente 
 	 * @param id

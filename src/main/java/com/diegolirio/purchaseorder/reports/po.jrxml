@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="po" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="043009fb-73e7-4744-966a-f88ef33a8a40">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="123"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="dataset1" uuid="43cd990d-4889-4981-b489-d47be969bede"/>
 	<field name="po.number" class="java.lang.Long"/>
-	<field name="po.emissionDate" class="java.lang.String"/>
+	<field name="po.emissionDate" class="java.util.Date"/>
 	<field name="po.nameSender" class="java.lang.String"/>
 	<field name="po.cnpjSender" class="java.lang.String"/>
 	<field name="po.ieSender" class="java.lang.String"/>
@@ -270,7 +270,7 @@
 				<reportElement x="327" y="105" width="116" height="15" uuid="dc4f67d2-6c5b-48e0-aa9b-7a5c0806fa5c"/>
 				<textFieldExpression><![CDATA[$F{po.cnpjRecipient}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="458" y="105" width="90" height="15" uuid="db2ea91a-84ce-4d45-9bee-e34f80c7c569"/>
 				<textFieldExpression><![CDATA[$F{po.emissionDate}]]></textFieldExpression>
 			</textField>
@@ -416,14 +416,14 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="¤ #,##0.00">
 				<reportElement x="448" y="0" width="100" height="20" uuid="3bb08e1e-c38c-41fd-bfd9-f2d74ae04c26"/>
 				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{amount}*$F{valueUnit}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="¤ #,##0.00">
 				<reportElement x="347" y="0" width="77" height="20" uuid="57b920ed-38bc-425a-8700-a783e1c9ca32"/>
 				<textElement textAlignment="Right">
 					<font size="8"/>
@@ -468,7 +468,7 @@
 			<rectangle radius="10">
 				<reportElement x="0" y="0" width="555" height="61" uuid="6398fae3-4f15-42ee-ac32-74dd9d4d5fcd"/>
 			</rectangle>
-			<textField>
+			<textField pattern="¤ #,##0.00">
 				<reportElement x="458" y="4" width="90" height="12" uuid="cb50266a-a460-454b-9d67-dce7a3fb02a8"/>
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
@@ -517,7 +517,7 @@
 				</textElement>
 				<text><![CDATA[0]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="¤ #,##0.00">
 				<reportElement x="454" y="49" width="94" height="12" uuid="c211da18-a980-4d56-ad12-85b6c63d5dd8"/>
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>

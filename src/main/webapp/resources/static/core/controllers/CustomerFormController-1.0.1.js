@@ -60,6 +60,12 @@ app.controller('CustomerFormController', ['$routeParams', 'CustomerService', 'Ad
 		self.customer.cpfCnpj = MaskService.cnpj(v); 
 	};	
 
+	/** 
+	 * 
+	 */
+	self.maskDddPhone = function(v) {
+		self.phone.number = MaskService.dddPhone(v);  
+	};	
 	
 	
 	/**

@@ -11,8 +11,9 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 	 */
 	var init = function() {
 
-		self.statusList = [{status: "pending", "display": "Pendente"}, 
-		                   {status: "completed", "display": "Concluido"},
+		self.statusList = [{status: "all", "display": "Todos"},
+		                   {status: "pending", "display": "Pendente"}, 
+		                   {status: "completed", "display": "Concluido"}, 
 		                   {status: "canceled", "display": "Cancelado"}];
 		self.search = {};
 		self.search.status = self.statusList[0].status;
@@ -29,16 +30,20 @@ app.controller('PurchaseOrderListController', ['PurchaseOrderService', 'DateComm
 	 * consulta avancada
 	 */
 	self.searchAdv = function(status, dateStart, dateEnd) {
-//		PurchaseOrderService.getAll().then(function(resp) {
-//		self.purchaseOrders = resp.data;
-//	}, function(error) {
-//		alert(JSON.stringify(error));
-//	});
-		PurchaseOrderService.searchAdvanced(status, dateStart, dateEnd).then(function(resp) {
-			self.purchaseOrders = resp.data;
-		}, function(error) {
-			alert(JSON.stringify(error));
-		});		
+		console.log(status);
+		if(status == 'all') {
+			PurchaseOrderService.findByEmissionDateBetween(dateStart, dateEnd).then(function(resp) {
+				self.purchaseOrders = resp.data;
+			}, function(error) {
+				alert(JSON.stringify(error));
+			});						
+		} else {
+			PurchaseOrderService.searchAdvanced(status, dateStart, dateEnd).then(function(resp) {
+				self.purchaseOrders = resp.data;
+			}, function(error) {
+				alert(JSON.stringify(error));
+			});			
+		}
 	};
 
 	/**

@@ -14,4 +14,6 @@ public interface PurchaseOrderRepositorie extends CrudRepository<PurchaseOrder, 
 
 	List<PurchaseOrder> findByStatusAndEmissionDateBetween(StatusType status, Date dateStart, Date dateEnd);
 
+	List<PurchaseOrder> findByEmissionDateBetween(Date start, Date end);
+
 }

@@ -31,6 +31,16 @@ app.factory('MaskService', ['$http', function($http) {
 	    v=v.replace(/(\d)(\d{2})$/,"$1,$2");//coloca a virgula antes dos 2 últimos dígitos
 	    return v;
 	};	
+
+	/**
+	 * (11) 2967-8500 or (11) 92967-8500
+	 */
+	var _dddPhone = function(v) {
+	    v=v.replace(/\D/g,"");             //Remove tudo o que não é numero
+	    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+	    v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+	    return v; 
+	};
 	
 
 	return {
@@ -39,7 +49,9 @@ app.factory('MaskService', ['$http', function($http) {
 		
 		num : _num,
 		
-		currency : _currency
+		currency : _currency,
+		
+		dddPhone : _dddPhone
 
 	};
 	

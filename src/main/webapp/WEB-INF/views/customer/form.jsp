@@ -130,10 +130,10 @@
 					      <div class="modal-body">
 						        <form>
 						        	<div class="row">
-							          <div class="form-group col-md-2">
-							            <label class="control-label">ID:</label>
-							            <input type="text" class="form-control" readonly="readonly" ng-model="cFormCtrl.address.id" >
-							          </div> 
+<!-- 							          <div class="form-group col-md-2"> -->
+<!-- 							            <label class="control-label">ID:</label> -->
+<!-- 							            <input type="text" class="form-control" readonly="readonly" ng-model="cFormCtrl.address.id" > -->
+<!-- 							          </div>  -->
 							          <div class="form-group col-md-4">
 							            <label class="control-label">Cep:</label>
 							            <input type="text" class="form-control" ng-model="cFormCtrl.address.cep" >
@@ -194,12 +194,12 @@
 <!-- 							            <input type="text" class="form-control" readonly="readonly" ng-model="cFormCtrl.phone.id" > -->
 <!-- 							          </div>  -->
 							          <div class="form-group col-md-4">
-							            <label class="control-label">Numero:</label>
-							            <input type="text" class="form-control" ng-model="cFormCtrl.phone.number" >
+							            <label class="control-label text-info">Numero <small class="text-muted">ex: (11) 2999-9999</small></label>
+							            <input type="text" class="form-control input-lg" ng-model="cFormCtrl.phone.number" ng-keyup="cFormCtrl.maskDddPhone(cFormCtrl.phone.number)" maxlength="15">
 							          </div>					 		          
-							          <div class="form-group col-md-4">
-							            <label class="control-label">Tipo:</label>
-										<select ng-model="cFormCtrl.phone.contactType" class="form-control"
+							          <div class="form-group col-md-4"> 
+							            <label class="control-label text-info">Tipo:</label>
+										<select ng-model="cFormCtrl.phone.contactType" class="form-control input-lg" 
 												ng-options="ct.type as ct.type for ct in cFormCtrl.contactTypes">
 										</select>	                                 
 							          </div>							          
