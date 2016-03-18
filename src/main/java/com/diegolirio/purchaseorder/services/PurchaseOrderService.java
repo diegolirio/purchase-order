@@ -25,7 +25,7 @@ import com.diegolirio.purchaseorder.repositories.PurchaseOrderRepositorie;
 @Service
 public class PurchaseOrderService {
 	
-	private static final String FROM_EMAIL = "diegolirio@openmailbox.org";
+	private static final String FROM_EMAIL = "pedido@cafglass.com.br";
 	
 	@Autowired
 	private PurchaseOrderRepositorie purchaseOrderRepositorie;
