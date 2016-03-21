@@ -40,11 +40,16 @@ public class PurchaseOrder {
 	public Address customerAddressRecipient;
 	
 	public String phoneRecipient;
-	public String faxRecipient;
+	//public String faxRecipient;
+	public String contactRecipient;
 	public String condicaoPagamento; // --->>>> ????
 	
+//	@ManyToOne
+//	public Customer shippingCompany;
+
 	@ManyToOne
-	public Customer shippingCompany;
+	public Address customerAddressShippingCompany;
+	
 	public String phoneShippingCompany;
 	public char typeFreight; // ???? FOB
 	public String remark;
@@ -59,6 +64,8 @@ public class PurchaseOrder {
 	
 	@ManyToOne //@Column(nullable=false)
 	private User userCreated;
+	
+	private String representative;
 	
 	public PurchaseOrder() {}
 	
@@ -102,17 +109,17 @@ public class PurchaseOrder {
 	public void setPhoneRecipient(String phoneRecipient) {
 		this.phoneRecipient = phoneRecipient;
 	}
-	public String getFaxRecipient() {
-		return faxRecipient;
+	public String getContactRecipient() {
+		return contactRecipient;
 	}
-	public void setFaxRecipient(String faxRecipient) {
-		this.faxRecipient = faxRecipient;
+	public void setContactRecipient(String contactRecipient) {
+		this.contactRecipient = contactRecipient;
 	}
-	public Customer getShippingCompany() {
-		return shippingCompany;
+	public Address getCustomerAddressShippingCompany() {
+		return customerAddressShippingCompany;
 	}
-	public void setShippingCompany(Customer shippingCompany) {
-		this.shippingCompany = shippingCompany;
+	public void setCustomerAddressShippingCompany(Address customerAddressShippingCompany) {
+		this.customerAddressShippingCompany = customerAddressShippingCompany;
 	}
 	public String getPhoneShippingCompany() {
 		return phoneShippingCompany;
@@ -162,15 +169,23 @@ public class PurchaseOrder {
 		this.userCreated = userCreated;
 	}
 
+	public String getRepresentative() {
+		return representative;
+	}
+
+	public void setRepresentative(String representative) {
+		this.representative = representative;
+	}
+
 	@Override
 	public String toString() {
 		return "PurchaseOrder [id=" + id + ", emissionDate=" + emissionDate
 				+ ", customerAddressSender=" + customerAddressSender
 				+ ", phoneSender=" + phoneSender
 				+ ", customerAddressRecipient=" + customerAddressRecipient
-				+ ", phoneRecipient=" + phoneRecipient + ", faxRecipient="
-				+ faxRecipient + ", condicaoPagamento=" + condicaoPagamento
-				+ ", shippingCompany=" + shippingCompany
+				+ ", phoneRecipient=" + phoneRecipient + ", contactRecipient="
+				+ contactRecipient + ", condicaoPagamento=" + condicaoPagamento
+				+ ", customerAddressShippingCompany=" + customerAddressShippingCompany
 				+ ", phoneShippingCompany=" + phoneShippingCompany
 				+ ", typeFreight=" + typeFreight + ", remark=" + remark
 				+ ", status=" + status + ", userCreated=" + userCreated + "]";

@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
-
-import net.sf.jasperreports.engine.JRException;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -68,7 +63,7 @@ public class PurchaseOrderServiceTest {
 	private void completaInfoPO(PurchaseOrder purchaseOrder) {
 		purchaseOrder.setCondicaoPagamento("30");
 		purchaseOrder.setEmissionDate(new Date());
-		purchaseOrder.setFaxRecipient("(11) 99999-9999");
+		purchaseOrder.setContactRecipient("João");
 		purchaseOrder.setPhoneRecipient("(11) 98888-7777"); 
 		purchaseOrder.setPhoneSender("(11) 95555-4444");
 		purchaseOrder.setPhoneShippingCompany("(11) 2563-9999");
@@ -80,7 +75,6 @@ public class PurchaseOrderServiceTest {
 		
 		// cria cliente
 		Customer customer = this.customerService.save(CustomerBuilderTest.buildTest());
-		purchaseOrder.setShippingCompany(customer);
 
 		// cria estado
 		State state = StateBuilderTest.build();
@@ -92,6 +86,7 @@ public class PurchaseOrderServiceTest {
 		address.setState(state);
 		this.addressService.save(address);
 		
+		purchaseOrder.setCustomerAddressShippingCompany(address);
 		purchaseOrder.setCustomerAddressSender(address );
 		purchaseOrder.setCustomerAddressRecipient(address );
 

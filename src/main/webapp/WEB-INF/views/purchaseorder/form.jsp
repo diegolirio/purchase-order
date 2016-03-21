@@ -16,28 +16,28 @@
 				                                  <h4 class="text-primary">Remetente</h4>
 				                              </header>
 				                              <div class="panel-body">
-			                                      <div class="col-md-2 form-group">
+			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-danger">CNPJ &nbsp;&nbsp; <a href ng-click="poFormCtrl.showModalSearchCustomer('R')" class="text-right"><span class="glyphicon glyphicon-search"></span></a></label>
 			                                          <input type="text" class="form-control input-lg" name="cpfCnpjSender" ng-model="poFormCtrl.cpfCnpjSender" required="required" maxlength="18"
 			                                                 ng-blur="poFormCtrl.getCustomerSenderByCpfCnpj(poFormCtrl.cpfCnpjSender)" ng-keyup="poFormCtrl.maskCnpjSender(poFormCtrl.cpfCnpjSender)">
 			                                      </div>
-			                                      <div class="col-md-4 form-group">
-			                                          <label class="text-danger">Razão Social</label>
+			                                      <div class="col-md-8 form-group">
+			                                          <label class="text-danger">Raz&atilde;o Social</label>
 			                                          <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.nameSender">
 			                                      </div>
-			                                      <div class="col-md-4 form-group">
-			                                          <label class="text-danger">Endereço</label>
+			                                      <div class="col-md-8 form-group">
+			                                          <label class="text-danger">Endere&ccedil;o</label>
 			                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.customerAddressSender" 
 			                                          		  ng-options="a.publicPlace+', '+a.number+' - '+a.neighborhood+' - '+a.city+' - '+a.state.abbreviation for a in poFormCtrl.addressesSender" 
 			                                          		  required="required"></select>
 			                                      </div>		
-			                                      <div class="col-md-2 form-group">
+			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-danger">Telefone</label>
 			                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.phoneSender" 
 			                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesSender" 
 			                                          		  required="required"></select>
 			                                      </div>		
-			                                      <button class="pull-right btn btn-primary" ng-disabled="formR.$invalid">Avançar</button>                           
+			                                      <button class="pull-right btn btn-primary" ng-disabled="formR.$invalid">Avan&ccedil;ar</button>                           
 				                              </div>
 				                         </section>
 				                   </form>     
@@ -45,42 +45,40 @@
 				                     
 										 <section class="panel" ng-show="poFormCtrl.formVisible == poFormCtrl.DESTINATARIO">
 				                              <header class="panel-heading">
-				                                  <h4 class="text-primary">Destinatário</h4>
+				                                  <h4 class="text-primary">Destinat&aacute;rio</h4>
 				                              </header>
 				                              <div class="panel-body">
 				                              	  <div class="row">
-				                                      <div class="col-md-2 form-group">
+				                                      <div class="col-md-4 form-group">
 				                                          <label class="text-success">CNPJ &nbsp;&nbsp; <a href ng-click="poFormCtrl.showModalSearchCustomer('D')" class="text-right"><span class="glyphicon glyphicon-search"></span></a></label>
 				                                          <input type="text" class="form-control input-lg" ng-model="poFormCtrl.cpfCnpjRecipient" required="required"
 				                                                 ng-blur="poFormCtrl.getCustomerRecipientByCpfCnpj(poFormCtrl.cpfCnpjRecipient)" 
 				                                                 ng-keyup="poFormCtrl.maskCnpjRecipient(poFormCtrl.cpfCnpjRecipient)">
 				                                      </div>
-				                                      <div class="col-md-3 form-group">
-				                                          <label class="text-success">Razão Social</label>
+				                                      <div class="col-md-8 form-group">
+				                                          <label class="text-success">Raz&atilde;o Social</label>
 				                                          <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.nameRecipient">
 				                                      </div>
-				                                      <div class="col-md-3 form-group">
-				                                          <label class="text-success">Endereço</label>
+				                                      <div class="col-md-6 form-group">
+				                                          <label class="text-success">Endere&ccedil;o</label>
 				                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.customerAddressRecipient" 
 				                                          		  ng-options="a.publicPlace+', '+a.number+' - '+a.neighborhood+' - '+a.city+' - '+a.state.abbreviation for a in poFormCtrl.addressesRecipient" 
 				                                          		  required="required"></select>
 				                                      </div>			                                      
-				                                      <div class="col-md-2 form-group">
+				                                      <div class="col-md-3 form-group">
 				                                          <label class="text-success">Telefone</label>
 				                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.phoneRecipient" 
 				                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
 				                                          		  required="required"></select>
 				                                      </div>	
-				                                      <div class="col-md-2 form-group">
-				                                          <label class="text-success">Fax</label>
-				                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.faxRecipient" 
-				                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesRecipient" 
-				                                          		  required="required"></select>
+				                                      <div class="col-md-3 form-group">
+				                                          <label class="text-success">Contato</label>
+				                                          <input type="text" class="form-control input-lg" ng-model="poFormCtrl.purchaseOrder.contactRecipient" >
 				                                      </div>		         
 			                                      </div>
 			                                      <div class="row">
 				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.REMETENTE" class="btn btn-default">Voltar</a>                             		                                 
-				                                      <button class="pull-right btn btn-primary" ng-disabled="formD.$invalid">Avançar</button>                             		                                 
+				                                      <button class="pull-right btn btn-primary" ng-disabled="formD.$invalid">Avan&ccedil;ar</button>                             		                                 
 				                              	  </div>
 				                              </div>
 				                           </section>
@@ -92,24 +90,29 @@
 				                                  <h4 class="text-info">Transportadora</h4>
 				                              </header>
 				                              <div class="panel-body">
-			                                      <div class="col-md-3 form-group">
+			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-info">CNPJ &nbsp;&nbsp; <a href ng-click="poFormCtrl.showModalSearchCustomer('T')" class="text-right"><span class="glyphicon glyphicon-search"></span></a></label>
-			                                          <input type="text" class="form-control input-lg" ng-model="poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj" required="required"
-				                                             ng-blur="poFormCtrl.getShippingCompanyByCpfCnpj(poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj)"
-				                                             ng-keyup="poFormCtrl.maskShippingCompanyCpfCnpj(poFormCtrl.purchaseOrder.shippingCompany.cpfCnpj)">
+			                                          <input type="text" class="form-control input-lg" ng-model="poFormCtrl.cpfCnpjShippingCompany" required="required" 
+				                                             ng-blur="poFormCtrl.getShippingCompanyByCpfCnpj(poFormCtrl.cpfCnpjShippingCompany)"
+				                                             ng-keyup="poFormCtrl.maskShippingCompanyCpfCnpj(poFormCtrl.cpfCnpjShippingCompany)">
 			                                      </div>
-			                                      <div class="col-md-7 form-group">
-			                                          <label class="text-info">Razão Social</label>
-			                                          <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.shippingCompany.name">
+			                                      <div class="col-md-8 form-group">
+			                                          <label class="text-info">Raz&atilde;o Social</label>
+			                                          <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.shippingCompanyName">
 			                                      </div>
-			                                      <div class="col-md-2 form-group">
+			                                      <div class="col-md-8 form-group">
+			                                          <label class="text-success">Endere&ccedil;o</label>
+			                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.customerAddressShippingCompany" required="required" 
+			                                          		  ng-options="a.publicPlace+', '+a.number+' - '+a.neighborhood+' - '+a.city+' - '+a.state.abbreviation for a in poFormCtrl.addressesShippingCompany" ></select>
+			                                      </div>			  			                                      
+			                                      <div class="col-md-4 form-group">
 			                                          <label class="text-info">Telefone</label>
 			                                          <select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.phoneShippingCompany" 
 			                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesShippingCompany" 
-			                                          		  required="required"></select>
+			                                          		  ></select>
 			                                      </div>	
 			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="btn btn-default">Voltar</a>                             		                                 
-			                                      <button class="pull-right btn btn-primary" ng-disabled="formT.$invalid">Avançar</button> 			                                      		                                 
+			                                      <button class="pull-right btn btn-primary" >Avan&ccedil;ar</button> 			                                      		                                 
 				                              </div>
 				                         </section>				                           
 				                     </form>
@@ -121,34 +124,39 @@
 			                              	  </header>
 			                              	  <div class="panel-body">
 			                              	  		<div class="row">
-					                                    <div class="col-md-1 form-group">
+					                                    <div class="col-md-2 form-group">
 					                                        <label class="text-primary">Numero</label>
 					                                        <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.id">
 					                                    </div>
-					                                    <div class="col-md-2 form-group">
+					                                    <div class="col-md-3 form-group">
 					                                        <label class="text-primary">Data</label>
-					                                        <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
+					                                        <input type="date" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
 					                                    </div>
-					                                    <div class="col-md-2 form-group">
+					                                    <div class="col-md-3 form-group">
 					                                        <label class="text-primary">Frete (Pagador)</label>
 															<select class="form-control m-b-10 input-lg" ng-model="poFormCtrl.purchaseOrder.typeFreight" required="required">
 															      <option value=""></option>
 															      <option value="R">Remetente</option>
-															      <option value="D">Destinatário</option>
+															      <option value="D">Destinat&aacute;rio</option>
 															</select>			                                          		  	
 					                                    </div>
-					                                    <div class="col-md-1 form-group">
-					                                        <label title="Condições de pagamento" class="text-primary">Condições Pagto</label>
+					                                    <div class="col-md-4 form-group">
+					                                        <label title="Condições de pagamento" class="text-primary">Condi&ccedil;&otilde;es Pagto</label>
 					                                        <input type="text" class="form-control input-lg" ng-model="poFormCtrl.purchaseOrder.condicaoPagamento" required="required">
 					                                    </div>
-					                                    <div class="col-md-6 form-group">
-					                                        <label class="text-primary">Observação</label>
+
+					                                    <div class="col-md-9 form-group">
+					                                        <label class="text-primary">Observa&ccedil;&atilde;o</label>
 					                                        <input type="text" class="form-control input-lg" ng-model="poFormCtrl.purchaseOrder.remark">
 					                                    </div>
+					                                    <div class="col-md-3 form-group">
+					                                        <label class="text-primary">Representante</label>
+					                                        <input type="text" class="form-control input-lg" ng-model="poFormCtrl.purchaseOrder.representative">
+					                                    </div>					                                    
 					                              </div>
 					                              <div class="row">
 				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.TRANSPORTADORA" class="btn btn-default">Voltar</a>                             		                                 
-				                                      <button class="pull-right btn btn-primary" ng-disabled="formPO.$invalid">Avançar</a> 				                                    
+				                                      <button class="pull-right btn btn-primary" ng-disabled="formPO.$invalid">Avan&ccedil;ar</a> 				                                    
 				                              	  </div>
 				                              </div>
 				                              
@@ -168,7 +176,7 @@
 				                                          <input required="required" class="form-control input-lg" ng-model="poFormCtrl.orderProduct.product.code" ng-blur="poFormCtrl.findProductByCode(poFormCtrl.orderProduct.product.code)">
 				                                      </div>
 				                                      <div class="form-group col-md-6">
-				                                          <label class="text-success">Descrição &nbsp;&nbsp;<a href ng-click="poFormCtrl.showModalSearchProduct(poFormCtrl.orderProduct.product.description)" class="text-right"><span class="glyphicon glyphicon-search"></span></a> </label>
+				                                          <label class="text-success">Descri&ccedil;&atilde;o &nbsp;&nbsp;<a href ng-click="poFormCtrl.showModalSearchProduct(poFormCtrl.orderProduct.product.description)" class="text-right"><span class="glyphicon glyphicon-search"></span></a> </label>
 				                                          <input required="required" class="form-control input-lg" ng-model="poFormCtrl.orderProduct.product.description">
 				                                      </div>
 				                                      <div class="col-md-2 form-group">
@@ -184,7 +192,7 @@
 												   <table class="table table-bordered">
 				                                        <tr>
 				                                            <th class="text-center" style="width: 50px">Cod.</th>
-				                                            <th class="text-center">Descrição</th>
+				                                            <th class="text-center">Descri&ccedil;&atilde;o</th>
 				                                            <th class="text-center" style="width: 100px">Valor Unit.</th>
 				                                            <th class="text-center" style="width: 60px">Qtde</th>
 				                                            <th class="text-center" style="width: 200px">Valor Total</th>
@@ -207,7 +215,7 @@
 				                                    </table>
 				                                      
 				                                    <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PEDIDO" class="btn btn-default">Voltar</a> 
-				                                    <button ng-disabled="poFormCtrl.ordersProducts.length == 0" ng-click="poFormCtrl.formVisible = poFormCtrl.EFETIVAR" class="pull-right btn btn-primary">Avançar</button>   
+				                                    <button ng-disabled="poFormCtrl.ordersProducts.length == 0" ng-click="poFormCtrl.formVisible = poFormCtrl.EFETIVAR" class="pull-right btn btn-primary">Avan&ccedil;ar</button>   
 				                                      			                                 
 				                              </div>
 				                         </section>		                                  
@@ -226,21 +234,25 @@
 						                                    </div>
 						                                    <div class="col-md-2 form-group">
 						                                        <label class="text-primary">Data</label>
-						                                        <input type="text" class="form-control" disabled="disabled" value="{{poFormCtrl.purchaseOrder.emissionDate}}">
+						                                        <input type="date" class="form-control" disabled="disabled" value="{{poFormCtrl.purchaseOrder.emissionDate}}">
 						                                    </div>
 						                                    <div class="col-md-2 form-group">
 						                                        <label class="text-primary">Frete (Pagador)</label>
-						                                        <input type="text" class="form-control" disabled="disabled" value="{{poFormCtrl.purchaseOrder.typeFreight == 'R' ? 'Remetente' : 'Destinatário'}}">
+						                                        <input type="text" class="form-control" disabled="disabled" value="{{poFormCtrl.purchaseOrder.typeFreight == 'R' ? 'Remetente' : 'Destinat&aacute;rio'}}">
 						                                    </div>
-						                                    <div class="col-md-2 form-group">
-						                                        <label title="Condições de pagamento" class="text-primary">Condições Pagto</label>
+						                                    <div class="col-md-3 form-group">
+						                                        <label title="Condições de pagamento" class="text-primary">Condi&ccedil;&otilde;es Pagto</label>
 						                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.condicaoPagamento">
+						                                    </div>
+						                                    <div class="col-md-3 form-group">
+						                                        <label title="Representante" class="text-primary">Representante</label>
+						                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.representative">
 						                                    </div>
 						                                    <div class="col-md-5 form-group">
 						                                    	
 						                                    </div>
 						                                    <div class="col-md-12 form-group">
-						                                        <label class="text-primary">Observação</label>
+						                                        <label class="text-primary">Observa&ccedil;&atilde;o</label>
 						                                        <input type="text" class="form-control" disabled="disabled" ng-model="poFormCtrl.purchaseOrder.remark">
 						                                    </div>
 													
@@ -250,11 +262,11 @@
 					                                          <input type="text" class="form-control" value="{{poFormCtrl.cpfCnpjSender}}" disabled="disabled">
 					                                      </div>
 					                                      <div class="col-md-4 form-group">
-					                                          <label class="text-danger">Razão Social Remetente</label>
+					                                          <label class="text-danger">Raz&atilde;o Social Remetente</label>
 					                                          <input type="text" class="form-control" readonly="readonly" value="{{poFormCtrl.nameSender}}">
 					                                      </div>
 					                                      <div class="col-md-4 form-group">
-					                                          <label class="text-danger">Endereço Remetente</label>
+					                                          <label class="text-danger">Endere&ccedil;o Remetente</label>
 					                                          <input type="text" class="form-control" readonly="readonly" 
 					                                              value="{{poFormCtrl.purchaseOrder.customerAddressSender.publicPlace+', '+poFormCtrl.purchaseOrder.customerAddressSender.number+' - '+poFormCtrl.purchaseOrder.customerAddressSender.neighborhood+' - '+poFormCtrl.purchaseOrder.customerAddressSender.city+' - '+poFormCtrl.purchaseOrder.customerAddressSender.state.abbreviation}}">
 					                                      </div>		
@@ -265,28 +277,48 @@
 					                                      </div>	
 
 					                                      <div class="col-md-2 form-group">
-					                                          <label class="text-success">CNPJ Destinatário</label>
+					                                          <label class="text-success">CNPJ Destinat&aacute;rio</label>
 					                                          <input type="text" class="form-control" value="{{poFormCtrl.cpfCnpjRecipient}}" disabled="disabled">
 					                                      </div>
 					                                      <div class="col-md-3 form-group">
-					                                          <label class="text-success">Razão Social Destinatário</label>
+					                                          <label class="text-success">Raz&atilde;o Social Destinat&aacute;rio</label>
 					                                          <input type="text" class="form-control" readonly="readonly" value="{{poFormCtrl.nameRecipient}}">
 					                                      </div>
 					                                      <div class="col-md-3 form-group">
-					                                          <label class="text-success">Endereço Destinatário</label>
+					                                          <label class="text-success">Endere&ccedil;o Destinat&aacute;rio</label>
 					                                          <input type="text" class="form-control" readonly="readonly" 
 					                                              value="{{poFormCtrl.purchaseOrder.customerAddressRecipient.publicPlace+', '+poFormCtrl.purchaseOrder.customerAddressRecipient.number+' - '+poFormCtrl.purchaseOrder.customerAddressRecipient.neighborhood+' - '+poFormCtrl.purchaseOrder.customerAddressRecipient.city+' - '+poFormCtrl.purchaseOrder.customerAddressRecipient.state.abbreviation}}">
 					                                      </div>		
 					                                      <div class="col-md-2 form-group">
-					                                          <label class="text-success">Telefone Destinatário</label>
+					                                          <label class="text-success">Telefone Destinat&aacute;rio</label>
 					                                          <input type="text" class="form-control" readonly="readonly" 
 					                                              value="{{poFormCtrl.purchaseOrder.phoneRecipient}}">
 					                                      </div>	 
 					                                      <div class="col-md-2 form-group">
-					                                          <label class="text-success">Fax Destinatário</label>
+					                                          <label class="text-success">Contato no Destinat&aacute;rio</label>
 					                                          <input type="text" class="form-control" readonly="readonly" 
-					                                              value="{{poFormCtrl.purchaseOrder.faxRecipient}}">
+					                                              value="{{poFormCtrl.purchaseOrder.contactRecipient}}">
 					                                      </div>	
+
+					                                      <div class="col-md-2 form-group">
+					                                          <label class="text-warning">CNPJ Transportadora</label>
+					                                          <input type="text" class="form-control" value="{{poFormCtrl.cpfCnpjSender}}" disabled="disabled">
+					                                      </div>
+					                                      <div class="col-md-4 form-group">
+					                                          <label class="text-warning">Raz&atilde;o Social Transportadora</label>
+					                                          <input type="text" class="form-control" readonly="readonly" value="{{poFormCtrl.nameSender}}">
+					                                      </div>
+					                                      <div class="col-md-4 form-group">
+					                                          <label class="text-warning">Endere&ccedil;o Transportadora</label>
+					                                          <input type="text" class="form-control" readonly="readonly" 
+					                                              value="{{poFormCtrl.purchaseOrder.customerAddressSender.publicPlace+', '+poFormCtrl.purchaseOrder.customerAddressSender.number+' - '+poFormCtrl.purchaseOrder.customerAddressSender.neighborhood+' - '+poFormCtrl.purchaseOrder.customerAddressSender.city+' - '+poFormCtrl.purchaseOrder.customerAddressSender.state.abbreviation}}">
+					                                      </div>		
+					                                      <div class="col-md-2 form-group">
+					                                          <label class="text-warning">Telefone Transportadora</label>
+					                                          <input type="text" class="form-control" readonly="readonly" 
+					                                              value="{{poFormCtrl.purchaseOrder.phoneSender}}">
+					                                      </div>	
+
 
 														  <table class="table table-bordered">
 						                                        <tr>
@@ -294,7 +326,7 @@
 						                                        </tr>
 						                                        <tr>
 						                                            <th class="text-center" style="width: 50px">Cod.</th>
-						                                            <th>Descrição</th>
+						                                            <th>Descri&ccedil;&atilde;o</th>
 						                                            <th class="text-center" style="width: 100px">Valor Unit.</th>
 						                                            <th class="text-center" style="width: 60px">Qtde</th>
 						                                            <th class="text-center" style="width: 200px">Valor Total</th>
@@ -317,7 +349,7 @@
 												    <div class="row"> 
 				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PRODUTOS" class="btn btn-default">Voltar</a>
 				                                      <div class="pull-right">
-				                                      		<a href="${pageContext.request.contextPath}/purchaseorder/{{poFormCtrl.purchaseOrder.id}}/print/pdf" target="_blank" class="btn btn-default">Pré-visualização do Pedido</a>
+				                                      		<a href="${pageContext.request.contextPath}/purchaseorder/{{poFormCtrl.purchaseOrder.id}}/print/pdf" target="_blank" class="btn btn-default">Pré-visualiza&ccedil;&atilde;o do Pedido</a>
 				                                      		<a href ng-click="poFormCtrl.completedPO(poFormCtrl.purchaseOrder)" class="btn btn-success">Efetivar</a> 				                                    
 				                                      </div>                             		                                 
 				                              	    </div>
@@ -364,11 +396,11 @@
 <!-- 							            <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.product.id" > -->
 <!-- 							          </div>  -->
 							          <div class="form-group col-md-3">
-							            <label class="control-label">Código:</label>
+							            <label class="control-label">C&oacute;digo:</label>
 							            <input type="text" class="form-control" ng-model="poFormCtrl.product.code" >
 							          </div>					 		          
 							          <div class="form-group col-md-9">
-							            <label class="control-label">Descrição:</label>
+							            <label class="control-label">Descri&ccedil;&atilde;o:</label>
 							            <input type="text" class="form-control" ng-model="poFormCtrl.product.description" >
 							          </div>
 							          <div class="form-group col-md-4">
@@ -416,8 +448,8 @@
 							        <br/>
 								    <table class="table table-bordered">
                                        <tr>
-                                           <th class="text-center" style="width: 50px">Código</th>
-                                           <th class="text-center">Descrição</th>
+                                           <th class="text-center" style="width: 50px">C&oacute;digo</th>
+                                           <th class="text-center">Descri&ccedil;&atilde;o</th>
                                            <th class="text-center">Valor</th>
                                            <th class="text-center" style="width:40px"></th>
                                        </tr>
@@ -443,7 +475,7 @@
 					    <div class="modal-content"> 
 					      <div class="modal-header">
 					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <h4 class="modal-title">Consulta de Cliente <small>( {{ poFormCtrl.typeSearchCustomer == 'R' ? 'Remetente' : poFormCtrl.typeSearchCustomer == 'D' ? 'Destinatário' : 'Transportadora' }} )</small> </h4>
+					        <h4 class="modal-title">Consulta de Cliente <small>( {{ poFormCtrl.typeSearchCustomer == 'R' ? 'Remetente' : poFormCtrl.typeSearchCustomer == 'D' ? 'Destinat&aacute;rio' : 'Transportadora' }} )</small> </h4>
 					      </div>
 					      <div class="modal-body">
 						        <form ng-submit="poFormCtrl.findCustomerByCpfCnpjOrName(poFormCtrl.searchCustomer.cpfCnpj, poFormCtrl.searchCustomer.name)">
@@ -452,7 +484,7 @@
 						            <input type="text" class="form-control" ng-model="poFormCtrl.searchCustomer.cpfCnpj" >
 						          </div>					 	 	          
 						          <div class="form-group col-md-6">
-						            <label class="control-label">Razão Social:</label>
+						            <label class="control-label">Raz&atilde;o Social:</label>
 						            <input type="text" class="form-control" ng-model="poFormCtrl.searchCustomer.name" >
 						          </div>
 						          <br/>
@@ -461,7 +493,7 @@
 							    <table class="table table-bordered">
                                        <tr>
                                            <th class="text-center" style="width: 50px">Cpf/Cnpj</th>
-                                           <th class="text-center">Razão Social</th>
+                                           <th class="text-center">Raz&atilde;o Social</th>
                                            <th class="text-center" style="width: 40px"></th>
                                        </tr>
                                        <tr ng-repeat="c in poFormCtrl.customers">

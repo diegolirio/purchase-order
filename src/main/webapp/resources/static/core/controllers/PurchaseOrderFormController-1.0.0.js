@@ -45,9 +45,12 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 			self.cpfCnpjRecipient = self.purchaseOrder.customerAddressRecipient.people.cpfCnpj;
 			self.customerRecipient = self.purchaseOrder.customerAddressRecipient.people;
 			self.nameRecipient = self.customerRecipient.name; // TODO: analisar pq dois name
+			// transport
+			self.cpfCnpjShippingCompany = self.purchaseOrder.customerAddressShippingCompany.people.cpfCnpj;
+			self.shippingCompanyName = self.purchaseOrder.customerAddressShippingCompany.people.name;
 			return resp;
 		}).then(function(respPO) {
-			// Busca enderecos do Cliente (encadeado)
+			// Busca enderecos do Remetente (encadeado)
 			AddressService.getListByPeople(respPO.data.customerAddressSender.people).then(function(resp) {
 				self.addressesSender = resp.data;
 				for(var i = 0; i <= self.addressesSender.length-1; i++) { 
@@ -75,7 +78,7 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 			});			
 			return respPO;
 		}).then(function(respPO) {
-			// Busca enderecos do Cliente (encadeado)
+			// Busca enderecos do Destinatario (encadeado)
 			AddressService.getListByPeople(respPO.data.customerAddressRecipient.people).then(function(resp) {
 				self.addressesRecipient = resp.data;
 				for(var i = 0; i <= self.addressesRecipient.length-1; i++) { 
@@ -93,20 +96,35 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 			TelephoneService.getListByPeople(respPO.data.customerAddressRecipient.people).then(function(resp) {
 				self.phonesRecipient = resp.data;
 				for(var i = 0; i <= self.phonesRecipient.length-1; i++) { 
-					// fone dest
-					if(self.phonesRecipient[i].number == self.purchaseOrder.phoneRecipient) 
+					if(self.phonesRecipient[i].number == self.purchaseOrder.phoneRecipient) {
 						self.purchaseOrder.phoneRecipient = self.phonesRecipient[i].number; 
-					// fax
-					if(self.phonesRecipient[i].number == self.purchaseOrder.faxRecipient) 
-						self.purchaseOrder.faxRecipient = self.phonesRecipient[i].number; 
+						break;
+					}
 				}					
 			}, function(error) { 
 				alert(JSON.stringify(error));
-			});	
+			});			
 			return respPO;
 		}).then(function(respPO) {
-			// busca telefone e mantem o atual selecionado
-			TelephoneService.getListByPeople(respPO.data.shippingCompany).then(function(resp) {
+			
+			// Busca enderecos do Transport (encadeado)
+			if(respPO.data.customerAddressShippingCompany != null && respPO.data.customerAddressShippingCompany != undefined) {
+				AddressService.getListByPeople(respPO.data.customerAddressShippingCompany.people).then(function(resp) {
+					self.addressesShippingCompany = resp.data;
+					for(var i = 0; i <= self.addressesShippingCompany.length-1; i++) { 
+						if(self.addressesShippingCompany[i].id == self.purchaseOrder.customerAddressShippingCompany.id) {
+							self.purchaseOrder.customerAddressShippingCompany = self.addressesShippingCompany[i]; 
+							break;
+						}
+					}				
+				}, function(error) {
+					alert(JSON.stringify(error));
+				});
+			}
+			return respPO;			
+		}).then(function(respPO) { 
+			// busca telefone e mantem o atual selecionado (Transport)
+			TelephoneService.getListByPeople(respPO.data.customerAddressShippingCompany.people).then(function(resp) {
 				self.phonesShippingCompany = resp.data;
 				for(var i = 0; i <= self.phonesShippingCompany.length-1; i++) { 
 					// fone transportadora
@@ -147,15 +165,15 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 	 * 
 	 */
 	self.maskShippingCompanyCpfCnpj = function(value) {
-		self.purchaseOrder.shippingCompany.cpfCnpj = MaskService.cnpj(value);
+		self.cpfCnpjShippingCompany = MaskService.cnpj(value);
 	};
 	
 	/**
 	 * busca cliente remetente por cpfCnpj
 	 */
 	self.getCustomerSenderByCpfCnpj = function(cpfCnpj) {
-		cpfCnpj = MaskService.num(cpfCnpj); 
 		if(cpfCnpj == '') return;
+		cpfCnpj = MaskService.num(cpfCnpj); 
 		// Busca Cliente por cpfCnpj
 		CustomerService.getByCpfCnpj(cpfCnpj).then(function(resp) {
 			self.customerSender = resp.data;
@@ -282,10 +300,25 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 	 */
 	self.getShippingCompanyByCpfCnpj = function(cpfCnpj) {
 		// Busca Cliente por cpfCnpj
-		CustomerService.getByCpfCnpj(MaskService.num(cpfCnpj)).then(function(resp) {
-			self.purchaseOrder.shippingCompany = resp.data;
+		cpfCnpj = MaskService.num(cpfCnpj);
+		CustomerService.getByCpfCnpj(cpfCnpj).then(function(resp) {
+			self.cpfCnpjShippingCompany = resp.data.cpfCnpj;
+			self.shippingCompanyName = resp.data.name;
 			return resp;
 		}).then(function(respCustomer) { 
+			// Busca enderecos do Cliente (encadeado)
+			if(respCustomer.data != "null") {
+				AddressService.getListByPeople(respCustomer.data).then(function(resp) {
+					self.addressesShippingCompany = resp.data;
+				}, function(error) {
+					alert(JSON.stringify(error));
+				});
+			} else {
+				self.addressesShippingCompany = []; 
+			}
+			return respCustomer;
+			
+		}).then(function(respCustomer) {
 			// Busca telefones do Cliente (encadeado)
 			if(respCustomer.data != "null") {
 				TelephoneService.getListByPeople(respCustomer.data).then(function(resp) {

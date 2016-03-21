@@ -27,7 +27,7 @@ public class PO {
 	private String stateRecipient;
 	private String ieRecipient;
 	private String phone1Recipient;
-	private String phone2Recipient;
+	private String contactRecipient;
 	// transport
 	private String nameShippingCompany;
 	private String phoneShippingCompany;
@@ -37,6 +37,8 @@ public class PO {
 	private String remark;
 	private int addressNumberSender;
 	private int addressNumberRecipient;
+	private String addressShippingCompany;
+	private int addressNumberShippingCompany;
 	
 	public long getNumber() {
 		return number;
@@ -172,11 +174,11 @@ public class PO {
 	public void setPhone1Recipient(String phone1Recipient) {
 		this.phone1Recipient = phone1Recipient;
 	}
-	public String getPhone2Recipient() {
-		return phone2Recipient;
+	public String getContactRecipient() {
+		return contactRecipient;
 	}
-	public void setPhone2Recipient(String phone2Recipient) {
-		this.phone2Recipient = phone2Recipient;
+	public void setContactRecipient(String contactRecipient) {
+		this.contactRecipient = contactRecipient;
 	}
 	public String getNameShippingCompany() {
 		return nameShippingCompany;
@@ -208,6 +210,20 @@ public class PO {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	public String getAddressShippingCompany() {
+		return addressShippingCompany;
+	}
+	public void setAddressShippingCompany(String addressShippingCompany) {
+		this.addressShippingCompany = addressShippingCompany;
+	}
+	
+	public int getAddressNumberShippingCompany() {
+		return addressNumberShippingCompany;
+	}
+	public void setAddressNumberShippingCompany(int addressNumberShippingCompany) {
+		this.addressNumberShippingCompany = addressNumberShippingCompany;
+	}
 	@Override
 	public String toString() {
 		return "PO [number=" + number + ", emissionDate=" + emissionDate
@@ -220,11 +236,13 @@ public class PO {
 				+ ", cepRecipient=" + cepRecipient + ", cityRecipient="
 				+ cityRecipient + ", stateRecipient=" + stateRecipient
 				+ ", ieRecipient=" + ieRecipient + ", phone1Recipient="
-				+ phone1Recipient + ", phone2Recipient=" + phone2Recipient
+				+ phone1Recipient + ", contactRecipient=" + contactRecipient
 				+ ", nameShippingCompany=" + nameShippingCompany
 				+ ", phoneShippingCompany=" + phoneShippingCompany
 				+ ", representative=" + representative + ", paymentConditions="
 				+ paymentConditions + ", remark=" + remark + "]";
 	}
+	
+
 
 }

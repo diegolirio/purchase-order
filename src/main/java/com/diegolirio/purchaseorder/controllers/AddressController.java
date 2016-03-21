@@ -42,6 +42,7 @@ public class AddressController {
 	@RequestMapping(value="/save", method=RequestMethod.POST, consumes="application/json; charset=UTF-8", produces="application/json; charset=UTF-8")
 	public ResponseEntity<String> save(@RequestBody Address address) {
 		try {
+			System.out.println(address); 
 			address = this.addressService.save(address);
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(address), HttpStatus.CREATED);
 		} catch(Exception e) {

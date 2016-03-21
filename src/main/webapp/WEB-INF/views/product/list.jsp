@@ -24,8 +24,8 @@
                                 	<br/> 
                                     <table class="table table-bordered">
                                         <tr class="text-danger">
-                                            <th class="text-center" style="width: 60px">Código</th>
-                                            <th class="text-center">Descrição</th>
+                                            <th class="text-center" style="width: 60px">C&oacute;digo</th>
+                                            <th class="text-center">Descri&ccedil;&atilde;o</th>
                                             <th class="text-center" style="width: 200px">Valor</th>
                                             <th class="text-center" style="width: 100px">Tipo</th>
                                             <th class="text-center" style="width: 10px">editar</th>

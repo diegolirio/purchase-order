@@ -62,7 +62,7 @@ public class PurchaseOrderRepositoryTest {
 		
 		purchaseOrder.setCustomerAddressRecipient(dellavolpeAddressRecipient);
 		purchaseOrder.setCustomerAddressSender(dellavolpeAddressRecipient);
-		purchaseOrder.setShippingCompany(transportadora);
+		purchaseOrder.setCustomerAddressShippingCompany(dellavolpeAddressRecipient);
 		
 		purchaseOrderRepositorie.save(purchaseOrder);
 		Assert.assertTrue(purchaseOrder.getId() > 0); 

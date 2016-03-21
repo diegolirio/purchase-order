@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="po" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="043009fb-73e7-4744-966a-f88ef33a8a40">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="67"/>
 	<subDataset name="dataset1" uuid="43cd990d-4889-4981-b489-d47be969bede"/>
 	<field name="po.number" class="java.lang.Long"/>
 	<field name="po.emissionDate" class="java.util.Date"/>
@@ -30,11 +30,14 @@
 	<field name="po.stateRecipient" class="java.lang.String"/>
 	<field name="po.ieRecipient" class="java.lang.String"/>
 	<field name="po.phone1Recipient" class="java.lang.String"/>
-	<field name="po.phone2Recipient" class="java.lang.String"/>
+	<field name="po.contactRecipient" class="java.lang.String"/>
 	<field name="po.nameShippingCompany" class="java.lang.String"/>
 	<field name="po.phoneShippingCompany" class="java.lang.String"/>
 	<field name="po.paymentConditions" class="java.lang.String"/>
 	<field name="po.remark" class="java.lang.String"/>
+	<field name="po.addressShippingCompany" class="java.lang.String"/>
+	<field name="po.addressNumberShippingCompany" class="java.lang.Number"/>
+	<field name="po.representative" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -44,7 +47,7 @@
 	<pageHeader>
 		<band height="258" splitType="Stretch">
 			<rectangle radius="10">
-				<reportElement x="0" y="93" width="554" height="146" uuid="5e1d1814-3461-48d1-b14d-f5ded23b319c"/>
+				<reportElement x="1" y="90" width="554" height="146" uuid="5e1d1814-3461-48d1-b14d-f5ded23b319c"/>
 			</rectangle>
 			<rectangle radius="10">
 				<reportElement x="447" y="0" width="107" height="73" uuid="7f0750a1-3c75-4936-885d-c418dbaf6473"/>
@@ -165,7 +168,7 @@
 				<text><![CDATA[UF]]></text>
 			</staticText>
 			<line>
-				<reportElement x="235" y="151" width="1" height="55" uuid="df2e2e9d-0d6a-4482-a4cb-f06d179c127c"/>
+				<reportElement x="235" y="151" width="1" height="26" uuid="df2e2e9d-0d6a-4482-a4cb-f06d179c127c"/>
 			</line>
 			<staticText>
 				<reportElement x="238" y="153" width="79" height="10" uuid="c7460289-f3e8-4081-82bf-e73c1e75332d"/>
@@ -202,31 +205,31 @@
 				<text><![CDATA[REPRESENTANTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="238" y="181" width="62" height="10" uuid="df6d97af-c85c-4879-9b15-1dc83be915b4"/>
+				<reportElement x="148" y="181" width="62" height="10" uuid="df6d97af-c85c-4879-9b15-1dc83be915b4"/>
 				<textElement>
 					<font size="6"/>
 				</textElement>
 				<text><![CDATA[TRANSPORTADORA]]></text>
 			</staticText>
 			<line>
-				<reportElement x="409" y="179" width="1" height="27" uuid="33e6fd60-f99c-4ab2-8857-2bf26bdfc42a"/>
+				<reportElement x="329" y="179" width="1" height="27" uuid="33e6fd60-f99c-4ab2-8857-2bf26bdfc42a"/>
 			</line>
 			<staticText>
-				<reportElement x="325" y="181" width="18" height="10" uuid="6074e529-8702-4807-9f0a-e9910a72d929"/>
+				<reportElement x="235" y="181" width="18" height="10" uuid="6074e529-8702-4807-9f0a-e9910a72d929"/>
 				<textElement>
 					<font size="6"/>
 				</textElement>
 				<text><![CDATA[Fone:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="413" y="181" width="104" height="10" uuid="183b6de4-57c0-47b9-a5cf-f1de379177c2"/>
+				<reportElement x="333" y="181" width="121" height="10" uuid="183b6de4-57c0-47b9-a5cf-f1de379177c2"/>
 				<textElement>
-					<font size="6"/>
+					<font size="5"/>
 				</textElement>
-				<text><![CDATA[CONTATO NO CLIENTE]]></text>
+				<text><![CDATA[ENDEREÇO DA TRANSPORTADORA]]></text>
 			</staticText>
 			<line>
-				<reportElement x="180" y="207" width="1" height="32" uuid="42f29a68-54c3-4918-8289-5889cd24e885"/>
+				<reportElement x="180" y="207" width="1" height="29" uuid="42f29a68-54c3-4918-8289-5889cd24e885"/>
 			</line>
 			<staticText>
 				<reportElement x="9" y="209" width="126" height="10" uuid="a5de046c-117c-4859-9a9d-e47fa0183578"/>
@@ -303,11 +306,11 @@
 				<textFieldExpression><![CDATA[$F{po.phone1Recipient}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="242" y="191" width="165" height="15" uuid="3bb50f95-1876-4721-85ce-3d73230d64eb"/>
+				<reportElement x="152" y="191" width="165" height="15" uuid="3bb50f95-1876-4721-85ce-3d73230d64eb"/>
 				<textFieldExpression><![CDATA[$F{po.nameShippingCompany}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="344" y="181" width="61" height="10" uuid="89418bfa-8746-49bf-b591-e2cf6e360570"/>
+				<reportElement x="254" y="181" width="61" height="10" uuid="89418bfa-8746-49bf-b591-e2cf6e360570"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -351,6 +354,24 @@
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Telefone: " + $F{po.phoneSender}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="140" y="179" width="1" height="27" uuid="c20ac2c6-3d06-4696-99ab-efdddf049e4e"/>
+			</line>
+			<textField>
+				<reportElement x="334" y="192" width="218" height="15" uuid="a1f40bdb-27a7-47ed-8cc7-069f35fd387e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{po.addressShippingCompany}+", "+$F{po.addressNumberShippingCompany}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="162" width="116" height="15" uuid="81fc3fbc-cf20-45fb-97fd-136e57a99999"/>
+				<textFieldExpression><![CDATA[$F{po.contactRecipient}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="191" width="124" height="15" uuid="15648e58-2eda-4ed6-bae7-0a5434509646"/>
+				<textFieldExpression><![CDATA[$F{po.representative}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

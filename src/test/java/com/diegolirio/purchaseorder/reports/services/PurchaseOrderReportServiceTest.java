@@ -48,7 +48,7 @@ public class PurchaseOrderReportServiceTest {
 		po.setId(1l);
 		po.setCondicaoPagamento("30");
 		po.setEmissionDate(new Date());
-		po.setFaxRecipient("(11) 99999-9999");
+		po.setContactRecipient("João");
 		po.setPhoneRecipient("(11) 98888-7777"); 
 		po.setPhoneSender("(11) 95555-4444");
 		po.setPhoneShippingCompany("(11) 2563-9999");
@@ -58,7 +58,6 @@ public class PurchaseOrderReportServiceTest {
 		//User userCreated = UserBuildTest.buildTest();
 		//po.setUserCreated(userCreated );
 		Customer customer = this.customerRepositorie.save(CustomerBuilderTest.buildTest());
-		po.setShippingCompany(customer);
 		
 		Address address = AddressBuilderTest.buildTest();
 		address.setId(1l);
@@ -74,6 +73,7 @@ public class PurchaseOrderReportServiceTest {
 		state.setId(1l);
 		state.setName("São Paulo");
 		address.setState(state);
+		po.setCustomerAddressShippingCompany(address);
 		po.setCustomerAddressSender(address );
 		po.setCustomerAddressRecipient(address );
 

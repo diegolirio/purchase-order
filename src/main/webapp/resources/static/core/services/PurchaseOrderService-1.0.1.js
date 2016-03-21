@@ -37,18 +37,22 @@ app.factory('PurchaseOrderService', ['$http', function($http) {
 		//	var date = new Date();
 		//	purchaseOrder.emissionDate = date.getFullYear()+'-'+date.getMonth()+1+'-0'+date.getDate();
 		//}
-		console.log(purchaseOrder); 
+		if(purchaseOrder.customerAddressShippingCompany == null || purchaseOrder.customerAddressShippingCompany == undefined) {
+			purchaseOrder.customerAddressShippingCompany = {};
+			purchaseOrder.customerAddressShippingCompany.id = 0;
+		}
 		var params = "?id="+purchaseOrder.id+
 					 "&customerAddressSender.id="+purchaseOrder.customerAddressSender.id+
 					 "&phoneSender="+purchaseOrder.phoneSender+
 					 "&customerAddressRecipient.id="+purchaseOrder.customerAddressRecipient.id+
 					 "&phoneRecipient="+purchaseOrder.phoneRecipient+
-					 "&faxRecipient="+purchaseOrder.faxRecipient+
+					 "&contactRecipient="+purchaseOrder.contactRecipient+
 					 "&condicaoPagamento="+purchaseOrder.condicaoPagamento+
-					 "&shippingCompany.id="+purchaseOrder.shippingCompany.id+
+					 "&customerAddressShippingCompany.id="+purchaseOrder.customerAddressShippingCompany.id+
 					 "&phoneShippingCompany="+purchaseOrder.phoneShippingCompany+
 					 "&typeFreight="+purchaseOrder.typeFreight+
 					 "&remark="+purchaseOrder.remark+
+					 "&representative="+purchaseOrder.representative+
 					 "&userCreated.id="+purchaseOrder.userCreated.id; 
 					 //"&emissionDate="+purchaseOrder.emissionDate;
 		return $http.post(serverURL('/saveParams')+params);

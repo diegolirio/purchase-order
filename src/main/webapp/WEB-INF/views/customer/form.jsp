@@ -30,7 +30,7 @@
 						                                          <input type="text" class="form-control input-lg" ng-model="cFormCtrl.customer.cpfCnpj" ng-keyup="cFormCtrl.maskCnpj(cFormCtrl.customer.cpfCnpj)" maxlength="18" required="required">
 						                                      </div>
 						                                      <div class="col-md-4 form-group">
-						                                          <label class="text-danger">Razão Social</label>
+						                                          <label class="text-danger">Raz&atilde;o Social</label>
 						                                          <input type="text" class="form-control input-lg"  ng-model="cFormCtrl.customer.name" required="required">
 						                                      </div>
 						                                      <div class="col-md-4 form-group">
@@ -38,7 +38,7 @@
 						                                          <input type="email" class="form-control input-lg"  ng-model="cFormCtrl.customer.email" required="required">
 						                                      </div>
 						                                      <div class="col-md-2 form-group">
-						                                          <label class="text-danger">Inscrição Estadual</label>
+						                                          <label class="text-danger">Inscri&ccedil;&atilde;o Estadual</label>
 						                                          <input type="text" class="form-control input-lg" ng-model="cFormCtrl.customer.signUpState">
 						                                      </div>
 						                                      <br/>
@@ -52,7 +52,7 @@
 				                          
 										 <section class="panel" ng-show="cFormCtrl.customer.id > 0">
 				                              <header class="panel-heading">
-				                                  <span class="text-primary">Endereços</span>
+				                                  <span class="text-primary">Endere&ccedil;os</span>
 				                              </header>
 				                              <div class="panel-body">
 			                                      <div class="row">
@@ -145,7 +145,7 @@
 							            <input type="text" class="form-control" ng-model="cFormCtrl.address.publicPlace" >
 							          </div>
 							          <div class="form-group col-md-2">
-							            <label class="control-label">Nº</label>
+							            <label class="control-label">N&bdquo;</label>
 							            <input type="text" class="form-control" ng-model="cFormCtrl.address.number" >
 							          </div>
 							        </div>

@@ -23,18 +23,18 @@
                                 	<div class="table-responsive">
 	                                    <table class="table table-bordered">
 	                                        <tr class="text-danger">
-	                                            <th rowspan="2" class="text-center" style="width: 10px">Numero</th>
+	                                            <th rowspan="2" class="text-center" style="width: 10px">N&uacute;mero</th>
 	                                            <th rowspan="2" class="text-center">Data</th>
 	                                            <th rowspan="2" class="text-center">Status</th>
 	                                            <th colspan="2" class="text-center">Remetente</th>
-	                                            <th colspan="2" class="text-center">Destinatário</th>
+	                                            <th colspan="2" class="text-center">Destinat&aacute;rio</th>
 	                                            <th rowspan="2" class="text-center">Transportadora</th>
 	                                            <th rowspan="2" class="text-center"></th>
 	                                        </tr> 
 	                                        <tr class="text-muted"> 
-	                                            <th class="text-center">Razão</th>
+	                                            <th class="text-center">Raz&atilde;o</th>
 	                                            <th class="text-center">CNPJ</th>
-	                                            <th class="text-center">Razão</th>
+	                                            <th class="text-center">Raz&atilde;o</th>
 	                                            <th class="text-center">CNPJ</th>
 	                                        </tr>
 	                                        <tr ng-repeat="po in poListCtrl.purchaseOrders">
@@ -45,7 +45,7 @@
 	                                            <td class="text-center">{{ po.emissionDate | date:'dd/MM/yyyy' }}</td> 
 	                                            <td class="text-center">
 	                                            	<span ng-show="po.status == 'pending'" class="label label-warning">Pendente</span>
-	                                            	<span ng-show="po.status == 'completed'" class="label label-default">Concluído</span>
+	                                            	<span ng-show="po.status == 'completed'" class="label label-default">Conclu&iacute;do</span>
 	                                            	<span ng-show="po.status == 'canceled'" class="label label-danger">Cancelado</span>
 	                                            </td>
 	                                            <td>{{ po.customerAddressSender.people.name }}</td>
@@ -94,8 +94,5 @@
 					    </div><!-- /.modal-content -->
 					  </div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->                    
-                                        
-                    
-                    
                     
                 </section><!-- /.content -->

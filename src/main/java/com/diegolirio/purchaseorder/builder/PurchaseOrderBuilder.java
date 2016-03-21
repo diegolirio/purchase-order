@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.diegolirio.purchaseorder.models.Address;
-import com.diegolirio.purchaseorder.models.Customer;
 import com.diegolirio.purchaseorder.models.OrdersProducts;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
 
@@ -13,14 +12,14 @@ public class PurchaseOrderBuilder {
 	private Date emissionDate;
 	private Address customerAddressRecipient;
 	private Address customerAddressSender;
-	private String faxRecipient;
+	private String contactRecipient;
 	private Long id;
 	private List<OrdersProducts> ordersProducts;
 	private String phoneRecipient;
 	private String phoneSender;
 	private String phoneShippingCompany;
 	private String remark;
-	private Customer shippingCompany;
+	private Address customerAddressShippingCompany;
 	private char typeFreight;
 	private String condicaoPagamento;
 
@@ -39,8 +38,8 @@ public class PurchaseOrderBuilder {
 		return this;
 	}
 
-	public PurchaseOrderBuilder withFaxRecipient(String faxRecipient) {
-		this.faxRecipient = faxRecipient;
+	public PurchaseOrderBuilder withContactRecipient(String contactRecipient) {
+		this.contactRecipient = contactRecipient;
 		return this;
 	}
 	
@@ -64,8 +63,8 @@ public class PurchaseOrderBuilder {
 		return this;
 	}
 	
-	public PurchaseOrderBuilder withShippingCompany(Customer shippingCompany) {
-		this.shippingCompany = shippingCompany;
+	public PurchaseOrderBuilder withCustomerAddressShippingCompany(Address customerAddressShippingCompany) {
+		this.customerAddressShippingCompany = customerAddressShippingCompany;
 		return this;
 	}
 	
@@ -95,14 +94,14 @@ public class PurchaseOrderBuilder {
 		purchaseOrder.setEmissionDate(emissionDate);
 		purchaseOrder.setCustomerAddressRecipient(customerAddressRecipient);
 		purchaseOrder.setCustomerAddressSender(customerAddressSender);
-		purchaseOrder.setFaxRecipient(faxRecipient);
+		purchaseOrder.setContactRecipient(contactRecipient);
 		purchaseOrder.setId(id);
 		purchaseOrder.setOrdersProducts(ordersProducts);
 		purchaseOrder.setPhoneRecipient(phoneRecipient);
 		purchaseOrder.setPhoneSender(phoneSender);
 		purchaseOrder.setPhoneShippingCompany(phoneShippingCompany);
 		purchaseOrder.setRemark(remark);
-		purchaseOrder.setShippingCompany(shippingCompany);
+		purchaseOrder.setCustomerAddressShippingCompany(customerAddressShippingCompany);
 		purchaseOrder.setTypeFreight(typeFreight);
 		purchaseOrder.setCondicaoPagamento(condicaoPagamento);
 		return purchaseOrder;

@@ -26,7 +26,7 @@
 	                                        <tr class="text-danger">
 	<!--                                             <th class="text-center" style="width: 10px">#</th> -->
 	                                            <th class="text-center">CNPJ</th>
-	                                            <th class="text-center">Razão Social</th>
+	                                            <th class="text-center">Raz&atilde;o Social</th>
 	                                            <th class="text-center">Email</th>
 	                                            <th class="text-center">Insc. Estadual</th>
 	                                            <th class="text-center" style="width: 10px">editar</th>

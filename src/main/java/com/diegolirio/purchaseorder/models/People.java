@@ -1,6 +1,5 @@
 package com.diegolirio.purchaseorder.models;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Entity;

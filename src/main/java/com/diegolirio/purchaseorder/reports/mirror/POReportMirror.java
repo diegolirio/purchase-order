@@ -19,6 +19,7 @@ public class POReportMirror {
 		po.setEmissionDate(purchaseOrder.getEmissionDate());
 		po.setPaymentConditions(purchaseOrder.getCondicaoPagamento());
 		po.setRemark(purchaseOrder.getRemark());
+		po.setRepresentative(purchaseOrder.getRepresentative());
 		// sender
 		po.setNameSender(sender.getName());
 		po.setCnpjSender(sender.getCpfCnpj());
@@ -42,10 +43,11 @@ public class POReportMirror {
 		po.setStateRecipient(purchaseOrder.getCustomerAddressRecipient().getState().getAbbreviation());
 		po.setCepRecipient(purchaseOrder.getCustomerAddressRecipient().getCep());
 		po.setPhone1Recipient(purchaseOrder.getPhoneRecipient());
-		po.setPhone2Recipient(purchaseOrder.getFaxRecipient());
-		
-		po.setNameShippingCompany(purchaseOrder.getShippingCompany().getName());
+		po.setContactRecipient(purchaseOrder.getContactRecipient());
+		po.setNameShippingCompany(purchaseOrder.getCustomerAddressShippingCompany().getPeople().getName());
 		po.setPhoneShippingCompany(purchaseOrder.getPhoneShippingCompany());
+		po.setAddressShippingCompany(purchaseOrder.getCustomerAddressShippingCompany().getPublicPlace());
+		po.setAddressNumberShippingCompany(purchaseOrder.getCustomerAddressShippingCompany().getNumber());
 		
 		// produ
 		product = ordersProducts.getProduct();

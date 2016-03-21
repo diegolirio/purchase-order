@@ -27,11 +27,11 @@
 <!-- 													            <input type="text" class="form-control" readonly="readonly" ng-model="poFormCtrl.product.id" > -->
 <!-- 													          </div>  -->
 													          <div class="form-group col-md-1">
-													            <label class="control-label">Código:</label>
+													            <label class="control-label">C&oacute;digo:</label>
 													            <input type="text" class="form-control input-lg" ng-model="pFormCtrl.product.code" >
 													          </div>					 		          
 													          <div class="form-group col-md-5">
-													            <label class="control-label">Descrição:</label>
+													            <label class="control-label">Descri&ccedil;&atilde;o:</label>
 													            <input type="text" class="form-control input-lg" ng-model="pFormCtrl.product.description" >
 													          </div>
 													          <div class="form-group col-md-3">
@@ -66,7 +66,7 @@
 					    <div class="modal-content"> 
 					      <div class="modal-header">
 					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <h4 class="modal-title" id="gridSystemModalLabel">Cadastro de Endereço</h4>
+					        <h4 class="modal-title" id="gridSystemModalLabel">Cadastro de Endere&ccedil;o</h4>
 					      </div>
 					      <div class="modal-body">
 						        <form>

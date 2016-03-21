@@ -1,10 +1,20 @@
 /**
  * Classe PurchaseOrderEditController responsible by views/purchaseorder/edit.jsp
  */
-app.controller('PurchaseOrderEditController', ['PurchaseOrderService', '$routeParams',
-                                               function(PurchaseOrderService, $routeParams) {
+app.controller('PurchaseOrderEditController', ['PurchaseOrderService', '$routeParams', 'OrdersProductsService',
+                                               function(PurchaseOrderService, $routeParams, OrdersProductsService) {
 
 	var self = this;
+	
+	/**
+	 * Carrega o total do Pedido
+	 */
+	self.loadTotalPO = function(ordersProducts) {
+		self.totalPO = 0;
+		for(var i = 0; i <= self.ordersProducts.length-1; i++) {
+			self.totalPO = self.totalPO + (self.ordersProducts[i].product.valueUnit * self.ordersProducts[i].amount);
+		}
+	};	
 	
 	/**
 	 * Load 
@@ -12,6 +22,16 @@ app.controller('PurchaseOrderEditController', ['PurchaseOrderService', '$routePa
 	var init = function() {
 		PurchaseOrderService.get($routeParams.id).then(function(resp) {
 			self.purchaseOrder = resp.data;
+			return resp;
+		}).then(function(respPO) {
+			// ao salvar PO carrega os items(produtos)
+			OrdersProductsService.getListByPurchaseOrder(respPO.data).then(function(resp) {
+				self.ordersProducts = resp.data;
+				self.loadTotalPO(self.ordersProducts);
+			}, function(error) {
+				alert(JSON.stringify(error));
+			});
+			
 		}, function(error) {
 			alert(JSON.stringify(error));
 		});

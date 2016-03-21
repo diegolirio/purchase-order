@@ -11,7 +11,7 @@ public class PurchaseOrderBuilderTest {
 		PurchaseOrderBuilder purchaseOrderBuilder = new PurchaseOrderBuilder();		
 		PurchaseOrder purchaseOrder = 
 			  purchaseOrderBuilder.withEmissionDate(Calendar.getInstance().getTime())
-								  .withFaxRecipient("1129678536")
+								  .withContactRecipient("João")
 								  .withPhoneRecipient("11296785")
 								  .withPhoneSender("1129678511")
 								  .withPhoneShippingCompany("1146758597")
