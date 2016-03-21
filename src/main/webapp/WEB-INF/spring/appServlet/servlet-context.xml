@@ -53,11 +53,11 @@
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbUser">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : 'adminRCX6VTv' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : 'adminleqTlTl' }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbPass">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : '7pr-FamvIuvd' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : 'mvS7MHvdBkvW' }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbName">
 		<beans:constructor-arg

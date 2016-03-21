@@ -112,7 +112,7 @@
 			                                          		  ></select>
 			                                      </div>	
 			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="btn btn-default">Voltar</a>                             		                                 
-			                                      <button class="pull-right btn btn-primary" >Avan&ccedil;ar</button> 			                                      		                                 
+			                                      <button class="pull-right btn btn-primary" ng-disabled="formT.$invalid">Avan&ccedil;ar</button> 			                                      		                                 
 				                              </div>
 				                         </section>				                           
 				                     </form>
@@ -481,14 +481,14 @@
 						        <form ng-submit="poFormCtrl.findCustomerByCpfCnpjOrName(poFormCtrl.searchCustomer.cpfCnpj, poFormCtrl.searchCustomer.name)">
 						          <div class="form-group col-md-4">
 						            <label class="control-label">CPF/CNPJ:</label>
-						            <input type="text" class="form-control" ng-model="poFormCtrl.searchCustomer.cpfCnpj" >
+						            <input type="text" class="form-control input-lg" ng-model="poFormCtrl.searchCustomer.cpfCnpj" >
 						          </div>					 	 	          
 						          <div class="form-group col-md-6">
 						            <label class="control-label">Raz&atilde;o Social:</label>
-						            <input type="text" class="form-control" ng-model="poFormCtrl.searchCustomer.name" >
+						            <input type="text" class="form-control input-lg" ng-model="poFormCtrl.searchCustomer.name" >
 						          </div>
 						          <br/>
-  						          <button class="btn btn-default  "><span class="glyphicon glyphicon-search"></span></button>
+  						          <button class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
 						        </form>
 							    <table class="table table-bordered">
                                        <tr>
