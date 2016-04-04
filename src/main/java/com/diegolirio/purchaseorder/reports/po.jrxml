@@ -38,6 +38,9 @@
 	<field name="po.addressShippingCompany" class="java.lang.String"/>
 	<field name="po.addressNumberShippingCompany" class="java.lang.Number"/>
 	<field name="po.representative" class="java.lang.String"/>
+	<variable name="valueTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}*$F{valueUnit}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -494,7 +497,7 @@
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{amount}*$F{valueUnit}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{valueTotal}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="378" y="4" width="76" height="12" uuid="fef1e591-ad56-46f4-a026-7f29380a557d"/>
@@ -543,7 +546,7 @@
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{amount}*$F{valueUnit}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{valueTotal}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="454" y="0" width="1" height="61" uuid="b5f7614f-534a-4ed7-9203-e86b7d85ba7e"/>
