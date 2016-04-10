@@ -138,7 +138,6 @@ public class PurchaseOrderService {
 		return this.sendEmailAttachmentPO(po);
 	}
 	
-	
 	/**
 	 * Consulta avancada
 	 * @param status

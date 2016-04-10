@@ -77,7 +77,7 @@
 				                                      </div>		         
 			                                      </div>
 			                                      <div class="row">
-				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.REMETENTE" class="btn btn-default">Voltar</a>                             		                                 
+				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.REMETENTE" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>                             		                                 
 				                                      <button class="pull-right btn btn-primary" ng-disabled="formD.$invalid">Avan&ccedil;ar</button>                             		                                 
 				                              	  </div>
 				                              </div>
@@ -111,7 +111,7 @@
 			                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesShippingCompany" 
 			                                          		  ></select>
 			                                      </div>	
-			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="btn btn-default">Voltar</a>                             		                                 
+			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>                             		                                 
 			                                      <button class="pull-right btn btn-primary" ng-disabled="formT.$invalid">Avan&ccedil;ar</button> 			                                      		                                 
 				                              </div>
 				                         </section>				                           
@@ -155,7 +155,7 @@
 					                                    </div>					                                    
 					                              </div>
 					                              <div class="row">
-				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.TRANSPORTADORA" class="btn btn-default">Voltar</a>                             		                                 
+				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.TRANSPORTADORA" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>                             		                                 
 				                                      <button class="pull-right btn btn-primary" ng-disabled="formPO.$invalid">Avan&ccedil;ar</a> 				                                    
 				                              	  </div>
 				                              </div>
@@ -214,7 +214,7 @@
 				                                        </tfoot>
 				                                    </table>
 				                                      
-				                                    <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PEDIDO" class="btn btn-default">Voltar</a> 
+				                                    <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PEDIDO" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a> 
 				                                    <button ng-disabled="poFormCtrl.ordersProducts.length == 0" ng-click="poFormCtrl.formVisible = poFormCtrl.EFETIVAR" class="pull-right btn btn-primary">Avan&ccedil;ar</button>   
 				                                      			                                 
 				                              </div>
@@ -302,23 +302,22 @@
 
 					                                      <div class="col-md-2 form-group">
 					                                          <label class="text-warning">CNPJ Transportadora</label>
-					                                          <input type="text" class="form-control" value="{{poFormCtrl.cpfCnpjSender}}" disabled="disabled">
+					                                          <input type="text" class="form-control" value="{{poFormCtrl.cpfCnpjShippingCompany}}" disabled="disabled">
 					                                      </div>
 					                                      <div class="col-md-4 form-group">
 					                                          <label class="text-warning">Raz&atilde;o Social Transportadora</label>
-					                                          <input type="text" class="form-control" readonly="readonly" value="{{poFormCtrl.nameSender}}">
+					                                          <input type="text" class="form-control" readonly="readonly" value="{{poFormCtrl.shippingCompanyName}}">
 					                                      </div>
 					                                      <div class="col-md-4 form-group">
 					                                          <label class="text-warning">Endere&ccedil;o Transportadora</label>
 					                                          <input type="text" class="form-control" readonly="readonly" 
-					                                              value="{{poFormCtrl.purchaseOrder.customerAddressSender.publicPlace+', '+poFormCtrl.purchaseOrder.customerAddressSender.number+' - '+poFormCtrl.purchaseOrder.customerAddressSender.neighborhood+' - '+poFormCtrl.purchaseOrder.customerAddressSender.city+' - '+poFormCtrl.purchaseOrder.customerAddressSender.state.abbreviation}}">
+					                                              value="{{poFormCtrl.purchaseOrder.customerAddressSender.publicPlace+', '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.number+' - '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.neighborhood+' - '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.city+' - '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.state.abbreviation}}">
 					                                      </div>		
 					                                      <div class="col-md-2 form-group">
 					                                          <label class="text-warning">Telefone Transportadora</label>
 					                                          <input type="text" class="form-control" readonly="readonly" 
-					                                              value="{{poFormCtrl.purchaseOrder.phoneSender}}">
+					                                              value="{{poFormCtrl.purchaseOrder.phoneShippingCompany}}">
 					                                      </div>	
-
 
 														  <table class="table table-bordered">
 						                                        <tr>
@@ -347,9 +346,9 @@
 													  </div>
 													</div>	
 												    <div class="row"> 
-				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PRODUTOS" class="btn btn-default">Voltar</a>
+				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PRODUTOS" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>
 				                                      <div class="pull-right">
-				                                      		<a href="${pageContext.request.contextPath}/purchaseorder/{{poFormCtrl.purchaseOrder.id}}/print/pdf" target="_blank" class="btn btn-default">Pré-visualiza&ccedil;&atilde;o do Pedido</a>
+				                                      		<a href="${pageContext.request.contextPath}/purchaseorder/{{poFormCtrl.purchaseOrder.id}}/print/pdf" target="_blank" class="btn btn-default">Pr&eacute;-visualiza&ccedil;&atilde;o do Pedido</a>
 				                                      		<a href ng-click="poFormCtrl.completedPO(poFormCtrl.purchaseOrder)" class="btn btn-success">Efetivar</a> 				                                    
 				                                      </div>                             		                                 
 				                              	    </div>
@@ -370,7 +369,7 @@
 		                              	  	  		</div>
 		                              	  	  </div>
 				                              <div class="row">
-			                                      <a href="#/pedidos" class="btn btn-default">Voltar</a>                             		                                 
+			                                      <a href="#/pedidos" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>                             		                                 
 			                              	  </div>
 			                        	</section>	
 	
