@@ -311,7 +311,7 @@
 					                                      <div class="col-md-4 form-group">
 					                                          <label class="text-warning">Endere&ccedil;o Transportadora</label>
 					                                          <input type="text" class="form-control" readonly="readonly" 
-					                                              value="{{poFormCtrl.purchaseOrder.customerAddressSender.publicPlace+', '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.number+' - '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.neighborhood+' - '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.city+' - '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.state.abbreviation}}">
+					                                              value="{{poFormCtrl.purchaseOrder.customerAddressShippingCompany.publicPlace+', '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.number+' - '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.neighborhood+' - '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.city+' - '+poFormCtrl.purchaseOrder.customerAddressShippingCompany.state.abbreviation}}">
 					                                      </div>		
 					                                      <div class="col-md-2 form-group">
 					                                          <label class="text-warning">Telefone Transportadora</label>

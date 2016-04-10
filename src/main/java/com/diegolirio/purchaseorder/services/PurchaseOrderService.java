@@ -118,8 +118,8 @@ public class PurchaseOrderService {
 	 * @throws JRException
 	 */
 	public boolean sendEmailAttachmentPO(PurchaseOrder po) throws AddressException, MessagingException, JRException {
-		String to = po.getCustomerAddressRecipient().getPeople().getEmail();
-		String[] cc = {FROM_EMAIL};//{po.getCustomerAddressRecipient().getPeople().getEmail()};
+		String to = po.getCustomerAddressSender().getPeople().getEmail();
+		String[] cc = {po.getCustomerAddressRecipient().getPeople().getEmail()};
 		String pathFileAnexo = this.reportService.generateReportPath(po);
 		return this.mail.sendMailHtml("Pedido numero " + po.getId(), "<h3>Segue pedido em anexo</h3>Não responda este Email", FROM_EMAIL, to, cc , pathFileAnexo);
 	}
