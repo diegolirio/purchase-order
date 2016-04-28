@@ -228,9 +228,9 @@
 <!--                                 <li class="divider"></li> -->
 
                                 <li>
-                                    <a href >
+                                    <a href="#/usuario/perfil" >
                                     <i class="fa fa-user fa-fw pull-right"></i>
-                                        Perfil
+                                        Perfil 
                                     </a>
                                     <a data-toggle="modal" href >
                                     <i class="fa fa-cog fa-fw pull-right"></i>
@@ -332,12 +332,13 @@
 		<!-- Conf do Local -->
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/static/core/angular-locale_pt-br.js"></script>
 		<!--------- rotas e config da app angular ------------------->
-		<script src="${pageContext.request.contextPath}/resources/static/core/app-1.0.0.js"></script>  
+		<script src="${pageContext.request.contextPath}/resources/static/core/app-1.0.1.js"></script>  
 		<!--------- Common ----------------> 
 		<script src="${pageContext.request.contextPath}/resources/static/core/common/StringCommon-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/common/DateCommon-1.0.0.js"></script>
 		<!--------- Services ----------------> 
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/UserLoginService-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/UserService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/CustomerService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/AddressService-1.0.1.js"></script>
@@ -356,6 +357,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/CustomerFormController-1.0.1.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductListController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductFormController-1.0.0.js"></script> 
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/UserProfileController-1.0.0.js"></script> 
 		<!-- ########################## End AngularJS ####################################################################### -->
          
 

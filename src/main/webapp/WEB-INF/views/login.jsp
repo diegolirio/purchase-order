@@ -98,7 +98,7 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.js"></script>
 		<!--------- rotas e config da app angular ------------------->
-		<script src="${pageContext.request.contextPath}/resources/static/core/app-1.0.0.js"></script>  
+		<script src="${pageContext.request.contextPath}/resources/static/core/app-1.0.1.js"></script>  
 		<!--------- Services ----------------> 
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/UserLoginService-1.0.0.js"></script>
 		<!--------- Controllers ------------->

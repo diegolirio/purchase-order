@@ -30,6 +30,8 @@ public class User {
 	
 	private boolean active;
 	
+	private String cnpj;
+	
 	public long getId() {
 		return id;
 	}
@@ -75,7 +77,12 @@ public class User {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+	public String getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -16,4 +16,11 @@ public class UserService {
 		return this.userRepository.findByLoginAndPassword(login, password);
 	}
 
+	public User save(User user) {
+		return this.userRepository.save(user);
+	}
+
+	public User get(long id) {
+		return this.userRepository.findOne(id);
+	}
 }
