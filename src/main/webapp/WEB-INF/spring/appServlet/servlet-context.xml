@@ -140,7 +140,7 @@
 	<!-- Mail service -->
 	<beans:bean id="cafglassmail" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 	    <beans:property name="host" value="mx1.hostinger.com.br"/>
-	    <beans:property name="port" value="110"/>
+	    <beans:property name="port" value="2525"/>
 	    <beans:property name="username" value="pedido@cafglass.com.br"/>
 	    <beans:property name="password" value="carlos@1620"/>
 	    <beans:property name="javaMailProperties">
@@ -155,6 +155,7 @@
 	        </beans:props>
 	    </beans:property>
 	</beans:bean>
+
 
 
 </beans:beans>

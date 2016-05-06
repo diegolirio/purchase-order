@@ -61,7 +61,7 @@
 		<beans:property name="host" value="smtp.gmail.com" /> 
 		<beans:property name="port" value="465" />
 		<beans:property name="username" value="diegolirio.dl@gmail.com" />
-		<beans:property name="password" value="dyegpython86" />
+		<beans:property name="password" value="********" />
 		<beans:property name="javaMailProperties">
 			<beans:props>
 				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
@@ -75,7 +75,7 @@
 		<beans:property name="host" value="smtp.openmailbox.org" /> 
 		<beans:property name="port" value="465" />
 		<beans:property name="username" value="diegolirio@openmailbox.org" />
-		<beans:property name="password" value="dyegjava86" />
+		<beans:property name="password" value="********" />
 		<beans:property name="javaMailProperties">
 			<beans:props>
 				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
@@ -89,7 +89,7 @@
 		<beans:property name="host" value="smtp.live.com" /> 
 		<beans:property name="port" value="587" />
 		<beans:property name="username" value="diego_lirio@hotmail.com" />
-		<beans:property name="password" value="liriodiego" />
+		<beans:property name="password" value="********" />
 		<beans:property name="javaMailProperties">
 			<beans:props>
 				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
@@ -136,13 +136,12 @@
 	    </beans:property>
 	</beans:bean>					
 
-
-	<!-- GolgMail service -->
-	<beans:bean id="othermailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-	    <beans:property name="host" value="smtp.speedtelecomunicacoes.com.br"/>
-	    <beans:property name="port" value="587"/>
-	    <beans:property name="username" value="daniel@speedtelecomunicacoes.com.br"/>
-	    <beans:property name="password" value="inicio01"/>
+	<!-- Mail service -->
+	<beans:bean id="cafglassmail" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <beans:property name="host" value="mx1.hostinger.com.br"/>
+	    <beans:property name="port" value="2525"/>
+	    <beans:property name="username" value="pedido@cafglass.com.br"/>
+	    <beans:property name="password" value="carlos@1620"/>
 	    <beans:property name="javaMailProperties">
 	        <beans:props>
 	            <!-- Use SMTP-AUTH to authenticate to SMTP server -->
@@ -150,9 +149,10 @@
 	            <!-- Use TLS to encrypt communication with SMTP server -->
 	            <beans:prop key="mail.smtp.starttls.enable">false</beans:prop>
 				<!-- Debug -->
-	            <beans:prop key="mail.debug">true</beans:prop>
+	            <beans:prop key="mail.debug">false</beans:prop>
+<!-- 	            <beans:prop key="mail.smtp.ssl.enable">true</beans:prop> -->
 	        </beans:props>
 	    </beans:property>
-	</beans:bean>					
-                      
+	</beans:bean>
+	        
 </beans:beans>

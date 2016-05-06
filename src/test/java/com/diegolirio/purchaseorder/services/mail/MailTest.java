@@ -1,8 +1,5 @@
 package com.diegolirio.purchaseorder.services.mail;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,13 +15,13 @@ public class MailTest {
 	@Autowired
 	private Mail mail;
 	
-	private String pathInitialTest;
+//	private String pathInitialTest;
 	
-	private static final String EMAIL_FROM = "diegolirio@openmailbox.org"; //"ddamaceno@dellavolpe.com.br"; //"coletaweb@dellavolpe.com.br";
+	private static final String EMAIL_FROM = "pedido@cafglass.com.br"; //"ddamaceno@dellavolpe.com.br"; //"coletaweb@dellavolpe.com.br";
 
 	@Before
 	public void before() {
-		this.pathInitialTest = this.getClass().getClassLoader().getResource("").getPath();
+		//this.pathInitialTest = this.getClass().getClassLoader().getResource("").getPath();
 	}
 	
 	@Test
@@ -32,13 +29,13 @@ public class MailTest {
 		Assert.assertTrue(true);
 	}
 	
-//	@Test
-//	public void testSendMail() {
-//		String emailTo = "felipe_sbc_sp@hotmail.com";
-//		String [] emailsCC = {};
-//		boolean sendMail = mail.sendMailSimple("Test Email TDD", "Hello, my email send.\n\nNão responda este e-mail", EMAIL_FROM, emailTo, emailsCC);
-//		Assert.assertTrue(sendMail);
-//	}
+	@Test
+	public void testSendMail() {
+		String emailTo = "diegolirio.dl@gmail.com";
+		String [] emailsCC = {};
+		boolean sendMail = mail.sendMailSimple("Test Email TDD", "Hello, my email send.\n\nNão responda este e-mail", EMAIL_FROM, emailTo, emailsCC);
+		Assert.assertTrue(sendMail);
+	}
 //	
 //	@Test
 //	public void testSendMailHtml() throws MessagingException {

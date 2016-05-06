@@ -25,8 +25,8 @@ import com.diegolirio.purchaseorder.repositories.PurchaseOrderRepositorie;
 @Service
 public class PurchaseOrderService {
 	
-	//private static final String FROM_EMAIL = "pedido@cafglass.com.br";
-	private static final String FROM_EMAIL = "carlosvendas@hotmail.com.br";
+	private static final String FROM_EMAIL = "pedido@cafglass.com.br";
+	private static final String CC = "carlosvendas@hotmail.com.br";
 	
 	@Autowired
 	private PurchaseOrderRepositorie purchaseOrderRepositorie;
@@ -119,7 +119,7 @@ public class PurchaseOrderService {
 	 */
 	public boolean sendEmailAttachmentPO(PurchaseOrder po) throws AddressException, MessagingException, JRException {
 		String to = po.getCustomerAddressSender().getPeople().getEmail();
-		String[] cc = {po.getCustomerAddressRecipient().getPeople().getEmail()};
+		String[] cc = {po.getCustomerAddressRecipient().getPeople().getEmail(), CC};
 		String pathFileAnexo = this.reportService.generateReportPath(po);
 		return this.mail.sendMailHtml("Pedido numero " + po.getId(), "<h3>Segue pedido em anexo</h3>Não responda este Email", FROM_EMAIL, to, cc , pathFileAnexo);
 	}
