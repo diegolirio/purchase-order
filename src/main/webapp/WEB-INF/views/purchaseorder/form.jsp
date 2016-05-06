@@ -37,7 +37,9 @@
 			                                          		  ng-options="phone.number as phone.number+' - '+phone.contactType for phone in poFormCtrl.phonesSender" 
 			                                          		  required="required"></select>
 			                                      </div>		
-			                                      <button class="pull-right btn btn-primary" ng-disabled="formR.$invalid">Avan&ccedil;ar</button>                           
+			                                      <button class="pull-right btn btn-primary" ng-disabled="formR.$invalid">
+			                                      	Avan&ccedil;ar <span class="glyphicon glyphicon-share-alt"></span>
+			                                      </button>                           
 				                              </div>
 				                         </section>
 				                   </form>     
@@ -78,7 +80,9 @@
 			                                      </div>
 			                                      <div class="row">
 				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.REMETENTE" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>                             		                                 
-				                                      <button class="pull-right btn btn-primary" ng-disabled="formD.$invalid">Avan&ccedil;ar</button>                             		                                 
+				                                      <button class="pull-right btn btn-primary" ng-disabled="formD.$invalid">
+				                                      	Avan&ccedil;ar <span class="glyphicon glyphicon-share-alt"></span>
+				                                      </button>                             		                                 
 				                              	  </div>
 				                              </div>
 				                           </section>
@@ -112,7 +116,9 @@
 			                                          		  ></select>
 			                                      </div>	
 			                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.DESTINATARIO" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>                             		                                 
-			                                      <button class="pull-right btn btn-primary" ng-disabled="formT.$invalid">Avan&ccedil;ar</button> 			                                      		                                 
+			                                      <button class="pull-right btn btn-primary" ng-disabled="formT.$invalid">
+			                                      	Avan&ccedil;ar <span class="glyphicon glyphicon-share-alt"></span>
+			                                      </button> 			                                      		                                 
 				                              </div>
 				                         </section>				                           
 				                     </form>
@@ -124,11 +130,11 @@
 			                              	  </header>
 			                              	  <div class="panel-body">
 			                              	  		<div class="row">
-					                                    <div class="col-md-2 form-group">
+					                                    <div class="col-md-2 form-group" ng-show="poFormCtrl.purchaseOrder.id > 0">
 					                                        <label class="text-primary">Numero</label>
 					                                        <input type="text" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.id">
 					                                    </div>
-					                                    <div class="col-md-3 form-group">
+					                                    <div class="col-md-3 form-group" ng-show="poFormCtrl.purchaseOrder.id > 0">
 					                                        <label class="text-primary">Data</label>
 					                                        <input type="date" class="form-control input-lg" readonly="readonly" ng-model="poFormCtrl.purchaseOrder.emissionDate">
 					                                    </div>
@@ -156,7 +162,9 @@
 					                              </div>
 					                              <div class="row">
 				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.TRANSPORTADORA" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>                             		                                 
-				                                      <button class="pull-right btn btn-primary" ng-disabled="formPO.$invalid">Avan&ccedil;ar</a> 				                                    
+				                                      <button class="pull-right btn btn-primary" ng-disabled="formPO.$invalid">
+				                                      	Avan&ccedil;ar <span class="glyphicon glyphicon-share-alt"></span>
+				                                      </button> 				                                    
 				                              	  </div>
 				                              </div>
 				                              
@@ -215,7 +223,9 @@
 				                                    </table>
 				                                      
 				                                    <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PEDIDO" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a> 
-				                                    <button ng-disabled="poFormCtrl.ordersProducts.length == 0" ng-click="poFormCtrl.formVisible = poFormCtrl.EFETIVAR" class="pull-right btn btn-primary">Avan&ccedil;ar</button>   
+				                                    <button ng-disabled="poFormCtrl.ordersProducts.length == 0" ng-click="poFormCtrl.formVisible = poFormCtrl.EFETIVAR" class="pull-right btn btn-primary">
+				                                    	Avan&ccedil;ar <span class="glyphicon glyphicon-share-alt"></span>
+				                                    </button>   
 				                                      			                                 
 				                              </div>
 				                         </section>		                                  
@@ -349,7 +359,9 @@
 				                                      <a href ng-click="poFormCtrl.formVisible = poFormCtrl.PRODUTOS" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>
 				                                      <div class="pull-right">
 				                                      		<a href="${pageContext.request.contextPath}/purchaseorder/{{poFormCtrl.purchaseOrder.id}}/print/pdf" target="_blank" class="btn btn-default">Pr&eacute;-visualiza&ccedil;&atilde;o do Pedido</a>
-				                                      		<a href ng-click="poFormCtrl.completedPO(poFormCtrl.purchaseOrder)" class="btn btn-success">Efetivar</a> 				                                    
+				                                      		<a href ng-click="poFormCtrl.completedPO(poFormCtrl.purchaseOrder)" class="btn btn-success">
+				                                      			Efetivar
+				                                      		</a> 				                                    
 				                                      </div>                             		                                 
 				                              	    </div>
 			                              	  		

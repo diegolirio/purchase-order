@@ -26,8 +26,17 @@ app.controller('PurchaseOrderFormController', ['$scope', '$routeParams', '$locat
 	 */
 	var init = function() {
 		self.formVisible = self.REMETENTE;
+		
+		// Load P.O if route with ID
 		if($routeParams.id > 0) {
 			self.loadPO($routeParams.id);
+		} else 
+			if($scope.userLogged.cnpj != "null" && 
+			   $scope.userLogged.cnpj != null &&
+			   $scope.userLogged.cnpj != undefined &&
+			   $scope.userLogged.cnpj != "") {
+				self.maskCnpjSender($scope.userLogged.cnpj); 
+				self.getCustomerSenderByCpfCnpj($scope.userLogged.cnpj);
 		}
 	}; 
 	
