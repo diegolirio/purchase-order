@@ -28,10 +28,7 @@ insert into State(abbreviation, name)values('TO', 'Tocantins');
 
 
 insert into User(active, createdDate, email, name, login, password) 
-values(true, now(), 'admin@admin.com', 'Admin', 'admin', 'admin@2016');
-
-insert into User(active, createdDate, email, name, login, password) 
-values(true, now(), 'carlosvendas@hotmail.com', 'Carlos', 'carlos', 'carlos@1620');
+values(true, now(), 'admin@admin.com', 'Admin', 'admin', 'admin');
 
 
 insert into ProductType(description) value('Caixa');

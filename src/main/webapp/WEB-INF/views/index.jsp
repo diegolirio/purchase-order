@@ -229,11 +229,11 @@
 
                                 <li>
                                     <a href="#/usuario/perfil" >
-                                    <i class="fa fa-user fa-fw pull-right"></i>
+                                    	<i class="fa fa-user fa-fw pull-right"></i>
                                         Perfil 
                                     </a>
-                                    <a data-toggle="modal" href >
-                                    <i class="fa fa-cog fa-fw pull-right"></i>
+                                    <a data-toggle="modal" href="#/configuracoes" >
+                                    	<i class="fa fa-cog fa-fw pull-right"></i>
                                         Configurações
                                     </a>
                                 </li>
@@ -337,6 +337,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/common/StringCommon-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/common/DateCommon-1.0.0.js"></script>
 		<!--------- Services ----------------> 
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/mask/mask-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/UserLoginService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/UserService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/PurchaseOrderService-1.0.1.js"></script>
@@ -347,7 +348,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/ProductTypeService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/StateService-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/services/OrdersProductsService-1.0.0.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/static/core/services/mask/mask-1.0.0.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/static/core/services/EmailSettingsPOService-1.0.0.js"></script>
 		<!--------- Controllers -------------> 
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/UserSessionController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/PurchaseOrderListController-1.0.1.js"></script>
@@ -358,6 +359,7 @@
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductListController-1.0.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/ProductFormController-1.0.0.js"></script> 
 		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/UserProfileController-1.0.0.js"></script> 
+		<script src="${pageContext.request.contextPath}/resources/static/core/controllers/SettingsController-1.0.0.js"></script> 
 		<!-- ########################## End AngularJS ####################################################################### -->
          
 

@@ -1,9 +1,5 @@
 package com.diegolirio.purchaseorder.services;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,18 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.diegolirio.purchaseorder.builder.AddressBuilderTest;
-import com.diegolirio.purchaseorder.builder.CustomerBuilderTest;
-import com.diegolirio.purchaseorder.builder.ProductBuilderTest;
 import com.diegolirio.purchaseorder.builder.PurchaseOrderBuilderTest;
-import com.diegolirio.purchaseorder.builder.StateBuilderTest;
-import com.diegolirio.purchaseorder.models.Address;
-import com.diegolirio.purchaseorder.models.Customer;
-import com.diegolirio.purchaseorder.models.OrdersProducts;
-import com.diegolirio.purchaseorder.models.Product;
 import com.diegolirio.purchaseorder.models.PurchaseOrder;
-import com.diegolirio.purchaseorder.models.State;
-import com.diegolirio.purchaseorder.models.StatusType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/applicationContext-test.xml")
@@ -60,53 +46,53 @@ public class PurchaseOrderServiceTest {
 	 * Completa informacoes PO
 	 * @param purchaseOrder
 	 */
-	private void completaInfoPO(PurchaseOrder purchaseOrder) {
-		purchaseOrder.setCondicaoPagamento("30");
-		purchaseOrder.setEmissionDate(new Date());
-		purchaseOrder.setContactRecipient("João");
-		purchaseOrder.setPhoneRecipient("(11) 98888-7777"); 
-		purchaseOrder.setPhoneSender("(11) 95555-4444");
-		purchaseOrder.setPhoneShippingCompany("(11) 2563-9999");
-		purchaseOrder.setRemark("Test TDD");
-		purchaseOrder.setStatus(StatusType.completed);
-		purchaseOrder.setTypeFreight('D');
-		//User userCreated = UserBuildTest.buildTest();
-		//po.setUserCreated(userCreated );
-		
-		// cria cliente
-		Customer customer = this.customerService.save(CustomerBuilderTest.buildTest());
-
-		// cria estado
-		State state = StateBuilderTest.build();
-		this.stateService.save(state);
-
-		// cria endereco
-		Address address = AddressBuilderTest.buildTest();
-		address.setPeople(customer);
-		address.setState(state);
-		this.addressService.save(address);
-		
-		purchaseOrder.setCustomerAddressShippingCompany(address);
-		purchaseOrder.setCustomerAddressSender(address );
-		purchaseOrder.setCustomerAddressRecipient(address );
-
-		// cria produto
-		Product product = ProductBuilderTest.buildTest();
-		this.productService.save(product);
-		
-		List<OrdersProducts> ordersProducts = new ArrayList<OrdersProducts>();
-		
-		// cria produtos da po
-		OrdersProducts prod = new OrdersProducts();
-		prod.setAmount(3.0);
-		prod.setOrder(purchaseOrder);
-		prod.setProduct(product );
-		prod.setValueUnit(2855.59);
-		this.ordersProductsService.save(prod);
-		
-		ordersProducts.add(prod);
-		purchaseOrder.setOrdersProducts(ordersProducts);			
-	}
+//	private void completaInfoPO(PurchaseOrder purchaseOrder) {
+//		purchaseOrder.setCondicaoPagamento("30");
+//		purchaseOrder.setEmissionDate(new Date());
+//		purchaseOrder.setContactRecipient("João");
+//		purchaseOrder.setPhoneRecipient("(11) 98888-7777"); 
+//		purchaseOrder.setPhoneSender("(11) 95555-4444");
+//		purchaseOrder.setPhoneShippingCompany("(11) 2563-9999");
+//		purchaseOrder.setRemark("Test TDD");
+//		purchaseOrder.setStatus(StatusType.completed);
+//		purchaseOrder.setTypeFreight('D');
+//		//User userCreated = UserBuildTest.buildTest();
+//		//po.setUserCreated(userCreated );
+//		
+//		// cria cliente
+//		Customer customer = this.customerService.save(CustomerBuilderTest.buildTest());
+//
+//		// cria estado
+//		State state = StateBuilderTest.build();
+//		this.stateService.save(state);
+//
+//		// cria endereco
+//		Address address = AddressBuilderTest.buildTest();
+//		address.setPeople(customer);
+//		address.setState(state);
+//		this.addressService.save(address);
+//		
+//		purchaseOrder.setCustomerAddressShippingCompany(address);
+//		purchaseOrder.setCustomerAddressSender(address );
+//		purchaseOrder.setCustomerAddressRecipient(address );
+//
+//		// cria produto
+//		Product product = ProductBuilderTest.buildTest();
+//		this.productService.save(product);
+//		
+//		List<OrdersProducts> ordersProducts = new ArrayList<OrdersProducts>();
+//		
+//		// cria produtos da po
+//		OrdersProducts prod = new OrdersProducts();
+//		prod.setAmount(3.0);
+//		prod.setOrder(purchaseOrder);
+//		prod.setProduct(product );
+//		prod.setValueUnit(2855.59);
+//		this.ordersProductsService.save(prod);
+//		
+//		ordersProducts.add(prod);
+//		purchaseOrder.setOrdersProducts(ordersProducts);			
+//	}
 	
 	@Test
 	public void testSave() {

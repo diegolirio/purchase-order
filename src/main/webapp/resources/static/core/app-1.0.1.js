@@ -25,6 +25,8 @@ app.config(['$routeProvider', '$httpProvider',
 		.when('/produto/:id',      { templateUrl: SERVER_APP + '/product/page/form'})
 		// User
 		.when('/usuario/perfil', { templateUrl: SERVER_APP + '/user/profile'})
+		// Settings
+		.when('/configuracoes', { templateUrl: SERVER_APP + '/settings'})
 		;
 	
 	/* ******************** Interceptor ******************** */
