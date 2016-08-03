@@ -91,6 +91,11 @@ public class ProductService {
 			.findByCodeContainingOrDescriptionContainingAndActive(fieldSearch, fieldSearch, true);
 	}
 
+	public List<Product> findAllOrderByCode() {
+		return this.productRepositorie.findAllByOrderByCode();
+	}
+
+
 	
 	
 }

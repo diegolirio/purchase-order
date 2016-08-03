@@ -27,7 +27,7 @@ public class PurchaseOrder {
 	public Long id;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP) 
 	@Column(nullable = false, updatable=false)
 	public Date emissionDate;
 	 

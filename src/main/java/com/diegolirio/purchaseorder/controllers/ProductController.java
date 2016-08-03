@@ -64,7 +64,8 @@ public class ProductController {
 	@RequestMapping(value="/get/all", method=RequestMethod.GET, produces="application/json; charset=UTF-8")
 	public ResponseEntity<String> getall() {
 		try {
-			Iterable<Product> all = this.productService.getAll();
+			//Iterable<Product> all = this.productService.getAll();
+			List<Product> all = this.productService.findAllOrderByCode();
 			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(all ), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();

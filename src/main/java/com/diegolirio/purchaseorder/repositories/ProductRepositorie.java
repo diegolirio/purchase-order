@@ -18,4 +18,7 @@ public interface ProductRepositorie extends CrudRepository<Product, Long> {
 
 	public List<Product> findByActive(boolean active);
 
+	@Query("from Product p order by p.code")
+	public List<Product> findAllByOrderByCode();
+
 }
