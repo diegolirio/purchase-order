@@ -13,6 +13,16 @@ public class State {
 	private String abbreviation;
 	
 	private String name;
+	
+	public State() {
+		super();
+	}
+
+	public State(String abbreviation, String name) {
+		this();
+		this.abbreviation = abbreviation;
+		this.name = name;
+	}
 
 	public Long getId() {
 		return id;
