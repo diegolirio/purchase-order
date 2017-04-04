@@ -8,7 +8,7 @@ public class HomeController {
 
 	@RequestMapping("")
 	public String index() {
-		return "index";
+		return "purchaseorder/dist/index";
 	}
 
 	@RequestMapping("app")

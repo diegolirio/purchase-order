@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import br.com.cafglass.purchaseorder.models.Customer;
 import br.com.cafglass.purchaseorder.services.CustomerService;
 
@@ -24,19 +22,15 @@ public class CustomerRestController {
 
 	@Autowired
 	private CustomerService customerService;
-
-	private ResponseEntity<String> responseEntityError(Exception e) {
-		return new ResponseEntity<String>("{\"messageError\": \""+e.getMessage()+"\"}", HttpStatus.INTERNAL_SERVER_ERROR);
-	}
 	
 	@RequestMapping(value="/findall", produces="application/json", method=RequestMethod.GET)
 	public ResponseEntity<String> findAll(HttpServletResponse response) {
 		try {
 			List<Customer> list = this.customerService.findAll();
-			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list ), HttpStatus.OK);
+			return CommonController.toJson(list);
 		}catch(Exception e) {
 			e.printStackTrace();
-			return this.responseEntityError(e);
+			return CommonController.responseEntityError(e);
 		}
 	}
 	
@@ -45,10 +39,10 @@ public class CustomerRestController {
 		System.out.println(customer); 
 		try {
 			customer = this.customerService.save(customer);
-			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(customer), HttpStatus.OK);
+			return CommonController.toJson(customer);
 		} catch(Exception e) {
 			e.printStackTrace();
-			return this.responseEntityError(e);
+			return CommonController.responseEntityError(e);
 		}
 	}
 	
@@ -57,10 +51,10 @@ public class CustomerRestController {
 		System.out.println("findAll()");
 		try {
 			Customer customer = this.customerService.findOne(id);
-			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(customer), HttpStatus.OK);
+			return CommonController.toJson(customer);
 		}catch(Exception e) {
 			e.printStackTrace();
-			return this.responseEntityError(e);
+			return CommonController.responseEntityError(e);
 		}
 	}
 	
@@ -71,7 +65,7 @@ public class CustomerRestController {
 			return new ResponseEntity<String>(HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
-			return this.responseEntityError(e);
+			return CommonController.responseEntityError(e);
 		}
 	}
 }

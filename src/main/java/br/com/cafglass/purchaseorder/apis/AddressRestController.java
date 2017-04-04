@@ -3,15 +3,12 @@ package br.com.cafglass.purchaseorder.apis;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.cafglass.purchaseorder.models.Address;
 import br.com.cafglass.purchaseorder.services.AddressService;
@@ -27,7 +24,7 @@ public class AddressRestController {
 	public ResponseEntity<String> findByPeople(@PathVariable("peopleId") Long peopleId) {
 		try {
 			List<Address> list = this.addressService.findByPeopleId(peopleId);
-			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(list ), HttpStatus.OK);
+			return CommonController.toJson(list);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return CommonController.responseEntityError(e);
@@ -38,7 +35,7 @@ public class AddressRestController {
 	public ResponseEntity<String> save(@RequestBody Address address) {
 		try {
 			address = this.addressService.save(address);
-			return new ResponseEntity<String>(new ObjectMapper().writeValueAsString(address), HttpStatus.OK);
+			return CommonController.toJson(address);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return CommonController.responseEntityError(e);
