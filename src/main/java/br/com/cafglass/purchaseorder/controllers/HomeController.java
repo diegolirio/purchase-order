@@ -13,6 +13,6 @@ public class HomeController {
 
 	@RequestMapping("app")
 	public String app() {
-		return "dist/index";
+		return "index";
 	}
 }
