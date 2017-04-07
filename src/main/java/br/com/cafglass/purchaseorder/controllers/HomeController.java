@@ -6,12 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-	@RequestMapping("")
+	@RequestMapping("/")
 	public String index() {
 		return "purchaseorder/dist/index";
 	}
 
-	@RequestMapping("app")
+	@RequestMapping("/a")
+	public String indexA() {
+		return "purchaseorder/dist/index";
+	}	
+	
+	@RequestMapping("/app")
 	public String app() {
 		return "index";
 	}
