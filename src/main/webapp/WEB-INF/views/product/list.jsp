@@ -31,18 +31,21 @@
                                             <th class="text-center" style="width: 10px">editar</th>
                                             <th class="text-center" style="width: 10px"></th>
                                         </tr> 
-                                        <tr ng-repeat="p in pListCtrl.products">
-                                            <td>{{ p.code }}</td>
-                                            <td>{{ p.description }}</td>
-                                            <td class="text-right">{{ p.valueUnit | currency }}</td>
-                                            <td>{{ p.productType.description }}</td>
-                                            <td><a href="#/produto/{{p.id}}"><span class="badge bg-red">editar</span></a></td>
-                                            <td>
-                                            	<a href ng-click="pListCtrl.deleteProduct(p)" title="Excluir">
-                                            		<span class="glyphicon glyphicon-trash text-danger"></span>
-                                            	</a>
-                                            </td>                                            
-                                        </tr>
+										<tr ng-repeat="p in pListCtrl.products" ng-class="{'danger': !p.active}">
+											<td>{{ p.code }}</td>
+											<td>
+												{{ p.description }}
+												<span class="badge bg-red" ng-show="!p.active">Desativado</span>
+											</td>
+											<td class="text-right">{{ p.valueUnit | currency }}</td>
+											<td>{{ p.productType.description }}</td>
+											<td><a href="#/produto/{{p.id}}" ng-show="p.active"><span class="badge bg-blue">editar</span></a></td>
+											<td>
+												<a href ng-click="pListCtrl.deleteProduct(p)" title="Excluir" ng-show="p.active">
+													<span class="glyphicon glyphicon-trash text-danger"></span>
+												</a>
+											</td>                                            
+										</tr>
                                     </table>
                                 </div><!-- /.panel-body -->
                             </div><!-- /.panel -->                        
