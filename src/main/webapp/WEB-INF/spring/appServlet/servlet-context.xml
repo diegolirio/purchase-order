@@ -43,9 +43,13 @@
 <!--         <beans:property name="password" value="root" />   -->
 <!--     </beans:bean> -->
 
+	<beans:bean class="java.lang.String" id="my_host">
+		<beans:constructor-arg value="192.168.49.164" />
+	</beans:bean>
+
 	<beans:bean class="java.lang.String" id="dbHost">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'localhost' : systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'mysql-docker' : systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbPort">
 		<beans:constructor-arg
@@ -53,11 +57,11 @@
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbUser">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : 'adminP2g7auL' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'po' : 'adminP2g7auL' }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbPass">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'root' : 'DAMdhnxSfPRS' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'po123' : 'DAMdhnxSfPRS' }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbName">
 		<beans:constructor-arg
