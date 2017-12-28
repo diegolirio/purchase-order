@@ -49,7 +49,7 @@
 
 	<beans:bean class="java.lang.String" id="dbHost">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'mysql-docker' : systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'mysqlpo' : systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbPort">
 		<beans:constructor-arg

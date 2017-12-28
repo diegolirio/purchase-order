@@ -1,0 +1,32 @@
+version: '3'
+services:
+    pedido:
+        build:
+            dockerfile: ./docker/po.dockerfile
+            context: .
+        image: diegolirio/pedido:1.5
+        container_name: pedido
+        ports:
+            - "7000:8080"
+        volumes:
+            - ~/docker/logs/pedido:/usr/local/tomcat/logs
+        networks: 
+            - purchase-order
+        
+    mysql:
+        build:
+            dockerfile: ./docker/mysql.dockerfile
+            context: .
+        image: diegolirio/mysql:1.0
+        restart: always
+        container_name: mysqlpo
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - ~/docker/mysqlpo:/var/lib/mysql            
+        networks: 
+            - purchase-order
+
+networks: 
+    purchase-order:
+        driver: bridge

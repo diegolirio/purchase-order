@@ -1,6 +1,0 @@
-# NAO ATIVADO
-
-FROM mysql:5.7
-
-RUN /bin/bash -c mysql -u root -e "CREATE DATABASE purchase" && \
-  mysql -u root mydb < /tmp/dump.sql
