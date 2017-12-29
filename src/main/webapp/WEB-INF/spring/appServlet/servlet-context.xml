@@ -61,7 +61,7 @@
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbPass">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'po123' : 'DAMdhnxSfPRS' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'po3030' : 'DAMdhnxSfPRS' }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbName">
 		<beans:constructor-arg

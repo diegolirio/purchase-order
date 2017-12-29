@@ -1,31 +1,37 @@
 version: '3'
-services:
+services:        
+    db:
+        image: mysql:5.7
+        restart: always
+        container_name: mysqlpo
+        environment:  
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: po
+            MYSQL_PASSWORD: po3030
+            MYSQL_DATABASE: purchase
+        volumes:
+            - ~/docker/mysqlpo:/var/lib/mysql 
+        networks: 
+            - purchase-order
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 2000:8080   
+        networks: 
+            - purchase-order                  
+
     pedido:
-        build:
-            dockerfile: ./docker/po.dockerfile
-            context: .
-        image: diegolirio/pedido:1.5
+        #image: tomcat:8.0
+        image: diegolirio/tomcat8:1.2
         container_name: pedido
         ports:
             - "7000:8080"
         volumes:
             - ~/docker/logs/pedido:/usr/local/tomcat/logs
+            - ~/docker/webapps/pedido:/usr/local/tomcat/webapps
         networks: 
-            - purchase-order
-        
-    mysql:
-        build:
-            dockerfile: ./docker/mysql.dockerfile
-            context: .
-        image: diegolirio/mysql:1.0
-        restart: always
-        container_name: mysqlpo
-        environment:
-            MYSQL_ROOT_PASSWORD: root
-        volumes:
-            - ~/docker/mysqlpo:/var/lib/mysql            
-        networks: 
-            - purchase-order
+            - purchase-order            
 
 networks: 
     purchase-order:
