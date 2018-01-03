@@ -1,31 +1,27 @@
-echo "Building...."
-mvn clean package -DskipTests=true
+echo "1. Building..."
+#mvn clean package -DskipTests=true
 
-chmod -R 777 ~/docker/webapps/pedido/
-
-echo "Deploying...."
-cp target/pedido.war ~/docker/webapps/pedido/
-
-echo "Removing containers..."
+echo "2. Down containers..."
 docker-compose down
 
-echo "Creating containers..."
+echo "3. Building images..."
+docker-compose build
+
+echo "4. Up containers..."
 docker-compose up -d
 
-docker exec -i pedido bash -c "./bin/catalina.sh start"
+echo "5. Deploing..."
+docker cp target/pedido.war pedido:/usr/local/tomcat/webapps/
+
+echo "6. Change mode 777..."
+chmod -R 777 ~/docker/
 
 if [ "$1" = "dump" ]
 then
-    echo "Run mysqldump..."
-    ls
-    docker exec -i mysqlpo bash -c 'mysql -upo -ppo3030 --database=purchase < pedido--mysql--dump.sql'
+	echo "7. Import dump..."
+	sleep 15
+	docker exec -i mysqlpo mysql -uroot -proot --database=purchase < pedido--mysql--dump.sql
+	echo "dump OK!" 
 fi
 
 echo "DONE!!!!"
-
-
-
-### Rode na mao o comando abaixo para o primeiro deploy ######
-
-# docker exec -i mysqlpo mysql -upo -ppo3030 --database=purchase < dump/pedido--mysql--dump.sql
-# docker exec -i pedido ./bin/catalina.sh start
