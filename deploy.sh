@@ -1,5 +1,5 @@
 echo "Building...."
-mvn clean package
+mvn clean package -DskipTests=true
 
 chmod -R 777 ~/docker/webapps/pedido/
 
