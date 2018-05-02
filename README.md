@@ -23,8 +23,8 @@ sudo ./deploy.sh dump
 ```
 mkdir po_docker
 cd po_docker
-wget ...deploy.sh
-wget ...docker-compose.yml
-wget ...pedido--mysql--dump-16042018.sql
+wget https://raw.githubusercontent.com/diegolirio/purchase-order/deploy-docker/deploy/deploy.sh
+wget https://raw.githubusercontent.com/diegolirio/purchase-order/deploy-docker/deploy/docker-compose.yml
+wget https://raw.githubusercontent.com/diegolirio/purchase-order/deploy-docker/deploy/pedido--mysql--dump-16042018.sql
 sudo ./deploy.sh # ou para executar com dump no DB --> `sudo ./deploy.sh dump`
 ```
