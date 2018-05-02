@@ -24,4 +24,5 @@ sudo ./deploy.sh dump
 mkdir po_docker
 cd po_docker
 wget https://raw.githubusercontent.com/diegolirio/purchase-order/deploy-docker/deploy/deploy-in-cloud.sh
+sudo ./deploy-in-cloud.sh
 ```
