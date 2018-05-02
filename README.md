@@ -8,23 +8,20 @@ Jasper e IReport para relatórios, Spring Mail, JavaMail e Apache Velocity para 
 AngularJS para programação front-end utilizando conceito restFull,
 Banco de dados mysql, servidor Tomcat 7, JUnit para TDD, Maven para gerenciamento de dependencias.
 
-# Build And push Image Docker to Registry
+### Build And push Image Docker to Registry
 ```
 sudo ./docker.sh
 ```
 
-# Deploy
+### Deploy
 ```
 cd deploy/
 sudo ./deploy.sh dump
 ```
 
-# Deploy in Cloud (Without jdk)
+### Deploy in Cloud (Without jdk)
 ```
 mkdir po_docker
 cd po_docker
-wget https://raw.githubusercontent.com/diegolirio/purchase-order/deploy-docker/deploy/deploy.sh
-wget https://raw.githubusercontent.com/diegolirio/purchase-order/deploy-docker/deploy/docker-compose.yml
-wget https://raw.githubusercontent.com/diegolirio/purchase-order/deploy-docker/deploy/pedido--mysql--dump-16042018.sql
-sudo ./deploy.sh # ou para executar com dump no DB --> `sudo ./deploy.sh dump`
+wget https://raw.githubusercontent.com/diegolirio/purchase-order/deploy-docker/deploy/deploy-in-cloud.sh
 ```
