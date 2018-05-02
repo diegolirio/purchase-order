@@ -1,0 +1,42 @@
+version: '3'
+services:        
+    pedido:
+        image: registry.phoenix4go.com/purchase-order:1.0
+        container_name: pedido
+        ports:
+            - 8080:8080
+        volumes:
+            - ~/docker/logs/pedido:/usr/local/tomcat/logs
+            #- ~/docker/webapps/pedido:/usr/local/tomcat/webapps
+            #- ~/docker/conf/pedido:/usr/local/tomcat/conf
+        networks: 
+            - purchase-order
+        depends_on:
+            - db            
+
+    db:
+        image: mysql:5.7
+        restart: always
+        container_name: mysqlpo
+        environment:  
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: po
+            MYSQL_PASSWORD: po3030
+            MYSQL_DATABASE: purchase
+        volumes:
+            - ~/docker/mysqlpo:/var/lib/mysql 
+        networks: 
+            - purchase-order
+
+    adminer:
+        image: adminer
+        container_name: adminerpo
+        restart: always
+        ports:
+            - 2000:8080   
+        networks: 
+            - purchase-order    
+
+networks: 
+    purchase-order:
+        driver: bridge
