@@ -28,14 +28,14 @@ services:
         networks: 
             - purchase-order
 
-    adminer:
-        image: adminer
-        container_name: adminerpo
-        restart: always
-        ports:
-            - 2000:8080   
-        networks: 
-            - purchase-order    
+#    adminer:
+#        image: adminer
+#        container_name: adminerpo
+#        restart: always
+#        ports:
+#            - 2000:8080   
+#        networks: 
+#            - purchase-order    
 
 networks: 
     purchase-order:
