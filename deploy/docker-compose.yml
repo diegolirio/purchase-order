@@ -2,6 +2,7 @@ version: '3'
 services:        
     pedido:
         image: registry.phoenix4go.com/purchase-order:1.0
+        restart: always
         container_name: pedido
         ports:
             - 8080:8080
