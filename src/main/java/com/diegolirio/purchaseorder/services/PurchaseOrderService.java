@@ -25,7 +25,7 @@ import com.diegolirio.purchaseorder.repositories.PurchaseOrderRepositorie;
 @Service
 public class PurchaseOrderService {
 	
-	private static final String FROM_EMAIL = "pedido@cafglass.com.br";
+	private static final String FROM_EMAIL = "no-reply@cafglass.com.br";
 	private static final String CC = "carlosvendas@hotmail.com.br";
 	
 	@Autowired

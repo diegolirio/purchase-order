@@ -144,9 +144,9 @@
 	<!-- Mail service -->
 	<beans:bean id="cafglassmail" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 	    <beans:property name="host" value="mx1.hostinger.com.br"/>
-	    <beans:property name="port" value="2525"/>
-	    <beans:property name="username" value="pedido@cafglass.com.br"/>
-	    <beans:property name="password" value="carlos@1620"/>
+	    <beans:property name="port" value="587"/>
+	    <beans:property name="username" value="no-reply@cafglass.com.br"/>
+	    <beans:property name="password" value="no-reply"/>
 	    <beans:property name="javaMailProperties">
 	        <beans:props>
 	            <!-- Use SMTP-AUTH to authenticate to SMTP server -->
