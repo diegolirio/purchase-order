@@ -26,3 +26,7 @@ cd po_docker
 wget https://raw.githubusercontent.com/diegolirio/purchase-order/deploy-docker/deploy/deploy-in-cloud.sh
 sudo ./deploy-in-cloud.sh
 ```
+
+Dump Export    
+
+docker exec mysqlpo sh -c 'exec mysqldump -uroot -proot purchase' > /root/po-database-201902.sql
