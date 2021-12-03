@@ -10,8 +10,9 @@ mvn package -DskipTests=true
 # targer/classes/com/diegolirio/purchaseorder/reports/po.jrxml
 
 echo "Image Building..."
-docker build -t registry.phoenix4go.com/purchase-order:1.0 .
+#docker build -t diegolirio/purchase-order:1.1 .
+docker build -t registry.heroku.com/cafglass-pedido/web .
 
 echo "docker push..."
-docker push registry.phoenix4go.com/purchase-order:1.0
+docker push registry.heroku.com/cafglass-pedido/web
 

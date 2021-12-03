@@ -57,15 +57,15 @@
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbUser">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'po' : 'adminP2g7auL' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_USER'] == null ? 'po' : systemEnvironment['OPENSHIFT_MYSQL_DB_USER'] }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbPass">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'po3030' : 'DAMdhnxSfPRS' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_PASS'] == null ? 'po3030' : systemEnvironment['OPENSHIFT_MYSQL_DB_PASS'] }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="dbName">
 		<beans:constructor-arg
-			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_HOST'] == null ? 'purchase' : 'pedido' }" />
+			value="#{ systemEnvironment['OPENSHIFT_MYSQL_DB_NAME'] == null ? 'purchase' : systemEnvironment['OPENSHIFT_MYSQL_DB_NAME'] }" />
 	</beans:bean>
 	<beans:bean class="java.lang.String" id="database">
 		<beans:constructor-arg

@@ -1,0 +1,14 @@
+version: '3'
+services:        
+   pedido:
+       image: registry.heroku.com/cafglass-pedido/web
+       restart: always
+       container_name: pedido
+       environment:
+          - OPENSHIFT_MYSQL_DB_HOST=us-cdbr-east-04.cleardb.com
+          - OPENSHIFT_MYSQL_DB_PORT=3306
+          - OPENSHIFT_MYSQL_DB_USER=bedca8187f2471
+          - OPENSHIFT_MYSQL_DB_PASS=de196a8e
+          - OPENSHIFT_MYSQL_DB_NAME=heroku_1ba33c8685c660e
+       ports:
+          - 8080:8080
